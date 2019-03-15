@@ -1,3 +1,12 @@
+header {
+  width: 90%;
+}
+.container .main-inner {
+  width: 90%;
+}
+.content-wrap {
+  width: calc(100% - 260px);
+}
 /* normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 html {
   line-height: 1.15; /* 1 */
@@ -1838,7 +1847,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #36ff14;
+  background: #ffff14;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2993,4 +3002,7 @@ ul.breadcrumb li+li:last-child {
   .post-body {
     text-align: justify;
   }
+}
+.site-meta {
+  background: #025a6c;
 }
