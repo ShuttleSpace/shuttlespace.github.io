@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#025a6c">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.0.1" color="#025a6c">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来. To-One 关联使用 ToOne 会智能的对目标对象创建关联。同时获取目标对象缓存。 12345678910111213141516// Customer.java@Entitypublic class Customer &amp;#123;    @Id public lo">
+<meta name="keywords" content="ObjectBox,数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ObjectBox入门-10-关联">
+<meta property="og:url" content="http://blog.dang8080.cn/2019/02/25/ObjectBox入门-10-关联/index.html">
+<meta property="og:site_name" content="云青青兮欲雨">
+<meta property="og:description" content="Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来. To-One 关联使用 ToOne 会智能的对目标对象创建关联。同时获取目标对象缓存。 12345678910111213141516// Customer.java@Entitypublic class Customer &amp;#123;    @Id public lo">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://qiniu.picbed.dang8080.cn/20190225232506.png">
+<meta property="og:image" content="http://qiniu.picbed.dang8080.cn/20190226000315.png">
+<meta property="og:image" content="http://qiniu.picbed.dang8080.cn/20190226000708.png">
+<meta property="og:updated_time" content="2019-02-25T16:44:32.400Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ObjectBox入门-10-关联">
+<meta name="twitter:description" content="Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来. To-One 关联使用 ToOne 会智能的对目标对象创建关联。同时获取目标对象缓存。 12345678910111213141516// Customer.java@Entitypublic class Customer &amp;#123;    @Id public lo">
+<meta name="twitter:image" content="http://qiniu.picbed.dang8080.cn/20190225232506.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.dang8080.cn/2019/02/25/ObjectBox入门-10-关联/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ObjectBox入门-10-关联 | 云青青兮欲雨</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">云青青兮欲雨</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">水澹澹兮生烟</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">23</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">13</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/25/ObjectBox入门-10-关联/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Humphrey Dang">
+      <meta itemprop="description" content="Humphrey Dang 的博客">
+      <meta itemprop="image" content="/images/logo.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云青青兮欲雨">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">ObjectBox入门-10-关联
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-25 22:49:13" itemprop="dateCreated datePublished" datetime="2019-02-25T22:49:13+08:00">2019-02-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-26 00:44:32" itemprop="dateModified" datetime="2019-02-26T00:44:32+08:00">2019-02-26</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来.</p>
+<h3 id="To-One-关联"><a href="#To-One-关联" class="headerlink" title="To-One 关联"></a>To-One 关联</h3><p><img src="http://qiniu.picbed.dang8080.cn/20190225232506.png" alt="To-One示意图"><br>使用 ToOne 会智能的对目标对象创建关联。同时获取目标对象缓存。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Customer.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Order.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line">    <span class="keyword">public</span> ToOne&lt;Customer&gt; customer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 为了绑定 customer 对象，对 ToOne 实例调用 setTarget() 然后就存入 order 对象</span></span><br><span class="line">Customer customer = <span class="keyword">new</span> Customer();</span><br><span class="line">Order order = <span class="keyword">new</span> Order();</span><br><span class="line">order.customer.setTarget(customer);</span><br><span class="line"><span class="keyword">long</span> orderId = boxStore.boxFor(Order.class).put(order);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果 customer 在数据库中不存在，ToOne 将会存储。如果已经存在，那么 ToOne 只会创建关联,不会存储.<br>如果关联 Entity 使用的是自定义 IDs(@Id(assignable = true)),则该 Entity 不会被存储.</p>
+</blockquote>
+<p>在 ToOne 实例中，可通过 Order 对象的 getTarget() 获取 customer</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Order order = boxStore.boxFor(Order.class).get(orderId);</span><br><span class="line">Customer customer = order.customer.getTarget(customer);</span><br></pre></td></tr></table></figure>
+<p>如果只是想要获取 ID 而不是整个目标对象，getTargetId() 值得拥有，此方法根本不会接触数据库，所以高效。</p>
+<p>移除关联: 仅移除关联关系，而不会从数据库中移除目标对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">order.customer.setTarget(<span class="keyword">null</span>);</span><br><span class="line">boxStore.boxFor(Order.class).put(order);</span><br></pre></td></tr></table></figure>
+<p>查看 <code>objectbox-models/default.json</code> 会发现，ToOne 属性根本没有保存。仅仅只是目标对象的 ID 保存在一个名称和 ToOne 属性后拼接 Id 的虚拟属性.</p>
+<h3 id="初始化魔术"><a href="#初始化魔术" class="headerlink" title="初始化魔术"></a>初始化魔术</h3><p>注意到 ToOne 属性 customer 从没初始化，然而调用时却不会抛出空指针异常。因为该初始化已经执行过了。<br>ObjectBox 插件会对 entity 类(仅支持纯 Java 项目和 Android 项目) 在调用前正确的初始化。所以在自定义构造方法时，你可以假设 ToOne/ToMany/List 属性已经初始化过了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line">    ToOne&lt;Order&gt; order;</span><br><span class="line">    ToMany&lt;Order&gt; orders;</span><br><span class="line">    <span class="keyword">transient</span> BoxStore __boxStore;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Example</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="keyword">this</span>.order = <span class="keyword">new</span> ToOne&lt;&gt;(<span class="keyword">this</span>, Example_.order);</span><br><span class="line">        <span class="keyword">this</span>.orders = <span class="keyword">new</span> ToMany&lt;&gt;(<span class="keyword">this</span>, Example_.orders);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Example</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="提升性能"><a href="#提升性能" class="headerlink" title="提升性能"></a>提升性能</h3><p>为了提高性能，请提供全参数构造方法。<br>对于 ToOne 属性，请添加一个名为 ToOne 属性名加 Id 的 id 参数。可以参考 objectbox-models/default.json 里的命名.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line">    <span class="keyword">public</span> ToOne&lt;Customer&gt; customer;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Order</span><span class="params">()</span> </span>&#123; <span class="comment">/* default constructor */</span> &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Order</span><span class="params">(<span class="keyword">long</span> id, <span class="keyword">long</span> customerId <span class="comment">/* virtual ToOne id property */</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.customer.setTargetId(customerId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ToMany-关联"><a href="#ToMany-关联" class="headerlink" title="ToMany 关联"></a>ToMany 关联</h3><p>可以使用 List 或 ToMany 类型实现 ToMany 关联.相对 ToOne 来说，ToMany 可以实现追踪数据变化并将其写入操作中，而 List 必须自己实现.</p>
+<h3 id="1-N"><a href="#1-N" class="headerlink" title="1:N"></a>1:N</h3><p><img src="http://qiniu.picbed.dang8080.cn/20190226000315.png" alt="1:N"></p>
+<p>使用 @Backlink 注解 1:N 关联属性。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Customer.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 'to' is optional if only one relation matches</span></span><br><span class="line">    <span class="meta">@Backlink</span>(to = <span class="string">"customer"</span>)</span><br><span class="line">    <span class="keyword">public</span> ToMany&lt;Order&gt; orders;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Order.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ToOne&lt;Customer&gt; customer;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Customer customer = <span class="keyword">new</span> Customer();</span><br><span class="line">customer.orders.add(<span class="keyword">new</span> Order());</span><br><span class="line">customer.orders.add(<span class="keyword">new</span> Order());</span><br><span class="line"><span class="keyword">long</span> customerId = boxStore.boxFor(Customer.class).put(customer); <span class="comment">// puts customer and orders</span></span><br><span class="line"></span><br><span class="line">Customer customer = boxStore.boxFor(Customer.class).get(customerId);</span><br><span class="line"><span class="keyword">for</span> (Order order : customer.orders) &#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Order order = customer.orders.remove(<span class="number">0</span>);</span><br><span class="line">boxStore.boxFor(Customer.class).put(customer);</span><br><span class="line"><span class="comment">// optional: also remove the order from its box</span></span><br><span class="line"><span class="comment">// boxStore.boxFor(Order.class).remove(order);</span></span><br></pre></td></tr></table></figure>
+<h3 id="N-N"><a href="#N-N" class="headerlink" title="N:N"></a>N:N</h3><p><img src="http://qiniu.picbed.dang8080.cn/20190226000708.png" alt="N:N"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Teacher.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Student.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ToMany&lt;Teacher&gt; teachers;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Teacher teacher1 = <span class="keyword">new</span> Teacher();</span><br><span class="line">Teacher teacher2 = <span class="keyword">new</span> Teacher();</span><br><span class="line"></span><br><span class="line">Student student1 = <span class="keyword">new</span> Student();</span><br><span class="line">student1.teachers.add(teacher1);</span><br><span class="line">student1.teachers.add(teacher2);</span><br><span class="line"></span><br><span class="line">Student student2 = <span class="keyword">new</span> Student();</span><br><span class="line">student2.teachers.add(teacher2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// puts students and teachers</span></span><br><span class="line">boxStore.boxFor(Student.class).put(student1, student2);</span><br><span class="line"></span><br><span class="line">Student student1 = boxStore.boxFor(Student.class).get(student1.id);</span><br><span class="line"><span class="keyword">for</span> (Teacher teacher : student1.teachers) &#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">student1.teachers.remove(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// boxStore.boxFor(Student.class).put(student1);</span></span><br><span class="line"><span class="comment">// more efficient than using put:</span></span><br><span class="line">student1.teachers.applyChangesToDb();</span><br></pre></td></tr></table></figure>
+<p>上面可以通过 student 知道 teacher 的信息，当然可以反过来</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Teacher.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Backlink</span>(to = <span class="string">"teachers"</span>) <span class="comment">// backed by the to-many relation in Student</span></span><br><span class="line">    <span class="keyword">public</span> ToMany&lt;Student&gt; students;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Student.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ToMany&lt;Teacher&gt; teachers;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="更新关联"><a href="#更新关联" class="headerlink" title="更新关联"></a>更新关联</h3><p>ToOne 和 ToMany 可以追踪变化（只要存入拥有关联属性的 entity）并将其存入数据库中，<br>如果 ID != 0 或者 @Id(assignable = true) 那么可以通过 Box 来更新关联</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// update a related entity using its box</span></span><br><span class="line">Order orderToUpdate = customer.orders.get(<span class="number">0</span>);</span><br><span class="line">orderToUpdate.text = <span class="string">"Revised description"</span>;</span><br><span class="line"><span class="comment">// DOES NOT WORK</span></span><br><span class="line"><span class="comment">// boxStore.boxFor(Customer.class).put(customer);</span></span><br><span class="line"><span class="comment">// WORKS</span></span><br><span class="line">boxStore.boxFor(Order.class).put(orderToUpdate);</span><br></pre></td></tr></table></figure>
+<h4 id="更新-ToOne"><a href="#更新-ToOne" class="headerlink" title="更新 ToOne"></a>更新 ToOne</h4><p>ToOne 类提供了如下方法更新关联:</p>
+<ul>
+<li><code>setTarget(entity)</code>: 创建关联；传入 null 清除关联</li>
+<li><code>setTargetId(entityId)</code>: 对存在的目标 entity 创建关联；传入 0 清除关联.</li>
+<li><code>setAndPutTarget(entity)</code>:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">order.customer.setTarget(customer); <span class="comment">// or order.customer.setCustomerId(customer.getId());</span></span><br><span class="line">orderBox.put(order);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果 entity 在调用 setAndPutTarget() 之前还没存储,那么需要先绑定它的 box</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Order order = <span class="keyword">new</span> Order(); <span class="comment">// new entity</span></span><br><span class="line">orderBox.attach(order); <span class="comment">// need to attach box first</span></span><br><span class="line">order.customer.setAndPutTarget(customer);</span><br></pre></td></tr></table></figure>
+<p>如果目标 entity 使用自定义 IDs,必须在更新 ToOne 关联时存储它</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">customer.id = <span class="number">12</span>; <span class="comment">// self-assigned id</span></span><br><span class="line">customerBox.put(customer); <span class="comment">// need to put customer first</span></span><br><span class="line">order.customer.setTarget(customer); <span class="comment">// or order.customer.setCustomerId(customer.getId());</span></span><br><span class="line">orderBox.put(order);</span><br></pre></td></tr></table></figure>
+<p>这是因为 ObjectBox 只保存 id 为 0 的关联对象.</p>
+<h4 id="更新-ToMany"><a href="#更新-ToMany" class="headerlink" title="更新 ToMany"></a>更新 ToMany</h4><p>ToMany 实现了 java.lang.List 接口。如果向 ToMany 实例添加对象，这些对象就会被存储进数据库。移除也一样。（仅仅是关联被移除而已）.不要忘记把追踪 ToMany 改变的 own entity 对象存储.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">customer.orders.add(order1);</span><br><span class="line">customer.orders.remove(order2);</span><br><span class="line">customerBox.put(customer);</span><br></pre></td></tr></table></figure>
+<p>如果使用自定义 IDs(@Id(assignable = true)) 请在修改 ToMany 前绑定它的 box</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">customer.id = <span class="number">12</span>; <span class="comment">// self-assigned id</span></span><br><span class="line">customerBox.attach(customer); <span class="comment">// need to attach box first</span></span><br><span class="line">customer.orders.add(order);</span><br><span class="line">customerBox.put(customer);</span><br></pre></td></tr></table></figure>
+<p>如果 entity 是自定义 IDs,那么需要先存入该 entity,然后再更新关联并存储 own entity.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">order.id = <span class="number">42</span>; <span class="comment">// self-assigned id</span></span><br><span class="line">orderBox.put(order); <span class="comment">// need to put order first</span></span><br><span class="line">customer.orders.add(order);</span><br><span class="line">customerBox.put(customer); <span class="comment">// put customer, add relation to order</span></span><br></pre></td></tr></table></figure>
+<h3 id="树形关联"><a href="#树形关联" class="headerlink" title="树形关联"></a>树形关联</h3><p>可以使用 ToOne,ToMany 处理指向自身的树形关联</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    ToOne&lt;TreeNode&gt; parent;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BackLink</span></span><br><span class="line">    ToMany&lt;TreeNode&gt; children;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>生成的 entity 可以获取它的 parent 和 children</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TreeNode parent = entity.parent.getTarget();</span><br><span class="line">List&lt;TreeNode&gt; children = entity.children;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ObjectBox/" rel="tag"># ObjectBox</a>
+          
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/25/ObjectBox入门-9-订阅观察/" rel="next" title="ObjectBox入门-9-订阅观察">
+                <i class="fa fa-chevron-left"></i> ObjectBox入门-9-订阅观察
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/26/ObjectBox入门-11-Data-Browser/" rel="prev" title="ObjectBox入门-11-Data Browser">
+                ObjectBox入门-11-Data Browser <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpeg" alt="Humphrey Dang">
+            
+              <p class="site-author-name" itemprop="name">Humphrey Dang</p>
+              <div class="site-description motion-element" itemprop="description">Humphrey Dang 的博客</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#To-One-关联"><span class="nav-number">1.</span> <span class="nav-text">To-One 关联</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化魔术"><span class="nav-number">2.</span> <span class="nav-text">初始化魔术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提升性能"><span class="nav-number">3.</span> <span class="nav-text">提升性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ToMany-关联"><span class="nav-number">4.</span> <span class="nav-text">ToMany 关联</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-N"><span class="nav-number">5.</span> <span class="nav-text">1:N</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#N-N"><span class="nav-number">6.</span> <span class="nav-text">N:N</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新关联"><span class="nav-number">7.</span> <span class="nav-text">更新关联</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#更新-ToOne"><span class="nav-number">7.1.</span> <span class="nav-text">更新 ToOne</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新-ToMany"><span class="nav-number">7.2.</span> <span class="nav-text">更新 ToMany</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树形关联"><span class="nav-number">8.</span> <span class="nav-text">树形关联</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <span class="exturl" data-url="aHR0cDovL3d3dy5taWl0YmVpYW4uZ292LmNu">陕ICP备19000066号-1 </span>&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Humphrey Dang</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/js.cookie.js?v=7.0.1"></script>
+  <script src="/js/src/scroll-cookie.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/exturl.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=7.0.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

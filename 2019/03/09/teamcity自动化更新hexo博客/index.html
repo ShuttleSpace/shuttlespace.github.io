@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#025a6c">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.0.1" color="#025a6c">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="前言TeamCity 是 Jetbrains 公司出品的持续化集成工具，类似Jenkins,界面更加现代化，功能更强大,而且它的 server 和 agent 是分离的，可以指定本机或远程的机器来运行构建策略，其中还有调度队列算法.hexo 是静态博客生成工具.hexo d -g命令可以自动生成 public 文件夹及 HTML，然后将其推送到 github(在_config.yml中已经配置过)">
+<meta name="keywords" content="teamcity,hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="teamcity自动化更新hexo博客">
+<meta property="og:url" content="http://blog.dang8080.cn/2019/03/09/teamcity自动化更新hexo博客/index.html">
+<meta property="og:site_name" content="云青青兮欲雨">
+<meta property="og:description" content="前言TeamCity 是 Jetbrains 公司出品的持续化集成工具，类似Jenkins,界面更加现代化，功能更强大,而且它的 server 和 agent 是分离的，可以指定本机或远程的机器来运行构建策略，其中还有调度队列算法.hexo 是静态博客生成工具.hexo d -g命令可以自动生成 public 文件夹及 HTML，然后将其推送到 github(在_config.yml中已经配置过)">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-15T04:53:53.677Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="teamcity自动化更新hexo博客">
+<meta name="twitter:description" content="前言TeamCity 是 Jetbrains 公司出品的持续化集成工具，类似Jenkins,界面更加现代化，功能更强大,而且它的 server 和 agent 是分离的，可以指定本机或远程的机器来运行构建策略，其中还有调度队列算法.hexo 是静态博客生成工具.hexo d -g命令可以自动生成 public 文件夹及 HTML，然后将其推送到 github(在_config.yml中已经配置过)">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.dang8080.cn/2019/03/09/teamcity自动化更新hexo博客/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>teamcity自动化更新hexo博客 | 云青青兮欲雨</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">云青青兮欲雨</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">水澹澹兮生烟</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">23</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">13</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/03/09/teamcity自动化更新hexo博客/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Humphrey Dang">
+      <meta itemprop="description" content="Humphrey Dang 的博客">
+      <meta itemprop="image" content="/images/logo.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云青青兮欲雨">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">teamcity自动化更新hexo博客
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-09 23:26:22" itemprop="dateCreated datePublished" datetime="2019-03-09T23:26:22+08:00">2019-03-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-15 12:53:53" itemprop="dateModified" datetime="2019-03-15T12:53:53+08:00">2019-03-15</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>TeamCity</code> 是 <code>Jetbrains</code> 公司出品的持续化集成工具，类似<code>Jenkins</code>,界面更加现代化，功能更强大,而且它的 server 和 agent 是分离的，可以指定本机或远程的机器来运行构建策略，其中还有调度队列算法.<br><code>hexo</code> 是静态博客生成工具.<code>hexo d -g</code>命令可以自动生成 <code>public</code> 文件夹及 HTML，然后将其推送到 github(在<code>_config.yml</code>中已经配置过).<br>一般用户可能对<code>theme</code>自定义(修改<code>theme</code>下的<code>_config.yml</code>),当换机或备份时，希望将博客源文件(*.md)及修改的主题配置文件一并备份.而<code>hexo</code>默认只备份<code>public</code>文件夹,所以本文探索使用 CI<code>TeamCity</code>将推送到<code>Github</code>的源文件编译生成<code>public</code>文件,这样每次写完文章,只要将其推送到<code>Github</code>,<code>TeamCity</code>会自动生成博客<code>HTML</code>.</p>
+<p>获取到该 Key.而实际上在 build 执行时 key 以 ing 被删除了,不可能获取到.这并不意味着绝对安全，只是增加了 key 被盗的难度. agent 必须安全.</p>
+<h3 id="teamcity-安装"><a href="#teamcity-安装" class="headerlink" title="teamcity 安装"></a>teamcity 安装</h3><p><code>TeamCity</code>提供了 <code>Docker</code>安装方式，因此请提前安装好<code>Docker</code>.<br>文件目录如下(请提前创建),teamcity 支持多种数据存储方式，此处使用 mysql 来存储。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># - teamcity</span></span><br><span class="line">    - agent</span><br><span class="line">        - conf</span><br><span class="line">        - data</span><br><span class="line">    - server</span><br><span class="line">        - data</span><br><span class="line">        - datadir</span><br><span class="line">        - opt</span><br><span class="line">    - mysql</span><br><span class="line">        - backup</span><br><span class="line">        - data</span><br><span class="line">    dockery-compose.yml</span><br></pre></td></tr></table></figure>
+<p>接下来是<code>docker-compose.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">``yaml</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">"3.3"</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  teamcity-server:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">jetbrains/teamcity-server</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">teamcity-server</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">8111</span><span class="string">:8111</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/server/datadir:/data/teamcity_server/datadir</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/server/opt/logs:/opt/teamcity/logs</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/server/data:/data/teamcity_server/others</span> <span class="comment"># 其他的一些资源，可以从本机复制到 server 上</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line">      <span class="comment">#   TEAMCITY_SERVER_MEM_OPTS: -Xmx2g -XX:MaxPermSize=270m -XX:ReservedCodeCacheSize=350m</span></span><br><span class="line"><span class="attr">      MYSQL_USER:</span> <span class="string">team-user</span></span><br><span class="line"><span class="attr">      MYSQL_PASSWORD:</span> <span class="string">team-pwd</span></span><br><span class="line"><span class="attr">      MYSQL_ROOT_PASSWORD:</span> <span class="string">teamcity8080</span></span><br><span class="line"><span class="attr">      MYSQL_DATABASE:</span> <span class="string">teamcitydb</span></span><br><span class="line"><span class="attr">    depends_on:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">db</span></span><br><span class="line"><span class="attr">    links:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">db</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">team</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  db:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">mysql</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">teamcity-db</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/mysql:/etc/mysql/conf.d</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/mysql/backup:/var/lib/mysql</span> <span class="comment"># 只有 /var/lib/mysql 对应本地文件为空，才会创建这个数据库,即初次创建时，这个对应的本地文件夹要为空</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/mysql/data:/others</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      MYSQL_USER:</span> <span class="string">team-user</span></span><br><span class="line"><span class="attr">      MYSQL_PASSWORD:</span> <span class="string">team-pwd</span></span><br><span class="line"><span class="attr">      MYSQL_ROOT_PASSWORD:</span> <span class="string">teamcity8080</span></span><br><span class="line"><span class="attr">      MYSQL_DATABASE:</span> <span class="string">teamcitydb</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">3306</span><span class="string">:3306</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">team</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># &lt;&gt;&lt;&gt; agent &lt;&gt;&lt;&gt;</span></span><br><span class="line"><span class="attr">  teamcity-agent:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">jetbrains/teamcity-agent</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">teamcity-agent</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/agent/conf:/data/teamcity_agent/conf</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/agent/data:/data/teamcity_agent/others</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      AGENT_NAME:</span> <span class="string">MacbookPro</span></span><br><span class="line"><span class="attr">      SERVER_URL:</span> <span class="attr">http://xxx.xxx.x.xxx:8111</span> <span class="comment"># 此处对应的是 TeamCityServer 的IP, localhost/127.0.0.1 都不行，请使用正确的 IP,端口对应上面暴露出来的端口</span></span><br><span class="line"><span class="attr">    links:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">teamcity-server</span></span><br><span class="line">  <span class="comment"># teamcity_agent 默认的任务环境路径: opt/buildagent/work</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line"><span class="attr">  team:</span></span><br><span class="line"><span class="attr">    driver:</span> <span class="string">bridge</span></span><br></pre></td></tr></table></figure>
+<p>然后执行 <code>docker-compose up -d</code> 即可。</p>
+<blockquote>
+<p>需要先根据本机 OS 安装<code>docker-compose</code> &gt; <code>docker-compose up -d</code> 生成服务<br><code>docker-compose down</code> 解体服务，删除容器,网络<br><code>docker-compose start/stop</code> 启动终止服务</p>
+</blockquote>
+<ul>
+<li><p>打开 <code>http://localhost:8111</code> 或 <code>http://[ip]:8111</code> 即可进入 TeamCity Server web 交互环境.按照提示初始化.登录时默认没有访客创建新用户的权限，所以需要已超级用户权限登录，点击下面的以超级权限登录后提示输入 token,可以进入 TeamCity Server 本地映射文件中查找，或是使用 <code>docker logs teamcity-server</code> 即可看到 token。</p>
+</li>
+<li><p>创建项目时，TeamCity 默认使用用户名密码连接 Github,当然可以通过上传本地 ssh key 密钥到 TeamCity Server,通过 TeamCity Server 连接.</p>
+</li>
+<li><p>设置编译步骤,我再次执行了<code>shell 脚本</code></p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 nodejs</span></span><br><span class="line">VERSION=v10.15.2</span><br><span class="line">DISTRO=linux-x64</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">checkNode</span></span>() &#123;</span><br><span class="line">  ISNODESUCCEED=$(node -v)</span><br><span class="line">  <span class="keyword">if</span> [ ISNODESUCCEED != <span class="variable">$VERSION</span> ]; <span class="keyword">then</span></span><br><span class="line">    installNode</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"NodeJS已安装"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">insallNode</span></span>() &#123;</span><br><span class="line">  mkdir -p /usr/<span class="built_in">local</span>/lib/nodejs</span><br><span class="line">  tar -xJf /data/teamcity_agent/others/node-<span class="variable">$VERSION</span>-<span class="variable">$DISTRO</span> <span class="comment"># -v 会输出解压日志，此处太多，所以关闭</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/lib/nodejs/node-<span class="variable">$VERSION</span>-<span class="variable">$DISTRO</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">source</span> ~/.profile</span><br><span class="line"></span><br><span class="line">  checkNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">checkNode</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">npm i</span><br><span class="line"><span class="comment"># 生成public文件</span></span><br><span class="line">./node_modules/hexo/bin/hexo g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 为 github.io 配置 CNAME</span></span><br><span class="line"><span class="keyword">if</span> [ ! -f <span class="string">"/CNAME"</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"blog.dang8080.cn"</span> &gt; CNAME</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置 git</span></span><br><span class="line"></span><br><span class="line">git config --global credential.helper store <span class="comment"># 保存 github 提交者信息，下次不用再输密码</span></span><br><span class="line">git config --global user.name <span class="string">"Humphrey"</span></span><br><span class="line">git config --global user.email <span class="string">"dang8080@qq.com"</span></span><br><span class="line"></span><br><span class="line">git add --all</span><br><span class="line">git commit -m <span class="string">"TeamCity CI 提交部署: <span class="variable">$(date)</span>"</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h3><blockquote>
+<p>所以问题来了,配置完了点击 <code>run</code> 查看 Build log 会发现 push 失败。因为通过 https 向 github 提交代码需要交互式输入用户密码。而此处没有提供，将密码硬编码到此 shell 里提交到 github 也不安全。<br>或者即使是通过修改 VCS root 使用 <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a> ssh checkout 的代码，也无法推送到 github.</p>
+</blockquote>
+<h4 id="问题定位"><a href="#问题定位" class="headerlink" title="问题定位:"></a>问题定位:</h4><blockquote>
+<p>TeamCity SSH agent 使用本机(Linux/MacOS)的 OpenSSH 管理 SSH,对于 Windows,需要手动安装 OpenSSH (CygWin,MinGW,Git for Windows).<br>SSH agent 必须添加到 <code>$PATH</code> 中.<br>第一次连接到远程地址时，SSH agent 会询问是否保存远程地址的 fingerprint 到地址数据库 <code>~/.ssh/known_hosts</code>中.<br>为了避免询问，可以提前配置。如果相信该远程地址，可以禁用远程地址检查</p>
+</blockquote>
+<blockquote>
+<p>对所有的连接都禁用，<code>~/.ssh/config</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Host \*</span><br><span class="line">StrictHostKeyChecking no</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>特定连接,<code>-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no</code></p>
+</blockquote>
+<blockquote>
+<p>TeamCity 当前仅支持 PEM 格式的 key.如果使用了其他格式的 key，请将其转换为 PEM.可以在 TeamCity web 界面 <code>Conversions -&gt; Export OpenSSH key</code> 中转换.</p>
+</blockquote>
+<blockquote>
+<p>OpenSSH 最近版本默认不生成 PEM 格式 key.使用下列方式生成 PEM: <code>ssh-keygen -t rsa -m PEM</code></p>
+</blockquote>
+<blockquote>
+<p>上传到 TeamCity Server 的 SSH key 默认保存在 <code>&lt;TeamCity Data Directory&gt;/config/projects/&lt;project&gt;/pluginData/ssh_keys</code>，TeamCity 会追踪此文件夹保证 SSH key 更新。SSH key 适用于本项目及子项目.</p>
+</blockquote>
+<blockquote>
+<p>在 TeamCity agent checkout 执行时，Git 插件会从 TeamCity Server 下载 SSH key 到 agent.该 key 会暂时保存在 TeamCity agent 的文件系统里，在 <code>fetch/clone</code> 结束后就被删除.</p>
+</blockquote>
+<blockquote>
+<p>key 被删除的原因是：通过 build 执行的 test 可能会留下恶意代码，之后会访问 TeamCity agent 文件系统,</p>
+</blockquote>
+<p>TeamCity 是不支持 git ssh 推动代码到 github 的.（支持 ssh 传送文件）</p>
+<h4 id="方案一"><a href="#方案一" class="headerlink" title="方案一:"></a>方案一:</h4><p>当 <code>run</code> 一次之后，执行 <code>docker exec -it teamcity-agent bash</code> 进入 <code>opt/buildagent/work/xxxxx/</code> 下,手动 <code>git push origin master</code>。这样后续就不用再配置了</p>
+<h4 id="方案二-硬核"><a href="#方案二-硬核" class="headerlink" title="方案二:(硬核)"></a>方案二:(硬核)</h4><p><code>github</code> 需要保存本机的 SSH pub key,才接受 git ssh 推送.那我们就在 TeamCity 生成 ssh key,然后添加到 github.</p>
+<h5 id="实践一"><a href="#实践一" class="headerlink" title="实践一"></a>实践一</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docekr <span class="built_in">exec</span> -it teamcity-agent bash</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">ssh-add [id_rsa]</span><br><span class="line"><span class="comment"># 然后复制 id_rsa.pub 的内容到 github 即可</span></span><br></pre></td></tr></table></figure>
+<h5 id="实践二"><a href="#实践二" class="headerlink" title="实践二"></a>实践二</h5><p>连 TeamCity agent bash 也不想进，使用 shell 构建<br>先安装 expect tcl tk</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get install tcl tk expect</span><br><span class="line"><span class="comment"># 下面是 shell</span></span><br><span class="line"><span class="comment">#! /usr/bin/expect -f</span></span><br><span class="line"><span class="built_in">set</span> context <span class="variable">$PWD</span></span><br><span class="line"><span class="comment"># 删除旧key</span></span><br><span class="line">spawn rm -f <span class="string">"<span class="variable">$context</span>/id_rsa"</span> <span class="string">"<span class="variable">$context</span>/id_rsa.pub"</span></span><br><span class="line">expect&#123;&#125;</span><br><span class="line"><span class="comment"># 生成新key</span></span><br><span class="line">spawn ssh-keygen -t rsa</span><br><span class="line">expect&#123;</span><br><span class="line">  <span class="string">"*save the key*"</span> &#123; send <span class="string">"<span class="variable">$context</span>/id_rsa\r"</span>;exp_continue &#125;</span><br><span class="line">  <span class="string">"*passphrase*"</span> &#123; send <span class="string">"\r"</span>;exp_continue &#125;</span><br><span class="line">  <span class="string">"*again*"</span> &#123; send <span class="string">"\r"</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line">spawn ssh-add <span class="string">"<span class="variable">$context</span>/id_rsa"</span></span><br><span class="line">sshcheck=$(ssh -vT git@github.com)</span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$sshcheck</span> =~ <span class="string">"successfully authenticated"</span> ]]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"ssh 配置成功"</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"ssh 配置失败"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># 复制 pub</span></span><br><span class="line">pubkey=$(cat <span class="string">"<span class="variable">$context</span>/id_rsa)</span></span><br><span class="line"><span class="string">curl -H "</span>Content-Type:application/json<span class="string">" -X POST --data '&#123; "</span>title<span class="string">":"</span>TeamCityAgentAuto<span class="string">","</span>key<span class="string">":"</span><span class="variable">$pubkey</span><span class="string">"&#125;'</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/teamcity/" rel="tag"># teamcity</a>
+          
+            <a href="/tags/hexo/" rel="tag"># hexo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/03/Room-kotlin-coroutine/" rel="next" title="Room & kotlin coroutine">
+                <i class="fa fa-chevron-left"></i> Room & kotlin coroutine
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo.jpeg" alt="Humphrey Dang">
+            
+              <p class="site-author-name" itemprop="name">Humphrey Dang</p>
+              <div class="site-description motion-element" itemprop="description">Humphrey Dang 的博客</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#teamcity-安装"><span class="nav-number">2.</span> <span class="nav-text">teamcity 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">3.</span> <span class="nav-text">问题:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题定位"><span class="nav-number">3.1.</span> <span class="nav-text">问题定位:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方案一"><span class="nav-number">3.2.</span> <span class="nav-text">方案一:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方案二-硬核"><span class="nav-number">3.3.</span> <span class="nav-text">方案二:(硬核)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实践一"><span class="nav-number">3.3.1.</span> <span class="nav-text">实践一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实践二"><span class="nav-number">3.3.2.</span> <span class="nav-text">实践二</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <span class="exturl" data-url="aHR0cDovL3d3dy5taWl0YmVpYW4uZ292LmNu">陕ICP备19000066号-1 </span>&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Humphrey Dang</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/js.cookie.js?v=7.0.1"></script>
+  <script src="/js/src/scroll-cookie.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/exturl.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=7.0.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
