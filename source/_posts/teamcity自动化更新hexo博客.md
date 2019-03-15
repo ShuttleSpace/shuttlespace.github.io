@@ -8,6 +8,22 @@ tags:
 
 ### 前言
 
+在知乎找到了一个更好的方法: [原文](使用 hexo，如果换了电脑怎么更新博客？ - CrazyMilk 的回答 - 知乎
+https://www.zhihu.com/question/21193762/answer/79109280)
+在这里我整理一下:
+
+- 创建仓库 xxx.github.io.
+- 创建两个分支: master/hexo.(可在 github 网页或本地创建)
+- `git clone git@github.com:xxx/xxx.github.io.git`
+- 如果没有在网页创建分支,可以在此处创建.`git checkout -b master; git checkout -b hexo`
+- 接下来执行 `npm install hexo; hexo init; npm i; npm i hexo-deployer-git`,此处在 `hexo` 分支操作
+- 修改 \_config.yml 的 deploy 参数,此处在 `master` 分支操作.
+- 我使用了`hexo-next-theme`,从 git 上下载后,进入 `themes/next` 执行 `git submodule init`,将 `next` 主题关联,此处在 `hexo` 分支操作
+- `git add .; git commit -m "blahblahblah"; git push origin hexo;` 提交网站相关文件.
+- `hexo g -d` 生成网站并部署到 `github`.
+
+#⚠️ 👇 胡扯,观看请谨慎!!!
+
 `TeamCity` 是 `Jetbrains` 公司出品的持续化集成工具，类似`Jenkins`,界面更加现代化，功能更强大,而且它的 server 和 agent 是分离的，可以指定本机或远程的机器来运行构建策略，其中还有调度队列算法.
 `hexo` 是静态博客生成工具.`hexo d -g`命令可以自动生成 `public` 文件夹及 HTML，然后将其推送到 github(在`_config.yml`中已经配置过).
 一般用户可能对`theme`自定义(修改`theme`下的`_config.yml`),当换机或备份时，希望将博客源文件(\*.md)及修改的主题配置文件一并备份.而`hexo`默认只备份`public`文件夹,所以本文探索使用 CI`TeamCity`将推送到`Github`的源文件编译生成`public`文件,这样每次写完文章,只要将其推送到`Github`,`TeamCity`会自动生成博客`HTML`.
