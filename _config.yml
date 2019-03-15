@@ -95,7 +95,7 @@ search:
 #   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
 #   security: true
 #   betterPerformance: false
-algolia:
-  applicationID: "W8FI7XYD5R"
-  indexName: "prod_dang8080"
-  chunkSize: 5000
+# algolia:
+#   applicationID: "W8FI7XYD5R"
+#   indexName: "prod_dang8080"
+#   chunkSize: 5000
