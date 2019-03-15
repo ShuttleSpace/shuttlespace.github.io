@@ -500,7 +500,8 @@
 创建仓库 xxx.github.io.
 创建两个分支: master/hexo.(可在 github 网页或本地创建)
 git clone git@github.com:xxx/xxx.github.io.git
-如果没有在网页创建分支,可
+如果没有在网页创建分支,可以在此处创建.git checkout -b master; git checkout -b hexo
+接下来执行 npm install hexo; hexo init; npm
               ...
             </p>
           <!--noindex-->
@@ -677,7 +678,11 @@ git clone git@github.com:xxx/xxx.github.io.git
         
           
             <p>
-              OverviewRoom 2.1 开始支持 Kotlin 协程。DAO 方法可以使用 suspend 标记以确保这些方法不会在主线程中被执行。Room 使用 Executor(来自框架组件) 作为 Dispatcher 运行 SQL 语句，当然在编译 RoomDatabase 时，你也可以提供自己的
+              OverviewRoom 2.1 开始支持 Kotlin 协程。DAO 方法可以使用 suspend 标记以确保这些方法不会在主线程中被执行。Room 使用 Executor(来自框架组件) 作为 Dispatcher 运行 SQL 语句，当然在编译 RoomDatabase 时，你也可以提供自己的 Executor.
+
+当前协程支持正在开发中，更多特性正在计划中
+
+添加依赖请升级 Room 到 v2.1, 同时 Kotlin v1.3.0+ , Coroutines v1.
               ...
             </p>
           <!--noindex-->
@@ -877,7 +882,7 @@ git clone git@github.com:xxx/xxx.github.io.git
 自动测试环境
 单独主机部署
 
-docker-compose 安装s
+docker-compose 安装sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(u
               ...
             </p>
           <!--noindex-->
@@ -1067,7 +1072,7 @@ docker-compose 安装s
           
             <p>
               原文
-view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData observables. view 订阅 LiveData 的改变且随时响应。这适用于连续不断的显示在一个屏幕的数据。但是某些数据却更应该被消费一次，比如 Snackbar 消息，n
+view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData observables. view 订阅 LiveData 的改变且随时响应。这适用于连续不断的显示在一个屏幕的数据。但是某些数据却更应该被消费一次，比如 Snackbar 消息，navigation 事件 或 dialog 触发器。与其试着通过扩展 Architecture Components 扩展或库解决这个问题，不如我们可以直面这是个设计缺陷。我们推荐
               ...
             </p>
           <!--noindex-->
@@ -1254,7 +1259,9 @@ LiveData 遵循观察者模式。
 如果观察者处于 inactive 状态，例如 activity 处于回退栈中，那么它不会接收到任何 LiveData 事件.
 
 
-不用手动处理生命周期事
+不用手动处理生命周期事件
+时刻更新数据状态
+如果一个观察者的变为 inactive，那么它会在重新 active 时获取最新的数据状态。比如，一个 activiy 如果处于后台，那么它将在重新返回前台时
               ...
             </p>
           <!--noindex-->
@@ -1431,7 +1438,9 @@ LiveData 遵循观察者模式。
         
           
             <p>
-              不像 SQLite 这样的数据库，ObjectBox 不需要你创建 database schema.这不意味着 ObjectBox 是无 schema 的。为高效起见，ObjectBox 对存储的数据维护了一个元模型(meta model)。此元模型实际上等价于 ObjectBox 的 schema
+              不像 SQLite 这样的数据库，ObjectBox 不需要你创建 database schema.这不意味着 ObjectBox 是无 schema 的。为高效起见，ObjectBox 对存储的数据维护了一个元模型(meta model)。此元模型实际上等价于 ObjectBox 的 schema.它包含了所有属性的类型、indexes 等.不同之处在于 ObjectBox 试图自动管理该元模型.某些情况下，这需要你帮忙.
+
+Object 的 IDs 是 @Id 定义的，而
               ...
             </p>
           <!--noindex-->
@@ -1609,7 +1618,8 @@ LiveData 遵循观察者模式。
           
             <p>
               ObjectBox 大多数情况下自动管理数据模型.当添加/删除 entities 或属性时，ObjectBox 自动作出响应。对于其他改变如 保留或改变类型，ObjectBox 需要额外信息。
-UIDsObjectBox 通过 unique IDs(UIDs) 来追踪 entities 和属性的变化
+UIDsObjectBox 通过 unique IDs(UIDs) 来追踪 entities 和属性的变化。所有的 UIDs 都存储在 module-name/objectbox-models/default.json 中,可以使用版本控制软件(git)进行管理。
+简单来说: 为了使 
               ...
             </p>
           <!--noindex-->
@@ -1790,7 +1800,9 @@ UIDsObjectBox 通过 unique IDs(UIDs) 来追踪 entities 和属性的变化
 
 无注解: 类本身及其属性不需要持久化
 @BaseEntity: 属性在子类中持久化，类本身不持久化
-@Entity: 属性在
+@Entity: 属性在子类中持久化，类本身也持久化
+
+// base class:@BaseEntitypublic abstract class Base &#123;    @Id long id;
               ...
             </p>
           <!--noindex-->
@@ -1969,7 +1981,8 @@ UIDsObjectBox 通过 unique IDs(UIDs) 来追踪 entities 和属性的变化
             <p>
               ObjectBox 支持以下类型（Java）:
 boolean, Booleanint, Integershort, Shortlong, Longfloat, Floatdouble, Doublebyte, Bytechar, Characterbyte[]StringDate
-转换器注解和属性
+转换器注解和属性转换使用 @Convert 注解将其他类型属性转为内置属性。此处需要提供 PropertyConverter 实现。
+// enum 转为 Integer@Entitypublic
               ...
             </p>
           <!--noindex-->
@@ -2147,7 +2160,8 @@ boolean, Booleanint, Integershort, Shortlong, Longfloat, Floatdouble, Doublebyte
           
             <p>
               Object 必须具有一个类型为 long 的属性.当然可以使用它的包装类 java.lang.Long,但是不建议使用包装类.其他类型的 ID ( UID 等)可以自由定义，查询等操作。
-news vs. persisted entities当创建一个对象时，还没有存入，它们的 ID 是 0.一旦
+news vs. persisted entities当创建一个对象时，还没有存入，它们的 ID 是 0.一旦该对象存入，ObjectBox 将为该对象指定 ID.可以通过 put()返回值拿到该 ID.
+所以在 ObjectBox 内部通常把 ID 作为一个状态指示器,如果为 0 表示新
               ...
             </p>
           <!--noindex-->

@@ -503,7 +503,7 @@ ObjectBox 需要访问 entity 的属性(生成 Cursor 类).
 
 为了提升性能，请提供具有全部属性的构造方法
 
-@Entitypublic class Use
+@Entitypublic class User &#123;    @Id private long id;    private String name;    @Transient private int tempUsa
               ...
             </p>
           <!--noindex-->
@@ -693,7 +693,9 @@ ObjectBox 需要访问 entity 的属性(生成 Cursor 类).
           
             <p>
               Entity在一个类中至少需要 @Entity 和 @Id 两个注解才能定义一个 ObjectBox model.例如:
-// User.java@Entitypublic class User &#123;    @Id public long id;    public String name;
+// User.java@Entitypublic class User &#123;    @Id public long id;    public String name;&#125;
+然后 make 就可生成 model.
+| @Id 的类型必须为 long.| 如果 entity 发生了很大的变动（如移动类或修改注解）,必须 rebuild 项目
               ...
             </p>
           <!--noindex-->
@@ -882,7 +884,9 @@ ObjectBox 需要访问 entity 的属性(生成 Cursor 类).
         
           
             <p>
-              关于ObjectBox 定位是: 针对移动端和 IoT 超快的 (superfast edge database) 面向对象的数据库 .为小型设备提供了边缘计算能力，使得数据可以快速高效地在本地存储、处理、安全管理.ObjectBox 小于 1MB,最适合移动 APP、小型 IoT 设备及路由。并且
+              关于ObjectBox 定位是: 针对移动端和 IoT 超快的 (superfast edge database) 面向对象的数据库 .为小型设备提供了边缘计算能力，使得数据可以快速高效地在本地存储、处理、安全管理.ObjectBox 小于 1MB,最适合移动 APP、小型 IoT 设备及路由。并且 ObjectBox 也是第一个在边缘设备上兼容 ACID 的高性能的 NoSQL 数据库.所有的产品都是基于工程师思维开发的，所以可以使用最少的代码去实现想要的功能。
+优点
+比同
               ...
             </p>
           <!--noindex-->
