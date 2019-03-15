@@ -83,11 +83,11 @@
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
-      applicationID: '',
+      applicationID: 'W8FI7XYD5R',
       apiKey: '',
-      indexName: '',
+      indexName: 'prod_dang8080',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+      labels: {"input_placeholder":"搜索","hits_empty":"${query} 找不到","hits_stats":"${time}ms内找到${hits}个相关内容"}
     }
   };
 </script>
@@ -98,18 +98,18 @@
 
 
 
-  <meta name="description" content="English Name: Humphrey Dang">
+  <meta name="description" content="English Name: Humphrey Dang一个 Android 开发者，正在走向全栈。可能会做出惊世的产品,敬请期待.">
 <meta name="keywords" content="Android,Java,Kotlin,JS">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
 <meta property="og:url" content="http://blog.dang8080.cn/about/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="English Name: Humphrey Dang">
+<meta property="og:description" content="English Name: Humphrey Dang一个 Android 开发者，正在走向全栈。可能会做出惊世的产品,敬请期待.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-25T14:49:49.009Z">
+<meta property="og:updated_time" content="2019-03-15T16:01:37.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="about">
-<meta name="twitter:description" content="English Name: Humphrey Dang">
+<meta name="twitter:description" content="English Name: Humphrey Dang一个 Android 开发者，正在走向全栈。可能会做出惊世的产品,敬请期待.">
 
 
 
@@ -402,7 +402,8 @@
       <div class="post-body">
         
         
-          <h2 id="English-Name-Humphrey-Dang"><a href="#English-Name-Humphrey-Dang" class="headerlink" title="English Name: Humphrey Dang"></a>English Name: Humphrey Dang</h2>
+          <h2 id="English-Name-Humphrey-Dang"><a href="#English-Name-Humphrey-Dang" class="headerlink" title="English Name: Humphrey Dang"></a>English Name: Humphrey Dang</h2><p>一个 Android 开发者，正在走向全栈。可能会做出惊世的产品,敬请期待.</p>
+
         
       </div>
       
@@ -421,6 +422,13 @@
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
 
   
 
@@ -608,7 +616,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">  <span class="exturl" data-url="aHR0cDovL3d3dy5taWl0YmVpYW4uZ292LmNu">陕ICP备19000066号-1 </span>&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">  <span class="exturl" data-url="aHR0cDovL3d3dy5taWl0YmVpYW4uZ292LmNu">陕ICP备19000066号-1 </span>&copy; 2015 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -686,6 +694,8 @@
 
 
 
+  
+
 
 
   
@@ -696,6 +706,9 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
 
 
   
@@ -741,6 +754,47 @@
   
 
   
+  
+  <script id="dsq-count-scr" src="https://HumphreyDang.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://blog.dang8080.cn/about/index.html";
+    this.page.identifier = "about/index.html";
+    this.page.title = 'about';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://HumphreyDang.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
 
 
   
@@ -1024,7 +1078,7 @@
             }
           }
 
-          if ('auto' === 'auto') {
+          if ('auto' === 'manual') {
             input.addEventListener('input', inputEventFunction);
           } else {
             $('.search-icon').click(inputEventFunction);
@@ -1085,6 +1139,74 @@
 
 
   
+  
+  <script>
+    
+    function showTime(Counter) {
+      var entries = [];
+      var $visitors = $('.leancloud_visitors');
+
+      $visitors.each(function() {
+        entries.push( $(this).attr('id').trim() );
+      });
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
+        .done(function({ results }) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if (countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'z4355CFJqLqEOkacAfCt07Tw-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'z4355CFJqLqEOkacAfCt07Tw-gzGzoHsz',
+                'X-LC-Key': 'MMeHfXwH0V14BmSIRAX2mxcj',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            if ($('.post-title-link').length >= 1) {
+              showTime(Counter);
+            }
+          
+        });
+    });
+  </script>
+
+
 
   
 
