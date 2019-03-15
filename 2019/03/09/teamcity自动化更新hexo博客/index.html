@@ -98,18 +98,18 @@
 
 
 
-  <meta name="description" content="前言TeamCity 是 Jetbrains 公司出品的持续化集成工具，类似Jenkins,界面更加现代化，功能更强大,而且它的 server 和 agent 是分离的，可以指定本机或远程的机器来运行构建策略，其中还有调度队列算法.hexo 是静态博客生成工具.hexo d -g命令可以自动生成 public 文件夹及 HTML，然后将其推送到 github(在_config.yml中已经配置过)">
+  <meta name="description" content="前言在知乎找到了一个更好的方法: 原文在这里我整理一下:  创建仓库 xxx.github.io. 创建两个分支: master/hexo.(可在 github 网页或本地创建) git clone git@github.com:xxx/xxx.github.io.git 如果没有在网页创建分支,可以在此处创建.git checkout -b master; git checkout -b hex">
 <meta name="keywords" content="teamcity,hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="teamcity自动化更新hexo博客">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/03/09/teamcity自动化更新hexo博客/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="前言TeamCity 是 Jetbrains 公司出品的持续化集成工具，类似Jenkins,界面更加现代化，功能更强大,而且它的 server 和 agent 是分离的，可以指定本机或远程的机器来运行构建策略，其中还有调度队列算法.hexo 是静态博客生成工具.hexo d -g命令可以自动生成 public 文件夹及 HTML，然后将其推送到 github(在_config.yml中已经配置过)">
+<meta property="og:description" content="前言在知乎找到了一个更好的方法: 原文在这里我整理一下:  创建仓库 xxx.github.io. 创建两个分支: master/hexo.(可在 github 网页或本地创建) git clone git@github.com:xxx/xxx.github.io.git 如果没有在网页创建分支,可以在此处创建.git checkout -b master; git checkout -b hex">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-15T04:53:53.677Z">
+<meta property="og:updated_time" content="2019-03-15T10:08:37.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="teamcity自动化更新hexo博客">
-<meta name="twitter:description" content="前言TeamCity 是 Jetbrains 公司出品的持续化集成工具，类似Jenkins,界面更加现代化，功能更强大,而且它的 server 和 agent 是分离的，可以指定本机或远程的机器来运行构建策略，其中还有调度队列算法.hexo 是静态博客生成工具.hexo d -g命令可以自动生成 public 文件夹及 HTML，然后将其推送到 github(在_config.yml中已经配置过)">
+<meta name="twitter:description" content="前言在知乎找到了一个更好的方法: 原文在这里我整理一下:  创建仓库 xxx.github.io. 创建两个分支: master/hexo.(可在 github 网页或本地创建) git clone git@github.com:xxx/xxx.github.io.git 如果没有在网页创建分支,可以在此处创建.git checkout -b master; git checkout -b hex">
 
 
 
@@ -432,7 +432,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-15 12:53:53" itemprop="dateModified" datetime="2019-03-15T12:53:53+08:00">2019-03-15</time>
+                <time title="修改时间：2019-03-15 18:08:37" itemprop="dateModified" datetime="2019-03-15T18:08:37+08:00">2019-03-15</time>
               
             
           </span>
@@ -466,7 +466,21 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>TeamCity</code> 是 <code>Jetbrains</code> 公司出品的持续化集成工具，类似<code>Jenkins</code>,界面更加现代化，功能更强大,而且它的 server 和 agent 是分离的，可以指定本机或远程的机器来运行构建策略，其中还有调度队列算法.<br><code>hexo</code> 是静态博客生成工具.<code>hexo d -g</code>命令可以自动生成 <code>public</code> 文件夹及 HTML，然后将其推送到 github(在<code>_config.yml</code>中已经配置过).<br>一般用户可能对<code>theme</code>自定义(修改<code>theme</code>下的<code>_config.yml</code>),当换机或备份时，希望将博客源文件(*.md)及修改的主题配置文件一并备份.而<code>hexo</code>默认只备份<code>public</code>文件夹,所以本文探索使用 CI<code>TeamCity</code>将推送到<code>Github</code>的源文件编译生成<code>public</code>文件,这样每次写完文章,只要将其推送到<code>Github</code>,<code>TeamCity</code>会自动生成博客<code>HTML</code>.</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在知乎找到了一个更好的方法: <a href="使用 hexo，如果换了电脑怎么更新博客？ - CrazyMilk 的回答 - 知乎
+https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里我整理一下:</p>
+<ul>
+<li>创建仓库 xxx.github.io.</li>
+<li>创建两个分支: master/hexo.(可在 github 网页或本地创建)</li>
+<li><code>git clone git@github.com:xxx/xxx.github.io.git</code></li>
+<li>如果没有在网页创建分支,可以在此处创建.<code>git checkout -b master; git checkout -b hexo</code></li>
+<li>接下来执行 <code>npm install hexo; hexo init; npm i; npm i hexo-deployer-git</code>,此处在 <code>hexo</code> 分支操作</li>
+<li>修改 _config.yml 的 deploy 参数,此处在 <code>master</code> 分支操作.</li>
+<li>我使用了<code>hexo-next-theme</code>,从 git 上下载后,进入 <code>themes/next</code> 执行 <code>git submodule init</code>,将 <code>next</code> 主题关联,此处在 <code>hexo</code> 分支操作</li>
+<li><code>git add .; git commit -m &quot;blahblahblah&quot;; git push origin hexo;</code> 提交网站相关文件.</li>
+<li><code>hexo g -d</code> 生成网站并部署到 <code>github</code>.</li>
+</ul>
+<p>#⚠️ 👇 胡扯,观看请谨慎!!!</p>
+<p><code>TeamCity</code> 是 <code>Jetbrains</code> 公司出品的持续化集成工具，类似<code>Jenkins</code>,界面更加现代化，功能更强大,而且它的 server 和 agent 是分离的，可以指定本机或远程的机器来运行构建策略，其中还有调度队列算法.<br><code>hexo</code> 是静态博客生成工具.<code>hexo d -g</code>命令可以自动生成 <code>public</code> 文件夹及 HTML，然后将其推送到 github(在<code>_config.yml</code>中已经配置过).<br>一般用户可能对<code>theme</code>自定义(修改<code>theme</code>下的<code>_config.yml</code>),当换机或备份时，希望将博客源文件(*.md)及修改的主题配置文件一并备份.而<code>hexo</code>默认只备份<code>public</code>文件夹,所以本文探索使用 CI<code>TeamCity</code>将推送到<code>Github</code>的源文件编译生成<code>public</code>文件,这样每次写完文章,只要将其推送到<code>Github</code>,<code>TeamCity</code>会自动生成博客<code>HTML</code>.</p>
 <p>获取到该 Key.而实际上在 build 执行时 key 以 ing 被删除了,不可能获取到.这并不意味着绝对安全，只是增加了 key 被盗的难度. agent 必须安全.</p>
 <h3 id="teamcity-安装"><a href="#teamcity-安装" class="headerlink" title="teamcity 安装"></a>teamcity 安装</h3><p><code>TeamCity</code>提供了 <code>Docker</code>安装方式，因此请提前安装好<code>Docker</code>.<br>文件目录如下(请提前创建),teamcity 支持多种数据存储方式，此处使用 mysql 来存储。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># - teamcity</span></span><br><span class="line">    - agent</span><br><span class="line">        - conf</span><br><span class="line">        - data</span><br><span class="line">    - server</span><br><span class="line">        - data</span><br><span class="line">        - datadir</span><br><span class="line">        - opt</span><br><span class="line">    - mysql</span><br><span class="line">        - backup</span><br><span class="line">        - data</span><br><span class="line">    dockery-compose.yml</span><br></pre></td></tr></table></figure>
