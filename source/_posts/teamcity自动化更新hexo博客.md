@@ -24,7 +24,7 @@ https://www.zhihu.com/question/21193762/answer/79109280)
 
 ### 将 CNAME,图片等文件放入 `source` 目录下,可保证推送到 github 不会被删除.
 
-#⚠️ 👇 胡扯,观看请谨慎!!!
+# ⚠️ 👇 胡扯,观看请谨慎!!!
 
 `TeamCity` 是 `Jetbrains` 公司出品的持续化集成工具，类似`Jenkins`,界面更加现代化，功能更强大,而且它的 server 和 agent 是分离的，可以指定本机或远程的机器来运行构建策略，其中还有调度队列算法.
 `hexo` 是静态博客生成工具.`hexo d -g`命令可以自动生成 `public` 文件夹及 HTML，然后将其推送到 github(在`_config.yml`中已经配置过).
