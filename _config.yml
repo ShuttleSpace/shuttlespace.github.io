@@ -88,3 +88,14 @@ search:
   field: post
   format: html
   limit: 10000
+# leancloud_visitors:
+#   enable: true
+#   app_id: z4355CFJqLqEOkacAfCt07Tw-gzGzoHsz # <<your app id>>
+#   app_key: MMeHfXwH0V14BmSIRAX2mxcj # <<your app key>>
+#   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
+#   security: true
+#   betterPerformance: false
+algolia:
+  applicationID: "W8FI7XYD5R"
+  indexName: "prod_dang8080"
+  chunkSize: 5000
