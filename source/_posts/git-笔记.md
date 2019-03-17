@@ -37,4 +37,6 @@ git cat-file -t master # 返回 git object model 类型: blog, tree, commit, tag
 # 删除分支
 git branch -D [fixup]
 
+# 变基
+git rebase -i
 ```
