@@ -39,4 +39,11 @@ git branch -D [fixup]
 
 # 变基
 git rebase -i
+
+# 暂存区和最近一次提交的区别
+git diff --cached
+# 将暂存区的内容丢弃
+git reset HEAD -- <file>
+# 将暂存区的内容恢复到本地
+git checkout -- <file>
 ```
