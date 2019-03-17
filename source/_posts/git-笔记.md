@@ -28,11 +28,13 @@ git log [分支]
 # 打开内置帮助网页.
 git help --web [log]
 # gui
-gitk
+gitk --all
 git branch -av
 # 在 ./git/refs/heads/xxx 中查看信息
 git cat-file -t master # 返回 git object model 类型: blog, tree, commit, tag
             -p # 显示所有内容
 
+# 删除分支
+git branch -D [fixup]
 
 ```
