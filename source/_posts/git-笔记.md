@@ -33,13 +33,10 @@ git branch -av
 # 在 ./git/refs/heads/xxx 中查看信息
 git cat-file -t master # 返回 git object model 类型: blog, tree, commit, tag
             -p # 显示所有内容
-
 # 删除分支
 git branch -D [fixup]
-
 # 变基
 git rebase -i
-
 # 暂存区和最近一次提交的区别
 git diff --cached
 # 将暂存区的内容丢弃
