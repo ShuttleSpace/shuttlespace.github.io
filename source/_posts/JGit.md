@@ -219,3 +219,155 @@ git.log()
 TODO
 
 #### Ant 任务
+
+JGit 在 `org.eclipse.jgit.ant` 包中提供了 Ant 任务功能.
+添加依赖
+
+```xml
+<taskdef resource="org/eclipse/jgti/ant/ant-tasks.properties">
+    <classpath>
+        <pathelement location="path/to/org.eclipse.jgit.ant-VERSION.jar"/>
+        <pathelement location="path/to/org.eclipse.jgit-VERSION.jar"/>
+        <pathelement location="path/to/jsch-0.1.44-1.jar"/>
+    </classpath>
+</taskdef>
+```
+
+提供了 `git-clone、git-init、git-checkout`任务.
+
+#### git-clone
+
+```xml
+<git-clone uri="http://egit.eclipse.org/jgit.git"/>
+```
+
+- uri(必须)
+- dest(可选): 克隆的目标文件地址.默认使用基于 uri 路径最后一个组件作为可识别的名称的文件夹.
+- bare(可选): true/false/yes/no 表示是否克隆 bare 仓库. 默认 false
+- branch(可选): 默认 HEAD
+
+#### git-init
+
+```xml
+<git-init/>
+```
+
+- dest(可选): 默认 \$GIT_DIR 或当前文件夹
+- bare(可选)
+
+#### git-checkout
+
+```xml
+<git-checkout src="path/to/repo" branch="origin/experimental"/>
+```
+
+- src(必须)
+- branch(必须)
+- createbranch(可选): true/false/yes/no 是否会创建新 branch。默认 false.
+- force(可选): true/false/yes/no 如果 true/yes,命名的 branch 已存在，已存在 branch 的起点将会被设置到新的起点。如果 false,存在的 branch 不会被改变.默认 false.
+
+#### git-add
+
+TODO
+
+### 代码片段
+
+#### 获取某一提交记录的子记录
+
+```java
+PlotWalk revWalk = new PlotWalk(repo());
+ObjectId rootId = (branch == null) ? repo().resolve(HEAD) : branch.getObjectId();
+RevComment root = revWalk.parseCommit(rootId);
+revWalk.markStart(root);
+PlotCommitList<PlotLane> plotCommitList = new PlotCommitList<PlotLane>();
+plotCOmmitList.source(revWalk);
+plotCommitList.fillTo(Integer.MAX_VALUE);
+return revWalk;
+```
+
+### 高级主题
+
+#### 使用 RevWalk 减少内存使用
+
+revision walk 接口和 RevWalk，RevCommit 类轻量级设计。然而当面对相当大的仓库时它们可能仍然需要很多内存。接下来提供了一些方法在遍历修订图(walking the revision graph)时减少内存。
+
+#### 限制遍历修订图(Restrict the walked revision graph)
+
+仅遍历那些必要的图.即如果查找 refs/heads/master 而不是 refs/remotes/origin/master 的提交记录,确保对 refs/heads/master 调用 markStart(),对 refs/remotes/origin/master 调用 markUninteresting(). RevWalk traversal 讲只解析对你有用的提交记录,而且会避免在历史记录中查询.这讲减少内部 object map 的大小,因此减少整体内存占用.
+
+```java
+RevWalk walk = new RevWalk(repository);
+ObjectId from = repository.resolve("refs/heads/master");
+ObjectId to = repository.resolve("refs/remotes/origin/master");
+
+walk.markStart(walk.parseCommit(from));
+walk.markUnInteresting(walk.parseCommit(to));
+```
+
+#### 丢弃提交记录内容
+
+`setRetainBody(false)` 可以用来丢弃提交记录内容，如果你不需要作者，提交者，或信息等.不需要该数据的例子如只使用 RevWalk 完成 branch merge 或使用 git rev-list 完成相关功能.
+
+```java
+RevWalk walk = new RevWalk(repository);
+walk.setRetainBody(false);
+```
+
+如果确实需要这些信息，可以考虑拆分你需要的数据然后对 RevCommit 调用 dispose().如果需要长时间使用这些信息,你会发现 JGit 内部使用的内存比你自己处理占用的内存要少，特别是需要全部的信息时。这是因为 JGit 内部使用 byte 数组保存 UTF-8 编码的信息.如果使用 UTF-16 编码的 Java String 占内存将会变大，假设大部分的消息是 US-ASCII 编码的.
+
+```java
+RevWalk walk = new RevWalk(repository);
+Set<String> authorEmails = new HashSet<String>();
+for (RevCommit commit : walk) {
+    authorEmails.add(commit.getAuthorIdent().getEmailAddress());
+    commit.dispose();
+}
+```
+
+#### RevWalk 和 RevCommit 的子类
+
+如果需要获取某个提交记录的更多信息，可以考虑使用 RevWalk RevCommit 的子类, RevWalk.createCommit() 构建 RevCommit 子类的实例。然后将更多的信息存入 RevCommit 子类,这样就不需要额外的 HashMap 将 RevCommit 或 ObjectId 转换为 自定义的数据属性.
+
+```java
+public class ReviewedRevision extends RevCommit {
+    private final Date reviewDate;
+
+    private ReviewedRevision(AnyObjectId id,Date reviewDate) {
+        super(id);
+        this.reviewDate = reviewDate;
+    }
+
+    public List<String> getReviewedBy() {
+        return getFooterLines("Reviewed-by");
+    }
+
+    public Date getReviewDate() {
+        return reviewDate;
+    }
+
+    public static class Walk extends RevWalk {
+        public Walk(Repository repo) {
+            super(repo);
+        }
+
+        @Override
+        protected RevCommit createCommit(AnyObjectId id) {
+            return new ReviewedRevision(id,getReviewDate(id));
+        }
+
+        private Date getReviewDate(AnyObjectId id) {
+
+        }
+    }
+}
+```
+
+#### 遍历修订后清理
+
+RevWalk 无法缩小内部的 object map.如果刚完成了遍历仓库的所有历史，这将会将所有东西加载到 object map，并且无法被释放.如果再不需要这些数据，好的习惯是丢弃这个 RevWalk，然后为下次遍历重新申请新的 RevWalk。这样 GC 就会回收垃圾。另外，重用一个存在 的 object map 比完全重新创建一个新的更快.所以你需要平衡内存回收和用户渴望更快的操作之间的关系.
+
+```java
+RevWalk walk = new RevWalk(repository);
+for (RevCommit commit : walk) {}
+walk.repository();
+```
