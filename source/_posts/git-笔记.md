@@ -96,4 +96,8 @@ git merge --squash featureB
 # 打包 archive
 git archive master --prefix='project/' | gzip > `git describe master`.tar.gz
 git archive master --prefix='project/' --format=zip > `git describe master`.zips
+#
+git diff --ours
+        # --theirs
+        # --base -b
 ```
