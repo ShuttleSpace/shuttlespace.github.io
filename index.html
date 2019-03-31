@@ -603,7 +603,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-31 00:16:39" itemprop="dateModified" datetime="2019-03-31T00:16:39+08:00">2019-03-31</time>
+                <time title="修改时间：2019-03-31 22:55:48" itemprop="dateModified" datetime="2019-03-31T22:55:48+08:00">2019-03-31</time>
               
             
           </span>
@@ -664,11 +664,14 @@
         
           
             <p>
-              升级 Gradle Wrapper如果已经有基于gradlew wrapper的项目,可以通过运行wrapper任务来指定需要的gradle版本.
-./gradlew wrapper --gradle-version=5.3 --distribution-type=bin
-当然没必要使用gradle wrapper来安装gradle.调用gradlew或gradlew.bat将会下载并缓存指定版本的 Gradle.
-./gradlew taska
-CLI 自动补全brew i
+              Gradle 升级日志5.0 包含了 Kotlin DSL 生产级支持,依赖版本对齐(类似 Maven BOM),任务超时,Java 11 支持
+
+Kotlin DSL 1.0
+依赖版本对齐:
+
+同一逻辑组(platform)下的不同模块在依赖树中可以有相同的版本.也可以导入 Maven BOMs 定义 platform.
+
+dependencies &#123;  // 导入 BOM.此文件中版本将覆盖依赖树中的其他版本  implementation(enforcedPl
               ...
             </p>
           <!--noindex-->
