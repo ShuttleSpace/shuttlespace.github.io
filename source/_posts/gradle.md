@@ -7,6 +7,112 @@ tags:
   - 构建
 ---
 
+### Gradle 升级日志
+
+5.0 包含了 Kotlin DSL 生产级支持,依赖版本对齐(类似 Maven BOM),任务超时,Java 11 支持
+
+- Kotlin DSL 1.0
+- 依赖版本对齐:
+
+  - 同一逻辑组(platform)下的不同模块在依赖树中可以有相同的版本.也可以导入 Maven BOMs 定义 platform.
+
+  ```groovy
+  dependencies {
+    // 导入 BOM.此文件中版本将覆盖依赖树中的其他版本
+    implementation(enforcedPlatform("org.springframework.boot:spring-boot-dependencies:1.5.8.RELEASE"))
+    // 使用上面定义的版本
+    implementation("com.google.code.gson:gson")
+    implementation("dom4j:dom4j")
+    // 覆盖上面的版本
+    implementation("org.codehaus.groovy:groovy:1.8.6")
+  }
+  ```
+
+- Gradle build 初始化特性
+- 可搜索文档
+- 任务超时
+- 解析依赖时 HTTP 重试
+- 性能特性
+
+  - Gradle 可以作为一个低优先级的进程启动: --priority low 或者 org.gradle.priority=low.可以保证 IDE/Browser 不卡,即使是一个很消耗资源的 gradle 任务.
+  - 多任务输出属性不再禁用缓存.当使用 `@OutputFiles` 或 `OutputDirectories` 标记一个`Iterable`类型,Gradle 通常会对该任务禁用缓存且输出如下信息:
+
+  ```bash
+  Declares multiple output files for the single output property 'outputFiles' via @OutputFiles,@OutputDirectories or TaskOutputs.files()
+  ```
+
+  现在不会再阻止缓存了.对该任务禁用缓存的唯一理由可能是如果输出包含文件树.
+
+- Java 11 运行时支持
+- 插件授权特性
+- `Provider 追踪产品任务`：Provider API 实例提供了追踪某值和任务或生成该值的任务。
+- Gradle Native 特性
+- 推广特性
+
+### [Gradle 编译语言指南](https://docs.gradle.org/current/dsl/index.html)
+
+#### gradle 可以使用不同的语言或 DSL 来执行编译任务
+
+#### 基本概念
+
+理解以下概念可以帮助书写 gradle 脚本.
+首先，gradle 脚本是一种可配置脚本.当脚本执行时，会生成一个特定类型的配置对象.例如 build script 执行时，会生成一个类型为 Project 的配置对象.这个对象作为脚本的代理对象被使用.下面显示了 gradle 脚本对应的代理对象.
+
+| 脚本类型        | 代理对象 |
+| --------------- | -------- |
+| build script    | Project  |
+| init script     | Gradle   |
+| settings script | settings |
+
+在脚本内可以使用这些代理对象的属性和方法.
+
+#### build script 结构
+
+一段编译脚本由 0 个或多个语句和脚本块组成。语句可以包含方法调用，属性赋值，定义局部变量。一个脚本块是一个接受 closure 作为参数的方法调用.这个 closure 可以看作是一个当其执行时配置了一些代理对象的可配置 closure. 最顶层的脚本块如下
+
+| 脚本块           | 描述                                                |
+| ---------------- | --------------------------------------------------- |
+| allprojects{}    | 配置此项目及其所有子项目                            |
+| artifacts{}      | 配置此项目的发布产物                                |
+| buildscript{}    | 配置此项目的 build script classpath                 |
+| configurations{} | 配置此项目的依赖配置项                              |
+| dependencies{}   | 配置此项目的依赖                                    |
+| repositories{}   | 配置此项目的仓库                                    |
+| sourceSets{}     | 配置此项目的 source set                             |
+| subprojects{}    | 配置此项目的子项目                                  |
+| publishing{}     | 配置由 publishing plugin 添加的 publishingExtension |
+
+一段编译脚本同时也是一个 groovy 脚本,所以可以包含能出现在 groovy 脚本中的元素,如 方法定义，类定义
+
+#### 核心类型
+
+以下是在 gradle 脚本中常用的核心类型
+
+| 类型                     | 描述                                                                                                                                                                     |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Project                  | 此接口是你在你的编译脚本中最常使用的 API。通过 Project,你可以使用 gradle 的所有特性                                                                                      |
+| Task                     | 一个 task 代表一个编译过程中的一个单一原子任务，如编译 class,生成 javadoc                                                                                                |
+| Gradle                   | 表示 gradle 的调用                                                                                                                                                       |
+| Settings                 | 声明实例化和配置要参与构建的 Project 实例的层次结构所需的配置                                                                                                            |
+| Script                   | 此接口由所有的 gradle 脚本实现并添加一些 gradle 特定的方法。当你编译脚本类时将会实现此接口，你可以在脚本中使用此接口声明的方法和属性                                     |
+| JavaToolChain            | 一组用于编译 Java 源文件的工具                                                                                                                                           |
+| SourceSet                | 表示 Java 源文件和资源文件的逻辑组                                                                                                                                       |
+| SourceSetOutput          | 所有输出目录的集合(编译的类，处理过的资源等),SourceSetOutput 继承自 FileCollection                                                                                       |
+| SourceDirectorySet       | 表示一组由一系列源文件目录组成的源文件。以及相关的 include 和 exclude pattern                                                                                            |
+| IncrementalTaskInputs    | 提供通过增量任务访问任意需要被处理文件的途径                                                                                                                             |
+| Configuration            | 表示一组产物及其依赖。从 ConfigurationContainer 中可以获取更多关于对 configuration 声明依赖或者管理 configuration 的信息                                                 |
+| ResolutingStrategy       | 定义依赖解析的策略.例如强制固定依赖版本号，替代，冲突解决方案或快照                                                                                                      |
+| ArtifactResolutingQuery  | 发起可以解析特定组件的指定软件产物的查询的生成器                                                                                                                         |
+| ComponentSelection       | 表示一个模块的组件选择器和某个组件选中规则中评估的候选版本的元组                                                                                                         |
+| ComponentSelectionRules  | 表示组件选中规则的容器.规则可以作为一个 configuration 的解析规则一部分被使用，而且独立的组件可以明确接受或拒绝该规则。既不接受也不拒绝的组件将被指定到默认的版本匹配规则 |
+| ExtensionAware           | 在运行时可以和其他对象一起被扩展的对象                                                                                                                                   |
+| ExtraPropertiesExtension | Gradle 域对象的附加 ad-hoc 属性                                                                                                                                          |
+| PluginDependenciesSpec   | 在脚本中使用的声明插件的 DSL                                                                                                                                             |
+| PluginDependencySpec     | 插件依赖的可变规范                                                                                                                                                       |
+| PluginManagementSpec     | 配置插件如何被解析                                                                                                                                                       |
+| ResourceHandler          | 提供访问特定资源的工具方法的途径,例如创建各种资源的工厂方法                                                                                                              |
+| TextResourceFactory      | 创建由字符串、文件、存档实体等资源提供的 TextResources                                                                                                                   |
+
 ### 升级 `Gradle Wrapper`
 
 如果已经有基于`gradlew wrapper`的项目,可以通过运行`wrapper`任务来指定需要的`gradle`版本.
