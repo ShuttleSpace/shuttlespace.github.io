@@ -113,6 +113,111 @@ tags:
 | ResourceHandler          | 提供访问特定资源的工具方法的途径,例如创建各种资源的工厂方法                                                                                                              |
 | TextResourceFactory      | 创建由字符串、文件、存档实体等资源提供的 TextResources                                                                                                                   |
 
+#### type-safe model accessors
+
+执行时机：plugins{} 块后，script 脚本之前.
+
+```kts
+// build.gradle.kts
+plugins {
+  `java-library`
+}
+
+dependencies {
+  api("junit:junit;4.12")
+  implementation("junit:junit:4.12")
+  testImplementation("junit:junit:4.12")
+}
+
+configurations {
+  implementation {
+    resolutinStrategy.failOnVersionConflict()
+  }
+}
+
+sourceSets {
+  main {
+    java.srcDir("src/core/java")
+  }
+}
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_11
+  targetCompatibility = JavaVersion.VERSION_11
+}
+
+tasks {
+  test {
+    testLogging.showExceptions = true
+  }
+}
+```
+
+#### 了解 type-safe accessors 不可用时要执行的操作
+
+下面的脚本明确使用了 apply() 方法应用插件.编译脚本无法使用 type-safe accessors,因为 apply() 方法是在这个编译脚本内调用的。你可以采用其他技巧，如下
+
+```kts
+// build.gradle.kts
+apply(plugin = "java-library")
+
+dependencies {
+  "api"("junit:junit:4.12")
+  "implementation"("junit:junit:"4.12")
+  "testImplementation"("junit:junit:4.12")
+}
+
+configurations {
+  "implementation" {
+    resolutinStrategy.failOnVersionConflict()
+  }
+}
+
+configure<SourceSetContainer> {
+  named("main") {
+    java.srcDir("src/core/java")
+  }
+}
+
+configure<JavaPluginConvention> {
+  sourceCompatibility = JavaVersion.VERSION_11
+  targetCompatibility = JavaVersion.VERSION_11
+}
+
+tasks {
+  named<Test>("test") {
+    testLogging.showException = true
+  }
+}
+```
+
+下列情况下，type-safe accessor 不可用
+
+- 使用 apply(plugin = id) 应用插件
+- 项目 build script
+- 通过 apply(from = "script-plugin.gradle.kts") 应用的脚本插件
+- 跨项目配置的插件
+
+#### 产物配置
+
+```kts
+// build.gradle.jts
+apply(plugin = "java-library")'
+
+dependencies {
+  "api"("junit:junit:4.12")
+  "implementation"("junit:junit:4.12")
+  "testImplementation"("junit:junit:4.12")
+}
+
+configurations {
+  "implementation" {
+    resolutinStrategy.failOnVersionConflict()
+  }
+}
+
+```
+
 ### 升级 `Gradle Wrapper`
 
 如果已经有基于`gradlew wrapper`的项目,可以通过运行`wrapper`任务来指定需要的`gradle`版本.
