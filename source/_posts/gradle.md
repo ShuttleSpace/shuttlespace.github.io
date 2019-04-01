@@ -218,13 +218,30 @@ configurations {
 
 ```
 
+````kts
+// settings.gradle.kts
+pluginManagement {
+  repositories {
+    google()
+    gradlePluginPortal()
+  }
+
+  resolutionStrategy {
+    eachPlugin {
+      if (requested.id.namespace == 'com.android') {
+        useModule('com.android.tools.build:gradle:${requested.version}')
+      }
+    }
+  }
+}
+
 ### 升级 `Gradle Wrapper`
 
 如果已经有基于`gradlew wrapper`的项目,可以通过运行`wrapper`任务来指定需要的`gradle`版本.
 
 ```bash
 ./gradlew wrapper --gradle-version=5.3 --distribution-type=bin
-```
+````
 
 当然没必要使用`gradle wrapper`来安装`gradle`.调用`gradlew`或`gradlew.bat`将会下载并缓存指定版本的 Gradle.
 
