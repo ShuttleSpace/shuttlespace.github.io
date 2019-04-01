@@ -218,7 +218,7 @@ configurations {
 
 ```
 
-````kts
+```kts
 // settings.gradle.kts
 pluginManagement {
   repositories {
@@ -234,6 +234,33 @@ pluginManagement {
     }
   }
 }
+```
+
+```kts
+// build.gradle.kts
+val check by tasks.existing
+val myTask1 by tasks.registering
+
+val compileJava by tasks.existing(JavaCompile::class)
+val myCopy1 by tasks.registering(Copy::class)
+
+va; assemble by tasks.existing {
+  dependsOn(myTask1)
+}
+
+val myTask2 by tasks.registering {
+  description = "some meaningful words"
+}
+
+val test by tasks.existing(Test::class) {
+  testLogging.showStackTrace = true
+}
+
+val myCopy2 by tasks.registering(Copy::class) {
+  from("source")
+  into("destination")
+}
+```
 
 ### 升级 `Gradle Wrapper`
 
@@ -241,7 +268,7 @@ pluginManagement {
 
 ```bash
 ./gradlew wrapper --gradle-version=5.3 --distribution-type=bin
-````
+```
 
 当然没必要使用`gradle wrapper`来安装`gradle`.调用`gradlew`或`gradlew.bat`将会下载并缓存指定版本的 Gradle.
 
