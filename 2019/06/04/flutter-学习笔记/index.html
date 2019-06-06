@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#025a6c">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.0.1" color="#025a6c">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"搜索","hits_empty":"${query} 找不到","hits_stats":"${time}ms内找到${hits}个相关内容"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="flutter 的核心设计是将整个应用的各个部分各个层级都看作 Widget 来渲染,所以按照 Widget 的分类来学习会比较全面。 基础组件Container Row Column Image Text Icon RaisedButton Scaffold AppBar FlutterLogo Placeholder  Material 组件结构和导航 Scaffold AppBar Bott">
+<meta name="keywords" content="flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flutter 学习笔记">
+<meta property="og:url" content="http://blog.dang8080.cn/2019/06/04/flutter-学习笔记/index.html">
+<meta property="og:site_name" content="云青青兮欲雨">
+<meta property="og:description" content="flutter 的核心设计是将整个应用的各个部分各个层级都看作 Widget 来渲染,所以按照 Widget 的分类来学习会比较全面。 基础组件Container Row Column Image Text Icon RaisedButton Scaffold AppBar FlutterLogo Placeholder  Material 组件结构和导航 Scaffold AppBar Bott">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-04T05:26:02.892Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flutter 学习笔记">
+<meta name="twitter:description" content="flutter 的核心设计是将整个应用的各个部分各个层级都看作 Widget 来渲染,所以按照 Widget 的分类来学习会比较全面。 基础组件Container Row Column Image Text Icon RaisedButton Scaffold AppBar FlutterLogo Placeholder  Material 组件结构和导航 Scaffold AppBar Bott">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.dang8080.cn/2019/06/04/flutter-学习笔记/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>flutter 学习笔记 | 云青青兮欲雨</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">云青青兮欲雨</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">水澹澹兮生烟</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">38</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">20</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/06/04/flutter-学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Humphrey Dang">
+      <meta itemprop="description" content="Humphrey Dang 的博客">
+      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云青青兮欲雨">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">flutter 学习笔记
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-04 13:01:00 / 修改时间：13:26:02" itemprop="dateCreated datePublished" datetime="2019-06-04T13:01:00+08:00">2019-06-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/06/04/flutter-学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/04/flutter-学习笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/06/04/flutter-学习笔记/" class="leancloud_visitors" data-flag-title="flutter 学习笔记">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>flutter 的核心设计是将整个应用的各个部分各个层级都看作 Widget 来渲染,所以按照 Widget 的分类来学习会比较全面。</p>
+<h2 id="基础组件"><a href="#基础组件" class="headerlink" title="基础组件"></a>基础组件</h2><h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h3><ul>
+<li>Row</li>
+<li>Column</li>
+<li>Image</li>
+<li>Text</li>
+<li>Icon</li>
+<li>RaisedButton</li>
+<li>Scaffold</li>
+<li>AppBar</li>
+<li>FlutterLogo</li>
+<li>Placeholder</li>
+</ul>
+<h2 id="Material-组件"><a href="#Material-组件" class="headerlink" title="Material 组件"></a>Material 组件</h2><h3 id="结构和导航"><a href="#结构和导航" class="headerlink" title="结构和导航"></a>结构和导航</h3><ul>
+<li>Scaffold</li>
+<li>AppBar</li>
+<li>BottomNavigationBar</li>
+<li>TabBar</li>
+<li>TabBarView</li>
+<li>MaterialApp</li>
+<li>WidgetsApp</li>
+<li>Drawer</li>
+</ul>
+<h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h3><ul>
+<li>RaisedButton</li>
+<li>FloatingActionButton</li>
+<li>FlatButton</li>
+<li>IconButton</li>
+<li>PopupMenuButton</li>
+<li>ButtonBar</li>
+</ul>
+<h3 id="输入框和选择框"><a href="#输入框和选择框" class="headerlink" title="输入框和选择框"></a>输入框和选择框</h3><ul>
+<li>TextField</li>
+<li>Checkbox</li>
+<li>Radio</li>
+<li>Switch</li>
+<li>Slider</li>
+<li>Date &amp; Time Pickers</li>
+</ul>
+<h3 id="对话框-Alert-Panel"><a href="#对话框-Alert-Panel" class="headerlink" title="对话框,Alert Panel"></a>对话框,Alert Panel</h3><ul>
+<li>SimpleDialog</li>
+<li>AlertDialog</li>
+<li>BottomSheet</li>
+<li>ExpansionPanel</li>
+<li>SnackBar</li>
+</ul>
+<h3 id="信息展示"><a href="#信息展示" class="headerlink" title="信息展示"></a>信息展示</h3><ul>
+<li>Image</li>
+<li>Icon</li>
+<li>Chip</li>
+<li>Tooltip</li>
+<li>DataTable</li>
+<li>Card</li>
+<li>LinearProgressIndicator</li>
+</ul>
+<h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><ul>
+<li>ListTile</li>
+<li>Stepper</li>
+<li>Divider</li>
+</ul>
+<h2 id="Cupertino"><a href="#Cupertino" class="headerlink" title="Cupertino"></a>Cupertino</h2><ul>
+<li>CupertinoActivityIndicator</li>
+<li>CupertinoAlertDialog</li>
+<li>CupertinoButton</li>
+<li>CupertinoDialog</li>
+<li>CupertinoDialogAction</li>
+<li>CupertinoSlider</li>
+<li>CupertinoSwitch</li>
+<li>CupertinoPageTransition</li>
+<li>CupertinoFullScreenDialogTransition</li>
+<li>CupertinoNavigationBar</li>
+<li>CupertinoTabBar</li>
+<li>CupertinoPageScaffold</li>
+<li>CupertinoTabScaffold</li>
+<li>CupertinoTabView</li>
+</ul>
+<h2 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h2><h3 id="单个元素"><a href="#单个元素" class="headerlink" title="单个元素"></a>单个元素</h3><ul>
+<li>Container</li>
+<li>Padding</li>
+<li>Center</li>
+<li>Align</li>
+<li>FittedBox</li>
+<li>AspectRatio</li>
+<li>ConstrainedBox</li>
+<li>Baseline</li>
+<li>FractionallySizedBox</li>
+<li>IntrinsicHeight</li>
+<li>IntrinsicWidth</li>
+<li>LimitedBox</li>
+<li>Offstage</li>
+<li>OverflowBox</li>
+<li>SizedBox</li>
+<li>SizedOverflowBox</li>
+<li>Transform</li>
+<li>CustomSingleChildLayout</li>
+</ul>
+<h3 id="多个元素"><a href="#多个元素" class="headerlink" title="多个元素"></a>多个元素</h3><ul>
+<li>Row</li>
+<li>Column</li>
+<li>Stack</li>
+<li>IndexedStack</li>
+<li>Flow</li>
+<li>Table</li>
+<li>Wrap</li>
+<li>ListBody</li>
+<li>ListView</li>
+<li>CustomMultiChildLayout</li>
+</ul>
+<h3 id="LayoutBuilder"><a href="#LayoutBuilder" class="headerlink" title="LayoutBuilder"></a>LayoutBuilder</h3><h2 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h2><ul>
+<li>Text</li>
+<li>RichText</li>
+<li>DefaultTextStyle</li>
+</ul>
+<h2 id="Assets"><a href="#Assets" class="headerlink" title="Assets"></a>Assets</h2><ul>
+<li>Image</li>
+<li>Icon</li>
+<li>RawImage</li>
+<li>AssetBundle</li>
+</ul>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><ul>
+<li>Form</li>
+<li>FormField</li>
+<li>RawKeyboardListener</li>
+</ul>
+<h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h2><ul>
+<li>AnimatedContainer</li>
+<li>AnimatedCrossFade</li>
+<li>Hero</li>
+<li>AnimatedBuilder</li>
+<li>DecoratedBoxTransition</li>
+<li>FadeTransition</li>
+<li>PositionedTransition</li>
+<li>RotationTransition</li>
+<li>ScaleTransition</li>
+<li>SizeTransition</li>
+<li>SlideTransition</li>
+<li>AnimatedDefaultTextStyle</li>
+<li>AnimatedListState</li>
+<li>AnimatedModalBarrier</li>
+<li>AnimatedOpacity</li>
+<li>AnimatedPhysicalModal</li>
+<li>AnimatedPositioned</li>
+<li>AnimatedSize</li>
+<li>AnimatedWidget</li>
+<li>AnimatedWidgetBaseState</li>
+</ul>
+<h2 id="交互"><a href="#交互" class="headerlink" title="交互"></a>交互</h2><ul>
+<li>LongPressDraggable</li>
+<li>GestureDetector</li>
+<li>DragTarget</li>
+<li>Dismissible</li>
+<li>IgnorePointer</li>
+<li>AbsorbPointer</li>
+<li>Navigator</li>
+<li>Scrollable</li>
+</ul>
+<h2 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h2><ul>
+<li>Padding</li>
+<li>Theme</li>
+<li>MediaQuery</li>
+</ul>
+<h2 id="Draw"><a href="#Draw" class="headerlink" title="Draw"></a>Draw</h2><ul>
+<li>Opacity</li>
+<li>Transform</li>
+<li>DecoratedBox</li>
+<li>FractionalTransition</li>
+<li>RotatedBox</li>
+<li>ClipOval</li>
+<li>ClipPath</li>
+<li>ClipRect</li>
+<li>CustomPaint</li>
+<li>BackdropFilter</li>
+</ul>
+<h2 id="Async"><a href="#Async" class="headerlink" title="Async"></a>Async</h2><ul>
+<li>FutureBuilder</li>
+<li>StreamBuilder</li>
+</ul>
+<h2 id="滚动"><a href="#滚动" class="headerlink" title="滚动"></a>滚动</h2><ul>
+<li>ListView</li>
+<li>NestedScrollView</li>
+<li>GridView</li>
+<li>SingleChildScrollView</li>
+<li>Scrollable</li>
+<li>Scrollbar</li>
+<li>CustomScrollView</li>
+<li>NotificationListener</li>
+<li>ScrollConfiguration</li>
+<li>RefreshIndicator</li>
+</ul>
+<h2 id="辅助"><a href="#辅助" class="headerlink" title="辅助"></a>辅助</h2><ul>
+<li>Semantics</li>
+<li>MergeSemantics</li>
+<li>ExcludeSemantics</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/flutter/" rel="tag"># flutter</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/05/GraphQL-Batching/" rel="next" title="GraphQL-Batching">
+                <i class="fa fa-chevron-left"></i> GraphQL-Batching
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/04/Flutter-Row/" rel="prev" title="Flutter-Row">
+                Flutter-Row <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://qiniu.picbed.dang8080.cn/logo.jpeg" alt="Humphrey Dang">
+            
+              <p class="site-author-name" itemprop="name">Humphrey Dang</p>
+              <div class="site-description motion-element" itemprop="description">Humphrey Dang 的博客</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础组件"><span class="nav-number">1.</span> <span class="nav-text">基础组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Container"><span class="nav-number">1.1.</span> <span class="nav-text">Container</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Material-组件"><span class="nav-number">2.</span> <span class="nav-text">Material 组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结构和导航"><span class="nav-number">2.1.</span> <span class="nav-text">结构和导航</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按钮"><span class="nav-number">2.2.</span> <span class="nav-text">按钮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入框和选择框"><span class="nav-number">2.3.</span> <span class="nav-text">输入框和选择框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对话框-Alert-Panel"><span class="nav-number">2.4.</span> <span class="nav-text">对话框,Alert Panel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息展示"><span class="nav-number">2.5.</span> <span class="nav-text">信息展示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#布局"><span class="nav-number">2.6.</span> <span class="nav-text">布局</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cupertino"><span class="nav-number">3.</span> <span class="nav-text">Cupertino</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Layout"><span class="nav-number">4.</span> <span class="nav-text">Layout</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单个元素"><span class="nav-number">4.1.</span> <span class="nav-text">单个元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多个元素"><span class="nav-number">4.2.</span> <span class="nav-text">多个元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LayoutBuilder"><span class="nav-number">4.3.</span> <span class="nav-text">LayoutBuilder</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text"><span class="nav-number">5.</span> <span class="nav-text">Text</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Assets"><span class="nav-number">6.</span> <span class="nav-text">Assets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input"><span class="nav-number">7.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Animation"><span class="nav-number">8.</span> <span class="nav-text">Animation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交互"><span class="nav-number">9.</span> <span class="nav-text">交互</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样式"><span class="nav-number">10.</span> <span class="nav-text">样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Draw"><span class="nav-number">11.</span> <span class="nav-text">Draw</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Async"><span class="nav-number">12.</span> <span class="nav-text">Async</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滚动"><span class="nav-number">13.</span> <span class="nav-text">滚动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#辅助"><span class="nav-number">14.</span> <span class="nav-text">辅助</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <span class="exturl" data-url="aHR0cDovL3d3dy5taWl0YmVpYW4uZ292LmNu">陕ICP备19000066号-1 </span>&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Humphrey Dang</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/js.cookie.js?v=7.0.1"></script>
+  <script src="/js/src/scroll-cookie.js?v=7.0.1"></script>
+
+
+  
+  <script src="/js/src/exturl.js?v=7.0.1"></script>
+
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'z4355CFJqLqEOkacAfCt07Tw-gzGzoHsz',
+    appKey: 'MMeHfXwH0V14BmSIRAX2mxcj',
+    placeholder: '表扬👍一下吧',
+    avatar: 'wavatar',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

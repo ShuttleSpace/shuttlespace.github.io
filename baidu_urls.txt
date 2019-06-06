@@ -1,3 +1,3 @@
-http://blog.dang8080.cn/2019/05/05/GraphQL-Batching/
-http://blog.dang8080.cn/2019/05/05/GraphQL-Scalars/
-http://blog.dang8080.cn/2019/05/05/GraphQL-Data-mapping/
+http://blog.dang8080.cn/2019/06/06/Flutter-Text/
+http://blog.dang8080.cn/2019/06/05/Flutter-Image/
+http://blog.dang8080.cn/2019/06/04/Flutter-Column/
