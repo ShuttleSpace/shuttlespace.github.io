@@ -4,97 +4,55 @@
 
 
 
-
-
-
-
-
-
-
-
-<html class="theme-next pisces" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#025a6c">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.3.0">
+  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.3.0" color="#025a6c">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.0.1">
-
-
-  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.0.1" color="#025a6c">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.0.1',
+    version: '7.3.0',
+    exturl: true,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: true,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
-    fastclick: false,
+    mediumzoom: false,
     lazyload: false,
-    tabs: true,
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    pangu: false,
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"搜索","hits_empty":"${query} 找不到","hits_stats":"${time}ms内找到${hits}个相关内容"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
     }
   };
 </script>
-
-
-  
-
-
-
 
   <meta name="description" content="Humphrey Dang 的博客">
 <meta name="keywords" content="Android,Java,Kotlin,JS">
@@ -107,28 +65,23 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="云青青兮欲雨">
 <meta name="twitter:description" content="Humphrey Dang 的博客">
-
-
-
-
-
-
   <link rel="canonical" href="http://blog.dang8080.cn/page/3/">
 
 
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
   };
 </script>
 
-  <title>云青青兮欲雨 – 水澹澹兮生烟</title>
+  <title>云青青兮欲雨 - 水澹澹兮生烟</title>
+  <meta name="generator" content="Hexo 3.8.0">
   
-
-
-
-
 
 
 
@@ -139,7 +92,6 @@
 
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -148,7 +100,7 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
   .use-motion .logo,
   .use-motion .site-title,
@@ -165,34 +117,25 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta custom-logo">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">云青青兮欲雨</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
-      
         <h1 class="site-subtitle" itemprop="description">水澹澹兮生烟</h1>
       
-    
-    
+      <a>
+        <img class="custom-logo-image" src="[object Object]" alt="云青青兮欲雨">
+      </a>
   </div>
 
   <div class="site-nav-toggle">
@@ -205,23 +148,15 @@
 </div>
 
 
-
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
+  <ul id="menu" class="menu">
+      
+      
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home">
-
-    
-    
-    
+        <li class="menu-item menu-item-home">
       
-    
-
     
       
     
@@ -229,18 +164,12 @@
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-
-    
-    
-    
       
-    
-
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
     
       
     
@@ -248,18 +177,12 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
       
-    
-
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
     
       
     
@@ -267,18 +190,12 @@
     <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">22</span></a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
       
-    
-
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
     
       
     
@@ -286,52 +203,34 @@
     <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
 
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-  
-
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
 
+</div>
+<div class="search-pop-overlay"></div>
 
-
-  
-
-
-
+  </div>
 </div>
     </header>
 
@@ -341,29 +240,16 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
             
 
-          
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
+  <div id="posts" class="posts-expand">
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/03/01/docker学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -375,105 +261,66 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/01/docker学习笔记/" class="post-title-link" itemprop="url">docker,docker-compose学习笔记</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/03/01/docker学习笔记/" class="post-title-link" itemprop="url">docker,docker-compose学习笔记</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-03-01 18:06:57" itemprop="dateCreated datePublished" datetime="2019-03-01T18:06:57+08:00">2019-03-01</time>
+            </span>
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-03-02 20:39:48" itemprop="dateModified" datetime="2019-03-02T20:39:48+08:00">2019-03-02</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/03/01/docker学习笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/01/docker学习笔记/" itemprop="commentCount"></span>
-                </a>
               </span>
             
           
 
           
-          
-            <span id="/2019/03/01/docker学习笔记/" class="leancloud_visitors" data-flag-title="docker,docker-compose学习笔记">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/03/01/docker学习笔记/" class="post-meta-item leancloud_visitors" data-flag-title="docker,docker-compose学习笔记" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/03/01/docker学习笔记/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/03/01/docker学习笔记/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -481,26 +328,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              OverviewCompose 是一个为了定义和运行多容器 Docker 应用的工具。官方动手示例
-特性
-一个主机多个隔离环境
-当容器创建时保留所有的 volume
-只有容器被更改时才触发创建
-定义变量和在不同环境中使用
-
-使用场景
-自动测试环境
-单独主机部署
-
-docker-compose 安装sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(u
-              ...
-            </p>
+          <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Compose 是一个为了定义和运行多容器 Docker 应用的工具。<br><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RvY2tlci9sYWJz" title="https://github.com/docker/labs">官方动手示例<i class="fa fa-external-link"></i></span></p><h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
+<li>一个主机多个隔离环境</li>
+<li>当容器创建时保留所有的 volume</li>
+<li>只有容器被更改时才触发创建</li>
+<li>定义变量和在不同环境中使用</li>
+</ul><h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li>自动测试环境</li>
+<li>单独主机部署</li>
+</ul><h3 id="docker-compose-安装"><a href="#docker-compose-安装" class="headerlink" title="docker-compose 安装"></a>docker-compose 安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose</span><br><span class="line">sudo chmod +x /usr/local/bin/docker-compose</span><br><span class="line">sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</span><br><span class="line">sudo docker-compose --version</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -515,55 +351,24 @@ docker-compose 安装sudo curl -L "https://github.com/docker/compose/releases/do
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/28/译-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -575,105 +380,66 @@ docker-compose 安装sudo curl -L "https://github.com/docker/compose/releases/do
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/28/译-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/" class="post-title-link" itemprop="url">[译]-LiveData with SnackBar,Navigation and other events(the SingleLiveEvent case)</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/02/28/译-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/" class="post-title-link" itemprop="url">[译]-LiveData with SnackBar,Navigation and other events(the SingleLiveEvent case)</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-02-28 20:23:11" itemprop="dateCreated datePublished" datetime="2019-02-28T20:23:11+08:00">2019-02-28</time>
+            </span>
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-03-03 08:37:05" itemprop="dateModified" datetime="2019-03-03T08:37:05+08:00">2019-03-03</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/02/28/译-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/28/译-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/" itemprop="commentCount"></span>
-                </a>
               </span>
             
           
 
           
-          
-            <span id="/2019/02/28/译-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/" class="leancloud_visitors" data-flag-title="[译]-LiveData with SnackBar,Navigation and other events(the SingleLiveEvent case)">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/02/28/译-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/" class="post-meta-item leancloud_visitors" data-flag-title="[译]-LiveData with SnackBar,Navigation and other events(the SingleLiveEvent case)" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/02/28/译-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/02/28/译-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -681,16 +447,7 @@ docker-compose 安装sudo curl -L "https://github.com/docker/compose/releases/do
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              原文
-view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData observables. view 订阅 LiveData 的改变且随时响应。这适用于连续不断的显示在一个屏幕的数据。但是某些数据却更应该被消费一次，比如 Snackbar 消息，navigation 事件 或 dialog 触发器。与其试着通过扩展 Architecture Components 扩展或库解决这个问题，不如我们可以直面这是个设计缺陷。我们推荐
-              ...
-            </p>
+          <p><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL2FuZHJvaWRkZXZlbG9wZXJzL2xpdmVkYXRhLXdpdGgtc25hY2tiYXItbmF2aWdhdGlvbi1hbmQtb3RoZXItZXZlbnRzLXRoZS1zaW5nbGVsaXZlZXZlbnQtY2FzZS1hYzI2MjI2NzMxNTA=" title="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150">原文<i class="fa fa-external-link"></i></span></p><p>view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData observables. view 订阅 LiveData 的改变且随时响应。这适用于连续不断的显示在一个屏幕的数据。<br><img src="http://qiniu.picbed.dang8080.cn/20190228202711.png" alt="LiveData"><br>但是某些数据却更应该被消费一次，比如 Snackbar 消息，navigation 事件 或 dialog 触发器。<br><img src="http://qiniu.picbed.dang8080.cn/20190228202852.png" alt="LiveData once"><br>与其试着通过扩展 Architecture Components 扩展或库解决这个问题，不如我们可以直面这是个设计缺陷。我们推荐你把你的事件看作是状态的一部分。本文我们将列举一些常见的错误和推荐的解决方案。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -705,55 +462,24 @@ view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData ob
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/28/LiveData/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -765,93 +491,58 @@ view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData ob
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/28/LiveData/" class="post-title-link" itemprop="url">LiveData</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/02/28/LiveData/" class="post-title-link" itemprop="url">LiveData</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-02-28 16:36:39 / 修改时间：17:30:48" itemprop="dateCreated datePublished" datetime="2019-02-28T16:36:39+08:00">2019-02-28</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
+            </span>
           
             
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/02/28/LiveData/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/28/LiveData/" itemprop="commentCount"></span>
-                </a>
-              </span>
+
             
           
 
           
-          
-            <span id="/2019/02/28/LiveData/" class="leancloud_visitors" data-flag-title="LiveData">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/02/28/LiveData/" class="post-meta-item leancloud_visitors" data-flag-title="LiveData" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/02/28/LiveData/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/02/28/LiveData/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -859,27 +550,30 @@ view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData ob
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              LiveData 的优势
-确保 UI 和数据状态匹配
-LiveData 遵循观察者模式。
-
-
-无内存泄漏
-不会因为 Activity 被终止而崩溃
-如果观察者处于 inactive 状态，例如 activity 处于回退栈中，那么它不会接收到任何 LiveData 事件.
-
-
-不用手动处理生命周期事件
-时刻更新数据状态
-如果一个观察者的变为 inactive，那么它会在重新 active 时获取最新的数据状态。比如，一个 activiy 如果处于后台，那么它将在重新返回前台时
-              ...
-            </p>
+          <h3 id="LiveData-的优势"><a href="#LiveData-的优势" class="headerlink" title="LiveData 的优势"></a>LiveData 的优势</h3><ul>
+<li>确保 UI 和数据状态匹配<blockquote>
+<p>LiveData 遵循观察者模式。</p>
+</blockquote>
+</li>
+<li>无内存泄漏</li>
+<li>不会因为 Activity 被终止而崩溃<blockquote>
+<p>如果观察者处于 inactive 状态，例如 activity 处于回退栈中，那么它不会接收到任何 LiveData 事件.</p>
+</blockquote>
+</li>
+<li>不用手动处理生命周期事件</li>
+<li>时刻更新数据状态<blockquote>
+<p>如果一个观察者的变为 inactive，那么它会在重新 active 时获取最新的数据状态。比如，一个 activiy 如果处于后台，那么它将在重新返回前台时获取到最新的数据。</p>
+</blockquote>
+</li>
+<li>应对 configuration change<blockquote>
+<p>如果一个 activity 或 fragment 由于 configuration change(设备旋转) 导致重新创建，它会立即获取最新可用的数据.</p>
+</blockquote>
+</li>
+<li>共享资源<blockquote>
+<p>可以使用单例模式扩展 LiveData，封装系统服务在 app 内共享。</p>
+</blockquote>
+</li>
+</ul>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -894,55 +588,24 @@ LiveData 遵循观察者模式。
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/26/ObjectBox高级-6-元模型-IDs-UIDs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -954,93 +617,58 @@ LiveData 遵循观察者模式。
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/26/ObjectBox高级-6-元模型-IDs-UIDs/" class="post-title-link" itemprop="url">ObjectBox高级-6-元模型,IDs,UIDs</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/02/26/ObjectBox高级-6-元模型-IDs-UIDs/" class="post-title-link" itemprop="url">ObjectBox高级-6-元模型,IDs,UIDs</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-02-26 14:19:22 / 修改时间：14:41:01" itemprop="dateCreated datePublished" datetime="2019-02-26T14:19:22+08:00">2019-02-26</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
+            </span>
           
             
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/02/26/ObjectBox高级-6-元模型-IDs-UIDs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox高级-6-元模型-IDs-UIDs/" itemprop="commentCount"></span>
-                </a>
-              </span>
+
             
           
 
           
-          
-            <span id="/2019/02/26/ObjectBox高级-6-元模型-IDs-UIDs/" class="leancloud_visitors" data-flag-title="ObjectBox高级-6-元模型,IDs,UIDs">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/02/26/ObjectBox高级-6-元模型-IDs-UIDs/" class="post-meta-item leancloud_visitors" data-flag-title="ObjectBox高级-6-元模型,IDs,UIDs" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/02/26/ObjectBox高级-6-元模型-IDs-UIDs/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox高级-6-元模型-IDs-UIDs/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1048,17 +676,9 @@ LiveData 遵循观察者模式。
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              不像 SQLite 这样的数据库，ObjectBox 不需要你创建 database schema.这不意味着 ObjectBox 是无 schema 的。为高效起见，ObjectBox 对存储的数据维护了一个元模型(meta model)。此元模型实际上等价于 ObjectBox 的 schema.它包含了所有属性的类型、indexes 等.不同之处在于 ObjectBox 试图自动管理该元模型.某些情况下，这需要你帮忙.
-
-Object 的 IDs 是 @Id 定义的，而
-              ...
-            </p>
+          <p>不像 SQLite 这样的数据库，ObjectBox 不需要你创建 database schema.这不意味着 ObjectBox 是无 schema 的。为高效起见，ObjectBox 对存储的数据维护了一个元模型(meta model)。此元模型实际上等价于 ObjectBox 的 schema.它包含了所有属性的类型、indexes 等.不同之处在于 ObjectBox 试图自动管理该元模型.某些情况下，这需要你帮忙.</p><blockquote>
+<p>Object 的 IDs 是 @Id 定义的，而 所有 entity 类型的实例都绑定一个 meta model ID.</p>
+</blockquote>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1073,55 +693,24 @@ Object 的 IDs 是 @Id 定义的，而
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/26/ObjectBox高级-5-更新数据模型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1133,93 +722,58 @@ Object 的 IDs 是 @Id 定义的，而
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/26/ObjectBox高级-5-更新数据模型/" class="post-title-link" itemprop="url">ObjectBox高级-5-更新数据模型</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/02/26/ObjectBox高级-5-更新数据模型/" class="post-title-link" itemprop="url">ObjectBox高级-5-更新数据模型</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-02-26 13:52:22 / 修改时间：14:18:54" itemprop="dateCreated datePublished" datetime="2019-02-26T13:52:22+08:00">2019-02-26</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
+            </span>
           
             
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/02/26/ObjectBox高级-5-更新数据模型/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox高级-5-更新数据模型/" itemprop="commentCount"></span>
-                </a>
-              </span>
+
             
           
 
           
-          
-            <span id="/2019/02/26/ObjectBox高级-5-更新数据模型/" class="leancloud_visitors" data-flag-title="ObjectBox高级-5-更新数据模型">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/02/26/ObjectBox高级-5-更新数据模型/" class="post-meta-item leancloud_visitors" data-flag-title="ObjectBox高级-5-更新数据模型" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/02/26/ObjectBox高级-5-更新数据模型/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox高级-5-更新数据模型/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1227,17 +781,7 @@ Object 的 IDs 是 @Id 定义的，而
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              ObjectBox 大多数情况下自动管理数据模型.当添加/删除 entities 或属性时，ObjectBox 自动作出响应。对于其他改变如 保留或改变类型，ObjectBox 需要额外信息。
-UIDsObjectBox 通过 unique IDs(UIDs) 来追踪 entities 和属性的变化。所有的 UIDs 都存储在 module-name/objectbox-models/default.json 中,可以使用版本控制软件(git)进行管理。
-简单来说: 为了使 
-              ...
-            </p>
+          <p>ObjectBox 大多数情况下自动管理数据模型.当添加/删除 entities 或属性时，ObjectBox 自动作出响应。<br>对于其他改变如 保留或改变类型，ObjectBox 需要额外信息。</p><h3 id="UIDs"><a href="#UIDs" class="headerlink" title="UIDs"></a>UIDs</h3><p>ObjectBox 通过 unique IDs(UIDs) 来追踪 entities 和属性的变化。所有的 UIDs 都存储在 module-name/objectbox-models/default.json 中,可以使用版本控制软件(git)进行管理。</p><p>简单来说: 为了使 UID 相关的改变生效，在这些 entity 或 属性上放置 @Uid 然后编译，在获取进一步提示。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1252,55 +796,24 @@ UIDsObjectBox 通过 unique IDs(UIDs) 来追踪 entities 和属性的变化。�
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/26/ObjectBox高级-4-entity继承/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1312,93 +825,58 @@ UIDsObjectBox 通过 unique IDs(UIDs) 来追踪 entities 和属性的变化。�
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/26/ObjectBox高级-4-entity继承/" class="post-title-link" itemprop="url">ObjectBox高级-4-entity继承</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/02/26/ObjectBox高级-4-entity继承/" class="post-title-link" itemprop="url">ObjectBox高级-4-entity继承</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-02-26 12:15:42 / 修改时间：13:51:56" itemprop="dateCreated datePublished" datetime="2019-02-26T12:15:42+08:00">2019-02-26</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
+            </span>
           
             
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/02/26/ObjectBox高级-4-entity继承/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox高级-4-entity继承/" itemprop="commentCount"></span>
-                </a>
-              </span>
+
             
           
 
           
-          
-            <span id="/2019/02/26/ObjectBox高级-4-entity继承/" class="leancloud_visitors" data-flag-title="ObjectBox高级-4-entity继承">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/02/26/ObjectBox高级-4-entity继承/" class="post-meta-item leancloud_visitors" data-flag-title="ObjectBox高级-4-entity继承" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/02/26/ObjectBox高级-4-entity继承/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox高级-4-entity继承/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1406,21 +884,11 @@ UIDsObjectBox 通过 unique IDs(UIDs) 来追踪 entities 和属性的变化。�
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              ObjectBox 允许子类继承 entity 父类持久化的属性。同样也支持继承非 entity 类。1.4+ 也支持多继承.对于父类来说可以使用 @BaseEntity.
-
-无注解: 类本身及其属性不需要持久化
-@BaseEntity: 属性在子类中持久化，类本身不持久化
-@Entity: 属性在子类中持久化，类本身也持久化
-
-// base class:@BaseEntitypublic abstract class Base &#123;    @Id long id;
-              ...
-            </p>
+          <p>ObjectBox 允许子类继承 entity 父类持久化的属性。同样也支持继承非 entity 类。1.4+ 也支持多继承.<br>对于父类来说可以使用 @BaseEntity.</p><ul>
+<li>无注解: 类本身及其属性不需要持久化</li>
+<li>@BaseEntity: 属性在子类中持久化，类本身不持久化</li>
+<li>@Entity: 属性在子类中持久化，类本身也持久化</li>
+</ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// base class:</span></span><br><span class="line"><span class="meta">@BaseEntity</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Base</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">long</span> id;</span><br><span class="line">    String baseString;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Base</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Base</span><span class="params">(<span class="keyword">long</span> id, String baseString)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.baseString = baseString;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sub class:</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sub</span> <span class="keyword">extends</span> <span class="title">Base</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    String subString;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Sub</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Sub</span><span class="params">(<span class="keyword">long</span> id, String baseString, String subString)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(id, baseString);</span><br><span class="line">        <span class="keyword">this</span>.subString = subString;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1435,55 +903,24 @@ UIDsObjectBox 通过 unique IDs(UIDs) 来追踪 entities 和属性的变化。�
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/26/ObjectBox高级-3-自定义类型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1495,93 +932,58 @@ UIDsObjectBox 通过 unique IDs(UIDs) 来追踪 entities 和属性的变化。�
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/26/ObjectBox高级-3-自定义类型/" class="post-title-link" itemprop="url">ObjectBox高级-3-自定义类型</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/02/26/ObjectBox高级-3-自定义类型/" class="post-title-link" itemprop="url">ObjectBox高级-3-自定义类型</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-02-26 10:22:46 / 修改时间：12:15:12" itemprop="dateCreated datePublished" datetime="2019-02-26T10:22:46+08:00">2019-02-26</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
+            </span>
           
             
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/02/26/ObjectBox高级-3-自定义类型/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox高级-3-自定义类型/" itemprop="commentCount"></span>
-                </a>
-              </span>
+
             
           
 
           
-          
-            <span id="/2019/02/26/ObjectBox高级-3-自定义类型/" class="leancloud_visitors" data-flag-title="ObjectBox高级-3-自定义类型">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/02/26/ObjectBox高级-3-自定义类型/" class="post-meta-item leancloud_visitors" data-flag-title="ObjectBox高级-3-自定义类型" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/02/26/ObjectBox高级-3-自定义类型/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox高级-3-自定义类型/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1589,18 +991,7 @@ UIDsObjectBox 通过 unique IDs(UIDs) 来追踪 entities 和属性的变化。�
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              ObjectBox 支持以下类型（Java）:
-boolean, Booleanint, Integershort, Shortlong, Longfloat, Floatdouble, Doublebyte, Bytechar, Characterbyte[]StringDate
-转换器注解和属性转换使用 @Convert 注解将其他类型属性转为内置属性。此处需要提供 PropertyConverter 实现。
-// enum 转为 Integer@Entitypublic
-              ...
-            </p>
+          <p>ObjectBox 支持以下类型（Java）:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span>, Boolean</span><br><span class="line"><span class="keyword">int</span>, Integer</span><br><span class="line"><span class="keyword">short</span>, Short</span><br><span class="line"><span class="keyword">long</span>, Long</span><br><span class="line"><span class="keyword">float</span>, Float</span><br><span class="line"><span class="keyword">double</span>, Double</span><br><span class="line"><span class="keyword">byte</span>, Byte</span><br><span class="line"><span class="keyword">char</span>, Character</span><br><span class="line"><span class="keyword">byte</span>[]</span><br><span class="line">String</span><br><span class="line">Date</span><br></pre></td></tr></table></figure><h3 id="转换器注解和属性转换"><a href="#转换器注解和属性转换" class="headerlink" title="转换器注解和属性转换"></a>转换器注解和属性转换</h3><p>使用 @Convert 注解将其他类型属性转为内置属性。此处需要提供 PropertyConverter 实现。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// enum 转为 Integer</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Convert</span>(converter = RoleConverter.class, dbType = Integer.class)</span><br><span class="line">    <span class="keyword">private</span> Role role;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> Role &#123;</span><br><span class="line">        DEFAULT(<span class="number">0</span>), AUTHOR(<span class="number">1</span>), ADMIN(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">        Role(<span class="keyword">int</span> id) &#123;</span><br><span class="line">            <span class="keyword">this</span>.id = id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">RoleConverter</span> <span class="keyword">implements</span> <span class="title">PropertyConverter</span>&lt;<span class="title">Role</span>, <span class="title">Integer</span>&gt;</span>; &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Role <span class="title">convertToEntityProperty</span><span class="params">(Integer databaseValue)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (databaseValue == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (Role role : Role.values()) &#123;</span><br><span class="line">                <span class="keyword">if</span> (role.id == databaseValue) &#123;</span><br><span class="line">                    <span class="keyword">return</span> role;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> Role.DEFAULT;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Integer <span class="title">convertToDatabaseValue</span><span class="params">(Role entityProperty)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> entityProperty == <span class="keyword">null</span> ? <span class="keyword">null</span> : entityProperty.id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1615,55 +1006,24 @@ boolean, Booleanint, Integershort, Shortlong, Longfloat, Floatdouble, Doublebyte
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/26/ObjectBox高级-2-Object-IDs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1675,93 +1035,58 @@ boolean, Booleanint, Integershort, Shortlong, Longfloat, Floatdouble, Doublebyte
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/26/ObjectBox高级-2-Object-IDs/" class="post-title-link" itemprop="url">ObjectBox高级-2-Object IDs</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/02/26/ObjectBox高级-2-Object-IDs/" class="post-title-link" itemprop="url">ObjectBox高级-2-Object IDs</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-02-26 10:00:19 / 修改时间：12:09:41" itemprop="dateCreated datePublished" datetime="2019-02-26T10:00:19+08:00">2019-02-26</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
+            </span>
           
             
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/02/26/ObjectBox高级-2-Object-IDs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox高级-2-Object-IDs/" itemprop="commentCount"></span>
-                </a>
-              </span>
+
             
           
 
           
-          
-            <span id="/2019/02/26/ObjectBox高级-2-Object-IDs/" class="leancloud_visitors" data-flag-title="ObjectBox高级-2-Object IDs">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/02/26/ObjectBox高级-2-Object-IDs/" class="post-meta-item leancloud_visitors" data-flag-title="ObjectBox高级-2-Object IDs" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/02/26/ObjectBox高级-2-Object-IDs/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox高级-2-Object-IDs/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1769,17 +1094,7 @@ boolean, Booleanint, Integershort, Shortlong, Longfloat, Floatdouble, Doublebyte
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              Object 必须具有一个类型为 long 的属性.当然可以使用它的包装类 java.lang.Long,但是不建议使用包装类.其他类型的 ID ( UID 等)可以自由定义，查询等操作。
-news vs. persisted entities当创建一个对象时，还没有存入，它们的 ID 是 0.一旦该对象存入，ObjectBox 将为该对象指定 ID.可以通过 put()返回值拿到该 ID.
-所以在 ObjectBox 内部通常把 ID 作为一个状态指示器,如果为 0 表示新
-              ...
-            </p>
+          <p>Object 必须具有一个类型为 <code>long</code> 的属性.当然可以使用它的包装类 <code>java.lang.Long</code>,但是不建议使用包装类.<br>其他类型的 ID ( UID 等)可以自由定义，查询等操作。</p><h3 id="news-vs-persisted-entities"><a href="#news-vs-persisted-entities" class="headerlink" title="news vs. persisted entities"></a>news vs. persisted entities</h3><p>当创建一个对象时，还没有存入，它们的 ID 是 0.一旦该对象存入，ObjectBox 将为该对象指定 ID.可以通过 <code>put()</code>返回值拿到该 ID.</p><p>所以在 ObjectBox 内部通常把 ID 作为一个状态指示器,如果为 0 表示新创建，不为 0 表示已经存储。关联特别依赖这个特性.</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1794,55 +1109,24 @@ news vs. persisted entities当创建一个对象时，还没有存入，它们�
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/26/ObjectBox高级-1-配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1854,93 +1138,58 @@ news vs. persisted entities当创建一个对象时，还没有存入，它们�
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/26/ObjectBox高级-1-配置/" class="post-title-link" itemprop="url">ObjectBox高级-1-配置</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/02/26/ObjectBox高级-1-配置/" class="post-title-link" itemprop="url">ObjectBox高级-1-配置</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-02-26 09:35:48 / 修改时间：09:59:32" itemprop="dateCreated datePublished" datetime="2019-02-26T09:35:48+08:00">2019-02-26</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
+            </span>
           
             
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/02/26/ObjectBox高级-1-配置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox高级-1-配置/" itemprop="commentCount"></span>
-                </a>
-              </span>
+
             
           
 
           
-          
-            <span id="/2019/02/26/ObjectBox高级-1-配置/" class="leancloud_visitors" data-flag-title="ObjectBox高级-1-配置">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/02/26/ObjectBox高级-1-配置/" class="post-meta-item leancloud_visitors" data-flag-title="ObjectBox高级-1-配置" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/02/26/ObjectBox高级-1-配置/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox高级-1-配置/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1948,16 +1197,7 @@ news vs. persisted entities当创建一个对象时，还没有存入，它们�
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              手动添加依赖库如果 ObjectBox 插件没有自动添加依赖库和注解处理器，那么手动添加。
-dependencies &#123;    // all below should be added automatically by the plugin    compile "io.objectbox:objectbox-android:$objectboxVersion"    annotationProcessor "io.objectbox:objectbox-proce
-              ...
-            </p>
+          <h3 id="手动添加依赖库"><a href="#手动添加依赖库" class="headerlink" title="手动添加依赖库"></a>手动添加依赖库</h3><p>如果 ObjectBox 插件没有自动添加依赖库和注解处理器，那么手动添加。</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="comment">// all below should be added automatically by the plugin</span></span><br><span class="line">    compile <span class="string">"io.objectbox:objectbox-android:$objectboxVersion"</span></span><br><span class="line">    annotationProcessor <span class="string">"io.objectbox:objectbox-processor:$objectboxVersion"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1972,55 +1212,24 @@ dependencies &#123;    // all below should be added automatically by the plugin 
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/26/ObjectBox入门-12-事务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2032,93 +1241,58 @@ dependencies &#123;    // all below should be added automatically by the plugin 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/26/ObjectBox入门-12-事务/" class="post-title-link" itemprop="url">ObjectBox入门-12-事务</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/02/26/ObjectBox入门-12-事务/" class="post-title-link" itemprop="url">ObjectBox入门-12-事务</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-02-26 00:38:55 / 修改时间：09:35:00" itemprop="dateCreated datePublished" datetime="2019-02-26T00:38:55+08:00">2019-02-26</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
+            </span>
           
             
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/02/26/ObjectBox入门-12-事务/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox入门-12-事务/" itemprop="commentCount"></span>
-                </a>
-              </span>
+
             
           
 
           
-          
-            <span id="/2019/02/26/ObjectBox入门-12-事务/" class="leancloud_visitors" data-flag-title="ObjectBox入门-12-事务">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/02/26/ObjectBox入门-12-事务/" class="post-meta-item leancloud_visitors" data-flag-title="ObjectBox入门-12-事务" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/02/26/ObjectBox入门-12-事务/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox入门-12-事务/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -2126,19 +1300,12 @@ dependencies &#123;    // all below should be added automatically by the plugin 
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              ObjectBox 是一个满足 ACID 特性的交易型数据库.一个事务可以包含一组操作，要么执行成功，要么全部失败。几乎所有的 ObjectBox 的操作都包含了事务。比如 put(),read()。普通情况下，不用关心这些底层的事务。但某些复杂的情况下，手动处理事务操作可以使你的 app 更加高效一致。
-手动事务ObjectBox 提供了如下方法实现手动事务：
-
-runInTx: 在事务中运行指定的 runnable
-runInReadTx: 在一个只读的事务中运行指定的 
-              ...
-            </p>
+          <p>ObjectBox 是一个满足 ACID 特性的交易型数据库.一个事务可以包含一组操作，要么执行成功，要么全部失败。<br>几乎所有的 ObjectBox 的操作都包含了事务。比如 <code>put(),read()</code>。普通情况下，不用关心这些底层的事务。但某些复杂的情况下，手动处理事务操作可以使你的 app 更加高效一致。</p><h3 id="手动事务"><a href="#手动事务" class="headerlink" title="手动事务"></a>手动事务</h3><p>ObjectBox 提供了如下方法实现手动事务：</p><ul>
+<li>runInTx: 在事务中运行指定的 runnable</li>
+<li>runInReadTx: 在一个只读的事务中运行指定的 runnable.不同于写入事务，多个只读事务可以同时运行。</li>
+<li>runInTxAsync: 在另一个线程中运行指定的 runnable.一旦事务执行完毕，callback(可为 null) 将被调用.</li>
+<li>callInTx: 类似 runInTx(Runnable),但是有返回值或抛出异常.</li>
+</ul>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -2153,41 +1320,20 @@ runInReadTx: 在一个只读的事务中运行指定的
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-  </section>
+  </div>
 
   
   <nav class="pagination">
@@ -2195,12 +1341,10 @@ runInReadTx: 在一个只读的事务中运行指定的
   </nav>
 
 
-
           </div>
           
 
         </div>
-        
           
   
   <div class="sidebar-toggle">
@@ -2211,194 +1355,159 @@ runInReadTx: 在一个只读的事务中运行指定的
     </div>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc" data-target="post-toc-wrap">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+          站点概览
+        </li>
+      </ul>
 
-      
-
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="http://qiniu.picbed.dang8080.cn/logo.jpeg" alt="Humphrey Dang">
-            
-              <p class="site-author-name" itemprop="name">Humphrey Dang</p>
-              <div class="site-description motion-element" itemprop="description">Humphrey Dang 的博客</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">41</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                      <a href="/tags/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">22</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
       </div>
+      <!--/noindex-->
 
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" src="http://qiniu.picbed.dang8080.cn/logo.jpeg" alt="Humphrey Dang">
+  <p class="site-author-name" itemprop="name">Humphrey Dang</p>
+  <div class="site-description" itemprop="description">Humphrey Dang 的博客</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
       
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+      </span>
+    
+  </div>
 
-      
-        <div class="back-to-top">
+
+
+      </div>
+        <div class="back-to-top motion-element">
           <i class="fa fa-arrow-up"></i>
-          
-            <span id="scrollpercent"><span>0</span>%</span>
-          
+          <span>0%</span>
         </div>
       
 
     </div>
   </aside>
-  
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">  <span class="exturl" data-url="aHR0cDovL3d3dy5taWl0YmVpYW4uZ292LmNu">陕ICP备19000066号-1 </span>&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright"><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5taWl0Lmdvdi5jbg==">陕ICP备19000066号-1 </span>
+  <span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPQ=="> </span>&copy; 2015 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Humphrey Dang</span>
-
-  
-
-  
 </div>
-
-
   <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
-
-
-
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.0.1</div>
-
-
-
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.3.0</div>
 
         
+
+
+
+
 
 
 
@@ -2410,110 +1519,52 @@ runInReadTx: 在一个只读的事务中运行指定的
         
       </div>
     </footer>
-
-    
-
-    
-
-    
-
-    
   </div>
 
   
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+<script src="/js/utils.js?v=7.3.0"></script>
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
 
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/src/utils.js?v=7.0.1"></script>
-
-  <script src="/js/src/motion.js?v=7.0.1"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/src/affix.js?v=7.0.1"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
-
-
-
-  
-
-  
-
-
-  <script src="/js/src/next-boot.js?v=7.0.1"></script>
-
-
-  
-  <script src="/js/src/js.cookie.js?v=7.0.1"></script>
-  <script src="/js/src/scroll-cookie.js?v=7.0.1"></script>
-
-
-  
-  <script src="/js/src/exturl.js?v=7.0.1"></script>
-
-
-  
-
-  
-  
-
-<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
-
-
-
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(function(item) {
+  guest = guest.split(',').filter(item => {
     return GUEST.indexOf(item) > -1;
   });
   new Valine({
@@ -2527,366 +1578,11 @@ runInReadTx: 在一个只读的事务中运行指定的
     meta: guest,
     pageSize: '10' || 10,
     visitor: true,
-    lang: 'zh-cn' || 'zh-cn'
+    lang: 'zh-cn' || 'zh-cn',
+    path: location.pathname
   });
+}, window.Valine);
 </script>
-
-
-
-
-
-  
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>

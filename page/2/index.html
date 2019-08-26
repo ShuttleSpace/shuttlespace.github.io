@@ -4,97 +4,55 @@
 
 
 
-
-
-
-
-
-
-
-
-<html class="theme-next pisces" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#025a6c">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.3.0">
+  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.3.0" color="#025a6c">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.0.1">
-
-
-  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.0.1" color="#025a6c">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.0.1',
+    version: '7.3.0',
+    exturl: true,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: true,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
-    fastclick: false,
+    mediumzoom: false,
     lazyload: false,
-    tabs: true,
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    pangu: false,
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"搜索","hits_empty":"${query} 找不到","hits_stats":"${time}ms内找到${hits}个相关内容"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
     }
   };
 </script>
-
-
-  
-
-
-
 
   <meta name="description" content="Humphrey Dang 的博客">
 <meta name="keywords" content="Android,Java,Kotlin,JS">
@@ -107,28 +65,23 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="云青青兮欲雨">
 <meta name="twitter:description" content="Humphrey Dang 的博客">
-
-
-
-
-
-
   <link rel="canonical" href="http://blog.dang8080.cn/page/2/">
 
 
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
   };
 </script>
 
-  <title>云青青兮欲雨 – 水澹澹兮生烟</title>
+  <title>云青青兮欲雨 - 水澹澹兮生烟</title>
+  <meta name="generator" content="Hexo 3.8.0">
   
-
-
-
-
 
 
 
@@ -139,7 +92,6 @@
 
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -148,7 +100,7 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
   .use-motion .logo,
   .use-motion .site-title,
@@ -165,34 +117,25 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta custom-logo">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">云青青兮欲雨</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
-      
         <h1 class="site-subtitle" itemprop="description">水澹澹兮生烟</h1>
       
-    
-    
+      <a>
+        <img class="custom-logo-image" src="[object Object]" alt="云青青兮欲雨">
+      </a>
   </div>
 
   <div class="site-nav-toggle">
@@ -205,23 +148,15 @@
 </div>
 
 
-
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
+  <ul id="menu" class="menu">
+      
+      
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home">
-
-    
-    
-    
+        <li class="menu-item menu-item-home">
       
-    
-
     
       
     
@@ -229,18 +164,12 @@
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-
-    
-    
-    
       
-    
-
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
     
       
     
@@ -248,18 +177,12 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
       
-    
-
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
     
       
     
@@ -267,18 +190,12 @@
     <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">22</span></a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
       
-    
-
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
     
       
     
@@ -286,52 +203,34 @@
     <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
 
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-  
-
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
 
+</div>
+<div class="search-pop-overlay"></div>
 
-
-  
-
-
-
+  </div>
 </div>
     </header>
 
@@ -341,29 +240,16 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
             
 
-          
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
+  <div id="posts" class="posts-expand">
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/05/05/GraphQL-Data-mapping/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -375,93 +261,58 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/05/GraphQL-Data-mapping/" class="post-title-link" itemprop="url">GraphQL-Data mapping</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/05/05/GraphQL-Data-mapping/" class="post-title-link" itemprop="url">GraphQL-Data mapping</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-05-05 13:02:31 / 修改时间：14:04:12" itemprop="dateCreated datePublished" datetime="2019-05-05T13:02:31+08:00">2019-05-05</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
+            </span>
           
             
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/05/GraphQL-Data-mapping/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/05/GraphQL-Data-mapping/" itemprop="commentCount"></span>
-                </a>
-              </span>
+
             
           
 
           
-          
-            <span id="/2019/05/05/GraphQL-Data-mapping/" class="leancloud_visitors" data-flag-title="GraphQL-Data mapping">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/05/05/GraphQL-Data-mapping/" class="post-meta-item leancloud_visitors" data-flag-title="GraphQL-Data mapping" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/05/05/GraphQL-Data-mapping/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/05/05/GraphQL-Data-mapping/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -469,16 +320,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              Mapping datagraphql 是如何把对象数据匹配到类型的graphql 内部全部是关于声明类型 schema,然后在运行匹配到数据.作为类型 schema 的设计者,你应该在处理这些元素.
-type Query &#123;	products(match: String): [Product] # a list of products&#125;type Product &#123;	id: ID	name: String	description: String	
-              ...
-            </p>
+          <h2 id="Mapping-data"><a href="#Mapping-data" class="headerlink" title="Mapping data"></a>Mapping data</h2><h3 id="graphql-是如何把对象数据匹配到类型的"><a href="#graphql-是如何把对象数据匹配到类型的" class="headerlink" title="graphql 是如何把对象数据匹配到类型的"></a>graphql 是如何把对象数据匹配到类型的</h3><p>graphql 内部全部是关于声明类型 schema,然后在运行匹配到数据.<br>作为类型 schema 的设计者,你应该在处理这些元素.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">type Query &#123;</span><br><span class="line">	products(match: String): [Product] # a list of products</span><br><span class="line">&#125;</span><br><span class="line">type Product &#123;</span><br><span class="line">	id: ID</span><br><span class="line">	name: String</span><br><span class="line">	description: String</span><br><span class="line">	cost: Float</span><br><span class="line">	tax: Float</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -493,55 +335,24 @@ type Query &#123;	products(match: String): [Product] # a list of products&#125;t
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/05/04/GraphQL-Execution/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -553,105 +364,66 @@ type Query &#123;	products(match: String): [Product] # a list of products&#125;t
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/04/GraphQL-Execution/" class="post-title-link" itemprop="url">GraphQL-Execution</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/05/04/GraphQL-Execution/" class="post-title-link" itemprop="url">GraphQL-Execution</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-05-04 21:25:19" itemprop="dateCreated datePublished" datetime="2019-05-04T21:25:19+08:00">2019-05-04</time>
+            </span>
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-05-05 10:03:06" itemprop="dateModified" datetime="2019-05-05T10:03:06+08:00">2019-05-05</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/04/GraphQL-Execution/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/04/GraphQL-Execution/" itemprop="commentCount"></span>
-                </a>
               </span>
             
           
 
           
-          
-            <span id="/2019/05/04/GraphQL-Execution/" class="leancloud_visitors" data-flag-title="GraphQL-Execution">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/05/04/GraphQL-Execution/" class="post-meta-item leancloud_visitors" data-flag-title="GraphQL-Execution" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/05/04/GraphQL-Execution/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/05/04/GraphQL-Execution/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -659,16 +431,7 @@ type Query &#123;	products(match: String): [Product] # a list of products&#125;t
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              ExecutionQueries对 schema 执行 query,使用合适的参数构建一个新的 GraphQL 对象,然后调用execute().query 的结果是包含查询数据或者（并且）一系列错误的ExecutionResult 对象.
-GraphQLSchema schema = GraphQLSchema.newSchema().query(queryType).build();GraphQL graphQl = GraphQL.newGraphQL(schema).
-              ...
-            </p>
+          <h2 id="Execution"><a href="#Execution" class="headerlink" title="Execution"></a>Execution</h2><h3 id="Queries"><a href="#Queries" class="headerlink" title="Queries"></a>Queries</h3><p>对 schema 执行 query,使用合适的参数构建一个新的 GraphQL 对象,然后调用<code>execute()</code>.<br>query 的结果是包含查询数据或者（并且）一系列错误的<code>ExecutionResult</code> 对象.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GraphQLSchema schema = GraphQLSchema.newSchema().query(queryType).build();</span><br><span class="line">GraphQL graphQl = GraphQL.newGraphQL(schema).build();</span><br><span class="line">ExecutionInput executionInput = ExecutionInput.newExecutionInput().query(<span class="string">"query &#123; hero &#123; name &#125;&#125;"</span>);</span><br><span class="line">ExectionResult executionResult = graphQl.execute(executionInput);</span><br><span class="line">Object data = executionResult.getData();</span><br><span class="line">List&lt;GraphQLError&gt; errors = executionResult.getErrors();</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -683,55 +446,24 @@ GraphQLSchema schema = GraphQLSchema.newSchema().query(queryType).build();GraphQ
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/04/27/GraphQL-DataFetcher/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -743,93 +475,58 @@ GraphQLSchema schema = GraphQLSchema.newSchema().query(queryType).build();GraphQ
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/27/GraphQL-DataFetcher/" class="post-title-link" itemprop="url">GraphQL-DataFetcher</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/04/27/GraphQL-DataFetcher/" class="post-title-link" itemprop="url">GraphQL-DataFetcher</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-04-27 23:07:22 / 修改时间：23:13:13" itemprop="dateCreated datePublished" datetime="2019-04-27T23:07:22+08:00">2019-04-27</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
+            </span>
           
             
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/04/27/GraphQL-DataFetcher/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/27/GraphQL-DataFetcher/" itemprop="commentCount"></span>
-                </a>
-              </span>
+
             
           
 
           
-          
-            <span id="/2019/04/27/GraphQL-DataFetcher/" class="leancloud_visitors" data-flag-title="GraphQL-DataFetcher">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/04/27/GraphQL-DataFetcher/" class="post-meta-item leancloud_visitors" data-flag-title="GraphQL-DataFetcher" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/04/27/GraphQL-DataFetcher/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/04/27/GraphQL-DataFetcher/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -837,79 +534,32 @@ GraphQLSchema schema = GraphQLSchema.newSchema().query(queryType).build();GraphQ
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <h2 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h2><h3 id="graphql-如何获取数据"><a href="#graphql-如何获取数据" class="headerlink" title="graphql 如何获取数据"></a>graphql 如何获取数据</h3><p>graphql 中的每个属性都关联了一个 graphql.schema.DataFetcher.<br>一些属性会使用专用的 data fetcher 从数据库获取该属性的相关信息.而大多数简单的使用属性名和 Plain Old Java Object(POJO)模式 从内存中获取数据.<br><code>在其他 graphql 实现中，Data fetcher 被称为 resolver</code><br>现在声明一个类型定义:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">type Query &#123;</span><br><span class="line">	products(match: String): [Product] # a list of products</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Product &#123;</span><br><span class="line">	id: ID</span><br><span class="line">	name: String</span><br><span class="line">	description: String</span><br><span class="line">	cost: Float</span><br><span class="line">	tax: Float</span><br><span class="line">	launchDate(dateFormat: String = &quot;dd,MM,yyyy&quot;): String</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-        
-          
-            <p>
-              获取数据graphql 如何获取数据graphql 中的每个属性都关联了一个 graphql.schema.DataFetcher.一些属性会使用专用的 data fetcher 从数据库获取该属性的相关信息.而大多数简单的使用属性名和 Plain Old Java Object(POJO)模式 从内存中获取数据.在其他 graphql 实现中，Data fetcher 被称为 resolver现在声明一个类型定义:
-type Query &#123;	products(ma
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/04/27/GraphQL-DataFetcher/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/04/12/移动优先的响应式网页设计/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -921,93 +571,58 @@ type Query &#123;	products(ma
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/12/移动优先的响应式网页设计/" class="post-title-link" itemprop="url">移动优先的响应式网页设计</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/04/12/移动优先的响应式网页设计/" class="post-title-link" itemprop="url">移动优先的响应式网页设计</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-04-12 13:20:33 / 修改时间：14:25:40" itemprop="dateCreated datePublished" datetime="2019-04-12T13:20:33+08:00">2019-04-12</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
+            </span>
           
             
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/04/12/移动优先的响应式网页设计/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/12/移动优先的响应式网页设计/" itemprop="commentCount"></span>
-                </a>
-              </span>
+
             
           
 
           
-          
-            <span id="/2019/04/12/移动优先的响应式网页设计/" class="leancloud_visitors" data-flag-title="移动优先的响应式网页设计">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/04/12/移动优先的响应式网页设计/" class="post-meta-item leancloud_visitors" data-flag-title="移动优先的响应式网页设计" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/04/12/移动优先的响应式网页设计/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/04/12/移动优先的响应式网页设计/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1015,87 +630,40 @@ type Query &#123;	products(ma
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p><span class="exturl" data-url="aHR0cHM6Ly93d3cuaHRtbDVyb2Nrcy5jb20vZW4vbW9iaWxlL3Jlc3BvbnNpdmVkZXNpZ24v" title="https://www.html5rocks.com/en/mobile/responsivedesign/">原文<i class="fa fa-external-link"></i></span></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文将探索如何创建移动优先的网页设计体验。</p>
+<ul>
+<li>为什么我们需要创建移动优先，响应式，适应式网页设计体验?</li>
+<li>如何针对适应式站点组织 HTML 结构以便优化性能，优先考虑灵活性?</li>
+<li>如何书写优先定义共享样式、针对大屏和媒体查询构建、使用相对单位的 CSS?</li>
+<li>如何编写不引人注目的 Javascript 来有条件地加载内容片段，利用触摸事件和地理定位</li>
+<li>我们可以做些什么来进一步增强我们的适应性体验</li>
+</ul>
+<h2 id="适应性的必要性"><a href="#适应性的必要性" class="headerlink" title="适应性的必要性"></a>适应性的必要性</h2><p>随着网络环境越来越复杂，为越来越多的环境提供可靠的网络体验变得极为重要.幸运的是，响应式 web 设计给 web 开发者提供了一些可以匹配任意大小屏幕的工具来组织布局.</p>
 
-      
-        
-          
-            <p>
-              原文
-简介本文将探索如何创建移动优先的网页设计体验。
-
-为什么我们需要创建移动优先，响应式，适应式网页设计体验?
-如何针对适应式站点组织 HTML 结构以便优化性能，优先考虑灵活性?
-如何书写优先定义共享样式、针对大屏和媒体查询构建、使用相对单位的 CSS?
-如何编写不引人注目的 Javascript 来有条件地加载内容片段，利用触摸事件和地理定位
-我们可以做些什么来进一步增强我们的适应性体验
-
-适应性的必要性随着网络环境越来越复杂，为越来越多的环境提供可靠的网络体验变得极为
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/04/12/移动优先的响应式网页设计/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/03/28/常用命令记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1107,93 +675,58 @@ type Query &#123;	products(ma
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/28/常用命令记录/" class="post-title-link" itemprop="url">常用命令记录</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/03/28/常用命令记录/" class="post-title-link" itemprop="url">常用命令记录</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-03-28 13:13:30 / 修改时间：13:14:39" itemprop="dateCreated datePublished" datetime="2019-03-28T13:13:30+08:00">2019-03-28</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
+            </span>
           
             
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/03/28/常用命令记录/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/28/常用命令记录/" itemprop="commentCount"></span>
-                </a>
-              </span>
+
             
           
 
           
-          
-            <span id="/2019/03/28/常用命令记录/" class="leancloud_visitors" data-flag-title="常用命令记录">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/03/28/常用命令记录/" class="post-meta-item leancloud_visitors" data-flag-title="常用命令记录" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/03/28/常用命令记录/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/03/28/常用命令记录/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1201,78 +734,31 @@ type Query &#123;	products(ma
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <h2 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h2><h3 id="gradle-completion"><a href="#gradle-completion" class="headerlink" title="gradle-completion"></a>gradle-completion</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">brew install gradle-completion</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$fpath</span> | grep <span class="string">"/usr/local/share/zsh/site-functions"</span></span><br><span class="line"><span class="comment"># 执行结果</span></span><br><span class="line">Add the following line to your ~/.bash_profile:</span><br><span class="line">  [[ -r <span class="string">"/usr/local/etc/profile.d/bash_completion.sh"</span> ]] &amp;&amp; . <span class="string">"/usr/local/etc/profile.d/bash_completion.sh"</span></span><br><span class="line"></span><br><span class="line">Bash completion has been installed to:</span><br><span class="line">  /usr/<span class="built_in">local</span>/etc/bash_completion.d</span><br><span class="line">==&gt; gradle-completion</span><br><span class="line">Bash completion has been installed to:</span><br><span class="line">  /usr/<span class="built_in">local</span>/etc/bash_completion.d</span><br><span class="line"></span><br><span class="line">zsh completions have been installed to:</span><br><span class="line">  /usr/<span class="built_in">local</span>/share/zsh/site-functions</span><br></pre></td></tr></table></figure>
 
-      
-        
-          
-            <p>
-              Homebrewgradle-completionbrew install gradle-completionecho $fpath | grep "/usr/local/share/zsh/site-functions"# 执行结果Add the following line to your ~/.bash_profile:  [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] &amp;&amp; . "/usr/
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/03/28/常用命令记录/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/03/28/gradle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1284,105 +770,66 @@ type Query &#123;	products(ma
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/28/gradle/" class="post-title-link" itemprop="url">gradle</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/03/28/gradle/" class="post-title-link" itemprop="url">gradle</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-03-28 13:00:38" itemprop="dateCreated datePublished" datetime="2019-03-28T13:00:38+08:00">2019-03-28</time>
+            </span>
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-04-01 14:23:55" itemprop="dateModified" datetime="2019-04-01T14:23:55+08:00">2019-04-01</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/03/28/gradle/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/28/gradle/" itemprop="commentCount"></span>
-                </a>
               </span>
             
           
 
           
-          
-            <span id="/2019/03/28/gradle/" class="leancloud_visitors" data-flag-title="gradle">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/03/28/gradle/" class="post-meta-item leancloud_visitors" data-flag-title="gradle" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/03/28/gradle/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/03/28/gradle/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1390,22 +837,34 @@ type Query &#123;	products(ma
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              Gradle 升级日志5.0 包含了 Kotlin DSL 生产级支持,依赖版本对齐(类似 Maven BOM),任务超时,Java 11 支持
-
-Kotlin DSL 1.0
-依赖版本对齐:
-
-同一逻辑组(platform)下的不同模块在依赖树中可以有相同的版本.也可以导入 Maven BOMs 定义 platform.
-
-dependencies &#123;  // 导入 BOM.此文件中版本将覆盖依赖树中的其他版本  implementation(enforcedPl
-              ...
-            </p>
+          <h3 id="Gradle-升级日志"><a href="#Gradle-升级日志" class="headerlink" title="Gradle 升级日志"></a>Gradle 升级日志</h3><p>5.0 包含了 Kotlin DSL 生产级支持,依赖版本对齐(类似 Maven BOM),任务超时,Java 11 支持</p><ul>
+<li>Kotlin DSL 1.0</li>
+<li><p>依赖版本对齐:</p>
+<ul>
+<li>同一逻辑组(platform)下的不同模块在依赖树中可以有相同的版本.也可以导入 Maven BOMs 定义 platform.</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  <span class="comment">// 导入 BOM.此文件中版本将覆盖依赖树中的其他版本</span></span><br><span class="line">  implementation(enforcedPlatform(<span class="string">"org.springframework.boot:spring-boot-dependencies:1.5.8.RELEASE"</span>))</span><br><span class="line">  <span class="comment">// 使用上面定义的版本</span></span><br><span class="line">  implementation(<span class="string">"com.google.code.gson:gson"</span>)</span><br><span class="line">  implementation(<span class="string">"dom4j:dom4j"</span>)</span><br><span class="line">  <span class="comment">// 覆盖上面的版本</span></span><br><span class="line">  implementation(<span class="string">"org.codehaus.groovy:groovy:1.8.6"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Gradle build 初始化特性</p>
+</li>
+<li>可搜索文档</li>
+<li>任务超时</li>
+<li>解析依赖时 HTTP 重试</li>
+<li><p>性能特性</p>
+<ul>
+<li>Gradle 可以作为一个低优先级的进程启动: –priority low 或者 org.gradle.priority=low.可以保证 IDE/Browser 不卡,即使是一个很消耗资源的 gradle 任务.</li>
+<li>多任务输出属性不再禁用缓存.当使用 <code>@OutputFiles</code> 或 <code>OutputDirectories</code> 标记一个<code>Iterable</code>类型,Gradle 通常会对该任务禁用缓存且输出如下信息:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Declares multiple output files <span class="keyword">for</span> the single output property <span class="string">'outputFiles'</span> via @OutputFiles,@OutputDirectories or TaskOutputs.files()</span><br></pre></td></tr></table></figure>
+<p>现在不会再阻止缓存了.对该任务禁用缓存的唯一理由可能是如果输出包含文件树.</p>
+</li>
+<li><p>Java 11 运行时支持</p>
+</li>
+<li>插件授权特性</li>
+<li><code>Provider 追踪产品任务</code>：Provider API 实例提供了追踪某值和任务或生成该值的任务。</li>
+<li>Gradle Native 特性</li>
+<li>推广特性</li>
+</ul>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1420,55 +879,24 @@ dependencies &#123;  // 导入 BOM.此文件中版本将覆盖依赖树中的其
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/03/17/git-笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1480,105 +908,66 @@ dependencies &#123;  // 导入 BOM.此文件中版本将覆盖依赖树中的其
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/17/git-笔记/" class="post-title-link" itemprop="url">git 笔记</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/03/17/git-笔记/" class="post-title-link" itemprop="url">git 笔记</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-03-17 09:05:15" itemprop="dateCreated datePublished" datetime="2019-03-17T09:05:15+08:00">2019-03-17</time>
+            </span>
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-03-23 12:18:52" itemprop="dateModified" datetime="2019-03-23T12:18:52+08:00">2019-03-23</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/03/17/git-笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/17/git-笔记/" itemprop="commentCount"></span>
-                </a>
               </span>
             
           
 
           
-          
-            <span id="/2019/03/17/git-笔记/" class="leancloud_visitors" data-flag-title="git 笔记">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/03/17/git-笔记/" class="post-meta-item leancloud_visitors" data-flag-title="git 笔记" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/03/17/git-笔记/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/03/17/git-笔记/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1586,81 +975,34 @@ dependencies &#123;  // 导入 BOM.此文件中版本将覆盖依赖树中的其
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <ul>
+<li>config</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改配置</span></span><br><span class="line">git config --<span class="built_in">local</span> <span class="comment"># 对某个仓库有效</span></span><br><span class="line">git config --global <span class="comment"># 对当前用户所有仓库有效</span></span><br><span class="line">git config --system <span class="comment"># 对系统所有登录用户有效</span></span><br><span class="line"><span class="comment"># 查看配置</span></span><br><span class="line">git config --list --<span class="built_in">local</span></span><br><span class="line">git config --list --global</span><br><span class="line">git config --list --system</span><br><span class="line"><span class="comment"># 打开编辑器修改config</span></span><br><span class="line">git config -e <span class="comment"># 仅对当前仓库有效</span></span><br><span class="line"><span class="comment"># 变更文件名</span></span><br><span class="line">git mv readme readme.md <span class="comment"># 避免  mv x y -&gt; git add -&gt; git rm</span></span><br><span class="line">git <span class="built_in">log</span> [分支]</span><br><span class="line">        --oneline <span class="comment"># 一行显示</span></span><br><span class="line">        -n4 <span class="comment"># 指定最新的几次提交</span></span><br><span class="line">        --all <span class="comment"># 所有分支的提交</span></span><br><span class="line">        --graph <span class="comment"># 图形化显示</span></span><br><span class="line"><span class="comment"># 打开内置帮助网页.</span></span><br><span class="line">git <span class="built_in">help</span> --web [<span class="built_in">log</span>]</span><br><span class="line"><span class="comment"># gui</span></span><br><span class="line">gitk --all</span><br><span class="line">git branch -av</span><br><span class="line"><span class="comment"># 在 ./git/refs/heads/xxx 中查看信息</span></span><br><span class="line">git cat-file -t master <span class="comment"># 返回 git object model 类型: blog, tree, commit, tag</span></span><br><span class="line">            -p <span class="comment"># 显示所有内容</span></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">git branch -D [fixup]</span><br><span class="line"><span class="comment"># 变基</span></span><br><span class="line">git rebase -i</span><br><span class="line"><span class="comment"># 暂存区和最近一次提交的区别</span></span><br><span class="line">git diff --cached</span><br><span class="line"><span class="comment"># 将暂存区的内容丢弃</span></span><br><span class="line">git reset HEAD -- &lt;file&gt;</span><br><span class="line"><span class="comment"># 将暂存区的内容恢复到本地</span></span><br><span class="line">git checkout -- &lt;file&gt;</span><br><span class="line"><span class="comment"># 设置别名</span></span><br><span class="line">git config --global alias.co checkout</span><br><span class="line">git config --global alias.br branch</span><br><span class="line">git config --global alias.ci commit</span><br><span class="line">git config --global alias.st status</span><br><span class="line">git config --global alias.last <span class="string">'log -1 HEAD'</span></span><br><span class="line">git config --global alias.unstage <span class="string">'reset HEAD --'</span>; git unstage fileA === git reset HEAD -- fileA</span><br><span class="line">git config --global alias.visual <span class="string">'!gitk'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看各个分支所指的对象  --decorate</span></span><br><span class="line">git <span class="built_in">log</span> --oneline --decorate</span><br><span class="line">git <span class="built_in">log</span> --oneline --decorate --graph --all</span><br><span class="line"><span class="comment"># 跟踪远程分支</span></span><br><span class="line">git checkout --track origin/serverfix</span><br><span class="line">git checkout -b sf origin/serverfix; sf 分支追踪 origin/serverfix 分支.</span><br><span class="line"><span class="comment"># 添加修改正在追踪的上游分支; -u / --set-upstream-to</span></span><br><span class="line">git branch -u origin/serverfix</span><br><span class="line"><span class="comment"># 当设置好跟踪分支后，可通过 @&#123;upstream&#125; 或 @&#123;u&#125; 快捷方式来引用.所有如果 master 跟踪 origin/master。那么 git merge @&#123;u&#125; 可以取代 git merage origin/master.</span></span><br><span class="line"><span class="comment"># 查看所有跟踪分支</span></span><br><span class="line">git branch -vv</span><br><span class="line"><span class="comment"># 删除服务端的分支</span></span><br><span class="line">git push origin --delete serverfix</span><br><span class="line"><span class="comment">#</span></span><br><span class="line">git init --bare --shared ; <span class="comment"># shared 会自动修改该仓库目录的组权限为可写.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 为服务端配置 SSH 访问</span></span><br><span class="line">sudo adduser git</span><br><span class="line">su git</span><br><span class="line"><span class="built_in">cd</span></span><br><span class="line">mkdir .ssh &amp;&amp; chmod 700 .ssh</span><br><span class="line">touch .ssh/authorized_keys &amp;&amp; chmod 600 .ssh/authorized_keys</span><br><span class="line">cat /tmp/id_rsa.john.pub &gt;&gt; ~/.ssh/authorized_keys</span><br><span class="line">cat /tmp/id_rsa.josie.pub &gt;&gt; ~/.ssh/authorized_keys</span><br><span class="line"><span class="comment"># 限制 git 用户只能访问项目，无法登录远程主机.</span></span><br><span class="line">cat /etc/shells</span><br><span class="line"><span class="built_in">which</span> git-shell</span><br><span class="line">sudo vim /etc/shells； <span class="comment"># 将 git-shell 添加</span></span><br><span class="line">sudo chsh git /usr/bin/git-shell; <span class="comment"># 限制 git 用户只能利用 SSH 连接对 Git 仓库进行推送和拉去操作，而不能登录机器并取得普通 shell.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 以守护进程的方式设置 git 协议,不需要配置 SSH 公钥.</span></span><br><span class="line">git daemon --reuseaddr --base-path=/opt/git/ /opt/git/;</span><br><span class="line"><span class="comment"># --reuseaddr 允许服务器在无需等待旧连接超时的情况下重启</span></span><br><span class="line"><span class="comment"># --base-path 允许用户在未完全指定路径的条件下克隆项目,结尾的路径将告诉 git 守护进程从何处寻找仓库来导出.如果有防火墙运行，请开放 9418 端口.</span></span><br><span class="line"><span class="comment"># 空白错误(换行\tab\。。。)</span></span><br><span class="line">git diff --check</span><br><span class="line"><span class="comment"># 部分暂存</span></span><br><span class="line">git add --patch</span><br><span class="line"><span class="comment">#</span></span><br><span class="line">git merge --squash featureB</span><br><span class="line"><span class="comment"># --squash 接受被合并分支上的所有工作，并将其压缩至一个变更及，使仓库成为真正合并发生的状态，而不是生成一个合并提交.</span></span><br><span class="line"><span class="comment"># 打包 archive</span></span><br><span class="line">git archive master --prefix=<span class="string">'project/'</span> | gzip &gt; `git describe master`.tar.gz</span><br><span class="line">git archive master --prefix=<span class="string">'project/'</span> --format=zip &gt; `git describe master`.zips</span><br><span class="line"><span class="comment">#</span></span><br><span class="line">git diff --ours</span><br><span class="line">        <span class="comment"># --theirs</span></span><br><span class="line">        <span class="comment"># --base -b</span></span><br></pre></td></tr></table></figure>
 
-      
-        
-          
-            <p>
-              
-config
-
-# 修改配置git config --local # 对某个仓库有效git config --global # 对当前用户所有仓库有效git config --system # 对系统所有登录用户有效# 查看配置git config --list --localgit config --list --globalgit config --list --system# 打开编辑器修改configgit config -e # 仅对当前仓库有效# 变更文件名gi
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/03/17/git-笔记/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/03/16/JGit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1672,105 +1014,66 @@ config
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/16/JGit/" class="post-title-link" itemprop="url">JGit</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/03/16/JGit/" class="post-title-link" itemprop="url">JGit</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-03-16 11:47:07" itemprop="dateCreated datePublished" datetime="2019-03-16T11:47:07+08:00">2019-03-16</time>
+            </span>
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-03-21 18:27:14" itemprop="dateModified" datetime="2019-03-21T18:27:14+08:00">2019-03-21</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/03/16/JGit/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/16/JGit/" itemprop="commentCount"></span>
-                </a>
               </span>
             
           
 
           
-          
-            <span id="/2019/03/16/JGit/" class="leancloud_visitors" data-flag-title="JGit">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/03/16/JGit/" class="post-meta-item leancloud_visitors" data-flag-title="JGit" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/03/16/JGit/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/03/16/JGit/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1778,17 +1081,7 @@ config
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              前言JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.
-入门获取在仓库搜索引擎中搜索 jgit 即可获取各种添加依赖的方式.我现在基本使用的是 gradle 依赖
-implementation("org.eclipse.jgit:org.eclipse.jgit:5.3.0.201903130848-r")implementation("org.eclipse.jgit
-              ...
-            </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.</p><h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h3><p>在<span class="exturl" data-url="aHR0cHM6Ly9tdm5yZXBvc2l0b3J5LmNvbS8=" title="https://mvnrepository.com/">仓库搜索引擎<i class="fa fa-external-link"></i></span>中搜索 jgit 即可获取各种添加依赖的方式.我现在基本使用的是 gradle 依赖</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">implementation(<span class="string">"org.eclipse.jgit:org.eclipse.jgit:5.3.0.201903130848-r"</span>)</span><br><span class="line">implementation(<span class="string">"org.eclipse.jgit:org.eclipse.jgit.http.server:5.3.0.201903130848-r"</span>)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1803,55 +1096,24 @@ implementation("org.eclipse.jgit:org.eclipse.jgit:5.3.0.201903130848-r")implemen
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/03/09/teamcity自动化更新hexo博客/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1863,105 +1125,66 @@ implementation("org.eclipse.jgit:org.eclipse.jgit:5.3.0.201903130848-r")implemen
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/09/teamcity自动化更新hexo博客/" class="post-title-link" itemprop="url">teamcity自动化更新hexo博客</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/03/09/teamcity自动化更新hexo博客/" class="post-title-link" itemprop="url">teamcity自动化更新hexo博客</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-03-09 23:26:22" itemprop="dateCreated datePublished" datetime="2019-03-09T23:26:22+08:00">2019-03-09</time>
+            </span>
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-03-17 09:44:24" itemprop="dateModified" datetime="2019-03-17T09:44:24+08:00">2019-03-17</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/03/09/teamcity自动化更新hexo博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/09/teamcity自动化更新hexo博客/" itemprop="commentCount"></span>
-                </a>
               </span>
             
           
 
           
-          
-            <span id="/2019/03/09/teamcity自动化更新hexo博客/" class="leancloud_visitors" data-flag-title="teamcity自动化更新hexo博客">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/03/09/teamcity自动化更新hexo博客/" class="post-meta-item leancloud_visitors" data-flag-title="teamcity自动化更新hexo博客" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/03/09/teamcity自动化更新hexo博客/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/03/09/teamcity自动化更新hexo博客/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1969,21 +1192,18 @@ implementation("org.eclipse.jgit:org.eclipse.jgit:5.3.0.201903130848-r")implemen
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              前言在知乎找到了一个更好的方法: 原文在这里我整理一下:
-
-创建仓库 xxx.github.io.
-创建两个分支: master/hexo.(可在 github 网页或本地创建)
-git clone git@github.com:xxx/xxx.github.io.git
-如果没有在网页创建分支,可以在此处创建.git checkout -b master; git checkout -b hexo
-接下来执行 npm install hexo; hexo init; npm
-              ...
-            </p>
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在知乎找到了一个更好的方法: <a href="使用 hexo，如果换了电脑怎么更新博客？ - CrazyMilk 的回答 - 知乎
+https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里我整理一下:</p><ul>
+<li>创建仓库 xxx.github.io.</li>
+<li>创建两个分支: master/hexo.(可在 github 网页或本地创建)</li>
+<li><code>git clone git@github.com:xxx/xxx.github.io.git</code></li>
+<li>如果没有在网页创建分支,可以在此处创建.<code>git checkout -b master; git checkout -b hexo</code></li>
+<li>接下来执行 <code>npm install hexo; hexo init; npm i; npm i hexo-deployer-git</code>,此处在 <code>hexo</code> 分支操作</li>
+<li>修改 _config.yml 的 deploy 参数,此处在 <code>master</code> 分支操作.</li>
+<li>我使用了<code>hexo-next-theme</code>,从 git 上下载后,进入 <code>themes/next</code> 执行 <code>git submodule init</code>,将 <code>next</code> 主题关联,此处在 <code>hexo</code> 分支操作</li>
+<li><code>git add .; git commit -m &quot;blahblahblah&quot;; git push origin hexo;</code> 提交网站相关文件.</li>
+<li><code>hexo g -d</code> 生成网站并部署到 <code>github</code>.</li>
+</ul>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1998,55 +1218,24 @@ git clone git@github.com:xxx/xxx.github.io.git
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/03/03/Room-kotlin-coroutine/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2058,93 +1247,58 @@ git clone git@github.com:xxx/xxx.github.io.git
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/03/Room-kotlin-coroutine/" class="post-title-link" itemprop="url">Room & kotlin coroutine</a>
-              
+        <h2 class="post-title" itemprop="name headline">
             
-          </h2>
-        
+            <a href="/2019/03/03/Room-kotlin-coroutine/" class="post-title-link" itemprop="url">Room & kotlin coroutine</a>
+          
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
               
 
               <time title="创建时间：2019-03-03 08:53:01 / 修改时间：09:20:21" itemprop="dateCreated datePublished" datetime="2019-03-03T08:53:01+08:00">2019-03-03</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
+            </span>
           
             
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/03/03/Room-kotlin-coroutine/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/03/Room-kotlin-coroutine/" itemprop="commentCount"></span>
-                </a>
-              </span>
+
             
           
 
           
-          
-            <span id="/2019/03/03/Room-kotlin-coroutine/" class="leancloud_visitors" data-flag-title="Room & kotlin coroutine">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/03/03/Room-kotlin-coroutine/" class="post-meta-item leancloud_visitors" data-flag-title="Room & kotlin coroutine" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/03/03/Room-kotlin-coroutine/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/03/03/Room-kotlin-coroutine/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -2152,19 +1306,9 @@ git clone git@github.com:xxx/xxx.github.io.git
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>
-              OverviewRoom 2.1 开始支持 Kotlin 协程。DAO 方法可以使用 suspend 标记以确保这些方法不会在主线程中被执行。Room 使用 Executor(来自框架组件) 作为 Dispatcher 运行 SQL 语句，当然在编译 RoomDatabase 时，你也可以提供自己的 Executor.
-
-当前协程支持正在开发中，更多特性正在计划中
-
-添加依赖请升级 Room 到 v2.1, 同时 Kotlin v1.3.0+ , Coroutines v1.
-              ...
-            </p>
+          <h4 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h4><p>Room 2.1 开始支持 Kotlin 协程。DAO 方法可以使用 suspend 标记以确保这些方法不会在主线程中被执行。<br>Room 使用 <code>Executor</code>(来自框架组件) 作为 <code>Dispatcher</code> 运行 SQL 语句，当然在编译 <code>RoomDatabase</code> 时，你也可以提供自己的 <code>Executor</code>.</p><blockquote>
+<p>当前协程支持正在开发中，更多特性正在计划中</p>
+</blockquote><h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><p>请升级 Room 到 v2.1, 同时 Kotlin v1.3.0+ , Coroutines v1.0.0+</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -2179,41 +1323,20 @@ git clone git@github.com:xxx/xxx.github.io.git
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-  </section>
+  </div>
 
   
   <nav class="pagination">
@@ -2221,12 +1344,10 @@ git clone git@github.com:xxx/xxx.github.io.git
   </nav>
 
 
-
           </div>
           
 
         </div>
-        
           
   
   <div class="sidebar-toggle">
@@ -2237,194 +1358,159 @@ git clone git@github.com:xxx/xxx.github.io.git
     </div>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc" data-target="post-toc-wrap">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+          站点概览
+        </li>
+      </ul>
 
-      
-
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="http://qiniu.picbed.dang8080.cn/logo.jpeg" alt="Humphrey Dang">
-            
-              <p class="site-author-name" itemprop="name">Humphrey Dang</p>
-              <div class="site-description motion-element" itemprop="description">Humphrey Dang 的博客</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">41</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                      <a href="/tags/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">22</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
       </div>
+      <!--/noindex-->
 
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" src="http://qiniu.picbed.dang8080.cn/logo.jpeg" alt="Humphrey Dang">
+  <p class="site-author-name" itemprop="name">Humphrey Dang</p>
+  <div class="site-description" itemprop="description">Humphrey Dang 的博客</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
       
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+      </span>
+    
+  </div>
 
-      
-        <div class="back-to-top">
+
+
+      </div>
+        <div class="back-to-top motion-element">
           <i class="fa fa-arrow-up"></i>
-          
-            <span id="scrollpercent"><span>0</span>%</span>
-          
+          <span>0%</span>
         </div>
       
 
     </div>
   </aside>
-  
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">  <span class="exturl" data-url="aHR0cDovL3d3dy5taWl0YmVpYW4uZ292LmNu">陕ICP备19000066号-1 </span>&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright"><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5taWl0Lmdvdi5jbg==">陕ICP备19000066号-1 </span>
+  <span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPQ=="> </span>&copy; 2015 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Humphrey Dang</span>
-
-  
-
-  
 </div>
-
-
   <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
-
-
-
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.0.1</div>
-
-
-
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.3.0</div>
 
         
+
+
+
+
 
 
 
@@ -2436,110 +1522,52 @@ git clone git@github.com:xxx/xxx.github.io.git
         
       </div>
     </footer>
-
-    
-
-    
-
-    
-
-    
   </div>
 
   
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+<script src="/js/utils.js?v=7.3.0"></script>
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
 
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/src/utils.js?v=7.0.1"></script>
-
-  <script src="/js/src/motion.js?v=7.0.1"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/src/affix.js?v=7.0.1"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
-
-
-
-  
-
-  
-
-
-  <script src="/js/src/next-boot.js?v=7.0.1"></script>
-
-
-  
-  <script src="/js/src/js.cookie.js?v=7.0.1"></script>
-  <script src="/js/src/scroll-cookie.js?v=7.0.1"></script>
-
-
-  
-  <script src="/js/src/exturl.js?v=7.0.1"></script>
-
-
-  
-
-  
-  
-
-<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
-
-
-
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(function(item) {
+  guest = guest.split(',').filter(item => {
     return GUEST.indexOf(item) > -1;
   });
   new Valine({
@@ -2553,366 +1581,11 @@ git clone git@github.com:xxx/xxx.github.io.git
     meta: guest,
     pageSize: '10' || 10,
     visitor: true,
-    lang: 'zh-cn' || 'zh-cn'
+    lang: 'zh-cn' || 'zh-cn',
+    path: location.pathname
   });
+}, window.Valine);
 </script>
-
-
-
-
-
-  
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>
