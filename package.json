@@ -6,7 +6,9 @@
     "version": "3.8.0"
   },
   "scripts": {
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "new": "./node_modules/hexo/bin/hexo new post",
+    "server": "./node_modules/hexo/bin/hexo server"
   },
   "dependencies": {
     "gulp": "^4.0.0",

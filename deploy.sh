@@ -1,9 +1,9 @@
 #! /bin/bash
 git checkout hexo
 # generate
-hexo g
+npx hexo g
 npm run gulp
-hexo d
+npx hexo d
 # git
 git add .
 git commit -m "部署: $(date)"
