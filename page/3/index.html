@@ -426,12 +426,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Compose 是一个为了定义和运行多容器 Docker 应用的工具。<br><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RvY2tlci9sYWJz" title="https://github.com/docker/labs">官方动手示例<i class="fa fa-external-link"></i></span></p><h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
-<li>一个主机多个隔离环境</li>
-<li>当容器创建时保留所有的 volume</li>
-<li>只有容器被更改时才触发创建</li>
-<li>定义变量和在不同环境中使用</li>
-</ul>
+          <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Compose 是一个为了定义和运行多容器 Docker 应用的工具。<br><a href="https://github.com/docker/labs" target="_blank" rel="noopener">官方动手示例</a></p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -542,7 +537,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL2FuZHJvaWRkZXZlbG9wZXJzL2xpdmVkYXRhLXdpdGgtc25hY2tiYXItbmF2aWdhdGlvbi1hbmQtb3RoZXItZXZlbnRzLXRoZS1zaW5nbGVsaXZlZXZlbnQtY2FzZS1hYzI2MjI2NzMxNTA=" title="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150">原文<i class="fa fa-external-link"></i></span></p><p>view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData observables. view 订阅 LiveData 的改变且随时响应。这适用于连续不断的显示在一个屏幕的数据。<br><img src="http://qiniu.picbed.dang8080.cn/20190228202711.png" alt="LiveData"><br>但是某些数据却更应该被消费一次，比如 Snackbar 消息，navigation 事件 或 dialog 触发器。<br><img src="http://qiniu.picbed.dang8080.cn/20190228202852.png" alt="LiveData once"><br>与其试着通过扩展 Architecture Components 扩展或库解决这个问题，不如我们可以直面这是个设计缺陷。我们推荐你把你的事件看作是状态的一部分。本文我们将列举一些常见的错误和推荐的解决方案。</p>
+          <p><a href="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150" target="_blank" rel="noopener">原文</a></p><p>view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData observables. view 订阅 LiveData 的改变且随时响应。这适用于连续不断的显示在一个屏幕的数据。<br><img src="http://qiniu.picbed.dang8080.cn/20190228202711.png" alt="LiveData"><br>但是某些数据却更应该被消费一次，比如 Snackbar 消息，navigation 事件 或 dialog 触发器。<br><img src="http://qiniu.picbed.dang8080.cn/20190228202852.png" alt="LiveData once"><br>与其试着通过扩展 Architecture Components 扩展或库解决这个问题，不如我们可以直面这是个设计缺陷。我们推荐你把你的事件看作是状态的一部分。本文我们将列举一些常见的错误和推荐的解决方案。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1286,7 +1281,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="手动添加依赖库"><a href="#手动添加依赖库" class="headerlink" title="手动添加依赖库"></a>手动添加依赖库</h3><p>如果 ObjectBox 插件没有自动添加依赖库和注解处理器，那么手动添加。</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="comment">// all below should be added automatically by the plugin</span></span><br><span class="line">    compile <span class="string">"io.objectbox:objectbox-android:$objectboxVersion"</span></span><br><span class="line">    annotationProcessor <span class="string">"io.objectbox:objectbox-processor:$objectboxVersion"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h3 id="手动添加依赖库"><a href="#手动添加依赖库" class="headerlink" title="手动添加依赖库"></a>手动添加依赖库</h3><p>如果 ObjectBox 插件没有自动添加依赖库和注解处理器，那么手动添加。</p>
           <!--noindex-->
           
             <div class="post-button text-center">

@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="以横向数组的方式显示子组件的组件.为了使其一个组件填充剩余可用空间,可以使用 Expanded对其进行包装.Row 组件不会滑动(通常一个Row组件中的子组件过多已经超出了可用空间,则会导致错误).如果在不足的空间中想要一排组件能够滑动,可以考虑使用 ListView.">
+  <meta name="description" content="以横向数组的方式显示子组件的组件.为了使其一个组件填充剩余可用空间,可以使用 Expanded对其进行包装.">
 <meta name="keywords" content="Android,Java,Kotlin,JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flutter-Row">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/06/04/Flutter-Row/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="以横向数组的方式显示子组件的组件.为了使其一个组件填充剩余可用空间,可以使用 Expanded对其进行包装.Row 组件不会滑动(通常一个Row组件中的子组件过多已经超出了可用空间,则会导致错误).如果在不足的空间中想要一排组件能够滑动,可以考虑使用 ListView.">
+<meta property="og:description" content="以横向数组的方式显示子组件的组件.为了使其一个组件填充剩余可用空间,可以使用 Expanded对其进行包装.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-06-04T15:22:42.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter-Row">
-<meta name="twitter:description" content="以横向数组的方式显示子组件的组件.为了使其一个组件填充剩余可用空间,可以使用 Expanded对其进行包装.Row 组件不会滑动(通常一个Row组件中的子组件过多已经超出了可用空间,则会导致错误).如果在不足的空间中想要一排组件能够滑动,可以考虑使用 ListView.">
+<meta name="twitter:description" content="以横向数组的方式显示子组件的组件.为了使其一个组件填充剩余可用空间,可以使用 Expanded对其进行包装.">
   <link rel="canonical" href="http://blog.dang8080.cn/2019/06/04/Flutter-Row/">
 
 
@@ -316,9 +316,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>以横向数组的方式显示子组件的组件.</p><p>为了使其一个组件填充剩余可用空间,可以使用 <code>Expanded</code>对其进行包装.</p><p><code>Row</code> 组件不会滑动(通常一个<code>Row</code>组件中的子组件过多已经超出了可用空间,则会导致错误).如果在不足的空间中想要一排组件能够滑动,可以考虑使用 <code>ListView</code>.</p><a id="more"></a>
+        <p>以横向数组的方式显示子组件的组件.</p><p>为了使其一个组件填充剩余可用空间,可以使用 <code>Expanded</code>对其进行包装.</p><a id="more"></a>
 
-
+<p><code>Row</code> 组件不会滑动(通常一个<code>Row</code>组件中的子组件过多已经超出了可用空间,则会导致错误).如果在不足的空间中想要一排组件能够滑动,可以考虑使用 <code>ListView</code>.</p>
 <p><code>Column</code> 竖向排列.</p>
 <p>如果仅有一个子组件,那么可以考虑使用 <code>Align</code> 或 <code>Center</code> 定位该子组件.</p>
 <h4 id="为什么我的-row-有一条黄黑相间的条纹"><a href="#为什么我的-row-有一条黄黑相间的条纹" class="headerlink" title="为什么我的 row 有一条黄黑相间的条纹?"></a>为什么我的 row 有一条黄黑相间的条纹?</h4><p>如果 <code>Row</code>的内容是不可伸缩扩展的(没有使用 <code>Expanded</code> 或 <code>Flexible</code> 组件包装),连在一起比 row 本身更宽,那么我们就称 row 溢出了.<br>如果 row 溢出了,那么 row 就没有多余的空间去分配给它的<code>Flexible</code> 和 <code>Expanded</code> 子组件. row 会在边上显示一条黄黑相间的条表示溢出了.如果 row 外有空间,那么溢出亮将会以红色字体打印出来.</p>

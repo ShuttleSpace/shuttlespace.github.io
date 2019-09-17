@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="Queries 使用 QueryBuilder 定义查询标准，Query 类运行查询并返回匹配结果 QueryBuilder">
+  <meta name="description" content="Queries 使用 QueryBuilder 定义查询标准，Query 类运行查询并返回匹配结果">
 <meta name="keywords" content="ObjectBox,数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ObjectBox入门-8-查询">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/02/24/ObjectBox入门-8-查询/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="Queries 使用 QueryBuilder 定义查询标准，Query 类运行查询并返回匹配结果 QueryBuilder">
+<meta property="og:description" content="Queries 使用 QueryBuilder 定义查询标准，Query 类运行查询并返回匹配结果">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-02-25T16:45:05.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ObjectBox入门-8-查询">
-<meta name="twitter:description" content="Queries 使用 QueryBuilder 定义查询标准，Query 类运行查询并返回匹配结果 QueryBuilder">
+<meta name="twitter:description" content="Queries 使用 QueryBuilder 定义查询标准，Query 类运行查询并返回匹配结果">
   <link rel="canonical" href="http://blog.dang8080.cn/2019/02/24/ObjectBox入门-8-查询/">
 
 
@@ -326,8 +326,8 @@
       
         <h2 id="Queries"><a href="#Queries" class="headerlink" title="Queries"></a>Queries</h2><ul>
 <li>使用 QueryBuilder 定义查询标准，Query 类运行查询并返回匹配结果</li>
-</ul><h3 id="QueryBuilder"><a href="#QueryBuilder" class="headerlink" title="QueryBuilder"></a>QueryBuilder</h3><a id="more"></a>
-<ul>
+</ul><a id="more"></a>
+<h3 id="QueryBuilder"><a href="#QueryBuilder" class="headerlink" title="QueryBuilder"></a>QueryBuilder</h3><ul>
 <li>QueryBuilder 使用编译生成的元信息类来指定要匹配的属性值。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;user&gt; joes = userBox.query().equal(User_.firstName,<span class="string">"Joe"</span>).build().find();</span><br><span class="line"></span><br><span class="line">QueryBuilder&lt;User&gt; builder = userBox.query();</span><br><span class="line">builder.equal(User_.firstName,<span class="string">"Joe"</span>)</span><br><span class="line">        .greater(User_.yearOfBirth,<span class="number">1970</span>)</span><br><span class="line">        .startsWith(User_.lastName,<span class="string">"O"</span>);</span><br><span class="line">List&lt;User&gt; youngJoes = builder.build().find();</span><br></pre></td></tr></table></figure>

@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="Mapping datagraphql 是如何把对象数据匹配到类型的graphql 内部全部是关于声明类型 schema,然后在运行匹配到数据.作为类型 schema 的设计者,你应该在处理这些元素.">
+  <meta name="description" content="Mapping datagraphql 是如何把对象数据匹配到类型的">
 <meta name="keywords" content="Android,Java,Kotlin,JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GraphQL-Data mapping">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/05/05/GraphQL-Data-mapping/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="Mapping datagraphql 是如何把对象数据匹配到类型的graphql 内部全部是关于声明类型 schema,然后在运行匹配到数据.作为类型 schema 的设计者,你应该在处理这些元素.">
+<meta property="og:description" content="Mapping datagraphql 是如何把对象数据匹配到类型的">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-05-05T06:04:12.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GraphQL-Data mapping">
-<meta name="twitter:description" content="Mapping datagraphql 是如何把对象数据匹配到类型的graphql 内部全部是关于声明类型 schema,然后在运行匹配到数据.作为类型 schema 的设计者,你应该在处理这些元素.">
+<meta name="twitter:description" content="Mapping datagraphql 是如何把对象数据匹配到类型的">
   <link rel="canonical" href="http://blog.dang8080.cn/2019/05/05/GraphQL-Data-mapping/">
 
 
@@ -316,7 +316,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Mapping-data"><a href="#Mapping-data" class="headerlink" title="Mapping data"></a>Mapping data</h2><h3 id="graphql-是如何把对象数据匹配到类型的"><a href="#graphql-是如何把对象数据匹配到类型的" class="headerlink" title="graphql 是如何把对象数据匹配到类型的"></a>graphql 是如何把对象数据匹配到类型的</h3><p>graphql 内部全部是关于声明类型 schema,然后在运行匹配到数据.<br>作为类型 schema 的设计者,你应该在处理这些元素.</p><a id="more"></a>
+        <h2 id="Mapping-data"><a href="#Mapping-data" class="headerlink" title="Mapping data"></a>Mapping data</h2><h3 id="graphql-是如何把对象数据匹配到类型的"><a href="#graphql-是如何把对象数据匹配到类型的" class="headerlink" title="graphql 是如何把对象数据匹配到类型的"></a>graphql 是如何把对象数据匹配到类型的</h3><a id="more"></a><p>graphql 内部全部是关于声明类型 schema,然后在运行匹配到数据.<br>作为类型 schema 的设计者,你应该在处理这些元素.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">type Query &#123;</span><br><span class="line">	products(match: String): [Product] # a list of products</span><br><span class="line">&#125;</span><br><span class="line">type Product &#123;</span><br><span class="line">	id: ID</span><br><span class="line">	name: String</span><br><span class="line">	description: String</span><br><span class="line">	cost: Float</span><br><span class="line">	tax: Float</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>然后可以执行查询</p>

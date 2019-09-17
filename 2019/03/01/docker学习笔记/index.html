@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="OverviewCompose 是一个为了定义和运行多容器 Docker 应用的工具。官方动手示例特性 一个主机多个隔离环境 当容器创建时保留所有的 volume 只有容器被更改时才触发创建 定义变量和在不同环境中使用">
+  <meta name="description" content="OverviewCompose 是一个为了定义和运行多容器 Docker 应用的工具。官方动手示例">
 <meta name="keywords" content="docker,学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker,docker-compose学习笔记">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/03/01/docker学习笔记/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="OverviewCompose 是一个为了定义和运行多容器 Docker 应用的工具。官方动手示例特性 一个主机多个隔离环境 当容器创建时保留所有的 volume 只有容器被更改时才触发创建 定义变量和在不同环境中使用">
+<meta property="og:description" content="OverviewCompose 是一个为了定义和运行多容器 Docker 应用的工具。官方动手示例">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-03-02T12:39:48.712Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker,docker-compose学习笔记">
-<meta name="twitter:description" content="OverviewCompose 是一个为了定义和运行多容器 Docker 应用的工具。官方动手示例特性 一个主机多个隔离环境 当容器创建时保留所有的 volume 只有容器被更改时才触发创建 定义变量和在不同环境中使用">
+<meta name="twitter:description" content="OverviewCompose 是一个为了定义和运行多容器 Docker 应用的工具。官方动手示例">
   <link rel="canonical" href="http://blog.dang8080.cn/2019/03/01/docker学习笔记/">
 
 
@@ -324,13 +324,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Compose 是一个为了定义和运行多容器 Docker 应用的工具。<br><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RvY2tlci9sYWJz" title="https://github.com/docker/labs">官方动手示例<i class="fa fa-external-link"></i></span></p><h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
+        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Compose 是一个为了定义和运行多容器 Docker 应用的工具。<br><a href="https://github.com/docker/labs" target="_blank" rel="noopener">官方动手示例</a></p><a id="more"></a>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
 <li>一个主机多个隔离环境</li>
 <li>当容器创建时保留所有的 volume</li>
 <li>只有容器被更改时才触发创建</li>
 <li>定义变量和在不同环境中使用</li>
-</ul><a id="more"></a>
-
+</ul>
 <h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
 <li>自动测试环境</li>
 <li>单独主机部署</li>
@@ -498,7 +498,7 @@
 
 <ul>
 <li><code>docker-compose up -d</code>.<blockquote>
-<p>如果使用 Docker Machine, 那么运行 <code>docker-machine ip MACHINE_VM</code> 获取运行地址。如果是 destop 版，<span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdA==" title="http://localhost">http://localhost<i class="fa fa-external-link"></i></span> 即可.</p>
+<p>如果使用 Docker Machine, 那么运行 <code>docker-machine ip MACHINE_VM</code> 获取运行地址。如果是 destop 版，<a href="http://localhost" target="_blank" rel="noopener">http://localhost</a> 即可.</p>
 </blockquote>
 </li>
 <li><code>docker-compose down</code> 移除容器，默认的网络，保留 WordPress 和数据库。<code>docker-compose down --volumes</code> 全部移除。</li>

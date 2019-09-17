@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="以垂直数组方式显示子组件的组件.想要某个子组件扩展填充垂直空间,使用 Expanded 组件包装即可.Column 组件不会滑动(通常如果 Column 中的多个子组件超出了可用空间,则会报错).如果有一排组件,而且想要在空间不足时能滑动,考虑使用 ListView.">
+  <meta name="description" content="以垂直数组方式显示子组件的组件.想要某个子组件扩展填充垂直空间,使用 Expanded 组件包装即可.">
 <meta name="keywords" content="Android,Java,Kotlin,JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flutter-Column">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/06/04/Flutter-Column/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="以垂直数组方式显示子组件的组件.想要某个子组件扩展填充垂直空间,使用 Expanded 组件包装即可.Column 组件不会滑动(通常如果 Column 中的多个子组件超出了可用空间,则会报错).如果有一排组件,而且想要在空间不足时能滑动,考虑使用 ListView.">
+<meta property="og:description" content="以垂直数组方式显示子组件的组件.想要某个子组件扩展填充垂直空间,使用 Expanded 组件包装即可.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-06-05T05:03:37.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter-Column">
-<meta name="twitter:description" content="以垂直数组方式显示子组件的组件.想要某个子组件扩展填充垂直空间,使用 Expanded 组件包装即可.Column 组件不会滑动(通常如果 Column 中的多个子组件超出了可用空间,则会报错).如果有一排组件,而且想要在空间不足时能滑动,考虑使用 ListView.">
+<meta name="twitter:description" content="以垂直数组方式显示子组件的组件.想要某个子组件扩展填充垂直空间,使用 Expanded 组件包装即可.">
   <link rel="canonical" href="http://blog.dang8080.cn/2019/06/04/Flutter-Column/">
 
 
@@ -324,9 +324,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>以垂直数组方式显示子组件的组件.</p><p>想要某个子组件扩展填充垂直空间,使用 <code>Expanded</code> 组件包装即可.</p><p><code>Column</code> 组件不会滑动(通常如果 <code>Column</code> 中的多个子组件超出了可用空间,则会报错).如果有一排组件,而且想要在空间不足时能滑动,考虑使用 <code>ListView</code>.</p><a id="more"></a>
+        <p>以垂直数组方式显示子组件的组件.</p><p>想要某个子组件扩展填充垂直空间,使用 <code>Expanded</code> 组件包装即可.</p><a id="more"></a>
 
-
+<p><code>Column</code> 组件不会滑动(通常如果 <code>Column</code> 中的多个子组件超出了可用空间,则会报错).如果有一排组件,而且想要在空间不足时能滑动,考虑使用 <code>ListView</code>.</p>
 <p>横向排列考虑使用 <code>Row</code>.</p>
 <p>如果只有一个子组件,考虑使用 <code>Align</code> 或 <code>Center</code> 定位组件.</p>
 <h4 id="如果传入的垂直约束是无边界的"><a href="#如果传入的垂直约束是无边界的" class="headerlink" title="如果传入的垂直约束是无边界的"></a>如果传入的垂直约束是无边界的</h4><p>如果一个 <code>Column</code> 组件有一个或多个 <code>Expanded</code> 或 <code>Flexible</code> 组件,并且被放在另一个 <code>Column</code> 或 <code>ListView</code> 或其他不提供最大高度约束上下文的组件中,那么将会收到一个运行时异常,表明有非 0 flex 的子组件,但是其垂直约束是无边界的.</p>

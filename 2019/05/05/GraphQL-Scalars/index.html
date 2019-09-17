@@ -344,7 +344,7 @@
 <p>我们的自定义 email scalar 类型将</p>
 <ul>
 <li>调用 <code>parseValue</code> 将 <code>$mainContact</code>变量转为运行时对象.</li>
-<li>调用 <code>parseLiteral</code> 将 AST <code>graphql.language.StringValue</code> “<span class="exturl" data-url="bWFpbHRvOmJhY2t1cEBjb21wYW55LmNvbQ==" title="mailto:backup@company.com">backup@company.com<i class="fa fa-external-link"></i></span>“ 转换为运行时对象.</li>
+<li>调用 <code>parseLiteral</code> 将 AST <code>graphql.language.StringValue</code> “<a href="mailto:backup@company.com" target="_blank" rel="noopener">backup@company.com</a>“ 转换为运行时对象.</li>
 <li>调用 <code>serialize</code> 将 mainContactEmial 运行时实现转为输出对象形式.</li>
 </ul>
 <h3 id="输入输出校验"><a href="#输入输出校验" class="headerlink" title="输入输出校验"></a>输入输出校验</h3><p>例如我们的 email scalar 将会校验输入输出是否是真是的 email 地址.<br><code>graphql.schema.Coercing</code> 协议如下:</p>

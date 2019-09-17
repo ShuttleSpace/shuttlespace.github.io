@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="Entity在一个类中至少需要 @Entity 和 @Id 两个注解才能定义一个 ObjectBox model.例如:123456// User.java@Entitypublic class User &amp;#123;    @Id public long id;    public String name;&amp;#125;">
+  <meta name="description" content="Entity在一个类中至少需要 @Entity 和 @Id 两个注解才能定义一个 ObjectBox model.例如:">
 <meta name="keywords" content="ObjectBox,数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ObjectBox入门-2-基本操作">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/02/24/ObjectBox入门-2-基本操作/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="Entity在一个类中至少需要 @Entity 和 @Id 两个注解才能定义一个 ObjectBox model.例如:123456// User.java@Entitypublic class User &amp;#123;    @Id public long id;    public String name;&amp;#125;">
+<meta property="og:description" content="Entity在一个类中至少需要 @Entity 和 @Id 两个注解才能定义一个 ObjectBox model.例如:">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-02-25T16:43:13.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ObjectBox入门-2-基本操作">
-<meta name="twitter:description" content="Entity在一个类中至少需要 @Entity 和 @Id 两个注解才能定义一个 ObjectBox model.例如:123456// User.java@Entitypublic class User &amp;#123;    @Id public long id;    public String name;&amp;#125;">
+<meta name="twitter:description" content="Entity在一个类中至少需要 @Entity 和 @Id 两个注解才能定义一个 ObjectBox model.例如:">
   <link rel="canonical" href="http://blog.dang8080.cn/2019/02/24/ObjectBox入门-2-基本操作/">
 
 
@@ -324,8 +324,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h3><p>在一个类中至少需要 <code>@Entity</code> 和 <code>@Id</code> 两个注解才能定义一个 ObjectBox model.例如:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// User.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a>
-
+        <h3 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h3><p>在一个类中至少需要 <code>@Entity</code> 和 <code>@Id</code> 两个注解才能定义一个 ObjectBox model.例如:</p><a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// User.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>然后 make 就可生成 model.</p>
 <p>| @Id 的类型必须为 long.<br>| 如果 entity 发生了很大的变动（如移动类或修改注解）,必须 rebuild 项目以便 ObjectBox 生成的代码得到更新.</p>

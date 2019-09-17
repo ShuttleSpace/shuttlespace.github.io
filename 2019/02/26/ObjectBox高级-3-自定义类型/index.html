@@ -329,7 +329,7 @@
 <li>绝对不能在转换器中调用数据库(Box,BoxStore),转换器方法在事务中调用，例如读取或写入对象到 box 中将会失败。</li>
 <li>为提高性能，ObjectBox 使用了对所有的转换器使用了唯一一个实例。请保证除默认无参构造方法外没有自定义其他构造方法。同时请保证线程安全，应为在 multiple entities 中可能涉及到并发.</li>
 </ul>
-<h3 id="List-Array-类型"><a href="#List-Array-类型" class="headerlink" title="List/Array 类型"></a>List/Array 类型</h3><p>可以使用转换器转换 List 类型。例如把 List<string> 转为一条 String 的 JSON 数组.<br>当前不支持 Array 转换器.查看特性实现进度<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29iamVjdGJveC9vYmplY3Rib3gtamF2YS9pc3N1ZXMvNDI=" title="https://github.com/objectbox/objectbox-java/issues/42">Array<i class="fa fa-external-link"></i></span></string></p>
+<h3 id="List-Array-类型"><a href="#List-Array-类型" class="headerlink" title="List/Array 类型"></a>List/Array 类型</h3><p>可以使用转换器转换 List 类型。例如把 List<string> 转为一条 String 的 JSON 数组.<br>当前不支持 Array 转换器.查看特性实现进度<a href="https://github.com/objectbox/objectbox-java/issues/42" target="_blank" rel="noopener">Array</a></string></p>
 <h3 id="Enums"><a href="#Enums" class="headerlink" title="Enums"></a>Enums</h3><p>最佳实践:</p>
 <ul>
 <li>不要持久化 enum 的 ordinal 或 name: 二者都不稳定，且在下次你修改 enum 定义时会改变</li>
