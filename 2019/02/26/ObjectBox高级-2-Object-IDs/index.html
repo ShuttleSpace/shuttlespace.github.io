@@ -4,18 +4,18 @@
 
 
 
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#025a6c">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.3.0">
-  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.3.0" color="#025a6c">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#025a6c">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
@@ -25,13 +25,13 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '7.3.0',
-    exturl: true,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#025a6c","save":"auto"},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
@@ -41,31 +41,32 @@
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"搜索","hits_empty":"${query} 找不到","hits_stats":"${time}ms内找到${hits}个相关内容"}
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},
     path: 'search.xml',
     motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
   };
 </script>
 
-  <meta name="description" content="Object 必须具有一个类型为 long 的属性.当然可以使用它的包装类 java.lang.Long,但是不建议使用包装类.其他类型的 ID ( UID 等)可以自由定义，查询等操作。news vs. persisted entities当创建一个对象时，还没有存入，它们的 ID 是 0.一旦该对象存入，ObjectBox 将为该对象指定 ID.可以通过 put()返回值拿到该 ID.所以在">
+  <meta name="description" content="Object 必须具有一个类型为 long 的属性.当然可以使用它的包装类 java.lang.Long,但是不建议使用包装类.其他类型的 ID ( UID 等)可以自由定义，查询等操作。">
 <meta name="keywords" content="ObjectBox,数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ObjectBox高级-2-Object IDs">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/02/26/ObjectBox高级-2-Object-IDs/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="Object 必须具有一个类型为 long 的属性.当然可以使用它的包装类 java.lang.Long,但是不建议使用包装类.其他类型的 ID ( UID 等)可以自由定义，查询等操作。news vs. persisted entities当创建一个对象时，还没有存入，它们的 ID 是 0.一旦该对象存入，ObjectBox 将为该对象指定 ID.可以通过 put()返回值拿到该 ID.所以在">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:description" content="Object 必须具有一个类型为 long 的属性.当然可以使用它的包装类 java.lang.Long,但是不建议使用包装类.其他类型的 ID ( UID 等)可以自由定义，查询等操作。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-02-26T04:09:41.146Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ObjectBox高级-2-Object IDs">
-<meta name="twitter:description" content="Object 必须具有一个类型为 long 的属性.当然可以使用它的包装类 java.lang.Long,但是不建议使用包装类.其他类型的 ID ( UID 等)可以自由定义，查询等操作。news vs. persisted entities当创建一个对象时，还没有存入，它们的 ID 是 0.一旦该对象存入，ObjectBox 将为该对象指定 ID.可以通过 put()返回值拿到该 ID.所以在">
+<meta name="twitter:description" content="Object 必须具有一个类型为 long 的属性.当然可以使用它的包装类 java.lang.Long,但是不建议使用包装类.其他类型的 ID ( UID 等)可以自由定义，查询等操作。">
   <link rel="canonical" href="http://blog.dang8080.cn/2019/02/26/ObjectBox高级-2-Object-IDs/">
 
 
@@ -81,7 +82,6 @@
 </script>
 
   <title>ObjectBox高级-2-Object IDs | 云青青兮欲雨</title>
-  <meta name="generator" content="Hexo 3.8.0">
   
 
 
@@ -117,13 +117,13 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <div class="container">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta custom-logo">
+  <div class="site-meta">
 
     <div>
       <a href="/" class="brand" rel="start">
@@ -132,15 +132,12 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <h1 class="site-subtitle" itemprop="description">水澹澹兮生烟</h1>
+        <p class="site-subtitle">水澹澹兮生烟</p>
       
-      <a>
-        <img class="custom-logo-image" src="[object Object]" alt="云青青兮欲雨">
-      </a>
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -159,10 +156,8 @@
         <li class="menu-item menu-item-home">
       
     
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
 
   </li>
       
@@ -172,10 +167,8 @@
         <li class="menu-item menu-item-archives">
       
     
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
   </li>
       
@@ -185,10 +178,8 @@
         <li class="menu-item menu-item-tags">
       
     
-      
-    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">22</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
 
   </li>
       
@@ -198,16 +189,14 @@
         <li class="menu-item menu-item-about">
       
     
-      
-    
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
 
   </li>
       <li class="menu-item menu-item-search">
         <a href="javascript:;" class="popup-trigger">
         
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
       </li>
     
   </ul>
@@ -220,7 +209,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -236,6 +227,10 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
     <main id="main" class="main">
@@ -255,32 +250,32 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/26/ObjectBox高级-2-Object-IDs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">ObjectBox高级-2-Object IDs
+        <h1 class="post-title" itemprop="name headline">ObjectBox高级-2-Object IDs
 
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-02-26 10:00:19 / 修改时间：12:09:41" itemprop="dateCreated datePublished" datetime="2019-02-26T10:00:19+08:00">2019-02-26</time>
+              <time title="Created: 2019-02-26 10:00:19 / Modified: 12:09:41" itemprop="dateCreated datePublished" datetime="2019-02-26T10:00:19+08:00">2019-02-26</time>
             </span>
           
             
@@ -289,11 +284,11 @@
           
 
           
-            <span id="/2019/02/26/ObjectBox高级-2-Object-IDs/" class="post-meta-item leancloud_visitors" data-flag-title="ObjectBox高级-2-Object IDs" title="阅读次数">
+            <span id="/2019/02/26/ObjectBox高级-2-Object-IDs/" class="post-meta-item leancloud_visitors" data-flag-title="ObjectBox高级-2-Object IDs" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -305,7 +300,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/02/26/ObjectBox高级-2-Object-IDs/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox高级-2-Object-IDs/" itemprop="commentCount"></span></a>
   </span>
@@ -321,9 +316,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Object 必须具有一个类型为 <code>long</code> 的属性.当然可以使用它的包装类 <code>java.lang.Long</code>,但是不建议使用包装类.<br>其他类型的 ID ( UID 等)可以自由定义，查询等操作。</p><h3 id="news-vs-persisted-entities"><a href="#news-vs-persisted-entities" class="headerlink" title="news vs. persisted entities"></a>news vs. persisted entities</h3><p>当创建一个对象时，还没有存入，它们的 ID 是 0.一旦该对象存入，ObjectBox 将为该对象指定 ID.可以通过 <code>put()</code>返回值拿到该 ID.</p><p>所以在 ObjectBox 内部通常把 ID 作为一个状态指示器,如果为 0 表示新创建，不为 0 表示已经存储。关联特别依赖这个特性.</p><a id="more"></a>
-
-
+        <p>Object 必须具有一个类型为 <code>long</code> 的属性.当然可以使用它的包装类 <code>java.lang.Long</code>,但是不建议使用包装类.<br>其他类型的 ID ( UID 等)可以自由定义，查询等操作。</p><a id="more"></a>
+<h3 id="news-vs-persisted-entities"><a href="#news-vs-persisted-entities" class="headerlink" title="news vs. persisted entities"></a>news vs. persisted entities</h3><p>当创建一个对象时，还没有存入，它们的 ID 是 0.一旦该对象存入，ObjectBox 将为该对象指定 ID.可以通过 <code>put()</code>返回值拿到该 ID.</p>
+<p>所以在 ObjectBox 内部通常把 ID 作为一个状态指示器,如果为 0 表示新创建，不为 0 表示已经存储。关联特别依赖这个特性.</p>
 <h3 id="特殊的-Object-IDs"><a href="#特殊的-Object-IDs" class="headerlink" title="特殊的 Object IDs"></a>特殊的 Object IDs</h3><p>Object IDs 可能是任意 <code>long</code> 值，除了以下两种:</p>
 <ul>
 <li>0: 或者当类型为 <code>Long</code> 时为 null,被认为是新创建，还未存储。<code>put</code>这个对象总是会插入一个新对象，并指定一个未使用过的 ID.</li>
@@ -333,6 +328,7 @@
 <p>默认只有 ObjectBox 可以指定 ID(👇 介绍).如果试图自己存入一个 ID 比当前 ID 值最大的还大的对象，ObjectBox 将抛出错误。</p>
 <h3 id="手动指定-IDs"><a href="#手动指定-IDs" class="headerlink" title="手动指定 IDs"></a>手动指定 IDs</h3><p>如果需要手动指定 ID,那么请添加如下注解:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Id</span>(assignable = <span class="keyword">true</span>)</span><br><span class="line"><span class="keyword">long</span> id;</span><br></pre></td></tr></table></figure>
+
 <p>这将会允许存入任意值 ID 的对象。当然设置 ID 为 0 时，ObjectBox 将制定新 ID</p>
 <blockquote>
 <p>自定义 ID 会打破自动状态指示监视(new vs. persisted). 所以应该立即存入该自定义 ID 对象，可能还得手动绑定 box，特别在关联状况下.</p>
@@ -419,11 +415,11 @@
       
 
       <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc" data-target="post-toc-wrap">
-          文章目录
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-          站点概览
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
       </ul>
 
@@ -436,17 +432,16 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" src="http://qiniu.picbed.dang8080.cn/logo.jpeg" alt="Humphrey Dang">
-  <p class="site-author-name" itemprop="name">Humphrey Dang</p>
-  <div class="site-description" itemprop="description">Humphrey Dang 的博客</div>
+  <p class="site-author-name" itemprop="name">Humphrey Dan</p>
+  <div class="site-description" itemprop="description">write something,donot leave.</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
     
@@ -458,54 +453,8 @@
             <a href="/tags/">
           
         
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span>
         </a>
       </div>
     
@@ -519,7 +468,7 @@
       
         
       
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
+        <a href="https://github.com/shuttlespace" title="GitHub &rarr; https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
     
       <span class="links-of-author-item">
@@ -530,7 +479,7 @@
       
         
       
-        <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+        <a href="mailto:dang8080@qq.com" title="E-Mail &rarr; mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
     
   </div>
@@ -538,11 +487,6 @@
 
 
       </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
-      
 
     </div>
   </aside>
@@ -554,16 +498,13 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright"><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5taWl0Lmdvdi5jbg==">陕ICP备19000066号-1 </span>
-  <span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPQ=="> </span>&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
+  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2017 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Humphrey Dang</span>
+  <span class="author" itemprop="copyrightHolder">Humphrey Dan</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.3.0</div>
 
         
 
@@ -584,10 +525,13 @@
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-<script src="/js/utils.js?v=7.3.0"></script>
-<script src="/js/schemes/pisces.js?v=7.3.0"></script>
-<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+<script src="/js/utils.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
@@ -600,7 +544,7 @@
 
 
 
-  <script src="/js/local-search.js?v=7.3.0"></script>
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -627,7 +571,7 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
   guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
+    return GUEST.includes(item);
   });
   new Valine({
     el: '#comments',

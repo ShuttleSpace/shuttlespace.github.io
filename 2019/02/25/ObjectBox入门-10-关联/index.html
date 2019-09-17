@@ -4,18 +4,18 @@
 
 
 
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#025a6c">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.3.0">
-  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.3.0" color="#025a6c">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#025a6c">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
@@ -25,13 +25,13 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '7.3.0',
-    exturl: true,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#025a6c","save":"auto"},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
@@ -41,34 +41,35 @@
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"搜索","hits_empty":"${query} 找不到","hits_stats":"${time}ms内找到${hits}个相关内容"}
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},
     path: 'search.xml',
     motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
   };
 </script>
 
-  <meta name="description" content="Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来.To-One 关联使用 ToOne 会智能的对目标对象创建关联。同时获取目标对象缓存。12345678910111213141516// Customer.java@Entitypublic class Customer &amp;#123;    @Id public long">
+  <meta name="description" content="Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来.">
 <meta name="keywords" content="ObjectBox,数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ObjectBox入门-10-关联">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/02/25/ObjectBox入门-10-关联/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来.To-One 关联使用 ToOne 会智能的对目标对象创建关联。同时获取目标对象缓存。12345678910111213141516// Customer.java@Entitypublic class Customer &amp;#123;    @Id public long">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:description" content="Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来.">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qiniu.picbed.dang8080.cn/20190225232506.png">
 <meta property="og:image" content="http://qiniu.picbed.dang8080.cn/20190226000315.png">
 <meta property="og:image" content="http://qiniu.picbed.dang8080.cn/20190226000708.png">
 <meta property="og:updated_time" content="2019-02-25T16:44:32.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ObjectBox入门-10-关联">
-<meta name="twitter:description" content="Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来.To-One 关联使用 ToOne 会智能的对目标对象创建关联。同时获取目标对象缓存。12345678910111213141516// Customer.java@Entitypublic class Customer &amp;#123;    @Id public long">
+<meta name="twitter:description" content="Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来.">
 <meta name="twitter:image" content="http://qiniu.picbed.dang8080.cn/20190225232506.png">
   <link rel="canonical" href="http://blog.dang8080.cn/2019/02/25/ObjectBox入门-10-关联/">
 
@@ -85,7 +86,6 @@
 </script>
 
   <title>ObjectBox入门-10-关联 | 云青青兮欲雨</title>
-  <meta name="generator" content="Hexo 3.8.0">
   
 
 
@@ -121,13 +121,13 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <div class="container">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta custom-logo">
+  <div class="site-meta">
 
     <div>
       <a href="/" class="brand" rel="start">
@@ -136,15 +136,12 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <h1 class="site-subtitle" itemprop="description">水澹澹兮生烟</h1>
+        <p class="site-subtitle">水澹澹兮生烟</p>
       
-      <a>
-        <img class="custom-logo-image" src="[object Object]" alt="云青青兮欲雨">
-      </a>
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -163,10 +160,8 @@
         <li class="menu-item menu-item-home">
       
     
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
 
   </li>
       
@@ -176,10 +171,8 @@
         <li class="menu-item menu-item-archives">
       
     
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
   </li>
       
@@ -189,10 +182,8 @@
         <li class="menu-item menu-item-tags">
       
     
-      
-    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">22</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
 
   </li>
       
@@ -202,16 +193,14 @@
         <li class="menu-item menu-item-about">
       
     
-      
-    
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
 
   </li>
       <li class="menu-item menu-item-search">
         <a href="javascript:;" class="popup-trigger">
         
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
       </li>
     
   </ul>
@@ -224,7 +213,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -240,6 +231,10 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
     <main id="main" class="main">
@@ -259,32 +254,32 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/25/ObjectBox入门-10-关联/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">ObjectBox入门-10-关联
+        <h1 class="post-title" itemprop="name headline">ObjectBox入门-10-关联
 
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-02-25 22:49:13" itemprop="dateCreated datePublished" datetime="2019-02-25T22:49:13+08:00">2019-02-25</time>
+              <time title="Created: 2019-02-25 22:49:13" itemprop="dateCreated datePublished" datetime="2019-02-25T22:49:13+08:00">2019-02-25</time>
             </span>
           
             
@@ -294,18 +289,18 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-02-26 00:44:32" itemprop="dateModified" datetime="2019-02-26T00:44:32+08:00">2019-02-26</time>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-02-26 00:44:32" itemprop="dateModified" datetime="2019-02-26T00:44:32+08:00">2019-02-26</time>
               </span>
             
           
 
           
-            <span id="/2019/02/25/ObjectBox入门-10-关联/" class="post-meta-item leancloud_visitors" data-flag-title="ObjectBox入门-10-关联" title="阅读次数">
+            <span id="/2019/02/25/ObjectBox入门-10-关联/" class="post-meta-item leancloud_visitors" data-flag-title="ObjectBox入门-10-关联" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -317,7 +312,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/02/25/ObjectBox入门-10-关联/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/02/25/ObjectBox入门-10-关联/" itemprop="commentCount"></span></a>
   </span>
@@ -333,32 +328,41 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来.</p><h3 id="To-One-关联"><a href="#To-One-关联" class="headerlink" title="To-One 关联"></a>To-One 关联</h3><p><img src="http://qiniu.picbed.dang8080.cn/20190225232506.png" alt="To-One示意图"><br>使用 ToOne 会智能的对目标对象创建关联。同时获取目标对象缓存。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Customer.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Order.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line">    <span class="keyword">public</span> ToOne&lt;Customer&gt; customer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 为了绑定 customer 对象，对 ToOne 实例调用 setTarget() 然后就存入 order 对象</span></span><br><span class="line">Customer customer = <span class="keyword">new</span> Customer();</span><br><span class="line">Order order = <span class="keyword">new</span> Order();</span><br><span class="line">order.customer.setTarget(customer);</span><br><span class="line"><span class="keyword">long</span> orderId = boxStore.boxFor(Order.class).put(order);</span><br></pre></td></tr></table></figure><a id="more"></a>
-
+        <p>Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来.</p><a id="more"></a>
+<h3 id="To-One-关联"><a href="#To-One-关联" class="headerlink" title="To-One 关联"></a>To-One 关联</h3><p><img src="http://qiniu.picbed.dang8080.cn/20190225232506.png" alt="To-One示意图"><br>使用 ToOne 会智能的对目标对象创建关联。同时获取目标对象缓存。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Customer.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Order.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line">    <span class="keyword">public</span> ToOne&lt;Customer&gt; customer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 为了绑定 customer 对象，对 ToOne 实例调用 setTarget() 然后就存入 order 对象</span></span><br><span class="line">Customer customer = <span class="keyword">new</span> Customer();</span><br><span class="line">Order order = <span class="keyword">new</span> Order();</span><br><span class="line">order.customer.setTarget(customer);</span><br><span class="line"><span class="keyword">long</span> orderId = boxStore.boxFor(Order.class).put(order);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>如果 customer 在数据库中不存在，ToOne 将会存储。如果已经存在，那么 ToOne 只会创建关联,不会存储.<br>如果关联 Entity 使用的是自定义 IDs(@Id(assignable = true)),则该 Entity 不会被存储.</p>
 </blockquote>
 <p>在 ToOne 实例中，可通过 Order 对象的 getTarget() 获取 customer</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Order order = boxStore.boxFor(Order.class).get(orderId);</span><br><span class="line">Customer customer = order.customer.getTarget(customer);</span><br></pre></td></tr></table></figure>
+
 <p>如果只是想要获取 ID 而不是整个目标对象，getTargetId() 值得拥有，此方法根本不会接触数据库，所以高效。</p>
 <p>移除关联: 仅移除关联关系，而不会从数据库中移除目标对象。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">order.customer.setTarget(<span class="keyword">null</span>);</span><br><span class="line">boxStore.boxFor(Order.class).put(order);</span><br></pre></td></tr></table></figure>
+
 <p>查看 <code>objectbox-models/default.json</code> 会发现，ToOne 属性根本没有保存。仅仅只是目标对象的 ID 保存在一个名称和 ToOne 属性后拼接 Id 的虚拟属性.</p>
 <h3 id="初始化魔术"><a href="#初始化魔术" class="headerlink" title="初始化魔术"></a>初始化魔术</h3><p>注意到 ToOne 属性 customer 从没初始化，然而调用时却不会抛出空指针异常。因为该初始化已经执行过了。<br>ObjectBox 插件会对 entity 类(仅支持纯 Java 项目和 Android 项目) 在调用前正确的初始化。所以在自定义构造方法时，你可以假设 ToOne/ToMany/List 属性已经初始化过了。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line">    ToOne&lt;Order&gt; order;</span><br><span class="line">    ToMany&lt;Order&gt; orders;</span><br><span class="line">    <span class="keyword">transient</span> BoxStore __boxStore;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Example</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="keyword">this</span>.order = <span class="keyword">new</span> ToOne&lt;&gt;(<span class="keyword">this</span>, Example_.order);</span><br><span class="line">        <span class="keyword">this</span>.orders = <span class="keyword">new</span> ToMany&lt;&gt;(<span class="keyword">this</span>, Example_.orders);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Example</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="提升性能"><a href="#提升性能" class="headerlink" title="提升性能"></a>提升性能</h3><p>为了提高性能，请提供全参数构造方法。<br>对于 ToOne 属性，请添加一个名为 ToOne 属性名加 Id 的 id 参数。可以参考 objectbox-models/default.json 里的命名.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line">    <span class="keyword">public</span> ToOne&lt;Customer&gt; customer;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Order</span><span class="params">()</span> </span>&#123; <span class="comment">/* default constructor */</span> &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Order</span><span class="params">(<span class="keyword">long</span> id, <span class="keyword">long</span> customerId <span class="comment">/* virtual ToOne id property */</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.customer.setTargetId(customerId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="ToMany-关联"><a href="#ToMany-关联" class="headerlink" title="ToMany 关联"></a>ToMany 关联</h3><p>可以使用 List 或 ToMany 类型实现 ToMany 关联.相对 ToOne 来说，ToMany 可以实现追踪数据变化并将其写入操作中，而 List 必须自己实现.</p>
 <h3 id="1-N"><a href="#1-N" class="headerlink" title="1:N"></a>1:N</h3><p><img src="http://qiniu.picbed.dang8080.cn/20190226000315.png" alt="1:N"></p>
 <p>使用 @Backlink 注解 1:N 关联属性。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Customer.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 'to' is optional if only one relation matches</span></span><br><span class="line">    <span class="meta">@Backlink</span>(to = <span class="string">"customer"</span>)</span><br><span class="line">    <span class="keyword">public</span> ToMany&lt;Order&gt; orders;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Order.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ToOne&lt;Customer&gt; customer;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Customer customer = <span class="keyword">new</span> Customer();</span><br><span class="line">customer.orders.add(<span class="keyword">new</span> Order());</span><br><span class="line">customer.orders.add(<span class="keyword">new</span> Order());</span><br><span class="line"><span class="keyword">long</span> customerId = boxStore.boxFor(Customer.class).put(customer); <span class="comment">// puts customer and orders</span></span><br><span class="line"></span><br><span class="line">Customer customer = boxStore.boxFor(Customer.class).get(customerId);</span><br><span class="line"><span class="keyword">for</span> (Order order : customer.orders) &#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Order order = customer.orders.remove(<span class="number">0</span>);</span><br><span class="line">boxStore.boxFor(Customer.class).put(customer);</span><br><span class="line"><span class="comment">// optional: also remove the order from its box</span></span><br><span class="line"><span class="comment">// boxStore.boxFor(Order.class).remove(order);</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="N-N"><a href="#N-N" class="headerlink" title="N:N"></a>N:N</h3><p><img src="http://qiniu.picbed.dang8080.cn/20190226000708.png" alt="N:N"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Teacher.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Student.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ToMany&lt;Teacher&gt; teachers;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Teacher teacher1 = <span class="keyword">new</span> Teacher();</span><br><span class="line">Teacher teacher2 = <span class="keyword">new</span> Teacher();</span><br><span class="line"></span><br><span class="line">Student student1 = <span class="keyword">new</span> Student();</span><br><span class="line">student1.teachers.add(teacher1);</span><br><span class="line">student1.teachers.add(teacher2);</span><br><span class="line"></span><br><span class="line">Student student2 = <span class="keyword">new</span> Student();</span><br><span class="line">student2.teachers.add(teacher2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// puts students and teachers</span></span><br><span class="line">boxStore.boxFor(Student.class).put(student1, student2);</span><br><span class="line"></span><br><span class="line">Student student1 = boxStore.boxFor(Student.class).get(student1.id);</span><br><span class="line"><span class="keyword">for</span> (Teacher teacher : student1.teachers) &#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">student1.teachers.remove(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// boxStore.boxFor(Student.class).put(student1);</span></span><br><span class="line"><span class="comment">// more efficient than using put:</span></span><br><span class="line">student1.teachers.applyChangesToDb();</span><br></pre></td></tr></table></figure>
+
 <p>上面可以通过 student 知道 teacher 的信息，当然可以反过来</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Teacher.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Backlink</span>(to = <span class="string">"teachers"</span>) <span class="comment">// backed by the to-many relation in Student</span></span><br><span class="line">    <span class="keyword">public</span> ToMany&lt;Student&gt; students;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Student.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ToMany&lt;Teacher&gt; teachers;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="更新关联"><a href="#更新关联" class="headerlink" title="更新关联"></a>更新关联</h3><p>ToOne 和 ToMany 可以追踪变化（只要存入拥有关联属性的 entity）并将其存入数据库中，<br>如果 ID != 0 或者 @Id(assignable = true) 那么可以通过 Box 来更新关联</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// update a related entity using its box</span></span><br><span class="line">Order orderToUpdate = customer.orders.get(<span class="number">0</span>);</span><br><span class="line">orderToUpdate.text = <span class="string">"Revised description"</span>;</span><br><span class="line"><span class="comment">// DOES NOT WORK</span></span><br><span class="line"><span class="comment">// boxStore.boxFor(Customer.class).put(customer);</span></span><br><span class="line"><span class="comment">// WORKS</span></span><br><span class="line">boxStore.boxFor(Order.class).put(orderToUpdate);</span><br></pre></td></tr></table></figure>
+
 <h4 id="更新-ToOne"><a href="#更新-ToOne" class="headerlink" title="更新 ToOne"></a>更新 ToOne</h4><p>ToOne 类提供了如下方法更新关联:</p>
 <ul>
 <li><code>setTarget(entity)</code>: 创建关联；传入 null 清除关联</li>
@@ -366,23 +370,31 @@
 <li><code>setAndPutTarget(entity)</code>:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">order.customer.setTarget(customer); <span class="comment">// or order.customer.setCustomerId(customer.getId());</span></span><br><span class="line">orderBox.put(order);</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>如果 entity 在调用 setAndPutTarget() 之前还没存储,那么需要先绑定它的 box</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Order order = <span class="keyword">new</span> Order(); <span class="comment">// new entity</span></span><br><span class="line">orderBox.attach(order); <span class="comment">// need to attach box first</span></span><br><span class="line">order.customer.setAndPutTarget(customer);</span><br></pre></td></tr></table></figure>
+
 <p>如果目标 entity 使用自定义 IDs,必须在更新 ToOne 关联时存储它</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">customer.id = <span class="number">12</span>; <span class="comment">// self-assigned id</span></span><br><span class="line">customerBox.put(customer); <span class="comment">// need to put customer first</span></span><br><span class="line">order.customer.setTarget(customer); <span class="comment">// or order.customer.setCustomerId(customer.getId());</span></span><br><span class="line">orderBox.put(order);</span><br></pre></td></tr></table></figure>
+
 <p>这是因为 ObjectBox 只保存 id 为 0 的关联对象.</p>
 <h4 id="更新-ToMany"><a href="#更新-ToMany" class="headerlink" title="更新 ToMany"></a>更新 ToMany</h4><p>ToMany 实现了 java.lang.List 接口。如果向 ToMany 实例添加对象，这些对象就会被存储进数据库。移除也一样。（仅仅是关联被移除而已）.不要忘记把追踪 ToMany 改变的 own entity 对象存储.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">customer.orders.add(order1);</span><br><span class="line">customer.orders.remove(order2);</span><br><span class="line">customerBox.put(customer);</span><br></pre></td></tr></table></figure>
+
 <p>如果使用自定义 IDs(@Id(assignable = true)) 请在修改 ToMany 前绑定它的 box</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">customer.id = <span class="number">12</span>; <span class="comment">// self-assigned id</span></span><br><span class="line">customerBox.attach(customer); <span class="comment">// need to attach box first</span></span><br><span class="line">customer.orders.add(order);</span><br><span class="line">customerBox.put(customer);</span><br></pre></td></tr></table></figure>
+
 <p>如果 entity 是自定义 IDs,那么需要先存入该 entity,然后再更新关联并存储 own entity.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">order.id = <span class="number">42</span>; <span class="comment">// self-assigned id</span></span><br><span class="line">orderBox.put(order); <span class="comment">// need to put order first</span></span><br><span class="line">customer.orders.add(order);</span><br><span class="line">customerBox.put(customer); <span class="comment">// put customer, add relation to order</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="树形关联"><a href="#树形关联" class="headerlink" title="树形关联"></a>树形关联</h3><p>可以使用 ToOne,ToMany 处理指向自身的树形关联</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    ToOne&lt;TreeNode&gt; parent;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BackLink</span></span><br><span class="line">    ToMany&lt;TreeNode&gt; children;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>生成的 entity 可以获取它的 parent 和 children</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TreeNode parent = entity.parent.getTarget();</span><br><span class="line">List&lt;TreeNode&gt; children = entity.children;</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -464,11 +476,11 @@
       
 
       <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc" data-target="post-toc-wrap">
-          文章目录
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-          站点概览
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
       </ul>
 
@@ -481,17 +493,16 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" src="http://qiniu.picbed.dang8080.cn/logo.jpeg" alt="Humphrey Dang">
-  <p class="site-author-name" itemprop="name">Humphrey Dang</p>
-  <div class="site-description" itemprop="description">Humphrey Dang 的博客</div>
+  <p class="site-author-name" itemprop="name">Humphrey Dan</p>
+  <div class="site-description" itemprop="description">write something,donot leave.</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
     
@@ -503,54 +514,8 @@
             <a href="/tags/">
           
         
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span>
         </a>
       </div>
     
@@ -564,7 +529,7 @@
       
         
       
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
+        <a href="https://github.com/shuttlespace" title="GitHub &rarr; https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
     
       <span class="links-of-author-item">
@@ -575,7 +540,7 @@
       
         
       
-        <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+        <a href="mailto:dang8080@qq.com" title="E-Mail &rarr; mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
     
   </div>
@@ -583,11 +548,6 @@
 
 
       </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
-      
 
     </div>
   </aside>
@@ -599,16 +559,13 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright"><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5taWl0Lmdvdi5jbg==">陕ICP备19000066号-1 </span>
-  <span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPQ=="> </span>&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
+  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2017 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Humphrey Dang</span>
+  <span class="author" itemprop="copyrightHolder">Humphrey Dan</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.3.0</div>
 
         
 
@@ -629,10 +586,13 @@
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-<script src="/js/utils.js?v=7.3.0"></script>
-<script src="/js/schemes/pisces.js?v=7.3.0"></script>
-<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+<script src="/js/utils.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
@@ -645,7 +605,7 @@
 
 
 
-  <script src="/js/local-search.js?v=7.3.0"></script>
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -672,7 +632,7 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
   guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
+    return GUEST.includes(item);
   });
   new Valine({
     el: '#comments',

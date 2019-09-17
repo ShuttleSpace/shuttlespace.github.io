@@ -4,18 +4,18 @@
 
 
 
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#025a6c">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.3.0">
-  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.3.0" color="#025a6c">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#025a6c">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
@@ -25,13 +25,13 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '7.3.0',
-    exturl: true,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#025a6c","save":"auto"},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
@@ -41,16 +41,17 @@
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"搜索","hits_empty":"${query} 找不到","hits_stats":"${time}ms内找到${hits}个相关内容"}
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},
     path: 'search.xml',
     motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
   };
 </script>
 
@@ -61,7 +62,7 @@
 <meta property="og:url" content="http://blog.dang8080.cn/2019/08/26/译-Kotlin-Coroutine(1)/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
 <meta property="og:description" content="提取函数-重构但是如果提取出来的函数包含了一个在当前作用域调用的协程构造器怎么办?这种情况下,suspend 修饰符就不能满足需求了使doWorld 成为 CoroutineScopr的一个扩展函数是一种解决方案,但这种方法使得API不清晰而不适用其他情况.理想的解决方案是CoroutineScope 作为一个包含目标函数的类的一个属性存在,或者这个类实现CoroutineScope接口.最后一种">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-08-26T07:33:46.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="译-Kotlin-Coroutine(1) case)">
@@ -81,7 +82,6 @@
 </script>
 
   <title>译-Kotlin-Coroutine(1) case) | 云青青兮欲雨</title>
-  <meta name="generator" content="Hexo 3.8.0">
   
 
 
@@ -117,13 +117,13 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <div class="container">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta custom-logo">
+  <div class="site-meta">
 
     <div>
       <a href="/" class="brand" rel="start">
@@ -132,15 +132,12 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <h1 class="site-subtitle" itemprop="description">水澹澹兮生烟</h1>
+        <p class="site-subtitle">水澹澹兮生烟</p>
       
-      <a>
-        <img class="custom-logo-image" src="[object Object]" alt="云青青兮欲雨">
-      </a>
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -159,10 +156,8 @@
         <li class="menu-item menu-item-home">
       
     
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
 
   </li>
       
@@ -172,10 +167,8 @@
         <li class="menu-item menu-item-archives">
       
     
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
   </li>
       
@@ -185,10 +178,8 @@
         <li class="menu-item menu-item-tags">
       
     
-      
-    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">22</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
 
   </li>
       
@@ -198,16 +189,14 @@
         <li class="menu-item menu-item-about">
       
     
-      
-    
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
 
   </li>
       <li class="menu-item menu-item-search">
         <a href="javascript:;" class="popup-trigger">
         
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
       </li>
     
   </ul>
@@ -220,7 +209,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -236,6 +227,10 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
     <main id="main" class="main">
@@ -255,32 +250,32 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/08/26/译-Kotlin-Coroutine(1)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">译-Kotlin-Coroutine(1) case)
+        <h1 class="post-title" itemprop="name headline">译-Kotlin-Coroutine(1) case)
 
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-08-26 20:23:11 / 修改时间：15:33:46" itemprop="dateCreated datePublished" datetime="2019-08-26T20:23:11+08:00">2019-08-26</time>
+              <time title="Created: 2019-08-26 20:23:11 / Modified: 15:33:46" itemprop="dateCreated datePublished" datetime="2019-08-26T20:23:11+08:00">2019-08-26</time>
             </span>
           
             
@@ -289,11 +284,11 @@
           
 
           
-            <span id="/2019/08/26/译-Kotlin-Coroutine(1)/" class="post-meta-item leancloud_visitors" data-flag-title="译-Kotlin-Coroutine(1) case)" title="阅读次数">
+            <span id="/2019/08/26/译-Kotlin-Coroutine(1)/" class="post-meta-item leancloud_visitors" data-flag-title="译-Kotlin-Coroutine(1) case)" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -305,7 +300,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/08/26/译-Kotlin-Coroutine(1)/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/26/译-Kotlin-Coroutine(1)/" itemprop="commentCount"></span></a>
   </span>
@@ -329,13 +324,19 @@
 <h3 id="使用-finally-关闭资源"><a href="#使用-finally-关闭资源" class="headerlink" title="使用 finally 关闭资源"></a>使用 <code>finally</code> 关闭资源</h3><p>在取消具有可取消属性的挂起函数时会抛出 <code>CancellationException</code>,可以在 coroutine 被取消时使用常用的方法处理.如 <code>try{...}finally{...}</code>表达式和 <code>use</code>函数执行最终任务.<br><code>join</code>和<code>cancelAndJoin</code>等待所有的最终任务执行完成才结束.</p>
 <h3 id="运行不可取消的代码块"><a href="#运行不可取消的代码块" class="headerlink" title="运行不可取消的代码块"></a>运行不可取消的代码块</h3><p>任何在<code>finally</code>块中使用挂起函数都将导致<code>CancellationException</code>,因为运行此代码的 coroutine 已经被取消了.通常,这不是个问题,因为良好的关闭操作(关闭文件、取消任务或关闭任意类型的消息通道)通常都是非阻塞的,而且也不会挂起任何函数.在已经取消的协程里,如果竞态条件下想挂起,你可以使用<code>withContext</code>函数和<code>NonCancellable</code>上下文在<code>withContext(NonCancellable){...}</code>中封装响应的代码.</p>
 <h3 id="超时"><a href="#超时" class="headerlink" title="超时"></a>超时</h3><p>取消一个正在执行的协程的最常见的理由可能是他的执行时长已经超过了超时时间.当然,你可以手动追踪相应<code>Job</code>的引用,然后启动一个独立的协程延时后取消追踪的这个<code>Job</code>,<code>withTimeout</code>函数可以实现这个需求.<br><code>withTimeout</code>抛出的<code>TimeoutCancellationException</code>是<code>CancellationException</code>的子类.之前没有看到控制台打印异常堆栈信息的原因是在一个被取消的协程抛出的 <code>CancellationExcepiton</code>被认为是协程正常执行结束的标记.<br>因为 cancellation 仅仅是一个异常,所有的资源都可以使用正常的逻辑处理.如果你需要在任何超时时添加某些特殊逻辑,可以把超时的这些代码放在<code>try{...}catch(e:TimeoutCancellationException){...}</code>块中,或者使用<code>withTimeoutOrNull</code>函数(类似<code>withTimeout</code>但是在超时返回 null 而不是抛出异常).</p>
-<h1 id="组合挂起函数"><a href="#组合挂起函数" class="headerlink" title="组合挂起函数"></a>组合挂起函数</h1><h3 id="默认顺序"><a href="#默认顺序" class="headerlink" title="默认顺序"></a>默认顺序</h3><p>假设有定义在其他地方的两个挂起函数执行如远程服务或计算等任务.我们认为这些任务有用,实际上每隔任务只是为了其特殊目的延时了1秒.<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">doSomethingUsefulOne</span><span class="params">()</span></span>:<span class="built_in">Int</span> &#123;</span><br><span class="line">  delay(<span class="number">1000</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="number">13</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">doSomethingUsefulTwo</span><span class="params">()</span></span>:<span class="built_in">Int</span> &#123;</span><br><span class="line">  delay(<span class="number">1000</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="number">29</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="组合挂起函数"><a href="#组合挂起函数" class="headerlink" title="组合挂起函数"></a>组合挂起函数</h1><h3 id="默认顺序"><a href="#默认顺序" class="headerlink" title="默认顺序"></a>默认顺序</h3><p>假设有定义在其他地方的两个挂起函数执行如远程服务或计算等任务.我们认为这些任务有用,实际上每隔任务只是为了其特殊目的延时了1秒.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">doSomethingUsefulOne</span><span class="params">()</span></span>:<span class="built_in">Int</span> &#123;</span><br><span class="line">  delay(<span class="number">1000</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="number">13</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">doSomethingUsefulTwo</span><span class="params">()</span></span>:<span class="built_in">Int</span> &#123;</span><br><span class="line">  delay(<span class="number">1000</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="number">29</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>如果我们需要上面的函数按顺序被调用,然后计算他们的结果?实际中,我们都是先拿第一个函数的结果在决定是否调用第二个函数或如何调用.<br>和普通的代码一样,在协程里的代码也是按顺序执行的.</p>
 <h3 id="使用-async-并发"><a href="#使用-async-并发" class="headerlink" title="使用 async 并发"></a>使用 async 并发</h3><p>如果两个函数之间没有相关,而且我们想更快的获取到结果,可以同时执行两个函数吗?<code>async</code>可以实现.<br>理论山,<code>async</code>类似<code>launch</code>.它会开启一个新的协程和其他协程并发的执行.不同之处在于<code>launch</code>返回一个没有携带结果的<code>Job</code>,而<code>async</code>返回一个<code>Deferred</code>(一个轻量级的非阻塞 future 表示在未来的某一时刻会返回结果).可以对<code>Deferred</code>使用<code>.await()</code>来获取最终的结果,但是<code>Deferred</code>同时也是一个<code>Job</code>,所以必要的时候也可以取消.<br>协程的并发性总是精确的.</p>
 <h3 id="使用-async-延迟启动"><a href="#使用-async-延迟启动" class="headerlink" title="使用 async 延迟启动"></a>使用 async 延迟启动</h3><p><code>async</code>可以设置它的<code>start</code>参数为<code>CoroutineStart.LAZY</code>来延迟启动.在此场景下,只有在<code>await</code>调用获取结果时才启动,或者它的<code>Job</code>的<code>start</code>函数被调用时启动.<br>如果仅仅调用<code>await</code>而没在之前调用各自协程的<code>start</code>,这将会导致序列化行为,因为<code>await</code>启动协程执行代码然后等待它结束,这不是用户角度的延迟.当调用挂起函数计算某个值时使用<code>async(start=CoroutineStart.LAZY)</code>可以替换标准的<code>lazy</code>函数.</p>
-<h3 id="async-风格的函数"><a href="#async-风格的函数" class="headerlink" title="async 风格的函数"></a>async 风格的函数</h3><p>使用<code>async</code>协程构造器和明确的<code>GlobalScope</code>引用异步调用函数就可以实现async风格的函数.一般这样的函数以<code>...Async</code>后缀结尾以表明只启动了异步执行,需要使用<code>Deferred</code>来获取结果.<br><code>xxxAsync</code>函数不是挂起函数.这种函数可在任意地方调用.这种函数就意味着异步(此处即为并发)执行他们的任务和代码.<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> kotlinx.coroutines.*</span><br><span class="line"><span class="keyword">import</span> kotlin.system.*</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">val</span> time = measureTimeMillis &#123;</span><br><span class="line">    <span class="keyword">val</span> one = somethingUsefulOneAsync()</span><br><span class="line">    <span class="keyword">val</span> two = somethingUsefulTwoAsync()</span><br><span class="line">    <span class="comment">// 等待结果必须在挂起函数或者阻塞</span></span><br><span class="line">    <span class="comment">// 所以使用 runBlocking&#123;&#125; 阻塞主线程</span></span><br><span class="line">    runBlocking &#123;</span><br><span class="line">      println(<span class="string">"<span class="subst">$&#123;one.await() + two.await()&#125;</span>"</span>)<span class="string">'</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">fun somethingUsefulOneAsync() = GlobalScope.async &#123;</span></span><br><span class="line"><span class="string">    doSomethingUsefulOne()</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">fun somethingUsefulTwoAsync() = GlobalScope.async &#123;</span></span><br><span class="line"><span class="string">    doSomethingUsefulTwo()</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">suspend fun doSomethingUsefulOne(): Int &#123;</span></span><br><span class="line"><span class="string">    delay(1000L) // pretend we are doing something useful here</span></span><br><span class="line"><span class="string">    return 13</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">suspend fun doSomethingUsefulTwo(): Int &#123;</span></span><br><span class="line"><span class="string">    delay(1000L) // pretend we are doing something useful here, too</span></span><br><span class="line"><span class="string">    return 29</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="async-风格的函数"><a href="#async-风格的函数" class="headerlink" title="async 风格的函数"></a>async 风格的函数</h3><p>使用<code>async</code>协程构造器和明确的<code>GlobalScope</code>引用异步调用函数就可以实现async风格的函数.一般这样的函数以<code>...Async</code>后缀结尾以表明只启动了异步执行,需要使用<code>Deferred</code>来获取结果.<br><code>xxxAsync</code>函数不是挂起函数.这种函数可在任意地方调用.这种函数就意味着异步(此处即为并发)执行他们的任务和代码.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> kotlinx.coroutines.*</span><br><span class="line"><span class="keyword">import</span> kotlin.system.*</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">val</span> time = measureTimeMillis &#123;</span><br><span class="line">    <span class="keyword">val</span> one = somethingUsefulOneAsync()</span><br><span class="line">    <span class="keyword">val</span> two = somethingUsefulTwoAsync()</span><br><span class="line">    <span class="comment">// 等待结果必须在挂起函数或者阻塞</span></span><br><span class="line">    <span class="comment">// 所以使用 runBlocking&#123;&#125; 阻塞主线程</span></span><br><span class="line">    runBlocking &#123;</span><br><span class="line">      println(<span class="string">"<span class="subst">$&#123;one.await() + two.await()&#125;</span>"</span>)<span class="string">'</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">fun somethingUsefulOneAsync() = GlobalScope.async &#123;</span></span><br><span class="line"><span class="string">    doSomethingUsefulOne()</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">fun somethingUsefulTwoAsync() = GlobalScope.async &#123;</span></span><br><span class="line"><span class="string">    doSomethingUsefulTwo()</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">suspend fun doSomethingUsefulOne(): Int &#123;</span></span><br><span class="line"><span class="string">    delay(1000L) // pretend we are doing something useful here</span></span><br><span class="line"><span class="string">    return 13</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">suspend fun doSomethingUsefulTwo(): Int &#123;</span></span><br><span class="line"><span class="string">    delay(1000L) // pretend we are doing something useful here, too</span></span><br><span class="line"><span class="string">    return 29</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
 <p>这段代码类似其他语言的异步(js).假设<code>xxxAsync</code>在执行过程中发生了异常,通常全局错误处理器会捕获该异常,记录报告此错误,程序可以继续执行其他操作.但是此处的函数在后台运行,而不会被打断,即使初始化调用它的操作已经被终止了.所以不鼓励使用这样的代码风格.</p>
-<h3 id="使用-async-进行结构化并发"><a href="#使用-async-进行结构化并发" class="headerlink" title="使用 async 进行结构化并发"></a>使用 async 进行结构化并发</h3><p>因为<code>async</code>协程构造器是<code>CoroutineScope</code>的扩展函数,所以需要使用<code>coroutineScope函数</code>提供执行范围.<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">concurrentSum</span><span class="params">()</span></span>: <span class="built_in">Int</span> = coroutineScope &#123;</span><br><span class="line">  <span class="keyword">val</span> one = async &#123; doOne()&#125;</span><br><span class="line">  <span class="keyword">val</span> two = async &#123; doTwo()&#125;</span><br><span class="line">  one.await+two.await()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用-async-进行结构化并发"><a href="#使用-async-进行结构化并发" class="headerlink" title="使用 async 进行结构化并发"></a>使用 async 进行结构化并发</h3><p>因为<code>async</code>协程构造器是<code>CoroutineScope</code>的扩展函数,所以需要使用<code>coroutineScope函数</code>提供执行范围.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">concurrentSum</span><span class="params">()</span></span>: <span class="built_in">Int</span> = coroutineScope &#123;</span><br><span class="line">  <span class="keyword">val</span> one = async &#123; doOne()&#125;</span><br><span class="line">  <span class="keyword">val</span> two = async &#123; doTwo()&#125;</span><br><span class="line">  one.await+two.await()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>如果在上面的函数里出错抛出异常,那么在这个范围里启动的所有协程都将被取消.</p>
 <h1 id="协程上下文和分发器"><a href="#协程上下文和分发器" class="headerlink" title="协程上下文和分发器"></a>协程上下文和分发器</h1><p>协程总是在 kotlin 标准库定义的 <code>CoroutineContext</code> 类型的某个上下文中执行.<br>协程是一系列不同元素的集合.主元素是协程的 <code>Job</code>,<code>dispatcher</code>.</p>
 <h3 id="分发器和线程"><a href="#分发器和线程" class="headerlink" title="分发器和线程"></a>分发器和线程</h3><p>协程上下文包含了一个协程分发器(决定哪个线程或相应协程执行其代码的线程).协程分发器可以限制协程在某个指定的线程,线程池,或者未定义的线程去执行.<br>所有的协程构造器如<code>launch</code>和<code>async</code>接收一个可选的<code>CoroutineContext</code>参数(可以精确的指定为一个新协程或者其他上下文元素).<br>当<code>launch{...}</code>未传参数时,它继承了从它被启动的地方的<code>CoroutineScope</code>的上下文(和分发器).<br><code>Dispatchers.Unconfined</code>是一个也运行在<code>main</code>线程的特殊分发器,但实际机制是不同的.<br>当协程从<code>GlobalScope</code>(即<code>Dispatchers.Default</code>)启动时使用的是默认分发器.使用了一个共享后台线程池,所以<code>launch(Dispatchers.Default){...}</code>和<code>GloablScope.launch{...}</code>使用了相同的分发器.<br><code>newSingleThreadContext</code>为协程创建了一个新线程去运行.专用线程是一种非常昂贵的资源.在真实应用下,当不在使用时,它必须使用 <code>close</code> 函数 release,或者存储在一个顶级变量中,然后在整个应用中复用.</p>
@@ -348,6 +349,7 @@
 <p>JVM 配置 <code>-ea</code> 参数debug模式自动开启.</p>
 </blockquote>
 <h3 id="在线程之间跳转"><a href="#在线程之间跳转" class="headerlink" title="在线程之间跳转"></a>在线程之间跳转</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">log</span><span class="params">(msg:<span class="type">String</span>)</span></span> = println(<span class="string">"[<span class="subst">$&#123;Thread.currentThread().name&#125;</span>] <span class="variable">$msg</span>"</span>)</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  newSingleThreadContext(<span class="string">"Ctx1).use&#123;ctx1 -&gt;</span></span><br><span class="line"><span class="string">    newSingleThreadContext("</span>Ctx2).use&#123;ctx2 -&gt;</span><br><span class="line">      runBlocking(ctx1) &#123;</span><br><span class="line">        log(<span class="string">"started in ctx1"</span>)</span><br><span class="line">        withContext(ctx2) &#123;</span><br><span class="line">          log(<span class="string">"working in ctx2"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        log(<span class="string">"back to ctx1"</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><code>runBlocking</code>可以指定上下文对象.<code>withContext</code>函数可以改变一个协程的上下文对象.<br>kotlin标准库里的<code>use</code>函数会主动释放<code>newSingleThreadContext</code>创建的线程(不再使用时).</p>
 <h3 id="上下文里的-Job"><a href="#上下文里的-Job" class="headerlink" title="上下文里的 Job"></a>上下文里的 Job</h3><p>协程里的 Job 是上下文的一部分,可以通过<code>coroutineContext[Jon]</code>表达式获取到.</p>
 <blockquote>
@@ -356,9 +358,15 @@
 <h3 id="子协程"><a href="#子协程" class="headerlink" title="子协程"></a>子协程</h3><p>当从另一个协程的<code>CoroutineScope</code>中启动一个新协程时,后者通过前者的<code>CoroutineScope.coroutineContext</code>和新协程的Job继承了前者的上下文,变成了父协程 job的子job.当父协程被取消时,所有的子job都会被迭代取消.<br>然而,当使用<code>GlobalScope</code>启动一个协程时,新协程的Job是没有父Job的.所以它不会绑定到任何 scope,运行是独立的.</p>
 <h3 id="父协程的职责"><a href="#父协程的职责" class="headerlink" title="父协程的职责"></a>父协程的职责</h3><p>父协程总会等待所有的子Job执行完成才结束.父协程不需要刻意追踪它启动的所有子Job,也不需要使用<code>Job.join</code>去等待.</p>
 <h3 id="命名协程"><a href="#命名协程" class="headerlink" title="命名协程"></a>命名协程</h3><p>自动分配的协程id可以在需要的时候过滤关注的协程信息.如果一个协程是进行特殊请求或执行特殊后台任务,对其进行合适的命名更利于debug.context的<code>CoroutineName</code>元素属性类似线程名可以给协程命名.当 debug 模式开启时,它会包含此协程所在线程的名字.</p>
-<h3 id="组合上下文对象元素"><a href="#组合上下文对象元素" class="headerlink" title="组合上下文对象元素"></a>组合上下文对象元素</h3><p>有时需要为一个协程上下文定义多个元素.可以使用<code>+</code>实现.<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launch(Dispatchers.Default + CoroutineNmae(<span class="string">"Test"</span>)) &#123;&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="协程范围"><a href="#协程范围" class="headerlink" title="协程范围"></a>协程范围</h3><p>假设我们的应用有一个有生命周期的对象,但是这个对象不是协程.例如我们的android应用在Actiivty的上下文下启动了许多的协程去执行异步操作(如获取更新数据、执行动画等).当activity被销毁时所有的协程必须被取消以避免内存泄漏.我们当然可以手动的将协程和job绑定到activity的上下文,但是<code>kotlinx.coroutines</code>提供了一个抽象的封装对象:<code>CoroutineScope</code>.所有的协程构造器都是作为其扩展而存在.<br>创建一个绑定到activity的<code>CoroutineScope</code>对象来管理生命周期.<code>CoroutineScope</code>实例可以通过<code>CoroutineScope()</code>或<code>MainScope()</code>工厂函数创建.前者创建一个通用的scope,而后者使用<code>Dispatchers.Main</code> 作为默认分发器创建一个专为UI应用构造的scope.<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">val</span> mainScope = MainScope()</span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">destroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">    mainScope.cancel()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>也可以为 <code>Activity</code>类继承 <code>CoroutineScope</code>接口.最佳方案是使用代理实现默认工厂函数.<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Activity</span> : <span class="type">CoroutineScope by CoroutineScope</span></span>(Dispatchers.Default) &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="组合上下文对象元素"><a href="#组合上下文对象元素" class="headerlink" title="组合上下文对象元素"></a>组合上下文对象元素</h3><p>有时需要为一个协程上下文定义多个元素.可以使用<code>+</code>实现.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launch(Dispatchers.Default + CoroutineNmae(<span class="string">"Test"</span>)) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="协程范围"><a href="#协程范围" class="headerlink" title="协程范围"></a>协程范围</h3><p>假设我们的应用有一个有生命周期的对象,但是这个对象不是协程.例如我们的android应用在Actiivty的上下文下启动了许多的协程去执行异步操作(如获取更新数据、执行动画等).当activity被销毁时所有的协程必须被取消以避免内存泄漏.我们当然可以手动的将协程和job绑定到activity的上下文,但是<code>kotlinx.coroutines</code>提供了一个抽象的封装对象:<code>CoroutineScope</code>.所有的协程构造器都是作为其扩展而存在.<br>创建一个绑定到activity的<code>CoroutineScope</code>对象来管理生命周期.<code>CoroutineScope</code>实例可以通过<code>CoroutineScope()</code>或<code>MainScope()</code>工厂函数创建.前者创建一个通用的scope,而后者使用<code>Dispatchers.Main</code> 作为默认分发器创建一个专为UI应用构造的scope.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">val</span> mainScope = MainScope()</span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">destroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">    mainScope.cancel()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也可以为 <code>Activity</code>类继承 <code>CoroutineScope</code>接口.最佳方案是使用代理实现默认工厂函数.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Activity</span> : <span class="type">CoroutineScope by CoroutineScope</span></span>(Dispatchers.Default) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="线程本地数据-Thread-local-data"><a href="#线程本地数据-Thread-local-data" class="headerlink" title="线程本地数据(Thread-local data)"></a>线程本地数据(Thread-local data)</h3><p>有时候在协程之间能传递线程本地数据将会很方便.但是因为这是数据没有绑定到任意特定的线程,所以可能需要写很多重复的代码.</p>
 <p><code>asContextElement</code>扩展函数可以作为<code>ThreadLocal</code>使用.它会创建一个额外的上下文元素保存<code>ThreadLocal</code>值,在每次协程切换它的上下文是自动恢复.</p>
 <p>很容易忘记设置相应的上下文元素.如果线程运行的协程不同,从协程访问thread-local变量可能会出现未知的值.为了避免这样的情况,推荐使用<code>ensurePresent</code>方法和在不正确使用时<code>fail-fast</code>.</p>
@@ -367,9 +375,13 @@
 <p><code>ThreadContextElement</code></p>
 <h1 id="异步流"><a href="#异步流" class="headerlink" title="异步流"></a>异步流</h1><p>挂起函数异步返回一个值,但是如何返回多个异步值?异步流可以实现这样的需求.</p>
 <h3 id="展示多个值"><a href="#展示多个值" class="headerlink" title="展示多个值"></a>展示多个值</h3><h6 id="collections"><a href="#collections" class="headerlink" title="collections"></a>collections</h6><p>在 kotlin 使用 <code>collections</code>表示多个值.</p>
-<h6 id="sequence"><a href="#sequence" class="headerlink" title="sequence"></a>sequence</h6><p>如果数据是需要花费CPU阻塞计算出来的,那可以使用 <code>Sequence</code><br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span>: Sequence&lt;<span class="built_in">Int</span>&gt; = sequence &#123;</span><br><span class="line">  <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>..<span class="number">3</span>) &#123;</span><br><span class="line">    Thread.sleep(<span class="number">100</span>)</span><br><span class="line">    yield(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  foo().forEach &#123;value -&gt; println(value)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h6 id="sequence"><a href="#sequence" class="headerlink" title="sequence"></a>sequence</h6><p>如果数据是需要花费CPU阻塞计算出来的,那可以使用 <code>Sequence</code></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span>: Sequence&lt;<span class="built_in">Int</span>&gt; = sequence &#123;</span><br><span class="line">  <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>..<span class="number">3</span>) &#123;</span><br><span class="line">    Thread.sleep(<span class="number">100</span>)</span><br><span class="line">    yield(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  foo().forEach &#123;value -&gt; println(value)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h5 id="挂起函数"><a href="#挂起函数" class="headerlink" title="挂起函数"></a>挂起函数</h5><p>但是上面这样的代码会阻塞主线程.</p>
-<h5 id="Flows"><a href="#Flows" class="headerlink" title="Flows"></a>Flows</h5><p>使用 <code>List&lt;Int&gt;</code>会一次性返回所有的值.可以使用<code>Flow&lt;int&gt;</code>异步的计算值来表示数据流.<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span>: Flow&lt;<span class="built_in">Int</span>&gt; = flow &#123;</span><br><span class="line">  <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>..<span class="number">3</span>) &#123;</span><br><span class="line">    delay(<span class="number">100</span>)</span><br><span class="line">    emit(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> = runBlocking&lt;<span class="built_in">Unit</span>&gt; &#123;</span><br><span class="line">  launch &#123;</span><br><span class="line">    <span class="keyword">for</span> (k <span class="keyword">in</span> <span class="number">1</span>..<span class="number">3</span>) &#123;</span><br><span class="line">      println(<span class="string">"I am not blocked<span class="variable">$K</span>"</span>)</span><br><span class="line">      delay(<span class="number">100</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  foo().collect&#123;value -&gt; println(value)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="Flows"><a href="#Flows" class="headerlink" title="Flows"></a>Flows</h5><p>使用 <code>List&lt;Int&gt;</code>会一次性返回所有的值.可以使用<code>Flow&lt;int&gt;</code>异步的计算值来表示数据流.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span>: Flow&lt;<span class="built_in">Int</span>&gt; = flow &#123;</span><br><span class="line">  <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>..<span class="number">3</span>) &#123;</span><br><span class="line">    delay(<span class="number">100</span>)</span><br><span class="line">    emit(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> = runBlocking&lt;<span class="built_in">Unit</span>&gt; &#123;</span><br><span class="line">  launch &#123;</span><br><span class="line">    <span class="keyword">for</span> (k <span class="keyword">in</span> <span class="number">1</span>..<span class="number">3</span>) &#123;</span><br><span class="line">      println(<span class="string">"I am not blocked<span class="variable">$K</span>"</span>)</span><br><span class="line">      delay(<span class="number">100</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  foo().collect&#123;value -&gt; println(value)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><code>flow{...}</code> 构造器可以挂起</li>
 <li><code>foo()</code> 函数不再被标记为<code>suspend</code></li>
@@ -383,7 +395,10 @@
 </ul>
 <p>最基本操作名称如<code>map</code>,<code>filter</code>.不同于 sequence 的是在这些操作里的代码块可以调用挂起函数.</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">performRequest</span><span class="params">(request: <span class="type">Int</span>)</span></span>: String &#123;</span><br><span class="line">  delay(<span class="number">1000</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"response <span class="variable">$request</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> = runBlocking&lt;<span class="built_in">Unit</span>&gt; &#123;</span><br><span class="line">  (<span class="number">1</span>..<span class="number">3</span>).asFlow()</span><br><span class="line">        .map&#123; request -&gt; performRequest(request)&#125;</span><br><span class="line">        .collect&#123; response -&gt; println(response)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="转换操作符"><a href="#转换操作符" class="headerlink" title="转换操作符"></a>转换操作符</h3><p>flow 转换符中,最常用的被称为<code>transform</code>.它可以实现比<code>map</code>和<code>filter</code>更复杂的转换操作.使用 <code>transform</code>操作符,可以发射任意值任意次.<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">performRequest</span><span class="params">(request: <span class="type">Int</span>)</span></span>: String &#123;</span><br><span class="line">  delay(<span class="number">1000</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"response <span class="variable">$request</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> = runBlocking&lt;<span class="built_in">Unit</span>&gt; &#123;</span><br><span class="line">  (<span class="number">1</span>..<span class="number">3</span>).asFlow()</span><br><span class="line">        .transform&#123; request -&gt;</span><br><span class="line">          emit(<span class="string">"making request <span class="variable">$request</span>"</span>)</span><br><span class="line">          emit(performRequest(request))</span><br><span class="line">        &#125;</span><br><span class="line">        .collect&#123; resposne -&gt; println(response)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+<h3 id="转换操作符"><a href="#转换操作符" class="headerlink" title="转换操作符"></a>转换操作符</h3><p>flow 转换符中,最常用的被称为<code>transform</code>.它可以实现比<code>map</code>和<code>filter</code>更复杂的转换操作.使用 <code>transform</code>操作符,可以发射任意值任意次.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">performRequest</span><span class="params">(request: <span class="type">Int</span>)</span></span>: String &#123;</span><br><span class="line">  delay(<span class="number">1000</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"response <span class="variable">$request</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> = runBlocking&lt;<span class="built_in">Unit</span>&gt; &#123;</span><br><span class="line">  (<span class="number">1</span>..<span class="number">3</span>).asFlow()</span><br><span class="line">        .transform&#123; request -&gt;</span><br><span class="line">          emit(<span class="string">"making request <span class="variable">$request</span>"</span>)</span><br><span class="line">          emit(performRequest(request))</span><br><span class="line">        &#125;</span><br><span class="line">        .collect&#123; resposne -&gt; println(response)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="大小限制操作符"><a href="#大小限制操作符" class="headerlink" title="大小限制操作符"></a>大小限制操作符</h3><p>大小限制操作符如<code>take</code>在相应的限制到期时会取消执行.协程里的取消总是会抛出异常,所以所有的资源管理函数如(<code>try{...}finally{...}</code>)和普通的操作类似.</p>
 <h3 id="终止flow操作符"><a href="#终止flow操作符" class="headerlink" title="终止flow操作符"></a>终止flow操作符</h3><p>终止操作符是一个启动收集流的挂起函数.<code>collect</code>函数是最长用的一个.其他的有:</p>
 <ul>
@@ -393,20 +408,29 @@
 </ul>
 <p>流的这个操作被称为上下文保存.<br>所以默认<code>flow{...}</code>里的代码运行的上下文是由流的相应收集者提供的.对于快速运行或异步代码而言,这是个完美的默认设置,它不关心上下文执行者,也不阻塞调用者.</p>
 <h6 id="withContext-发射错误"><a href="#withContext-发射错误" class="headerlink" title="withContext 发射错误"></a>withContext 发射错误</h6><p>长时间消耗CPU的代码需运行在<code>Dispatchers.Default</code>上下文,UI更新代码需运行在<code>Dispatchers.Main</code>上下文中.通常,在协程中使用 <code>withContext</code>切换上下文,但是<code>flow{...}</code>中的代码有上下文保留特性,不允许在其他上下文发射数据.</p>
-<h6 id="flowOn-操作符"><a href="#flowOn-操作符" class="headerlink" title="flowOn 操作符"></a>flowOn 操作符</h6><p>指向 flowOn 函数的异常可以用来更改 flow 发射的上下文.改变flow上下文的正确操作如下:<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span>:Flow&lt;<span class="built_in">Int</span>&gt; = flow &#123;</span><br><span class="line">  <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>..<span class="number">3</span>) &#123;</span><br><span class="line">    delay(<span class="number">100</span>)</span><br><span class="line">    emit(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;.flowOn(Dispatchers.Default)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> = runBlocking&lt;<span class="built_in">Unit</span>&gt; &#123;</span><br><span class="line">  foo().collect&#123; value -&gt;</span><br><span class="line">    log(<span class="string">"llll"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h6 id="flowOn-操作符"><a href="#flowOn-操作符" class="headerlink" title="flowOn 操作符"></a>flowOn 操作符</h6><p>指向 flowOn 函数的异常可以用来更改 flow 发射的上下文.改变flow上下文的正确操作如下:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span>:Flow&lt;<span class="built_in">Int</span>&gt; = flow &#123;</span><br><span class="line">  <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>..<span class="number">3</span>) &#123;</span><br><span class="line">    delay(<span class="number">100</span>)</span><br><span class="line">    emit(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;.flowOn(Dispatchers.Default)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> = runBlocking&lt;<span class="built_in">Unit</span>&gt; &#123;</span><br><span class="line">  foo().collect&#123; value -&gt;</span><br><span class="line">    log(<span class="string">"llll"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><code>flowOn</code>操作符改变了流的默认顺序.现在收集者在一个协程,而发射却并发的运行在在另一个线程的一个协程中.当在它的上下文中改变<code>CoroutineDispatcher</code>时<code>flowOn</code>操作符为上游创建了另一个协程.</p>
-<h3 id="Buffering"><a href="#Buffering" class="headerlink" title="Buffering"></a>Buffering</h3><p>在涉及长时间运行的异步操作时,在不同协程运行流的不同部分对流收集的总时间很有帮助.<br>使用<code>buffer</code>操作符操作操作正在发射数据的流,并发的收集而不是顺序收集.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">val time = measureTimeMillis &#123;</span><br><span class="line">  foo()</span><br><span class="line">    .buffer()</span><br><span class="line">    .collect &#123; value -&gt;</span><br><span class="line">      delay(300)</span><br><span class="line">      println(value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">println(&quot;Collected in $time ms&quot;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Buffering"><a href="#Buffering" class="headerlink" title="Buffering"></a>Buffering</h3><p>在涉及长时间运行的异步操作时,在不同协程运行流的不同部分对流收集的总时间很有帮助.<br>使用<code>buffer</code>操作符操作操作正在发射数据的流,并发的收集而不是顺序收集.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">val time = measureTimeMillis &#123;</span><br><span class="line">  foo()</span><br><span class="line">    .buffer()</span><br><span class="line">    .collect &#123; value -&gt;</span><br><span class="line">      delay(300)</span><br><span class="line">      println(value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">println(&quot;Collected in $time ms&quot;)</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>当改变 <code>CoroutineDispatcher</code>时<code>flowOn</code>操作符使用相似的机制,但是此处不需要改变执行上下文.</p>
 </blockquote>
 <h5 id="异步合并"><a href="#异步合并" class="headerlink" title="异步合并"></a>异步合并</h5><p>当流表示了部分操作结果或参数更新状态,处理每个值可能没必要,但是需要处理最近的一个.当收集者处理太慢时<code>conflate</code>操作符可以跳过某些中间值.</p>
-<h5 id="处理最后一个值"><a href="#处理最后一个值" class="headerlink" title="处理最后一个值"></a>处理最后一个值</h5><p>当生产者和消费者处理都很慢时,conflate 是一种加速的方法.它丢弃了一部分数据.另一种方式是取消慢消费者,然后只要生产者发送一个数据就重启.<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">foo()</span><br><span class="line">  .follectLastes &#123;value -&gt;</span><br><span class="line">    println(<span class="string">"collection <span class="variable">$value</span>"</span>)</span><br><span class="line">    delay(<span class="number">300</span>)</span><br><span class="line">    pritln(<span class="string">"Done <span class="variable">$value</span>"</span>)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="处理最后一个值"><a href="#处理最后一个值" class="headerlink" title="处理最后一个值"></a>处理最后一个值</h5><p>当生产者和消费者处理都很慢时,conflate 是一种加速的方法.它丢弃了一部分数据.另一种方式是取消慢消费者,然后只要生产者发送一个数据就重启.</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">foo()</span><br><span class="line">  .follectLastes &#123;value -&gt;</span><br><span class="line">    println(<span class="string">"collection <span class="variable">$value</span>"</span>)</span><br><span class="line">    delay(<span class="number">300</span>)</span><br><span class="line">    pritln(<span class="string">"Done <span class="variable">$value</span>"</span>)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="组合多个流"><a href="#组合多个流" class="headerlink" title="组合多个流"></a>组合多个流</h3><h6 id="Zip"><a href="#Zip" class="headerlink" title="Zip"></a>Zip</h6><p>类似<code>Sequence.zip</code>扩展函数,流也有<code>自拍</code>操作符</p>
 <h6 id="Combine"><a href="#Combine" class="headerlink" title="Combine"></a>Combine</h6><p>当流表示某些变量或操作最近的值时(见<code>conflation</code>),它可能需要根据相应流的最新值和上游发射的新数据计算,<code>combine</code>可以实现.使用<code>zip</code>的话就得等时间最长的哪个流收到值才能计算.</p>
 <h3 id="展开流"><a href="#展开流" class="headerlink" title="展开流"></a>展开流</h3><p>因为流表示异步接受到的数据流,所以每个值可以转为另一个序列的流.如<code>Flow&lt;Flow&lt;String&gt;&gt;</code></p>
-<h6 id="flatMapConcat"><a href="#flatMapConcat" class="headerlink" title="flatMapConcat"></a>flatMapConcat</h6><p><code>flatMapConcat</code>和<code>flattenConcat</code>操作符实现了拼接模式.这是最接近 sequence的操作符.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import kotlinx.coroutines.*</span><br><span class="line">import kotlinx.coroutines.flow.*</span><br><span class="line"></span><br><span class="line">fun requestFlow(i: Int): Flow&lt;String&gt; = flow &#123;</span><br><span class="line">    emit(&quot;$i: First&quot;)</span><br><span class="line">    delay(500) // wait 500 ms</span><br><span class="line">    emit(&quot;$i: Second&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main() = runBlocking&lt;Unit&gt; &#123;</span><br><span class="line">//sampleStart</span><br><span class="line">    val startTime = currentTimeMillis() // remember the start time</span><br><span class="line">    (1..3).asFlow().onEach &#123; delay(100) &#125; // a number every 100 ms</span><br><span class="line">        .flatMapConcat &#123; requestFlow(it) &#125;</span><br><span class="line">        .collect &#123; value -&gt; // collect and print</span><br><span class="line">            println(&quot;$value at $&#123;System.currentTimeMillis() - startTime&#125; ms from start&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">//sampleEnd</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h6 id="flatMapConcat"><a href="#flatMapConcat" class="headerlink" title="flatMapConcat"></a>flatMapConcat</h6><p><code>flatMapConcat</code>和<code>flattenConcat</code>操作符实现了拼接模式.这是最接近 sequence的操作符.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import kotlinx.coroutines.*</span><br><span class="line">import kotlinx.coroutines.flow.*</span><br><span class="line"></span><br><span class="line">fun requestFlow(i: Int): Flow&lt;String&gt; = flow &#123;</span><br><span class="line">    emit(&quot;$i: First&quot;)</span><br><span class="line">    delay(500) // wait 500 ms</span><br><span class="line">    emit(&quot;$i: Second&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main() = runBlocking&lt;Unit&gt; &#123;</span><br><span class="line">//sampleStart</span><br><span class="line">    val startTime = currentTimeMillis() // remember the start time</span><br><span class="line">    (1..3).asFlow().onEach &#123; delay(100) &#125; // a number every 100 ms</span><br><span class="line">        .flatMapConcat &#123; requestFlow(it) &#125;</span><br><span class="line">        .collect &#123; value -&gt; // collect and print</span><br><span class="line">            println(&quot;$value at $&#123;System.currentTimeMillis() - startTime&#125; ms from start&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">//sampleEnd</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h6 id="flatMapMerge"><a href="#flatMapMerge" class="headerlink" title="flatMapMerge"></a>flatMapMerge</h6><p>另一种展开模式是并发的收集所有进来的流,然后把他们合并为一个单一流,这样值就可以尽快被发出去.<code>flatMapMerge</code>,<code>flattenMerge</code>.它们都接受一个<code>concurrency</code>参数限制并发流的数量.</p>
 <h6 id="flatmapLatest"><a href="#flatmapLatest" class="headerlink" title="flatmapLatest"></a>flatmapLatest</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import kotlinx.coroutines.*</span><br><span class="line">import kotlinx.coroutines.flow.*</span><br><span class="line"></span><br><span class="line">fun requestFlow(i: Int): Flow&lt;String&gt; = flow &#123;</span><br><span class="line">    emit(&quot;$i: First&quot;)</span><br><span class="line">    delay(500) // wait 500 ms</span><br><span class="line">    emit(&quot;$i: Second&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main() = runBlocking&lt;Unit&gt; &#123;</span><br><span class="line">//sampleStart</span><br><span class="line">    val startTime = currentTimeMillis() // remember the start time</span><br><span class="line">    (1..3).asFlow().onEach &#123; delay(100) &#125; // a number every 100 ms</span><br><span class="line">        .flatMapLatest &#123; requestFlow(it) &#125;</span><br><span class="line">        .collect &#123; value -&gt; // collect and print</span><br><span class="line">            println(&quot;$value at $&#123;System.currentTimeMillis() - startTime&#125; ms from start&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">//sampleEnd</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -432,8 +456,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/08/16/Groovy-template/" rel="next" title="Groovy template">
-                  <i class="fa fa-chevron-left"></i> Groovy template
+                <a href="/2019/08/26/Java-并发和多线程指南/" rel="next" title="Java 并发和多线程指南">
+                  <i class="fa fa-chevron-left"></i> Java 并发和多线程指南
                 </a>
               
             </div>
@@ -482,11 +506,11 @@
       
 
       <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc" data-target="post-toc-wrap">
-          文章目录
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-          站点概览
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
       </ul>
 
@@ -499,17 +523,16 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" src="http://qiniu.picbed.dang8080.cn/logo.jpeg" alt="Humphrey Dang">
-  <p class="site-author-name" itemprop="name">Humphrey Dang</p>
-  <div class="site-description" itemprop="description">Humphrey Dang 的博客</div>
+  <p class="site-author-name" itemprop="name">Humphrey Dan</p>
+  <div class="site-description" itemprop="description">write something,donot leave.</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
     
@@ -521,54 +544,8 @@
             <a href="/tags/">
           
         
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span>
         </a>
       </div>
     
@@ -582,7 +559,7 @@
       
         
       
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
+        <a href="https://github.com/shuttlespace" title="GitHub &rarr; https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
     
       <span class="links-of-author-item">
@@ -593,7 +570,7 @@
       
         
       
-        <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+        <a href="mailto:dang8080@qq.com" title="E-Mail &rarr; mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
     
   </div>
@@ -601,11 +578,6 @@
 
 
       </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
-      
 
     </div>
   </aside>
@@ -617,16 +589,13 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright"><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5taWl0Lmdvdi5jbg==">陕ICP备19000066号-1 </span>
-  <span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPQ=="> </span>&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
+  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2017 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Humphrey Dang</span>
+  <span class="author" itemprop="copyrightHolder">Humphrey Dan</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.3.0</div>
 
         
 
@@ -647,10 +616,13 @@
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-<script src="/js/utils.js?v=7.3.0"></script>
-<script src="/js/schemes/pisces.js?v=7.3.0"></script>
-<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+<script src="/js/utils.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
@@ -663,7 +635,7 @@
 
 
 
-  <script src="/js/local-search.js?v=7.3.0"></script>
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -690,7 +662,7 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
   guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
+    return GUEST.includes(item);
   });
   new Valine({
     el: '#comments',

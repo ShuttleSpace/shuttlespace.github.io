@@ -4,18 +4,18 @@
 
 
 
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#025a6c">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.3.0">
-  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.3.0" color="#025a6c">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#025a6c">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
@@ -25,13 +25,13 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '7.3.0',
-    exturl: true,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#025a6c","save":"auto"},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
@@ -41,31 +41,32 @@
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"搜索","hits_empty":"${query} 找不到","hits_stats":"${time}ms内找到${hits}个相关内容"}
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},
     path: 'search.xml',
     motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
   };
 </script>
 
-  <meta name="description" content="前言JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.入门获取在仓库搜索引擎中搜索 jgit 即可获取各种添加依赖的方式.我现在基本使用的是 gradle 依赖12implementation(&quot;org.eclipse.jgit:org.eclipse.jgit:5.3.0.20190313">
+  <meta name="description" content="前言JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.">
 <meta name="keywords" content="Android,Java,Kotlin,JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JGit">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/03/16/JGit/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="前言JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.入门获取在仓库搜索引擎中搜索 jgit 即可获取各种添加依赖的方式.我现在基本使用的是 gradle 依赖12implementation(&quot;org.eclipse.jgit:org.eclipse.jgit:5.3.0.20190313">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:description" content="前言JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-03-21T10:27:14.489Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JGit">
-<meta name="twitter:description" content="前言JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.入门获取在仓库搜索引擎中搜索 jgit 即可获取各种添加依赖的方式.我现在基本使用的是 gradle 依赖12implementation(&quot;org.eclipse.jgit:org.eclipse.jgit:5.3.0.20190313">
+<meta name="twitter:description" content="前言JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.">
   <link rel="canonical" href="http://blog.dang8080.cn/2019/03/16/JGit/">
 
 
@@ -81,7 +82,6 @@
 </script>
 
   <title>JGit | 云青青兮欲雨</title>
-  <meta name="generator" content="Hexo 3.8.0">
   
 
 
@@ -117,13 +117,13 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <div class="container">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta custom-logo">
+  <div class="site-meta">
 
     <div>
       <a href="/" class="brand" rel="start">
@@ -132,15 +132,12 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <h1 class="site-subtitle" itemprop="description">水澹澹兮生烟</h1>
+        <p class="site-subtitle">水澹澹兮生烟</p>
       
-      <a>
-        <img class="custom-logo-image" src="[object Object]" alt="云青青兮欲雨">
-      </a>
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -159,10 +156,8 @@
         <li class="menu-item menu-item-home">
       
     
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
 
   </li>
       
@@ -172,10 +167,8 @@
         <li class="menu-item menu-item-archives">
       
     
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
   </li>
       
@@ -185,10 +178,8 @@
         <li class="menu-item menu-item-tags">
       
     
-      
-    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">22</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
 
   </li>
       
@@ -198,16 +189,14 @@
         <li class="menu-item menu-item-about">
       
     
-      
-    
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
 
   </li>
       <li class="menu-item menu-item-search">
         <a href="javascript:;" class="popup-trigger">
         
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
       </li>
     
   </ul>
@@ -220,7 +209,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -236,6 +227,10 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
     <main id="main" class="main">
@@ -255,32 +250,32 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/03/16/JGit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">JGit
+        <h1 class="post-title" itemprop="name headline">JGit
 
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-03-16 11:47:07" itemprop="dateCreated datePublished" datetime="2019-03-16T11:47:07+08:00">2019-03-16</time>
+              <time title="Created: 2019-03-16 11:47:07" itemprop="dateCreated datePublished" datetime="2019-03-16T11:47:07+08:00">2019-03-16</time>
             </span>
           
             
@@ -290,18 +285,18 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-03-21 18:27:14" itemprop="dateModified" datetime="2019-03-21T18:27:14+08:00">2019-03-21</time>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-21 18:27:14" itemprop="dateModified" datetime="2019-03-21T18:27:14+08:00">2019-03-21</time>
               </span>
             
           
 
           
-            <span id="/2019/03/16/JGit/" class="post-meta-item leancloud_visitors" data-flag-title="JGit" title="阅读次数">
+            <span id="/2019/03/16/JGit/" class="post-meta-item leancloud_visitors" data-flag-title="JGit" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -313,7 +308,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/03/16/JGit/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/03/16/JGit/" itemprop="commentCount"></span></a>
   </span>
@@ -329,18 +324,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.</p><h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h3><p>在<span class="exturl" data-url="aHR0cHM6Ly9tdm5yZXBvc2l0b3J5LmNvbS8=" title="https://mvnrepository.com/">仓库搜索引擎<i class="fa fa-external-link"></i></span>中搜索 jgit 即可获取各种添加依赖的方式.我现在基本使用的是 gradle 依赖</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">implementation(<span class="string">"org.eclipse.jgit:org.eclipse.jgit:5.3.0.201903130848-r"</span>)</span><br><span class="line">implementation(<span class="string">"org.eclipse.jgit:org.eclipse.jgit.http.server:5.3.0.201903130848-r"</span>)</span><br></pre></td></tr></table></figure><a id="more"></a>
-
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.</p><a id="more"></a>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h3><p>在<span class="exturl" data-url="aHR0cHM6Ly9tdm5yZXBvc2l0b3J5LmNvbS8=" title="https://mvnrepository.com/">仓库搜索引擎<i class="fa fa-external-link"></i></span>中搜索 jgit 即可获取各种添加依赖的方式.我现在基本使用的是 gradle 依赖</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">implementation(<span class="string">"org.eclipse.jgit:org.eclipse.jgit:5.3.0.201903130848-r"</span>)</span><br><span class="line">implementation(<span class="string">"org.eclipse.jgit:org.eclipse.jgit.http.server:5.3.0.201903130848-r"</span>)</span><br></pre></td></tr></table></figure>
 
 <p>JGit 也具有 CLI(功能比 git CLI 少),可以试一下 JGit 的功能.</p>
 <h4 id="手动编译-JGit-CLI"><a href="#手动编译-JGit-CLI" class="headerlink" title="手动编译 JGit CLI"></a>手动编译 JGit CLI</h4><p>假设已经 clone EGit 仓库. <code>git clone https://git.eclipse.org/r/jgit/jgit.git</code> <span class="exturl" data-url="aHR0cHM6Ly93aWtpLmVjbGlwc2Uub3JnL0VHaXQvQ29udHJpYnV0b3JfR3VpZGUjSkdpdA==" title="https://wiki.eclipse.org/EGit/Contributor_Guide#JGit">具体查看<i class="fa fa-external-link"></i></span></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">~/src/jgit$ mvn clean install</span><br><span class="line"><span class="comment"># 进入 jgit 可执行文件所在文件夹</span></span><br><span class="line">org.eclipse.jgit.pgm/target/jgit</span><br><span class="line"><span class="comment"># 查看 version 命令</span></span><br><span class="line">prompt$ ./jgit version</span><br><span class="line">jgit version xxxxx</span><br><span class="line"><span class="comment"># 如果经常使用 jgit 命令,可以添加执行链接(通常在 /usr/local/bin)</span></span><br><span class="line">sudo ln -s /path/to/jgit /usr/<span class="built_in">local</span>/bin/jgit</span><br></pre></td></tr></table></figure>
+
 <h4 id="在-JGit-CLI-运行命令"><a href="#在-JGit-CLI-运行命令" class="headerlink" title="在 JGit CLI 运行命令"></a>在 JGit CLI 运行命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">prompt$ ./git</span><br><span class="line"><span class="comment"># 会列出最常用的命令</span></span><br><span class="line">jgit --git-dir GIT_DIR --<span class="built_in">help</span> (-h) --show-stack-trace <span class="built_in">command</span> [ARG ...]</span><br><span class="line"></span><br><span class="line">The most commonly used commands are:</span><br><span class="line"> branch   List, create, or delete branches</span><br><span class="line"> <span class="built_in">clone</span>    Clone a repository into a new directory</span><br><span class="line"> commit   Record changes to the repository</span><br><span class="line"> daemon   Export repositories over git://</span><br><span class="line"> diff     Show diffs</span><br><span class="line"> fetch    Update remote refs from another repository</span><br><span class="line"> init     Create an empty git repository</span><br><span class="line"> <span class="built_in">log</span>      View commit <span class="built_in">history</span></span><br><span class="line"> push     Update remote repository from <span class="built_in">local</span> refs</span><br><span class="line"> rm       Stop tracking a file</span><br><span class="line"> tag      Create a tag</span><br><span class="line"> version  Display the version of jgit</span><br><span class="line"></span><br><span class="line"> <span class="comment"># 常用的 debug test 命令</span></span><br><span class="line"> prompt$ ./jgit debug-show-commands</span><br></pre></td></tr></table></figure>
+
 <h5 id="查看仓库"><a href="#查看仓库" class="headerlink" title="查看仓库"></a>查看仓库</h5><p>在查看最常用的命令之前，你可能想知道该仓库包含了多少分支，当前分支是那个.使用 branch -v 可以获取所有分支的简略信息，版本号，版本号提交信息的第一行.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">prompt$ ./jgit branch -v</span><br><span class="line"><span class="comment">#  master       4d4adfb Git Project import: don't hide but gray out existing projects</span></span><br><span class="line"><span class="comment"># * traceHistory 6b9fe04 [historyView] Add trace instrumentation</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 和 git-log 一样 log 命令显示提交信息</span></span><br><span class="line">jgit <span class="built_in">log</span> --author Math --grep tycho master</span><br><span class="line"><span class="comment"># 显示 master 分钟中，作者名包含 Math,提交信息包含 tycho 的搜有提交信息.</span></span><br><span class="line"><span class="comment"># commit xxxx</span></span><br><span class="line"><span class="comment"># Author: Math xxxx</span></span><br><span class="line"><span class="comment"># Date: xxx</span></span><br><span class="line"><span class="comment"># Update build to use tycho x.xx.x</span></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line"><span class="comment"># 大多数的搜索都会精确过滤提交日志，如提交者姓名等</span></span><br></pre></td></tr></table></figure>
+
 <h5 id="历史图形化"><a href="#历史图形化" class="headerlink" title="历史图形化"></a>历史图形化</h5><p><code>jgit glog</code></p>
 <h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><h4 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h4><p>Repository 管理所有的项目和引用，管理代码</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> repository = FileRepositoryBuilder()</span><br><span class="line">    .setGitDir(File(<span class="string">"/my/git/directory"</span>))</span><br><span class="line">    .readEnvironment() <span class="comment">// 扫描 GIT_* 环境变量</span></span><br><span class="line">    .findGitDir() <span class="comment">// 扫描文件系统</span></span><br><span class="line">    .build()</span><br></pre></td></tr></table></figure>
+
 <h4 id="Git-对象"><a href="#Git-对象" class="headerlink" title="Git 对象"></a>Git 对象</h4><p>在 Git object model 所有的对象都是由 SHA-1 id 表示.在 JGit 中是由 <code>AnyObjectId</code> 和 <code>ObjectId</code>类表示.<br>在 Git object model 中定义了四种对象类型:</p>
 <ul>
 <li>blob: 用于存储文件对象</li>
@@ -350,28 +350,36 @@
 </ul>
 <p>为了从一个仓库中识别一个对象，只要传入一个正确的 revision 字符串即可</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> head = repository.resolve(<span class="string">"HEAD"</span>)</span><br></pre></td></tr></table></figure>
+
 <h4 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h4><p>ref 是一个包含单个对象标识符的变量.对象标识符可以是任何 Git 合法对象(blob,tree,commit,tag)<br>例如,获取 head 的引用.</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> HEAD = repository.findRef(<span class="string">"refs/heads/master"</span>)</span><br></pre></td></tr></table></figure>
+
 <h4 id="RevWalk"><a href="#RevWalk" class="headerlink" title="RevWalk"></a>RevWalk</h4><p>RevWalk 遍历 commit graph，并按顺序生成匹配的 commit</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> revWalk = RevWalk(repository)</span><br></pre></td></tr></table></figure>
+
 <h4 id="RevCommit"><a href="#RevCommit" class="headerlink" title="RevCommit"></a>RevCommit</h4><p>RevCommit 表示 Git object model 中的一个 commit</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> commit = walk.parseCommit(objectIdOfCommit);</span><br></pre></td></tr></table></figure>
+
 <h4 id="RevTag"><a href="#RevTag" class="headerlink" title="RevTag"></a>RevTag</h4><p>RevCommit 表示 Git object model 中的一个 Tag</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> tag = walk.parseCommit(objectIdOfTag);</span><br></pre></td></tr></table></figure>
+
 <h4 id="RevTree"><a href="#RevTree" class="headerlink" title="RevTree"></a>RevTree</h4><p>RevCommit 表示 Git object model 中的一个 tree</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> tree = walk.parseCommit(objectIdOfTree);</span><br></pre></td></tr></table></figure>
+
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>虽然 JGit 包含了许多和 Git 仓库交互的低级代码，同时还有一些参考<code>org.eclipse.jgit.apit</code>包中 Git porcelain 命令的高级 API.</p>
 <h4 id="添加命令-git-add"><a href="#添加命令-git-add" class="headerlink" title="添加命令(git-add)"></a>添加命令(git-add)</h4><p>add 命令可以向索引中添加文件，同时可以通过 setter 方法配置</p>
 <ul>
 <li>addFilepattern()</li>
 </ul>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> git = Git(repository)</span><br><span class="line">git.add()</span><br><span class="line">    .addFilepattern(<span class="string">"/dir"</span>)</span><br><span class="line">    .call()</span><br></pre></td></tr></table></figure>
+
 <h4 id="提交命令-git-commit"><a href="#提交命令-git-commit" class="headerlink" title="提交命令(git-commit)"></a>提交命令(git-commit)</h4><ul>
 <li>setAuthor()</li>
 <li>setCommitter()</li>
 <li>setAll()</li>
 </ul>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git.commit()</span><br><span class="line">    .setAuthor(<span class="string">"author"</span>,<span class="string">"email"</span>)</span><br><span class="line">    .setMessage(<span class="string">"message"</span>)</span><br><span class="line">    .call()</span><br></pre></td></tr></table></figure>
+
 <h4 id="tag-命令-git-tag"><a href="#tag-命令-git-tag" class="headerlink" title="tag 命令(git-tag)"></a>tag 命令(git-tag)</h4><ul>
 <li>setName()</li>
 <li>setMessage()</li>
@@ -381,16 +389,20 @@
 <li>setSigned(): 暂不支持，会抛异常</li>
 </ul>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git.tag()</span><br><span class="line">    .setName(<span class="string">"tag"</span>)</span><br><span class="line">    .call()</span><br></pre></td></tr></table></figure>
+
 <h4 id="log-命令-git-log"><a href="#log-命令-git-log" class="headerlink" title="log 命令(git-log)"></a>log 命令(git-log)</h4><ul>
 <li>add(AnyObjectId start)</li>
 <li>addRange(AnyObjectId since,AnyObjectId until)</li>
 </ul>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git.log()</span><br><span class="line">    .add(head)</span><br><span class="line">    .call()</span><br></pre></td></tr></table></figure>
+
 <h4 id="merge-命令-git-merge"><a href="#merge-命令-git-merge" class="headerlink" title="merge 命令(git-merge)"></a>merge 命令(git-merge)</h4><p>TODO</p>
 <h4 id="Ant-任务"><a href="#Ant-任务" class="headerlink" title="Ant 任务"></a>Ant 任务</h4><p>JGit 在 <code>org.eclipse.jgit.ant</code> 包中提供了 Ant 任务功能.<br>添加依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">taskdef</span> <span class="attr">resource</span>=<span class="string">"org/eclipse/jgti/ant/ant-tasks.properties"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">classpath</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pathelement</span> <span class="attr">location</span>=<span class="string">"path/to/org.eclipse.jgit.ant-VERSION.jar"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pathelement</span> <span class="attr">location</span>=<span class="string">"path/to/org.eclipse.jgit-VERSION.jar"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pathelement</span> <span class="attr">location</span>=<span class="string">"path/to/jsch-0.1.44-1.jar"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">classpath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">taskdef</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>提供了 <code>git-clone、git-init、git-checkout</code>任务.</p>
 <h4 id="git-clone"><a href="#git-clone" class="headerlink" title="git-clone"></a>git-clone</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">git-clone</span> <span class="attr">uri</span>=<span class="string">"http://egit.eclipse.org/jgit.git"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>uri(必须)</li>
 <li>dest(可选): 克隆的目标文件地址.默认使用基于 uri 路径最后一个组件作为可识别的名称的文件夹.</li>
@@ -398,11 +410,13 @@
 <li>branch(可选): 默认 HEAD</li>
 </ul>
 <h4 id="git-init"><a href="#git-init" class="headerlink" title="git-init"></a>git-init</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">git-init</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>dest(可选): 默认 \$GIT_DIR 或当前文件夹</li>
+<li>dest(可选): 默认 $GIT_DIR 或当前文件夹</li>
 <li>bare(可选)</li>
 </ul>
 <h4 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git-checkout"></a>git-checkout</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">git-checkout</span> <span class="attr">src</span>=<span class="string">"path/to/repo"</span> <span class="attr">branch</span>=<span class="string">"origin/experimental"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>src(必须)</li>
 <li>branch(必须)</li>
@@ -411,17 +425,23 @@
 </ul>
 <h4 id="git-add"><a href="#git-add" class="headerlink" title="git-add"></a>git-add</h4><p>TODO</p>
 <h3 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h3><h4 id="获取某一提交记录的子记录"><a href="#获取某一提交记录的子记录" class="headerlink" title="获取某一提交记录的子记录"></a>获取某一提交记录的子记录</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PlotWalk revWalk = <span class="keyword">new</span> PlotWalk(repo());</span><br><span class="line">ObjectId rootId = (branch == <span class="keyword">null</span>) ? repo().resolve(HEAD) : branch.getObjectId();</span><br><span class="line">RevComment root = revWalk.parseCommit(rootId);</span><br><span class="line">revWalk.markStart(root);</span><br><span class="line">PlotCommitList&lt;PlotLane&gt; plotCommitList = <span class="keyword">new</span> PlotCommitList&lt;PlotLane&gt;();</span><br><span class="line">plotCOmmitList.source(revWalk);</span><br><span class="line">plotCommitList.fillTo(Integer.MAX_VALUE);</span><br><span class="line"><span class="keyword">return</span> revWalk;</span><br></pre></td></tr></table></figure>
+
 <h3 id="高级主题"><a href="#高级主题" class="headerlink" title="高级主题"></a>高级主题</h3><h4 id="使用-RevWalk-减少内存使用"><a href="#使用-RevWalk-减少内存使用" class="headerlink" title="使用 RevWalk 减少内存使用"></a>使用 RevWalk 减少内存使用</h4><p>revision walk 接口和 RevWalk，RevCommit 类轻量级设计。然而当面对相当大的仓库时它们可能仍然需要很多内存。接下来提供了一些方法在遍历修订图(walking the revision graph)时减少内存。</p>
 <h4 id="限制遍历修订图-Restrict-the-walked-revision-graph"><a href="#限制遍历修订图-Restrict-the-walked-revision-graph" class="headerlink" title="限制遍历修订图(Restrict the walked revision graph)"></a>限制遍历修订图(Restrict the walked revision graph)</h4><p>仅遍历那些必要的图.即如果查找 refs/heads/master 而不是 refs/remotes/origin/master 的提交记录,确保对 refs/heads/master 调用 markStart(),对 refs/remotes/origin/master 调用 markUninteresting(). RevWalk traversal 讲只解析对你有用的提交记录,而且会避免在历史记录中查询.这讲减少内部 object map 的大小,因此减少整体内存占用.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RevWalk walk = <span class="keyword">new</span> RevWalk(repository);</span><br><span class="line">ObjectId from = repository.resolve(<span class="string">"refs/heads/master"</span>);</span><br><span class="line">ObjectId to = repository.resolve(<span class="string">"refs/remotes/origin/master"</span>);</span><br><span class="line"></span><br><span class="line">walk.markStart(walk.parseCommit(from));</span><br><span class="line">walk.markUnInteresting(walk.parseCommit(to));</span><br></pre></td></tr></table></figure>
+
 <h4 id="丢弃提交记录内容"><a href="#丢弃提交记录内容" class="headerlink" title="丢弃提交记录内容"></a>丢弃提交记录内容</h4><p><code>setRetainBody(false)</code> 可以用来丢弃提交记录内容，如果你不需要作者，提交者，或信息等.不需要该数据的例子如只使用 RevWalk 完成 branch merge 或使用 git rev-list 完成相关功能.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RevWalk walk = <span class="keyword">new</span> RevWalk(repository);</span><br><span class="line">walk.setRetainBody(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+
 <p>如果确实需要这些信息，可以考虑拆分你需要的数据然后对 RevCommit 调用 dispose().如果需要长时间使用这些信息,你会发现 JGit 内部使用的内存比你自己处理占用的内存要少，特别是需要全部的信息时。这是因为 JGit 内部使用 byte 数组保存 UTF-8 编码的信息.如果使用 UTF-16 编码的 Java String 占内存将会变大，假设大部分的消息是 US-ASCII 编码的.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RevWalk walk = <span class="keyword">new</span> RevWalk(repository);</span><br><span class="line">Set&lt;String&gt; authorEmails = <span class="keyword">new</span> HashSet&lt;String&gt;();</span><br><span class="line"><span class="keyword">for</span> (RevCommit commit : walk) &#123;</span><br><span class="line">    authorEmails.add(commit.getAuthorIdent().getEmailAddress());</span><br><span class="line">    commit.dispose();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h4 id="RevWalk-和-RevCommit-的子类"><a href="#RevWalk-和-RevCommit-的子类" class="headerlink" title="RevWalk 和 RevCommit 的子类"></a>RevWalk 和 RevCommit 的子类</h4><p>如果需要获取某个提交记录的更多信息，可以考虑使用 RevWalk RevCommit 的子类, RevWalk.createCommit() 构建 RevCommit 子类的实例。然后将更多的信息存入 RevCommit 子类,这样就不需要额外的 HashMap 将 RevCommit 或 ObjectId 转换为 自定义的数据属性.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReviewedRevision</span> <span class="keyword">extends</span> <span class="title">RevCommit</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Date reviewDate;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">ReviewedRevision</span><span class="params">(AnyObjectId id,Date reviewDate)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(id);</span><br><span class="line">        <span class="keyword">this</span>.reviewDate = reviewDate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getReviewedBy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getFooterLines(<span class="string">"Reviewed-by"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Date <span class="title">getReviewDate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> reviewDate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Walk</span> <span class="keyword">extends</span> <span class="title">RevWalk</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Walk</span><span class="params">(Repository repo)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(repo);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> RevCommit <span class="title">createCommit</span><span class="params">(AnyObjectId id)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ReviewedRevision(id,getReviewDate(id));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> Date <span class="title">getReviewDate</span><span class="params">(AnyObjectId id)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h4 id="遍历修订后清理"><a href="#遍历修订后清理" class="headerlink" title="遍历修订后清理"></a>遍历修订后清理</h4><p>RevWalk 无法缩小内部的 object map.如果刚完成了遍历仓库的所有历史，这将会将所有东西加载到 object map，并且无法被释放.如果再不需要这些数据，好的习惯是丢弃这个 RevWalk，然后为下次遍历重新申请新的 RevWalk。这样 GC 就会回收垃圾。另外，重用一个存在 的 object map 比完全重新创建一个新的更快.所以你需要平衡内存回收和用户渴望更快的操作之间的关系.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RevWalk walk = <span class="keyword">new</span> RevWalk(repository);</span><br><span class="line"><span class="keyword">for</span> (RevCommit commit : walk) &#123;&#125;</span><br><span class="line">walk.repository();</span><br></pre></td></tr></table></figure>
+
 <h3 id="功能列表"><a href="#功能列表" class="headerlink" title="功能列表"></a>功能列表</h3><ul>
 <li>通用仓库操作<ul>
 <li><a href>打开存在的 git 仓库</a></li>
@@ -575,11 +595,11 @@
       
 
       <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc" data-target="post-toc-wrap">
-          文章目录
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-          站点概览
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
       </ul>
 
@@ -592,17 +612,16 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" src="http://qiniu.picbed.dang8080.cn/logo.jpeg" alt="Humphrey Dang">
-  <p class="site-author-name" itemprop="name">Humphrey Dang</p>
-  <div class="site-description" itemprop="description">Humphrey Dang 的博客</div>
+  <p class="site-author-name" itemprop="name">Humphrey Dan</p>
+  <div class="site-description" itemprop="description">write something,donot leave.</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
     
@@ -614,54 +633,8 @@
             <a href="/tags/">
           
         
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span>
         </a>
       </div>
     
@@ -675,7 +648,7 @@
       
         
       
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
+        <a href="https://github.com/shuttlespace" title="GitHub &rarr; https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
     
       <span class="links-of-author-item">
@@ -686,7 +659,7 @@
       
         
       
-        <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+        <a href="mailto:dang8080@qq.com" title="E-Mail &rarr; mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
     
   </div>
@@ -694,11 +667,6 @@
 
 
       </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
-      
 
     </div>
   </aside>
@@ -710,16 +678,13 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright"><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5taWl0Lmdvdi5jbg==">陕ICP备19000066号-1 </span>
-  <span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPQ=="> </span>&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
+  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2017 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Humphrey Dang</span>
+  <span class="author" itemprop="copyrightHolder">Humphrey Dan</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.3.0</div>
 
         
 
@@ -740,10 +705,13 @@
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-<script src="/js/utils.js?v=7.3.0"></script>
-<script src="/js/schemes/pisces.js?v=7.3.0"></script>
-<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+<script src="/js/utils.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
@@ -756,7 +724,7 @@
 
 
 
-  <script src="/js/local-search.js?v=7.3.0"></script>
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -783,7 +751,7 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
   guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
+    return GUEST.includes(item);
   });
   new Valine({
     el: '#comments',

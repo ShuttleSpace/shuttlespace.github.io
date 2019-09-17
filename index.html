@@ -4,18 +4,18 @@
 
 
 
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#025a6c">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.3.0">
-  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.3.0" color="#025a6c">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#025a6c">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
@@ -25,13 +25,13 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '7.3.0',
-    exturl: true,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#025a6c","save":"auto"},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
@@ -41,30 +41,31 @@
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"搜索","hits_empty":"${query} 找不到","hits_stats":"${time}ms内找到${hits}个相关内容"}
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},
     path: 'search.xml',
     motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
   };
 </script>
 
-  <meta name="description" content="Humphrey Dang 的博客">
+  <meta name="description" content="write something,donot leave.">
 <meta name="keywords" content="Android,Java,Kotlin,JS">
 <meta property="og:type" content="website">
 <meta property="og:title" content="云青青兮欲雨">
 <meta property="og:url" content="http://blog.dang8080.cn/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="Humphrey Dang 的博客">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:description" content="write something,donot leave.">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="云青青兮欲雨">
-<meta name="twitter:description" content="Humphrey Dang 的博客">
+<meta name="twitter:description" content="write something,donot leave.">
   <link rel="canonical" href="http://blog.dang8080.cn/">
 
 
@@ -79,8 +80,7 @@
   };
 </script>
 
-  <title>云青青兮欲雨 - 水澹澹兮生烟</title>
-  <meta name="generator" content="Hexo 3.8.0">
+  <title>云青青兮欲雨</title>
   
 
 
@@ -116,13 +116,13 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <div class="container">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta custom-logo">
+  <div class="site-meta">
 
     <div>
       <a href="/" class="brand" rel="start">
@@ -131,15 +131,12 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <h1 class="site-subtitle" itemprop="description">水澹澹兮生烟</h1>
+        <p class="site-subtitle">水澹澹兮生烟</p>
       
-      <a>
-        <img class="custom-logo-image" src="[object Object]" alt="云青青兮欲雨">
-      </a>
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -158,10 +155,8 @@
         <li class="menu-item menu-item-home">
       
     
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
 
   </li>
       
@@ -171,10 +166,8 @@
         <li class="menu-item menu-item-archives">
       
     
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
   </li>
       
@@ -184,10 +177,8 @@
         <li class="menu-item menu-item-tags">
       
     
-      
-    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">22</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
 
   </li>
       
@@ -197,16 +188,14 @@
         <li class="menu-item menu-item-about">
       
     
-      
-    
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
 
   </li>
       <li class="menu-item menu-item-search">
         <a href="javascript:;" class="popup-trigger">
         
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
       </li>
     
   </ul>
@@ -219,7 +208,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -235,6 +226,10 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
     <main id="main" class="main">
@@ -253,33 +248,33 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/08/26/译-Kotlin-Coroutine(1)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
             
             <a href="/2019/08/26/译-Kotlin-Coroutine(1)/" class="post-title-link" itemprop="url">译-Kotlin-Coroutine(1) case)</a>
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-08-26 20:23:11 / 修改时间：15:33:46" itemprop="dateCreated datePublished" datetime="2019-08-26T20:23:11+08:00">2019-08-26</time>
+              <time title="Created: 2019-08-26 20:23:11 / Modified: 15:33:46" itemprop="dateCreated datePublished" datetime="2019-08-26T20:23:11+08:00">2019-08-26</time>
             </span>
           
             
@@ -288,11 +283,11 @@
           
 
           
-            <span id="/2019/08/26/译-Kotlin-Coroutine(1)/" class="post-meta-item leancloud_visitors" data-flag-title="译-Kotlin-Coroutine(1) case)" title="阅读次数">
+            <span id="/2019/08/26/译-Kotlin-Coroutine(1)/" class="post-meta-item leancloud_visitors" data-flag-title="译-Kotlin-Coroutine(1) case)" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -304,7 +299,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/08/26/译-Kotlin-Coroutine(1)/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/26/译-Kotlin-Coroutine(1)/" itemprop="commentCount"></span></a>
   </span>
@@ -325,7 +320,7 @@
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/08/26/译-Kotlin-Coroutine(1)/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           
@@ -353,57 +348,49 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/08/16/Groovy-template/">
+    <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/08/26/Java-并发和多线程指南/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/08/16/Groovy-template/" class="post-title-link" itemprop="url">Groovy template</a>
+            <a href="/2019/08/26/Java-并发和多线程指南/" class="post-title-link" itemprop="url">Java 并发和多线程指南</a>
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-08-16 09:56:58" itemprop="dateCreated datePublished" datetime="2019-08-16T09:56:58+08:00">2019-08-16</time>
+              <time title="Created: 2019-08-26 17:20:52 / Modified: 17:37:46" itemprop="dateCreated datePublished" datetime="2019-08-26T17:20:52+08:00">2019-08-26</time>
             </span>
           
             
 
             
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-26 15:34:08" itemprop="dateModified" datetime="2019-08-26T15:34:08+08:00">2019-08-26</time>
-              </span>
-            
           
 
           
-            <span id="/2019/08/16/Groovy-template/" class="post-meta-item leancloud_visitors" data-flag-title="Groovy template" title="阅读次数">
+            <span id="/2019/08/26/Java-并发和多线程指南/" class="post-meta-item leancloud_visitors" data-flag-title="Java 并发和多线程指南" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -415,7 +402,109 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/08/26/Java-并发和多线程指南/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/26/Java-并发和多线程指南/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/08/16/Groovy-template/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云青青兮欲雨">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/08/16/Groovy-template/" class="post-title-link" itemprop="url">Groovy template</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-08-16 09:56:58" itemprop="dateCreated datePublished" datetime="2019-08-16T09:56:58+08:00">2019-08-16</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-26 15:34:08" itemprop="dateModified" datetime="2019-08-26T15:34:08+08:00">2019-08-26</time>
+              </span>
+            
+          
+
+          
+            <span id="/2019/08/16/Groovy-template/" class="post-meta-item leancloud_visitors" data-flag-title="Groovy template" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/08/16/Groovy-template/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/16/Groovy-template/" itemprop="commentCount"></span></a>
   </span>
@@ -431,12 +520,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Groovy MarkupTemplateEngine 主要面向生成类 XML(XML,XHTML,HTML5…)的标记语言,但是也支持其他基于内容的文本.和传统的模版引擎相比,此引擎支持基于 DSL 的 builder 语法.<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">xmlDeclaration()</span><br><span class="line">cars &#123;</span><br><span class="line">  carsh.each &#123;</span><br><span class="line">    car(<span class="string">make:</span>it.make,<span class="string">model:</span>it.model)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p><code>MarkupTemplateEngine</code>支持引用来自另一个文件的内容.</p>
+          <p>Groovy MarkupTemplateEngine 主要面向生成类 XML(XML,XHTML,HTML5…)的标记语言,但是也支持其他基于内容的文本.和传统的模版引擎相比,此引擎支持基于 DSL 的 builder 语法.</p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/08/16/Groovy-template/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           
@@ -467,33 +556,33 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/08/13/Podman/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
             
             <a href="/2019/08/13/Podman/" class="post-title-link" itemprop="url">Podman</a>
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-08-13 22:28:10" itemprop="dateCreated datePublished" datetime="2019-08-13T22:28:10+08:00">2019-08-13</time>
+              <time title="Created: 2019-08-13 22:28:10" itemprop="dateCreated datePublished" datetime="2019-08-13T22:28:10+08:00">2019-08-13</time>
             </span>
           
             
@@ -503,18 +592,18 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-26 15:34:18" itemprop="dateModified" datetime="2019-08-26T15:34:18+08:00">2019-08-26</time>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-26 15:34:18" itemprop="dateModified" datetime="2019-08-26T15:34:18+08:00">2019-08-26</time>
               </span>
             
           
 
           
-            <span id="/2019/08/13/Podman/" class="post-meta-item leancloud_visitors" data-flag-title="Podman" title="阅读次数">
+            <span id="/2019/08/13/Podman/" class="post-meta-item leancloud_visitors" data-flag-title="Podman" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -526,7 +615,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/08/13/Podman/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/13/Podman/" itemprop="commentCount"></span></a>
   </span>
@@ -542,29 +631,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Podman 是什么? Podman 是一个非守护线程的容器引擎,支持在 Linux 系统上开发、管理和运行 OCI 容器.容器同时支持 root 身份和非 root 身份.只需要使用 <code>alias docker=podman</code> 就可以立即从 docker 切换到 podman.</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
-<li>Arch Linux &amp; Manjaro Linux<br><code>sudo pacman -S podman</code></li>
-<li>Fedora,CentOS<br><code>sudo yum -y install podman</code></li>
-<li>Fedora-CoreOS,Fedora SilverBlue<br>内置无需安装</li>
-<li>Gentoo<br><code>sudo emerge app-emulation/libpod</code></li>
-<li>MacOS<br><code>brew cask install podman</code></li>
-<li>openSUSE<br><code>sudo zypper install podman</code></li>
-<li>openSUSE Kubic<br>内置无需安装</li>
-<li><p>RHEL7</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo subcription-manager repos --enable=rhel-7-server-extras-rpms</span><br><span class="line">sudo yum -y install podman</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>RHEL8 Beta</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum module enable -y contianer-tools:1.0</span><br><span class="line">sudo yum module install-y container-tools:1.0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Ubuntu</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update -qq</span><br><span class="line">sudo apt-get install -qq -y software-properties-common uidmap</span><br><span class="line">sudo add-apt-repository -y ppa:projectatomic/ppa</span><br><span class="line">sudo apt-get update -qq</span><br><span class="line">sudo apt-get -qq -y install podman</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+          <p>Podman 是什么? Podman 是一个非守护线程的容器引擎,支持在 Linux 系统上开发、管理和运行 OCI 容器.容器同时支持 root 身份和非 root 身份.只需要使用 <code>alias docker=podman</code> 就可以立即从 docker 切换到 podman.</p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/08/13/Podman/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           
@@ -595,33 +667,33 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/06/06/Flutter-Text/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
             
             <a href="/2019/06/06/Flutter-Text/" class="post-title-link" itemprop="url">Flutter-Text</a>
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-06-06 12:59:46 / 修改时间：13:23:23" itemprop="dateCreated datePublished" datetime="2019-06-06T12:59:46+08:00">2019-06-06</time>
+              <time title="Created: 2019-06-06 12:59:46 / Modified: 13:23:23" itemprop="dateCreated datePublished" datetime="2019-06-06T12:59:46+08:00">2019-06-06</time>
             </span>
           
             
@@ -630,11 +702,11 @@
           
 
           
-            <span id="/2019/06/06/Flutter-Text/" class="post-meta-item leancloud_visitors" data-flag-title="Flutter-Text" title="阅读次数">
+            <span id="/2019/06/06/Flutter-Text/" class="post-meta-item leancloud_visitors" data-flag-title="Flutter-Text" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -646,7 +718,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/06/06/Flutter-Text/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/06/06/Flutter-Text/" itemprop="commentCount"></span></a>
   </span>
@@ -662,12 +734,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>字符串根据布局约束可能跨越多行或者只显示在一行.</p><p><code>style</code> 参数是可选的.如果忽略,默认使用最近的父组件的 <code>DefaultTextStyle</code>.如果给定的样式 <code>TextStyle.inherit</code> 属性为 true(默认),则给定的样式将和最近的父组件的 <code>DefaultTextStyle</code> 合并.这个合并操作很有用,例如使用默认的 font family 和大小使字体 bold.</p><p>使用 <code>Text.rich</code> 构造方法,<code>Text</code> 组件可以使用不同的 <code>TextSpan</code> 样式显示一段文字.</p><h3 id="交互"><a href="#交互" class="headerlink" title="交互"></a>交互</h3>
+          <p>字符串根据布局约束可能跨越多行或者只显示在一行.</p><p><code>style</code> 参数是可选的.如果忽略,默认使用最近的父组件的 <code>DefaultTextStyle</code>.如果给定的样式 <code>TextStyle.inherit</code> 属性为 true(默认),则给定的样式将和最近的父组件的 <code>DefaultTextStyle</code> 合并.这个合并操作很有用,例如使用默认的 font family 和大小使字体 bold.</p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/06/06/Flutter-Text/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           
@@ -698,33 +770,33 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/06/05/Flutter-Image/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
             
             <a href="/2019/06/05/Flutter-Image/" class="post-title-link" itemprop="url">Flutter-Image</a>
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-06-05 13:04:47" itemprop="dateCreated datePublished" datetime="2019-06-05T13:04:47+08:00">2019-06-05</time>
+              <time title="Created: 2019-06-05 13:04:47" itemprop="dateCreated datePublished" datetime="2019-06-05T13:04:47+08:00">2019-06-05</time>
             </span>
           
             
@@ -734,18 +806,18 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-06-06 12:58:37" itemprop="dateModified" datetime="2019-06-06T12:58:37+08:00">2019-06-06</time>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-06-06 12:58:37" itemprop="dateModified" datetime="2019-06-06T12:58:37+08:00">2019-06-06</time>
               </span>
             
           
 
           
-            <span id="/2019/06/05/Flutter-Image/" class="post-meta-item leancloud_visitors" data-flag-title="Flutter-Image" title="阅读次数">
+            <span id="/2019/06/05/Flutter-Image/" class="post-meta-item leancloud_visitors" data-flag-title="Flutter-Image" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -757,7 +829,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/06/05/Flutter-Image/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/06/05/Flutter-Image/" itemprop="commentCount"></span></a>
   </span>
@@ -779,12 +851,12 @@
 <li><code>new Image.network</code>: 从 URL 中获取图片</li>
 <li><code>new Image.file</code>: 从 <code>File</code> 中获取图片</li>
 <li><code>new Image.memory</code>: 从 <code>Uint8List</code> 中获取图片</li>
-</ul><p>支持以下图片格式: JPEG,PNG,GIF,Animated GIF,WebP,Animated WebP,BMP,WBMP.</p>
+</ul>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/06/05/Flutter-Image/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           
@@ -815,33 +887,33 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/06/04/Flutter-Column/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
             
             <a href="/2019/06/04/Flutter-Column/" class="post-title-link" itemprop="url">Flutter-Column</a>
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-06-04 23:25:10" itemprop="dateCreated datePublished" datetime="2019-06-04T23:25:10+08:00">2019-06-04</time>
+              <time title="Created: 2019-06-04 23:25:10" itemprop="dateCreated datePublished" datetime="2019-06-04T23:25:10+08:00">2019-06-04</time>
             </span>
           
             
@@ -851,18 +923,18 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-06-05 13:03:37" itemprop="dateModified" datetime="2019-06-05T13:03:37+08:00">2019-06-05</time>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-06-05 13:03:37" itemprop="dateModified" datetime="2019-06-05T13:03:37+08:00">2019-06-05</time>
               </span>
             
           
 
           
-            <span id="/2019/06/04/Flutter-Column/" class="post-meta-item leancloud_visitors" data-flag-title="Flutter-Column" title="阅读次数">
+            <span id="/2019/06/04/Flutter-Column/" class="post-meta-item leancloud_visitors" data-flag-title="Flutter-Column" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -874,7 +946,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/06/04/Flutter-Column/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/06/04/Flutter-Column/" itemprop="commentCount"></span></a>
   </span>
@@ -890,12 +962,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>以垂直数组方式显示子组件的组件.</p><p>想要某个子组件扩展填充垂直空间,使用 <code>Expanded</code> 组件包装即可.</p><p><code>Column</code> 组件不会滑动(通常如果 <code>Column</code> 中的多个子组件超出了可用空间,则会报错).如果有一排组件,而且想要在空间不足时能滑动,考虑使用 <code>ListView</code>.</p><p>横向排列考虑使用 <code>Row</code>.</p><p>如果只有一个子组件,考虑使用 <code>Align</code> 或 <code>Center</code> 定位组件.</p><h4 id="如果传入的垂直约束是无边界的"><a href="#如果传入的垂直约束是无边界的" class="headerlink" title="如果传入的垂直约束是无边界的"></a>如果传入的垂直约束是无边界的</h4><p>如果一个 <code>Column</code> 组件有一个或多个 <code>Expanded</code> 或 <code>Flexible</code> 组件,并且被放在另一个 <code>Column</code> 或 <code>ListView</code> 或其他不提供最大高度约束上下文的组件中,那么将会收到一个运行时异常,表明有非 0 flex 的子组件,但是其垂直约束是无边界的.</p>
+          <p>以垂直数组方式显示子组件的组件.</p><p>想要某个子组件扩展填充垂直空间,使用 <code>Expanded</code> 组件包装即可.</p><p><code>Column</code> 组件不会滑动(通常如果 <code>Column</code> 中的多个子组件超出了可用空间,则会报错).如果有一排组件,而且想要在空间不足时能滑动,考虑使用 <code>ListView</code>.</p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/06/04/Flutter-Column/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           
@@ -926,33 +998,33 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/06/04/Flutter-Row/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
             
             <a href="/2019/06/04/Flutter-Row/" class="post-title-link" itemprop="url">Flutter-Row</a>
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-06-04 13:28:18 / 修改时间：23:22:42" itemprop="dateCreated datePublished" datetime="2019-06-04T13:28:18+08:00">2019-06-04</time>
+              <time title="Created: 2019-06-04 13:28:18 / Modified: 23:22:42" itemprop="dateCreated datePublished" datetime="2019-06-04T13:28:18+08:00">2019-06-04</time>
             </span>
           
             
@@ -961,11 +1033,11 @@
           
 
           
-            <span id="/2019/06/04/Flutter-Row/" class="post-meta-item leancloud_visitors" data-flag-title="Flutter-Row" title="阅读次数">
+            <span id="/2019/06/04/Flutter-Row/" class="post-meta-item leancloud_visitors" data-flag-title="Flutter-Row" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -977,7 +1049,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/06/04/Flutter-Row/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/06/04/Flutter-Row/" itemprop="commentCount"></span></a>
   </span>
@@ -993,12 +1065,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>以横向数组的方式显示子组件的组件.</p><p>为了使其一个组件填充剩余可用空间,可以使用 <code>Expanded</code>对其进行包装.</p><p><code>Row</code> 组件不会滑动(通常一个<code>Row</code>组件中的子组件过多已经超出了可用空间,则会导致错误).如果在不足的空间中想要一排组件能够滑动,可以考虑使用 <code>ListView</code>.</p><p><code>Column</code> 竖向排列.</p><p>如果仅有一个子组件,那么可以考虑使用 <code>Align</code> 或 <code>Center</code> 定位该子组件.</p><h4 id="为什么我的-row-有一条黄黑相间的条纹"><a href="#为什么我的-row-有一条黄黑相间的条纹" class="headerlink" title="为什么我的 row 有一条黄黑相间的条纹?"></a>为什么我的 row 有一条黄黑相间的条纹?</h4><p>如果 <code>Row</code>的内容是不可伸缩扩展的(没有使用 <code>Expanded</code> 或 <code>Flexible</code> 组件包装),连在一起比 row 本身更宽,那么我们就称 row 溢出了.<br>如果 row 溢出了,那么 row 就没有多余的空间去分配给它的<code>Flexible</code> 和 <code>Expanded</code> 子组件. row 会在边上显示一条黄黑相间的条表示溢出了.如果 row 外有空间,那么溢出亮将会以红色字体打印出来.</p>
+          <p>以横向数组的方式显示子组件的组件.</p><p>为了使其一个组件填充剩余可用空间,可以使用 <code>Expanded</code>对其进行包装.</p><p><code>Row</code> 组件不会滑动(通常一个<code>Row</code>组件中的子组件过多已经超出了可用空间,则会导致错误).如果在不足的空间中想要一排组件能够滑动,可以考虑使用 <code>ListView</code>.</p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/06/04/Flutter-Row/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           
@@ -1029,33 +1101,33 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/06/04/flutter-学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
             
             <a href="/2019/06/04/flutter-学习笔记/" class="post-title-link" itemprop="url">flutter 学习笔记</a>
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-06-04 13:01:00 / 修改时间：13:26:02" itemprop="dateCreated datePublished" datetime="2019-06-04T13:01:00+08:00">2019-06-04</time>
+              <time title="Created: 2019-06-04 13:01:00 / Modified: 13:26:02" itemprop="dateCreated datePublished" datetime="2019-06-04T13:01:00+08:00">2019-06-04</time>
             </span>
           
             
@@ -1064,11 +1136,11 @@
           
 
           
-            <span id="/2019/06/04/flutter-学习笔记/" class="post-meta-item leancloud_visitors" data-flag-title="flutter 学习笔记" title="阅读次数">
+            <span id="/2019/06/04/flutter-学习笔记/" class="post-meta-item leancloud_visitors" data-flag-title="flutter 学习笔记" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -1080,7 +1152,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/06/04/flutter-学习笔记/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/06/04/flutter-学习笔记/" itemprop="commentCount"></span></a>
   </span>
@@ -1096,32 +1168,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>flutter 的核心设计是将整个应用的各个部分各个层级都看作 Widget 来渲染,所以按照 Widget 的分类来学习会比较全面。</p><h2 id="基础组件"><a href="#基础组件" class="headerlink" title="基础组件"></a>基础组件</h2><h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h3><ul>
-<li>Row</li>
-<li>Column</li>
-<li>Image</li>
-<li>Text</li>
-<li>Icon</li>
-<li>RaisedButton</li>
-<li>Scaffold</li>
-<li>AppBar</li>
-<li>FlutterLogo</li>
-<li>Placeholder</li>
-</ul><h2 id="Material-组件"><a href="#Material-组件" class="headerlink" title="Material 组件"></a>Material 组件</h2><h3 id="结构和导航"><a href="#结构和导航" class="headerlink" title="结构和导航"></a>结构和导航</h3><ul>
-<li>Scaffold</li>
-<li>AppBar</li>
-<li>BottomNavigationBar</li>
-<li>TabBar</li>
-<li>TabBarView</li>
-<li>MaterialApp</li>
-<li>WidgetsApp</li>
-<li>Drawer</li>
-</ul>
+          <p>flutter 的核心设计是将整个应用的各个部分各个层级都看作 Widget 来渲染,所以按照 Widget 的分类来学习会比较全面。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/06/04/flutter-学习笔记/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           
@@ -1152,33 +1204,33 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/05/05/GraphQL-Batching/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
             
             <a href="/2019/05/05/GraphQL-Batching/" class="post-title-link" itemprop="url">GraphQL-Batching</a>
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-05-05 23:38:54" itemprop="dateCreated datePublished" datetime="2019-05-05T23:38:54+08:00">2019-05-05</time>
+              <time title="Created: 2019-05-05 23:38:54" itemprop="dateCreated datePublished" datetime="2019-05-05T23:38:54+08:00">2019-05-05</time>
             </span>
           
             
@@ -1188,18 +1240,18 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-05-06 16:42:20" itemprop="dateModified" datetime="2019-05-06T16:42:20+08:00">2019-05-06</time>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-05-06 16:42:20" itemprop="dateModified" datetime="2019-05-06T16:42:20+08:00">2019-05-06</time>
               </span>
             
           
 
           
-            <span id="/2019/05/05/GraphQL-Batching/" class="post-meta-item leancloud_visitors" data-flag-title="GraphQL-Batching" title="阅读次数">
+            <span id="/2019/05/05/GraphQL-Batching/" class="post-meta-item leancloud_visitors" data-flag-title="GraphQL-Batching" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -1211,7 +1263,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/05/05/GraphQL-Batching/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/05/05/GraphQL-Batching/" itemprop="commentCount"></span></a>
   </span>
@@ -1227,126 +1279,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h2><h3 id="使用-Dataloader"><a href="#使用-Dataloader" class="headerlink" title="使用 Dataloader"></a>使用 Dataloader</h3><p>如果你正在使用 graphql,那么你可能遇到数据图查询.这可以通过本地数据图加载轻松实现.<br>使用 <code>java-dataloader</code> 将帮助你更高效的处理数据图条目的缓存和批量请求.如果 dataloader 已经发现了一个之前的数据条目,它将会缓存数据并且直接返回不再发起请求.<br>假设我们需要查询一个英雄和他们朋友的名字及他们朋友的朋友的名字.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    hero &#123;</span><br><span class="line">        name &#123;</span><br><span class="line">            friends &#123;</span><br><span class="line">                name &#123;</span><br><span class="line">                    friends &#123;</span><br><span class="line">                        name</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h2><h3 id="使用-Dataloader"><a href="#使用-Dataloader" class="headerlink" title="使用 Dataloader"></a>使用 Dataloader</h3><p>如果你正在使用 graphql,那么你可能遇到数据图查询.这可以通过本地数据图加载轻松实现.<br>使用 <code>java-dataloader</code> 将帮助你更高效的处理数据图条目的缓存和批量请求.如果 dataloader 已经发现了一个之前的数据条目,它将会缓存数据并且直接返回不再发起请求.<br>假设我们需要查询一个英雄和他们朋友的名字及他们朋友的朋友的名字.</p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/05/05/GraphQL-Batching/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/05/05/GraphQL-Scalars/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="云青青兮欲雨">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/05/05/GraphQL-Scalars/" class="post-title-link" itemprop="url">GraphQL-Scalars</a>
-          
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-05 22:42:08 / 修改时间：23:37:54" itemprop="dateCreated datePublished" datetime="2019-05-05T22:42:08+08:00">2019-05-05</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-            <span id="/2019/05/05/GraphQL-Scalars/" class="post-meta-item leancloud_visitors" data-flag-title="GraphQL-Scalars" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/05/05/GraphQL-Scalars/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/05/05/GraphQL-Scalars/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="graphql-中的常量"><a href="#graphql-中的常量" class="headerlink" title="graphql 中的常量"></a>graphql 中的常量</h2><h3 id="scalars"><a href="#scalars" class="headerlink" title="scalars"></a>scalars</h3><p>graphql 类型系统的叶子节点被称为 scalars.一旦到达了 scalar 类型则无法在沿着类型结构继续向下了.scalar 类型是指不可再分割的值.<br>graphql 规范明确要求所有的语言实现必须具有以下 scalar 类型.</p><ul>
-<li>String 即 <code>GraphQLString</code>- 一个 UTF-8 字符串序列.</li>
-<li>Boolean 即 <code>GraphQLBoolean</code>- true or false.</li>
-<li>Int 即 <code>GraphQLInt</code>- 有符号的 32 整型数.</li>
-<li>Float 即 <code>GraphQLFloat</code>- 有符号的双精度浮点数.</li>
-<li>ID 即 <code>GraphQLID</code>- 类似于 String 的唯一标识符.定义一个 ID 标识符即表示该属性不是人类可识别的用途.<br>graphql-java 为 java 系统添加了以下有用的 scalar 类型.</li>
-<li>Long 即 <code>GraphQLLong</code>- 基于 java.lang.Long 的 scalar.</li>
-<li>Short 即 <code>GraphQLShort</code>- 基于 java.lang.Short 的 scalar.</li>
-<li>Byte 即 <code>GraphQLByte</code>- 基于 java.lang.Byte 的 scalar.</li>
-<li>BigDecimal 即 <code>GraphQLBigDicimal</code> 基于 java.math.BigDecimal 的 scalar.</li>
-<li>BigInteger 即 <code>GrapQLBigInteger</code> 基于 java.math.BigInteger 的 scalar.</li>
-</ul>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/05/GraphQL-Scalars/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           
@@ -1373,7 +1311,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1395,11 +1333,11 @@
     <div class="sidebar-inner">
 
       <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc" data-target="post-toc-wrap">
-          文章目录
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-          站点概览
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
       </ul>
 
@@ -1410,17 +1348,16 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" src="http://qiniu.picbed.dang8080.cn/logo.jpeg" alt="Humphrey Dang">
-  <p class="site-author-name" itemprop="name">Humphrey Dang</p>
-  <div class="site-description" itemprop="description">Humphrey Dang 的博客</div>
+  <p class="site-author-name" itemprop="name">Humphrey Dan</p>
+  <div class="site-description" itemprop="description">write something,donot leave.</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
     
@@ -1432,54 +1369,8 @@
             <a href="/tags/">
           
         
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span>
         </a>
       </div>
     
@@ -1493,7 +1384,7 @@
       
         
       
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
+        <a href="https://github.com/shuttlespace" title="GitHub &rarr; https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
     
       <span class="links-of-author-item">
@@ -1504,7 +1395,7 @@
       
         
       
-        <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+        <a href="mailto:dang8080@qq.com" title="E-Mail &rarr; mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
     
   </div>
@@ -1512,11 +1403,6 @@
 
 
       </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
-      
 
     </div>
   </aside>
@@ -1528,16 +1414,13 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright"><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5taWl0Lmdvdi5jbg==">陕ICP备19000066号-1 </span>
-  <span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPQ=="> </span>&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
+  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2017 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Humphrey Dang</span>
+  <span class="author" itemprop="copyrightHolder">Humphrey Dan</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.3.0</div>
 
         
 
@@ -1558,10 +1441,13 @@
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-<script src="/js/utils.js?v=7.3.0"></script>
-<script src="/js/schemes/pisces.js?v=7.3.0"></script>
-<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+<script src="/js/utils.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
@@ -1574,7 +1460,7 @@
 
 
 
-  <script src="/js/local-search.js?v=7.3.0"></script>
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -1601,7 +1487,7 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
   guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
+    return GUEST.includes(item);
   });
   new Valine({
     el: '#comments',

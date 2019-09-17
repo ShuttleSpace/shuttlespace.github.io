@@ -4,18 +4,18 @@
 
 
 
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#025a6c">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.3.0">
-  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.3.0" color="#025a6c">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#025a6c">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
@@ -25,13 +25,13 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '7.3.0',
-    exturl: true,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#025a6c","save":"auto"},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
@@ -41,31 +41,32 @@
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"搜索","hits_empty":"${query} 找不到","hits_stats":"${time}ms内找到${hits}个相关内容"}
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},
     path: 'search.xml',
     motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
   };
 </script>
 
-  <meta name="description" content="前言在知乎找到了一个更好的方法: 原文在这里我整理一下: 创建仓库 xxx.github.io. 创建两个分支: master/hexo.(可在 github 网页或本地创建) git clone git@github.com:xxx/xxx.github.io.git 如果没有在网页创建分支,可以在此处创建.git checkout -b master; git checkout -b hexo">
+  <meta name="description" content="前言在知乎找到了一个更好的方法: [原文](使用 hexo，如果换了电脑怎么更新博客？ - CrazyMilk 的回答 - 知乎https://www.zhihu.com/question/21193762/answer/79109280)在这里我整理一下:">
 <meta name="keywords" content="teamcity,hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="teamcity自动化更新hexo博客">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/03/09/teamcity自动化更新hexo博客/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="前言在知乎找到了一个更好的方法: 原文在这里我整理一下: 创建仓库 xxx.github.io. 创建两个分支: master/hexo.(可在 github 网页或本地创建) git clone git@github.com:xxx/xxx.github.io.git 如果没有在网页创建分支,可以在此处创建.git checkout -b master; git checkout -b hexo">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:description" content="前言在知乎找到了一个更好的方法: [原文](使用 hexo，如果换了电脑怎么更新博客？ - CrazyMilk 的回答 - 知乎https://www.zhihu.com/question/21193762/answer/79109280)在这里我整理一下:">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-03-17T01:44:24.962Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="teamcity自动化更新hexo博客">
-<meta name="twitter:description" content="前言在知乎找到了一个更好的方法: 原文在这里我整理一下: 创建仓库 xxx.github.io. 创建两个分支: master/hexo.(可在 github 网页或本地创建) git clone git@github.com:xxx/xxx.github.io.git 如果没有在网页创建分支,可以在此处创建.git checkout -b master; git checkout -b hexo">
+<meta name="twitter:description" content="前言在知乎找到了一个更好的方法: [原文](使用 hexo，如果换了电脑怎么更新博客？ - CrazyMilk 的回答 - 知乎https://www.zhihu.com/question/21193762/answer/79109280)在这里我整理一下:">
   <link rel="canonical" href="http://blog.dang8080.cn/2019/03/09/teamcity自动化更新hexo博客/">
 
 
@@ -81,7 +82,6 @@
 </script>
 
   <title>teamcity自动化更新hexo博客 | 云青青兮欲雨</title>
-  <meta name="generator" content="Hexo 3.8.0">
   
 
 
@@ -117,13 +117,13 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <div class="container">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta custom-logo">
+  <div class="site-meta">
 
     <div>
       <a href="/" class="brand" rel="start">
@@ -132,15 +132,12 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <h1 class="site-subtitle" itemprop="description">水澹澹兮生烟</h1>
+        <p class="site-subtitle">水澹澹兮生烟</p>
       
-      <a>
-        <img class="custom-logo-image" src="[object Object]" alt="云青青兮欲雨">
-      </a>
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -159,10 +156,8 @@
         <li class="menu-item menu-item-home">
       
     
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
 
   </li>
       
@@ -172,10 +167,8 @@
         <li class="menu-item menu-item-archives">
       
     
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
   </li>
       
@@ -185,10 +178,8 @@
         <li class="menu-item menu-item-tags">
       
     
-      
-    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">22</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
 
   </li>
       
@@ -198,16 +189,14 @@
         <li class="menu-item menu-item-about">
       
     
-      
-    
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
 
   </li>
       <li class="menu-item menu-item-search">
         <a href="javascript:;" class="popup-trigger">
         
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
       </li>
     
   </ul>
@@ -220,7 +209,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -236,6 +227,10 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
     <main id="main" class="main">
@@ -255,32 +250,32 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/03/09/teamcity自动化更新hexo博客/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">teamcity自动化更新hexo博客
+        <h1 class="post-title" itemprop="name headline">teamcity自动化更新hexo博客
 
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-03-09 23:26:22" itemprop="dateCreated datePublished" datetime="2019-03-09T23:26:22+08:00">2019-03-09</time>
+              <time title="Created: 2019-03-09 23:26:22" itemprop="dateCreated datePublished" datetime="2019-03-09T23:26:22+08:00">2019-03-09</time>
             </span>
           
             
@@ -290,18 +285,18 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-03-17 09:44:24" itemprop="dateModified" datetime="2019-03-17T09:44:24+08:00">2019-03-17</time>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-17 09:44:24" itemprop="dateModified" datetime="2019-03-17T09:44:24+08:00">2019-03-17</time>
               </span>
             
           
 
           
-            <span id="/2019/03/09/teamcity自动化更新hexo博客/" class="post-meta-item leancloud_visitors" data-flag-title="teamcity自动化更新hexo博客" title="阅读次数">
+            <span id="/2019/03/09/teamcity自动化更新hexo博客/" class="post-meta-item leancloud_visitors" data-flag-title="teamcity自动化更新hexo博客" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -313,7 +308,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/03/09/teamcity自动化更新hexo博客/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/03/09/teamcity自动化更新hexo博客/" itemprop="commentCount"></span></a>
   </span>
@@ -329,8 +324,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在知乎找到了一个更好的方法: <a href="使用 hexo，如果换了电脑怎么更新博客？ - CrazyMilk 的回答 - 知乎
-https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里我整理一下:</p><ul>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在知乎找到了一个更好的方法: [原文](使用 hexo，如果换了电脑怎么更新博客？ - CrazyMilk 的回答 - 知乎<br><span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3F1ZXN0aW9uLzIxMTkzNzYyL2Fuc3dlci83OTEwOTI4MA==" title="https://www.zhihu.com/question/21193762/answer/79109280">https://www.zhihu.com/question/21193762/answer/79109280<i class="fa fa-external-link"></i></span>)<br>在这里我整理一下:</p><a id="more"></a>
+<ul>
 <li>创建仓库 xxx.github.io.</li>
 <li>创建两个分支: master/hexo.(可在 github 网页或本地创建)</li>
 <li><code>git clone git@github.com:xxx/xxx.github.io.git</code></li>
@@ -340,14 +335,15 @@ https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里
 <li>我使用了<code>hexo-next-theme</code>,从 git 上下载后,进入 <code>themes/next</code> 执行 <code>git submodule init</code>,将 <code>next</code> 主题关联,此处在 <code>hexo</code> 分支操作</li>
 <li><code>git add .; git commit -m &quot;blahblahblah&quot;; git push origin hexo;</code> 提交网站相关文件.</li>
 <li><code>hexo g -d</code> 生成网站并部署到 <code>github</code>.</li>
-</ul><a id="more"></a>
-
+</ul>
 <h3 id="将-CNAME-图片等文件放入-source-目录下-可保证推送到-github-不会被删除"><a href="#将-CNAME-图片等文件放入-source-目录下-可保证推送到-github-不会被删除" class="headerlink" title="将 CNAME,图片等文件放入 source 目录下,可保证推送到 github 不会被删除."></a>将 CNAME,图片等文件放入 <code>source</code> 目录下,可保证推送到 github 不会被删除.</h3><h1 id="⚠️-👇-胡扯-观看请谨慎"><a href="#⚠️-👇-胡扯-观看请谨慎" class="headerlink" title="⚠️ 👇 胡扯,观看请谨慎!!!"></a>⚠️ 👇 胡扯,观看请谨慎!!!</h1><p><code>TeamCity</code> 是 <code>Jetbrains</code> 公司出品的持续化集成工具，类似<code>Jenkins</code>,界面更加现代化，功能更强大,而且它的 server 和 agent 是分离的，可以指定本机或远程的机器来运行构建策略，其中还有调度队列算法.<br><code>hexo</code> 是静态博客生成工具.<code>hexo d -g</code>命令可以自动生成 <code>public</code> 文件夹及 HTML，然后将其推送到 github(在<code>_config.yml</code>中已经配置过).<br>一般用户可能对<code>theme</code>自定义(修改<code>theme</code>下的<code>_config.yml</code>),当换机或备份时，希望将博客源文件(*.md)及修改的主题配置文件一并备份.而<code>hexo</code>默认只备份<code>public</code>文件夹,所以本文探索使用 CI<code>TeamCity</code>将推送到<code>Github</code>的源文件编译生成<code>public</code>文件,这样每次写完文章,只要将其推送到<code>Github</code>,<code>TeamCity</code>会自动生成博客<code>HTML</code>.</p>
 <p>获取到该 Key.而实际上在 build 执行时 key 以 ing 被删除了,不可能获取到.这并不意味着绝对安全，只是增加了 key 被盗的难度. agent 必须安全.</p>
 <h3 id="teamcity-安装"><a href="#teamcity-安装" class="headerlink" title="teamcity 安装"></a>teamcity 安装</h3><p><code>TeamCity</code>提供了 <code>Docker</code>安装方式，因此请提前安装好<code>Docker</code>.<br>文件目录如下(请提前创建),teamcity 支持多种数据存储方式，此处使用 mysql 来存储。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># - teamcity</span></span><br><span class="line">    - agent</span><br><span class="line">        - conf</span><br><span class="line">        - data</span><br><span class="line">    - server</span><br><span class="line">        - data</span><br><span class="line">        - datadir</span><br><span class="line">        - opt</span><br><span class="line">    - mysql</span><br><span class="line">        - backup</span><br><span class="line">        - data</span><br><span class="line">    dockery-compose.yml</span><br></pre></td></tr></table></figure>
+
 <p>接下来是<code>docker-compose.yml</code></p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">``yaml</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">"3.3"</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  teamcity-server:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">jetbrains/teamcity-server</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">teamcity-server</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">8111</span><span class="string">:8111</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/server/datadir:/data/teamcity_server/datadir</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/server/opt/logs:/opt/teamcity/logs</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/server/data:/data/teamcity_server/others</span> <span class="comment"># 其他的一些资源，可以从本机复制到 server 上</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line">      <span class="comment">#   TEAMCITY_SERVER_MEM_OPTS: -Xmx2g -XX:MaxPermSize=270m -XX:ReservedCodeCacheSize=350m</span></span><br><span class="line"><span class="attr">      MYSQL_USER:</span> <span class="string">team-user</span></span><br><span class="line"><span class="attr">      MYSQL_PASSWORD:</span> <span class="string">team-pwd</span></span><br><span class="line"><span class="attr">      MYSQL_ROOT_PASSWORD:</span> <span class="string">teamcity8080</span></span><br><span class="line"><span class="attr">      MYSQL_DATABASE:</span> <span class="string">teamcitydb</span></span><br><span class="line"><span class="attr">    depends_on:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">db</span></span><br><span class="line"><span class="attr">    links:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">db</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">team</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  db:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">mysql</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">teamcity-db</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/mysql:/etc/mysql/conf.d</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/mysql/backup:/var/lib/mysql</span> <span class="comment"># 只有 /var/lib/mysql 对应本地文件为空，才会创建这个数据库,即初次创建时，这个对应的本地文件夹要为空</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/mysql/data:/others</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      MYSQL_USER:</span> <span class="string">team-user</span></span><br><span class="line"><span class="attr">      MYSQL_PASSWORD:</span> <span class="string">team-pwd</span></span><br><span class="line"><span class="attr">      MYSQL_ROOT_PASSWORD:</span> <span class="string">teamcity8080</span></span><br><span class="line"><span class="attr">      MYSQL_DATABASE:</span> <span class="string">teamcitydb</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">3306</span><span class="string">:3306</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">team</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># &lt;&gt;&lt;&gt; agent &lt;&gt;&lt;&gt;</span></span><br><span class="line"><span class="attr">  teamcity-agent:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">jetbrains/teamcity-agent</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">teamcity-agent</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/agent/conf:/data/teamcity_agent/conf</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$PWD/agent/data:/data/teamcity_agent/others</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      AGENT_NAME:</span> <span class="string">MacbookPro</span></span><br><span class="line"><span class="attr">      SERVER_URL:</span> <span class="attr">http://xxx.xxx.x.xxx:8111</span> <span class="comment"># 此处对应的是 TeamCityServer 的IP, localhost/127.0.0.1 都不行，请使用正确的 IP,端口对应上面暴露出来的端口</span></span><br><span class="line"><span class="attr">    links:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">teamcity-server</span></span><br><span class="line">  <span class="comment"># teamcity_agent 默认的任务环境路径: opt/buildagent/work</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line"><span class="attr">  team:</span></span><br><span class="line"><span class="attr">    driver:</span> <span class="string">bridge</span></span><br></pre></td></tr></table></figure>
+
 <p>然后执行 <code>docker-compose up -d</code> 即可。</p>
 <blockquote>
 <p>需要先根据本机 OS 安装<code>docker-compose</code> &gt; <code>docker-compose up -d</code> 生成服务<br><code>docker-compose down</code> 解体服务，删除容器,网络<br><code>docker-compose start/stop</code> 启动终止服务</p>
@@ -361,6 +357,7 @@ https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里
 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 nodejs</span></span><br><span class="line">VERSION=v10.15.2</span><br><span class="line">DISTRO=linux-x64</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">checkNode</span></span>() &#123;</span><br><span class="line">  ISNODESUCCEED=$(node -v)</span><br><span class="line">  <span class="keyword">if</span> [ ISNODESUCCEED != <span class="variable">$VERSION</span> ]; <span class="keyword">then</span></span><br><span class="line">    installNode</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"NodeJS已安装"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">insallNode</span></span>() &#123;</span><br><span class="line">  mkdir -p /usr/<span class="built_in">local</span>/lib/nodejs</span><br><span class="line">  tar -xJf /data/teamcity_agent/others/node-<span class="variable">$VERSION</span>-<span class="variable">$DISTRO</span> <span class="comment"># -v 会输出解压日志，此处太多，所以关闭</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/lib/nodejs/node-<span class="variable">$VERSION</span>-<span class="variable">$DISTRO</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">source</span> ~/.profile</span><br><span class="line"></span><br><span class="line">  checkNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">checkNode</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">npm i</span><br><span class="line"><span class="comment"># 生成public文件</span></span><br><span class="line">./node_modules/hexo/bin/hexo g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 为 github.io 配置 CNAME</span></span><br><span class="line"><span class="keyword">if</span> [ ! -f <span class="string">"/CNAME"</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"blog.dang8080.cn"</span> &gt; CNAME</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置 git</span></span><br><span class="line"></span><br><span class="line">git config --global credential.helper store <span class="comment"># 保存 github 提交者信息，下次不用再输密码</span></span><br><span class="line">git config --global user.name <span class="string">"Humphrey"</span></span><br><span class="line">git config --global user.email <span class="string">"dang8080@qq.com"</span></span><br><span class="line"></span><br><span class="line">git add --all</span><br><span class="line">git commit -m <span class="string">"TeamCity CI 提交部署: <span class="variable">$(date)</span>"</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
 <h3 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h3><blockquote>
 <p>所以问题来了,配置完了点击 <code>run</code> 查看 Build log 会发现 push 失败。因为通过 https 向 github 提交代码需要交互式输入用户密码。而此处没有提供，将密码硬编码到此 shell 里提交到 github 也不安全。<br>或者即使是通过修改 VCS root 使用 <span class="exturl" data-url="bWFpbHRvOmdpdEBnaXRodWIuY29t" title="mailto:git@github.com">git@github.com<i class="fa fa-external-link"></i></span> ssh checkout 的代码，也无法推送到 github.</p>
 </blockquote>
@@ -371,6 +368,7 @@ https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里
 <p>对所有的连接都禁用，<code>~/.ssh/config</code></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Host \*</span><br><span class="line">StrictHostKeyChecking no</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>特定连接,<code>-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no</code></p>
 </blockquote>
@@ -393,8 +391,10 @@ https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里
 <h4 id="方案一"><a href="#方案一" class="headerlink" title="方案一:"></a>方案一:</h4><p>当 <code>run</code> 一次之后，执行 <code>docker exec -it teamcity-agent bash</code> 进入 <code>opt/buildagent/work/xxxxx/</code> 下,手动 <code>git push origin master</code>。这样后续就不用再配置了</p>
 <h4 id="方案二-硬核"><a href="#方案二-硬核" class="headerlink" title="方案二:(硬核)"></a>方案二:(硬核)</h4><p><code>github</code> 需要保存本机的 SSH pub key,才接受 git ssh 推送.那我们就在 TeamCity 生成 ssh key,然后添加到 github.</p>
 <h5 id="实践一"><a href="#实践一" class="headerlink" title="实践一"></a>实践一</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docekr <span class="built_in">exec</span> -it teamcity-agent bash</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">ssh-add [id_rsa]</span><br><span class="line"><span class="comment"># 然后复制 id_rsa.pub 的内容到 github 即可</span></span><br></pre></td></tr></table></figure>
+
 <h5 id="实践二"><a href="#实践二" class="headerlink" title="实践二"></a>实践二</h5><p>连 TeamCity agent bash 也不想进，使用 shell 构建<br>先安装 expect tcl tk</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get install tcl tk expect</span><br><span class="line"><span class="comment"># 下面是 shell</span></span><br><span class="line"><span class="comment">#! /usr/bin/expect -f</span></span><br><span class="line"><span class="built_in">set</span> context <span class="variable">$PWD</span></span><br><span class="line"><span class="comment"># 删除旧key</span></span><br><span class="line">spawn rm -f <span class="string">"<span class="variable">$context</span>/id_rsa"</span> <span class="string">"<span class="variable">$context</span>/id_rsa.pub"</span></span><br><span class="line">expect&#123;&#125;</span><br><span class="line"><span class="comment"># 生成新key</span></span><br><span class="line">spawn ssh-keygen -t rsa</span><br><span class="line">expect&#123;</span><br><span class="line">  <span class="string">"*save the key*"</span> &#123; send <span class="string">"<span class="variable">$context</span>/id_rsa\r"</span>;exp_continue &#125;</span><br><span class="line">  <span class="string">"*passphrase*"</span> &#123; send <span class="string">"\r"</span>;exp_continue &#125;</span><br><span class="line">  <span class="string">"*again*"</span> &#123; send <span class="string">"\r"</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line">spawn ssh-add <span class="string">"<span class="variable">$context</span>/id_rsa"</span></span><br><span class="line">sshcheck=$(ssh -vT git@github.com)</span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$sshcheck</span> =~ <span class="string">"successfully authenticated"</span> ]]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"ssh 配置成功"</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"ssh 配置失败"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># 复制 pub</span></span><br><span class="line">pubkey=$(cat <span class="string">"<span class="variable">$context</span>/id_rsa)</span></span><br><span class="line"><span class="string">curl -H "</span>Content-Type:application/json<span class="string">" -X POST --data '&#123; "</span>title<span class="string">":"</span>TeamCityAgentAuto<span class="string">","</span>key<span class="string">":"</span><span class="variable">$pubkey</span><span class="string">"&#125;'</span></span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -476,11 +476,11 @@ https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里
       
 
       <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc" data-target="post-toc-wrap">
-          文章目录
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-          站点概览
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
       </ul>
 
@@ -493,17 +493,16 @@ https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" src="http://qiniu.picbed.dang8080.cn/logo.jpeg" alt="Humphrey Dang">
-  <p class="site-author-name" itemprop="name">Humphrey Dang</p>
-  <div class="site-description" itemprop="description">Humphrey Dang 的博客</div>
+  <p class="site-author-name" itemprop="name">Humphrey Dan</p>
+  <div class="site-description" itemprop="description">write something,donot leave.</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
     
@@ -515,54 +514,8 @@ https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里
             <a href="/tags/">
           
         
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span>
         </a>
       </div>
     
@@ -576,7 +529,7 @@ https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里
       
         
       
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
+        <a href="https://github.com/shuttlespace" title="GitHub &rarr; https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
     
       <span class="links-of-author-item">
@@ -587,7 +540,7 @@ https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里
       
         
       
-        <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+        <a href="mailto:dang8080@qq.com" title="E-Mail &rarr; mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
     
   </div>
@@ -595,11 +548,6 @@ https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里
 
 
       </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
-      
 
     </div>
   </aside>
@@ -611,16 +559,13 @@ https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright"><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5taWl0Lmdvdi5jbg==">陕ICP备19000066号-1 </span>
-  <span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPQ=="> </span>&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
+  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2017 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Humphrey Dang</span>
+  <span class="author" itemprop="copyrightHolder">Humphrey Dan</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.3.0</div>
 
         
 
@@ -641,10 +586,13 @@ https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-<script src="/js/utils.js?v=7.3.0"></script>
-<script src="/js/schemes/pisces.js?v=7.3.0"></script>
-<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+<script src="/js/utils.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
@@ -657,7 +605,7 @@ https://www.zhihu.com/question/21193762/answer/79109280">原文</a><br>在这里
 
 
 
-  <script src="/js/local-search.js?v=7.3.0"></script>
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -684,7 +632,7 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
   guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
+    return GUEST.includes(item);
   });
   new Valine({
     el: '#comments',

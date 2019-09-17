@@ -4,18 +4,18 @@
 
 
 
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#025a6c">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.3.0">
-  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.3.0" color="#025a6c">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#025a6c">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
@@ -25,13 +25,13 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '7.3.0',
-    exturl: true,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#025a6c","save":"auto"},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
@@ -41,31 +41,32 @@
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"搜索","hits_empty":"${query} 找不到","hits_stats":"${time}ms内找到${hits}个相关内容"}
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},
     path: 'search.xml',
     motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
   };
 </script>
 
-  <meta name="description" content="批处理使用 Dataloader如果你正在使用 graphql,那么你可能遇到数据图查询.这可以通过本地数据图加载轻松实现.使用 java-dataloader 将帮助你更高效的处理数据图条目的缓存和批量请求.如果 dataloader 已经发现了一个之前的数据条目,它将会缓存数据并且直接返回不再发起请求.假设我们需要查询一个英雄和他们朋友的名字及他们朋友的朋友的名字.12345678910111">
+  <meta name="description" content="批处理使用 Dataloader如果你正在使用 graphql,那么你可能遇到数据图查询.这可以通过本地数据图加载轻松实现.使用 java-dataloader 将帮助你更高效的处理数据图条目的缓存和批量请求.如果 dataloader 已经发现了一个之前的数据条目,它将会缓存数据并且直接返回不再发起请求.假设我们需要查询一个英雄和他们朋友的名字及他们朋友的朋友的名字.">
 <meta name="keywords" content="Android,Java,Kotlin,JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GraphQL-Batching">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/05/05/GraphQL-Batching/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="批处理使用 Dataloader如果你正在使用 graphql,那么你可能遇到数据图查询.这可以通过本地数据图加载轻松实现.使用 java-dataloader 将帮助你更高效的处理数据图条目的缓存和批量请求.如果 dataloader 已经发现了一个之前的数据条目,它将会缓存数据并且直接返回不再发起请求.假设我们需要查询一个英雄和他们朋友的名字及他们朋友的朋友的名字.12345678910111">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:description" content="批处理使用 Dataloader如果你正在使用 graphql,那么你可能遇到数据图查询.这可以通过本地数据图加载轻松实现.使用 java-dataloader 将帮助你更高效的处理数据图条目的缓存和批量请求.如果 dataloader 已经发现了一个之前的数据条目,它将会缓存数据并且直接返回不再发起请求.假设我们需要查询一个英雄和他们朋友的名字及他们朋友的朋友的名字.">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-05-06T08:42:20.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GraphQL-Batching">
-<meta name="twitter:description" content="批处理使用 Dataloader如果你正在使用 graphql,那么你可能遇到数据图查询.这可以通过本地数据图加载轻松实现.使用 java-dataloader 将帮助你更高效的处理数据图条目的缓存和批量请求.如果 dataloader 已经发现了一个之前的数据条目,它将会缓存数据并且直接返回不再发起请求.假设我们需要查询一个英雄和他们朋友的名字及他们朋友的朋友的名字.12345678910111">
+<meta name="twitter:description" content="批处理使用 Dataloader如果你正在使用 graphql,那么你可能遇到数据图查询.这可以通过本地数据图加载轻松实现.使用 java-dataloader 将帮助你更高效的处理数据图条目的缓存和批量请求.如果 dataloader 已经发现了一个之前的数据条目,它将会缓存数据并且直接返回不再发起请求.假设我们需要查询一个英雄和他们朋友的名字及他们朋友的朋友的名字.">
   <link rel="canonical" href="http://blog.dang8080.cn/2019/05/05/GraphQL-Batching/">
 
 
@@ -81,7 +82,6 @@
 </script>
 
   <title>GraphQL-Batching | 云青青兮欲雨</title>
-  <meta name="generator" content="Hexo 3.8.0">
   
 
 
@@ -117,13 +117,13 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <div class="container">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta custom-logo">
+  <div class="site-meta">
 
     <div>
       <a href="/" class="brand" rel="start">
@@ -132,15 +132,12 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <h1 class="site-subtitle" itemprop="description">水澹澹兮生烟</h1>
+        <p class="site-subtitle">水澹澹兮生烟</p>
       
-      <a>
-        <img class="custom-logo-image" src="[object Object]" alt="云青青兮欲雨">
-      </a>
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -159,10 +156,8 @@
         <li class="menu-item menu-item-home">
       
     
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
 
   </li>
       
@@ -172,10 +167,8 @@
         <li class="menu-item menu-item-archives">
       
     
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
   </li>
       
@@ -185,10 +178,8 @@
         <li class="menu-item menu-item-tags">
       
     
-      
-    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">22</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
 
   </li>
       
@@ -198,16 +189,14 @@
         <li class="menu-item menu-item-about">
       
     
-      
-    
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
 
   </li>
       <li class="menu-item menu-item-search">
         <a href="javascript:;" class="popup-trigger">
         
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
       </li>
     
   </ul>
@@ -220,7 +209,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -236,6 +227,10 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
     <main id="main" class="main">
@@ -255,32 +250,32 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/05/05/GraphQL-Batching/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">GraphQL-Batching
+        <h1 class="post-title" itemprop="name headline">GraphQL-Batching
 
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-05-05 23:38:54" itemprop="dateCreated datePublished" datetime="2019-05-05T23:38:54+08:00">2019-05-05</time>
+              <time title="Created: 2019-05-05 23:38:54" itemprop="dateCreated datePublished" datetime="2019-05-05T23:38:54+08:00">2019-05-05</time>
             </span>
           
             
@@ -290,18 +285,18 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-05-06 16:42:20" itemprop="dateModified" datetime="2019-05-06T16:42:20+08:00">2019-05-06</time>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-05-06 16:42:20" itemprop="dateModified" datetime="2019-05-06T16:42:20+08:00">2019-05-06</time>
               </span>
             
           
 
           
-            <span id="/2019/05/05/GraphQL-Batching/" class="post-meta-item leancloud_visitors" data-flag-title="GraphQL-Batching" title="阅读次数">
+            <span id="/2019/05/05/GraphQL-Batching/" class="post-meta-item leancloud_visitors" data-flag-title="GraphQL-Batching" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -313,7 +308,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/05/05/GraphQL-Batching/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/05/05/GraphQL-Batching/" itemprop="commentCount"></span></a>
   </span>
@@ -329,23 +324,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h2><h3 id="使用-Dataloader"><a href="#使用-Dataloader" class="headerlink" title="使用 Dataloader"></a>使用 Dataloader</h3><p>如果你正在使用 graphql,那么你可能遇到数据图查询.这可以通过本地数据图加载轻松实现.<br>使用 <code>java-dataloader</code> 将帮助你更高效的处理数据图条目的缓存和批量请求.如果 dataloader 已经发现了一个之前的数据条目,它将会缓存数据并且直接返回不再发起请求.<br>假设我们需要查询一个英雄和他们朋友的名字及他们朋友的朋友的名字.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    hero &#123;</span><br><span class="line">        name &#123;</span><br><span class="line">            friends &#123;</span><br><span class="line">                name &#123;</span><br><span class="line">                    friends &#123;</span><br><span class="line">                        name</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a>
+        <h2 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h2><h3 id="使用-Dataloader"><a href="#使用-Dataloader" class="headerlink" title="使用 Dataloader"></a>使用 Dataloader</h3><p>如果你正在使用 graphql,那么你可能遇到数据图查询.这可以通过本地数据图加载轻松实现.<br>使用 <code>java-dataloader</code> 将帮助你更高效的处理数据图条目的缓存和批量请求.如果 dataloader 已经发现了一个之前的数据条目,它将会缓存数据并且直接返回不再发起请求.<br>假设我们需要查询一个英雄和他们朋友的名字及他们朋友的朋友的名字.</p><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    hero &#123;</span><br><span class="line">        name &#123;</span><br><span class="line">            friends &#123;</span><br><span class="line">                name &#123;</span><br><span class="line">                    friends &#123;</span><br><span class="line">                        name</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这个查询的结果如下.</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"hero"</span>: &#123;</span><br><span class="line">		<span class="attr">"name"</span>: <span class="string">"R2-D2"</span>,</span><br><span class="line">		<span class="attr">"friends"</span>: [</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="attr">"name"</span>: <span class="string">"Luke Skywalker"</span>,</span><br><span class="line">				<span class="attr">"friends"</span>: [</span><br><span class="line">					&#123;</span><br><span class="line">						<span class="attr">"name"</span>: <span class="string">"HanSolo"</span></span><br><span class="line">					&#125;,</span><br><span class="line">					&#123;</span><br><span class="line">						<span class="attr">"name"</span>: <span class="string">"Leia Organa"</span></span><br><span class="line">					&#125;,</span><br><span class="line">					&#123;</span><br><span class="line">						<span class="attr">"name"</span>: <span class="string">"C-3P0"</span></span><br><span class="line">					&#125;,</span><br><span class="line">					&#123;</span><br><span class="line">						<span class="attr">"name"</span>: <span class="string">"R2-D2"</span></span><br><span class="line">					&#125;</span><br><span class="line">				]</span><br><span class="line">			&#125;,</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="attr">"name"</span>: <span class="string">"Han Solo"</span>,</span><br><span class="line">				<span class="attr">"friends"</span>: [</span><br><span class="line">					&#123; <span class="attr">"name"</span>: <span class="string">"Luke Skywalker"</span> &#125;,</span><br><span class="line">					&#123; <span class="attr">"name"</span>: <span class="string">"Leia Organa"</span> &#125;,</span><br><span class="line">					&#123; <span class="attr">"name"</span>: <span class="string">"R2-D2"</span> &#125;</span><br><span class="line">				]</span><br><span class="line">			&#125;,</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="attr">"name"</span>: <span class="string">"Leia Organa"</span>,</span><br><span class="line">				<span class="attr">"friends"</span>: [</span><br><span class="line">					&#123; <span class="attr">"name"</span>: <span class="string">"Luke Skywalker"</span> &#125;,</span><br><span class="line">					&#123; <span class="attr">"name"</span>: <span class="string">"Han Solo"</span> &#125;,</span><br><span class="line">					&#123; <span class="attr">"name"</span>: <span class="string">"C-3PO"</span> &#125;,</span><br><span class="line">					&#123; <span class="attr">"name"</span>: <span class="string">"R2-D2"</span> &#125;</span><br><span class="line">				]</span><br><span class="line">			&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>最差的办法是每次调用 <code>DataFetcher</code>获取 person 对象.<br>本例中将发起 15 次网络请求.即使很多人有共同的朋友.使用 <code>dataloader</code>你可以使 graphql 查询变得更高效.<br>当 graphql 降序查询每个层级时(hero -&gt; friends -&gt; friends),dataloader 调用 promise 传递 person 对象.在每个层级中调用 <code>dataloader.dispatch()</code> 批量发起部分查询请求.加上缓存(默认使用),之前的 person 将被返回.<br>上例中只涉及到 5 个独立的 people,合理的使用缓存和批量请求将只有 3 个批量加载函数被调用,3 个网络请求或数据库查询总比 15 个要好.<br>如果你使用了 <code>java.util.concurrent.CompletableFuture.supplyAsync()</code>,那么你可以通过异步调用使查询变得更高效.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  batch loader 可能被调用多次，因为它的无状态性，所以适合作为单例使用</span></span><br><span class="line">BatchLoader&lt;String,Object&gt; characterBatchLoader = <span class="keyword">new</span> BatchLoader&lt;String,Object&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> CompletableStage&lt;List&lt;Object&gt;&gt; load(List&lt;String&gt; keys) &#123;</span><br><span class="line">        <span class="comment">// 使用 supplyAsync() 最大化并行执行</span></span><br><span class="line">        <span class="keyword">return</span> CompletableFuture.supplyAsync(() -&gt; getCharacterDataViaBatchHTTPApi(keys));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个 data laoder 获取关联的人物，把他们放入 graphql schema</span></span><br><span class="line">DataFetcher heroDataFetcher = <span class="keyword">new</span> DataFetcher() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(DataFetchingEnvironment environment)</span> </span>&#123;</span><br><span class="line">        DataLoader&lt;String,Object&gt; dataloader = environment.getDataLoader(<span class="string">"character"</span>);</span><br><span class="line">        <span class="keyword">return</span> dataloader.load(<span class="string">"2001"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">DataFetcher friendsDataFetcher = <span class="keyword">new</span> DataFetcher() &#123;</span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(DataFetchingEnvironment environment)</span> </span>&#123;</span><br><span class="line">        StarWarsCharacter starWarsCharacter = environment.getSource();</span><br><span class="line">        List&lt;String&gt; friendsIds = starWarsCharacter.getFriendIds();</span><br><span class="line">        DataLoader&lt;String,Object&gt; dataloader = environment.getDataLoader(<span class="string">"character"</span>);</span><br><span class="line">        <span class="keyword">return</span> dataloader.loadMany(friendsIds);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">DataLoaderDispatcherInstrumentationOptions options = DataLoaderDispatcherInstrumentationOptions.newOptions().includeStatistics(<span class="keyword">true</span>);</span><br><span class="line">DataLoaderDispatcherInstrumentation dispatcherInstrumentation = <span class="keyword">new</span> DataLoaderDispatcherInstrumentation(options);</span><br><span class="line">GraphQL graphql = GraphQL.newGraphQL(buildSchema())</span><br><span class="line">    .instrumentation(dispatcherInstrumentation)</span><br><span class="line">    .build();</span><br><span class="line"><span class="comment">// 因为 data loader 是有状态的,所以每次请求都会被执行</span></span><br><span class="line">DataLoader&lt;String,Object&gt; characterDataLoader = DataLoader.newDataLoader(characterBatchLoader);</span><br><span class="line">DataLoaderRegistry registry = <span class="keyword">new</span> DataLoaderRegistry();</span><br><span class="line">registry.register(<span class="string">"character"</span>,characterDataLoader);</span><br><span class="line"></span><br><span class="line">ExecutionInput executionInput = newExecutionInput()</span><br><span class="line">    .query(getQuery())</span><br><span class="line">    .dataLoaderRegistry(registry)</span><br><span class="line">    .build();</span><br><span class="line">ExecutionResult executionResult = graphql.execute(executionInput);</span><br></pre></td></tr></table></figure>
+
 <p>本例中因为我们需要微调 <code>DataLoaderDispatcherInstrumentation</code>选项,所以手动添加.如果不要的话,默认会自动添加的.</p>
 <h3 id="仅适用于-AsyncExecutionStrategy-的-Data-Loader"><a href="#仅适用于-AsyncExecutionStrategy-的-Data-Loader" class="headerlink" title="仅适用于 AsyncExecutionStrategy 的 Data Loader"></a>仅适用于 AsyncExecutionStrategy 的 Data Loader</h3><p>这是因为此执行策略知道在最佳时机分发你的 load 调用.它通过深度追踪你有多少个突出的属性及他们是否是列表值等实现.<br>其他策略如 <code>ExecutorServiceExecutionStrategy</code>无法实现这个功能,因为如果 data loader 代码检测到你没有使用 <code>AsyncExecitionStrategy</code>,那么当碰到每个属性时,它将简单的分发 data loader.你可能会得到值的 <code>caching</code>,但你绝对拿不到他们的 <code>batching</code>.</p>
 <h3 id="Data-Loader-的每一个请求"><a href="#Data-Loader-的每一个请求" class="headerlink" title="Data Loader 的每一个请求"></a>Data Loader 的每一个请求</h3><p>如果你正在为 web 请求提供服务,那么可以为用户请求指定数据.如果你有用户指定的数据,你可能不会缓存用户 a 的数据,然后在后续的请求中把它传递给用户 b.<br>你的 DataLoader 实例的范围是很重要的.你可能想每个 web 请求创建一个 dataloader 以确保数据只对特定的 web 请求缓存.同时确保 <code>dispatch</code>调用不影响其他的 graphql 执行.<br>DataLoader 默认行为类似缓存.如果发现之前存在某个 key 对应的值,那么会自动返回它.<br>如果你的数据可以跨 web 请求分享,那么你可能需要改变你的 data loader 缓存实现,这样他们就能通过如 memcached 或 redis 这样的缓存层进行数据分享.<br>下例中仍然每个请求创建一个 data loader,然而缓存层允许数据分享.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">CacheMap&lt;String,Object&gt; crossRequestCacheMap = <span class="keyword">new</span> CacheMap&lt;String,Object&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsKey</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> redisIntegration.containsKey(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> redisIntegration.getValue(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CacheMap&lt;String,Object&gt; <span class="title">set</span><span class="params">(String key,Object value)</span> </span>&#123;</span><br><span class="line">        redisIntegration.setValue(key,value);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CacheMap&lt;String,Object&gt; <span class="title">delete</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">        redisIntegration.clearKey(key);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CacheMap&lt;String,Object&gt; <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        redisIntegration.clearAll();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">DataLoaderOptions options = DataLoaderOptions.newOptions().setCacheMap(crossRequestCacheMap);</span><br><span class="line">DataLoader&lt;String,Object&gt; dataloader = DataLoader.newDataLoader(batchLoader,options);</span><br></pre></td></tr></table></figure>
+
 <h3 id="只能异步调用的批量加载功能"><a href="#只能异步调用的批量加载功能" class="headerlink" title="只能异步调用的批量加载功能"></a>只能异步调用的批量加载功能</h3><p>此 dataloader 代码模式整合所有明显的 data loader 调用到一个更有效的批量加载调用.<br>graphql-java 追踪已发起的明显的 data loader 调用,然后在最合适的时机(即所有的 graphql 属性已经校验成功并分发)在后台调用<code>dispatch</code>.<br>然而有些情况下将导致你的 data loader 调用永不会完成,这中情况必须避免.这种情况包括在异步线程调用 <code>DataLoader</code>.<br>下面的 🌰 不会成功(将永远无法完成).</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">BatchLoader&lt;String,Object&gt; batchLoader = <span class="keyword">new</span> BatchLoader&lt;String,Object&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> CompletionStage&lt;List&lt;Object&gt;&gt; load(List&lt;String&gt; keys) &#123;</span><br><span class="line">        <span class="keyword">return</span> CompletableFuture.completedFuture(getTheseCharacters(keys));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">DataLoader&lt;String,Object&gt; characterDataLoader = DataLoader.newDataLoader(batchLoader);</span><br><span class="line"></span><br><span class="line">DataFetcher dataFetcherThatCallsTheDataLoader = <span class="keyword">new</span> DataFetcher() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(DataFetchingEnvironment environment)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 千万要避免这样做</span></span><br><span class="line">        <span class="keyword">return</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            String argId = environment.getArgument(<span class="string">"id"</span>);</span><br><span class="line">            DataLoader&lt;String,Object&gt; characterLoader = environment.getDataLoader(<span class="string">"characterLoader"</span>);</span><br><span class="line">            <span class="keyword">return</span> characterLoader.load(argId);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>上面的 🌰 中,<code>characterDataLoader.load(argId)</code> 可以在另外一个线程的未来某个时刻被调用. graphql-java 引擎不知道何时是最佳时机去分发明显的 <code>DataLoader</code> 调用,因此这个 data loader 可能永远不会如期执行,也不会有结果返回.<br>请记住,data loader 调用仅仅是一个保证,后面会将明显的调用批量调用在合适的时机获取结果.最佳时机是 graphql 属性树已经校验过,且所有的属性值已经被分发.<br>下面的 🌰 依然是异步代码,但是把它放在 <code>BatchLoader</code> 里.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">BatchLoader&lt;String,Object&gt; batchLoader = <span class="keyword">new</span> BatchLoader&lt;String,Object&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> CompletionStage&lt;List&lt;Object&gt;&gt; load(List&lt;String&gt; keys) &#123;</span><br><span class="line">        <span class="keyword">return</span> CompletableFuture.supplyAsync(() -&gt; getThreseCharacters(keys));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">DataLoader&lt;String,Object&gt; characterDataLoader = DataLoader.newDataLoader(batchLoader);</span><br><span class="line"></span><br><span class="line">DataFetcher dataFetcherThatCallsTheDataLoader = <span class="keyword">new</span> DataFetcher() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(DataFetchingEnvironment environment)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 这是阔以滴</span></span><br><span class="line">        String argId = environment.getArgument(<span class="string">"id"</span>);</span><br><span class="line">        DataLoader&lt;String,Object&gt; characterLoader = environment.getDataLoader(<span class="string">"characterLoader"</span>);</span><br><span class="line">        <span class="keyword">return</span> characterLoader.load(argId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>上面的 🌰 <code>characterDataLoader.load(argId)</code> 会立即返回.这将会把 data 请求入队列,z 当所有的 graphql 属性都分发后再执行.<br>然后当 <code>DataLoader</code> 被分发后,他的 <code>BatchLoader</code> 函数被调用.这个代码可以异步执行,所以你可以有多个批量加载函数,他们可以同时执行.在上例中 <code>CompletableFuture.supplyAsync(() -&gt; getTheseCharacters(keys));</code> 将再另一个线程中返回 <code>getTheseCharacters()</code> 方法.</p>
 <h3 id="向你的-data-loader-传递-context"><a href="#向你的-data-loader-传递-context" class="headerlink" title="向你的 data loader 传递 context"></a>向你的 data loader 传递 context</h3><p>data load 库支持传递两个类型的 context 到 batch loader.第一个是每个 dataloader 一个全局的 context 对象,第二个是一个 loaded key 一个 context 对象的 map.<br>这允许你传递下游需要的额外信息.dataloader key 用在缓存结果,而 context 对象可以用在调用中.<br>在下面的 🌰 中,我们有一个全局的安全 context 对象,提供了一个调用 token,同时可以传递 graphql 原对象到每个 <code>dataLoader.load()</code> 调用中.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">BatchLoaderWithContext&lt;String,Object&gt; batchLoaderWithCtx = <span class="keyword">new</span> BatchLoaderWithContext&lt;String,Object&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> CompletionStage&lt;List&lt;Object&gt;&gt; load(List&lt;String&gt; keys,BatchLoaderEnvironment loaderContext) &#123;</span><br><span class="line">        <span class="comment">// 获取全局 context 对象</span></span><br><span class="line">        SecurityContext sercurityCtx = loaderContext.getContext();</span><br><span class="line">        <span class="comment">// 每个键都有一个 context 对象集</span></span><br><span class="line">        Map&lt;Object,Object&gt; keysToSOurceObjects = loaderContext.getKeyContexts();</span><br><span class="line">        <span class="keyword">return</span> CompletableFuture.supplyAsync(() -&gt; getTheseCharacters(securityCtx.getToken(),keys,keysToSourceObjects));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">SecurityContext securityCtx = SecurityContext.newSecurityContext();</span><br><span class="line">BatchLoaderContextProvider contextProvider = <span class="keyword">new</span> BatchLoaderContextProvider() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object getÇontext() &#123;</span><br><span class="line">        <span class="keyword">return</span> securityCtx;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">DataLoaderOptions loaderOptions = DataLoaderOptions.newOptions().setBatchLoaderContextProvider(contextProvider);</span><br><span class="line">DataLoader&lt;String,Object&gt; characterDataLoader = DataLoader.newDataLoader(batchLoaderWithCtx,loaderOptions);</span><br><span class="line"></span><br><span class="line">DataFetcher dataFetcherCallsTheDataLoader = <span class="keyword">new</span> DataFetcher() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(DataFetchingEnvironment environment)</span> </span>&#123;</span><br><span class="line">        String argId = environment.getArgument(<span class="string">"id"</span>);</span><br><span class="line">        Object source = environment.getSource();</span><br><span class="line">        <span class="keyword">return</span> characterDataLoader.load(argId,source);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -416,11 +418,11 @@
       
 
       <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc" data-target="post-toc-wrap">
-          文章目录
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-          站点概览
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
       </ul>
 
@@ -433,17 +435,16 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" src="http://qiniu.picbed.dang8080.cn/logo.jpeg" alt="Humphrey Dang">
-  <p class="site-author-name" itemprop="name">Humphrey Dang</p>
-  <div class="site-description" itemprop="description">Humphrey Dang 的博客</div>
+  <p class="site-author-name" itemprop="name">Humphrey Dan</p>
+  <div class="site-description" itemprop="description">write something,donot leave.</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
     
@@ -455,54 +456,8 @@
             <a href="/tags/">
           
         
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span>
         </a>
       </div>
     
@@ -516,7 +471,7 @@
       
         
       
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
+        <a href="https://github.com/shuttlespace" title="GitHub &rarr; https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
     
       <span class="links-of-author-item">
@@ -527,7 +482,7 @@
       
         
       
-        <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+        <a href="mailto:dang8080@qq.com" title="E-Mail &rarr; mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
     
   </div>
@@ -535,11 +490,6 @@
 
 
       </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
-      
 
     </div>
   </aside>
@@ -551,16 +501,13 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright"><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5taWl0Lmdvdi5jbg==">陕ICP备19000066号-1 </span>
-  <span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPQ=="> </span>&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
+  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2017 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Humphrey Dang</span>
+  <span class="author" itemprop="copyrightHolder">Humphrey Dan</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.3.0</div>
 
         
 
@@ -581,10 +528,13 @@
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-<script src="/js/utils.js?v=7.3.0"></script>
-<script src="/js/schemes/pisces.js?v=7.3.0"></script>
-<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+<script src="/js/utils.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
@@ -597,7 +547,7 @@
 
 
 
-  <script src="/js/local-search.js?v=7.3.0"></script>
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -624,7 +574,7 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
   guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
+    return GUEST.includes(item);
   });
   new Valine({
     el: '#comments',

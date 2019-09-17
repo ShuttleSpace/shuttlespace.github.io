@@ -4,18 +4,18 @@
 
 
 
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#025a6c">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.3.0">
-  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.3.0" color="#025a6c">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#025a6c">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
@@ -25,13 +25,13 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '7.3.0',
-    exturl: true,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#025a6c","save":"auto"},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
@@ -41,31 +41,32 @@
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"搜索","hits_empty":"${query} 找不到","hits_stats":"${time}ms内找到${hits}个相关内容"}
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},
     path: 'search.xml',
     motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
   };
 </script>
 
-  <meta name="description" content="OverviewCompose 是一个为了定义和运行多容器 Docker 应用的工具。官方动手示例特性 一个主机多个隔离环境 当容器创建时保留所有的 volume 只有容器被更改时才触发创建 定义变量和在不同环境中使用 使用场景 自动测试环境 单独主机部署 docker-compose 安装1234sudo curl -L &quot;https://github.com/docker/compose/re">
+  <meta name="description" content="OverviewCompose 是一个为了定义和运行多容器 Docker 应用的工具。官方动手示例特性 一个主机多个隔离环境 当容器创建时保留所有的 volume 只有容器被更改时才触发创建 定义变量和在不同环境中使用">
 <meta name="keywords" content="docker,学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker,docker-compose学习笔记">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/03/01/docker学习笔记/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="OverviewCompose 是一个为了定义和运行多容器 Docker 应用的工具。官方动手示例特性 一个主机多个隔离环境 当容器创建时保留所有的 volume 只有容器被更改时才触发创建 定义变量和在不同环境中使用 使用场景 自动测试环境 单独主机部署 docker-compose 安装1234sudo curl -L &quot;https://github.com/docker/compose/re">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:description" content="OverviewCompose 是一个为了定义和运行多容器 Docker 应用的工具。官方动手示例特性 一个主机多个隔离环境 当容器创建时保留所有的 volume 只有容器被更改时才触发创建 定义变量和在不同环境中使用">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-03-02T12:39:48.712Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker,docker-compose学习笔记">
-<meta name="twitter:description" content="OverviewCompose 是一个为了定义和运行多容器 Docker 应用的工具。官方动手示例特性 一个主机多个隔离环境 当容器创建时保留所有的 volume 只有容器被更改时才触发创建 定义变量和在不同环境中使用 使用场景 自动测试环境 单独主机部署 docker-compose 安装1234sudo curl -L &quot;https://github.com/docker/compose/re">
+<meta name="twitter:description" content="OverviewCompose 是一个为了定义和运行多容器 Docker 应用的工具。官方动手示例特性 一个主机多个隔离环境 当容器创建时保留所有的 volume 只有容器被更改时才触发创建 定义变量和在不同环境中使用">
   <link rel="canonical" href="http://blog.dang8080.cn/2019/03/01/docker学习笔记/">
 
 
@@ -81,7 +82,6 @@
 </script>
 
   <title>docker,docker-compose学习笔记 | 云青青兮欲雨</title>
-  <meta name="generator" content="Hexo 3.8.0">
   
 
 
@@ -117,13 +117,13 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <div class="container">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta custom-logo">
+  <div class="site-meta">
 
     <div>
       <a href="/" class="brand" rel="start">
@@ -132,15 +132,12 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <h1 class="site-subtitle" itemprop="description">水澹澹兮生烟</h1>
+        <p class="site-subtitle">水澹澹兮生烟</p>
       
-      <a>
-        <img class="custom-logo-image" src="[object Object]" alt="云青青兮欲雨">
-      </a>
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -159,10 +156,8 @@
         <li class="menu-item menu-item-home">
       
     
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
 
   </li>
       
@@ -172,10 +167,8 @@
         <li class="menu-item menu-item-archives">
       
     
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
   </li>
       
@@ -185,10 +178,8 @@
         <li class="menu-item menu-item-tags">
       
     
-      
-    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">22</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
 
   </li>
       
@@ -198,16 +189,14 @@
         <li class="menu-item menu-item-about">
       
     
-      
-    
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
 
   </li>
       <li class="menu-item menu-item-search">
         <a href="javascript:;" class="popup-trigger">
         
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
       </li>
     
   </ul>
@@ -220,7 +209,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -236,6 +227,10 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
     <main id="main" class="main">
@@ -255,32 +250,32 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/03/01/docker学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">docker,docker-compose学习笔记
+        <h1 class="post-title" itemprop="name headline">docker,docker-compose学习笔记
 
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-03-01 18:06:57" itemprop="dateCreated datePublished" datetime="2019-03-01T18:06:57+08:00">2019-03-01</time>
+              <time title="Created: 2019-03-01 18:06:57" itemprop="dateCreated datePublished" datetime="2019-03-01T18:06:57+08:00">2019-03-01</time>
             </span>
           
             
@@ -290,18 +285,18 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-03-02 20:39:48" itemprop="dateModified" datetime="2019-03-02T20:39:48+08:00">2019-03-02</time>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-02 20:39:48" itemprop="dateModified" datetime="2019-03-02T20:39:48+08:00">2019-03-02</time>
               </span>
             
           
 
           
-            <span id="/2019/03/01/docker学习笔记/" class="post-meta-item leancloud_visitors" data-flag-title="docker,docker-compose学习笔记" title="阅读次数">
+            <span id="/2019/03/01/docker学习笔记/" class="post-meta-item leancloud_visitors" data-flag-title="docker,docker-compose学习笔记" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -313,7 +308,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/03/01/docker学习笔记/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/03/01/docker学习笔记/" itemprop="commentCount"></span></a>
   </span>
@@ -334,17 +329,20 @@
 <li>当容器创建时保留所有的 volume</li>
 <li>只有容器被更改时才触发创建</li>
 <li>定义变量和在不同环境中使用</li>
-</ul><h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+</ul><a id="more"></a>
+
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
 <li>自动测试环境</li>
 <li>单独主机部署</li>
-</ul><h3 id="docker-compose-安装"><a href="#docker-compose-安装" class="headerlink" title="docker-compose 安装"></a>docker-compose 安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose</span><br><span class="line">sudo chmod +x /usr/local/bin/docker-compose</span><br><span class="line">sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</span><br><span class="line">sudo docker-compose --version</span><br></pre></td></tr></table></figure><a id="more"></a>
-
-
+</ul>
+<h3 id="docker-compose-安装"><a href="#docker-compose-安装" class="headerlink" title="docker-compose 安装"></a>docker-compose 安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose</span><br><span class="line">sudo chmod +x /usr/local/bin/docker-compose</span><br><span class="line">sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</span><br><span class="line">sudo docker-compose --version</span><br></pre></td></tr></table></figure>
 
 <p>pip 安装</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install docker-compose</span><br></pre></td></tr></table></figure>
+
 <p>卸载</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /usr/local/bin/docker-compose</span><br><span class="line">pip uninstall docker-compose</span><br></pre></td></tr></table></figure>
+
 <h3 id="docker-compose-命令"><a href="#docker-compose-命令" class="headerlink" title="docker-compose 命令"></a>docker-compose 命令</h3><ul>
 <li><code>-f</code> 指定 一个或多个 compose 文件的名称和路径<blockquote>
 <p>1、使用多个 Compose 文件时，Compose 会把这几个文件合并为一个配置。按顺序合并，后边的覆盖前边的配置。<br>2、<code>docker-compose -f docker-compose.yml -f docker-compose.admin.yml run backup_db</code><br>3、使用 <code>-(dash)</code> 作为 <code>-f</code> 的值，将会从输入中读取配置文件名。使用 <code>stdin</code> 时，配置里涉及到的路径都是相对于当前工作上下文路径。<br>4、如果不是用 <code>-f</code>,Compose 遍历当前上下文路径和它的父路径查询 <code>docker-compose.yml</code> 和 <code>docker-compose.override.yml</code> 文件。请至少提供一个 <code>docker-compose.yml</code> 文件。如果所有的文件都在同一个文件夹下，Compose 将合并它们。<br>5、<code>docker-compose.override.yml</code> 的配置高于 <code>docker-compose.yml</code>,且为后者提供额外的配置属性。</p>
@@ -421,10 +419,13 @@
 </ul>
 <h3 id="Compose-file"><a href="#Compose-file" class="headerlink" title="Compose file"></a>Compose file</h3><h4 id="version-3"><a href="#version-3" class="headerlink" title="version 3"></a>version 3</h4><h5 id="build"><a href="#build" class="headerlink" title="build"></a>build</h5><p>配置选项在编译期生效。<br>build 可以指定一个路径</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3"</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  webapp:</span></span><br><span class="line"><span class="attr">    build:</span> <span class="string">./dir</span></span><br></pre></td></tr></table></figure>
+
 <p>或者是一个在指定 context 下的路径对象，同时可包含 Dockerfile 和 args</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3"</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  webapp:</span></span><br><span class="line"><span class="attr">    build:</span></span><br><span class="line"><span class="attr">      context:</span> <span class="string">./dir</span></span><br><span class="line"><span class="attr">      dockerfile:</span> <span class="string">Dockerfile-alternate</span></span><br><span class="line"><span class="attr">      args:</span></span><br><span class="line"><span class="attr">        buildno:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
 <p>如果同时也指定了 image,Compose 使用 webapp 和 image 中指定的可选的 tag 命名最终生成的镜像名</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">build:</span> <span class="string">./dir</span></span><br><span class="line"><span class="attr">image:</span> <span class="attr">webapp:tag</span></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>swarm mode 不支持。docker stack 命令只接受预编译的镜像.</p>
 </blockquote>
@@ -432,8 +433,10 @@
 <h6 id="DOCKERFILE"><a href="#DOCKERFILE" class="headerlink" title="DOCKERFILE"></a>DOCKERFILE</h6><p>可选<br>此处必须指定编译路径</p>
 <h6 id="ARGS"><a href="#ARGS" class="headerlink" title="ARGS"></a>ARGS</h6><p>只有在编译过程中可访问的环境变量。<br>首先，在 Dokcerfile 中指定参数:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">ARG</span> <span class="string">buildno</span></span><br><span class="line"><span class="string">ARG</span> <span class="string">gitcommithash</span></span><br><span class="line"></span><br><span class="line"><span class="string">RUN</span> <span class="string">echo</span> <span class="string">"Build number: $buildno"</span></span><br><span class="line"><span class="string">RUN</span> <span class="string">echo</span> <span class="string">"Bashed on commit: $gitcommithash"</span></span><br></pre></td></tr></table></figure>
+
 <p>然后在 build 下给该参数复制（可以是键值对列表）：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">build:</span></span><br><span class="line"><span class="attr">  context:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">  args:</span></span><br><span class="line"><span class="attr">    buildno:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">    gitcommithash:</span> <span class="string">cdc3b19</span></span><br><span class="line"></span><br><span class="line"><span class="attr">build:</span></span><br><span class="line"><span class="attr">  context:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">  args:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">buildno=1</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">gitcommithash=cdc3b19</span></span><br></pre></td></tr></table></figure>
+
 <p>你也可以不指定值，它的值就是编译时 Compose 当前运行环境的值.</p>
 <blockquote>
 <p>YAML 布尔值(true,false,yes,no,on,off)应该使用引号应用，这样解析器才能把它们解析为 string</p>
@@ -443,35 +446,43 @@
 </blockquote>
 <p>指定 engine 可以缓存的镜像列表</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">build:</span></span><br><span class="line"><span class="attr">  context:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">  cache_from:</span></span><br><span class="line"><span class="attr">    - alpine:</span><span class="string">latest</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">corp/webapp:3.14</span></span><br></pre></td></tr></table></figure>
+
 <h6 id="LABELS"><a href="#LABELS" class="headerlink" title="LABELS"></a>LABELS</h6><blockquote>
 <p>v3.3+</p>
 </blockquote>
 <p>向生成的镜像添加元数据。可以是数组或目录<br>推荐使用反向 DNS 标记以避免和其他软件冲突</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">build:</span></span><br><span class="line"><span class="attr">  context:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">  labels:</span></span><br><span class="line">    <span class="string">com.example.description:</span> <span class="string">"Accounting webapp"</span></span><br><span class="line">    <span class="string">com.example.department:</span> <span class="string">"Finance"</span></span><br><span class="line">    <span class="string">com.example.label-with-empty-value:</span> <span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="attr">build:</span></span><br><span class="line"><span class="attr">  context:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">  labels:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"com.example.description=Accounting webapp"</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"com.example.department=Finance"</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"com.example.label-with-empty-value"</span></span><br></pre></td></tr></table></figure>
+
 <h6 id="SHM-SIZE"><a href="#SHM-SIZE" class="headerlink" title="SHM_SIZE"></a>SHM_SIZE</h6><blockquote>
 <p>v3.5+</p>
 </blockquote>
 <p>设置编译生成容器 <code>dev/shm&#39;</code> 分区大小。int 值单位为 byte. string 可以携带单位</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">build:</span></span><br><span class="line"><span class="attr">  context:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">  shm_size:</span> <span class="string">'2gb'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">build:</span></span><br><span class="line"><span class="attr">  context:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">  shm_size:</span> <span class="number">10000000</span></span><br></pre></td></tr></table></figure>
+
 <h6 id="TARGET"><a href="#TARGET" class="headerlink" title="TARGET"></a>TARGET</h6><blockquote>
 <p>v3.4+</p>
 </blockquote>
 <p>编译 Dockerfile 中定义的指定版本</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">build:</span></span><br><span class="line"><span class="attr">  context:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">  target:</span> <span class="string">prod</span></span><br></pre></td></tr></table></figure>
+
 <h5 id="cap-add-cap-drop"><a href="#cap-add-cap-drop" class="headerlink" title="cap_add,cap_drop"></a>cap_add,cap_drop</h5><p>添加或删除容器的容量。<code>man 7 capabilities</code> 查看可用列表</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">cap_add:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">ALL</span></span><br><span class="line"><span class="attr">cap_drop:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">NET_ADMIN</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">SYS_ADMIN</span></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>swarm mode 无效</p>
 </blockquote>
 <h5 id="cgroup-parent"><a href="#cgroup-parent" class="headerlink" title="cgroup_parent"></a>cgroup_parent</h5><p>为容器指定可选的 cgroup parent</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">cgroup_parent:</span> <span class="string">m-executor-abcd</span></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>swarm mode 无效</p>
 </blockquote>
 <h5 id="command"><a href="#command" class="headerlink" title="command"></a>command</h5><p>覆盖默认的命令</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">command:</span> <span class="string">bundle</span> <span class="string">exec</span> <span class="string">thin</span> <span class="bullet">-p</span> <span class="number">3000</span></span><br></pre></td></tr></table></figure>
+
 <p>也可以是列表</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">command:</span> <span class="string">["bundle",</span> <span class="string">"exec"</span><span class="string">,</span> <span class="string">"thin"</span><span class="string">,</span> <span class="string">"-p"</span><span class="string">,</span> <span class="string">"3000"</span><span class="string">]</span></span><br></pre></td></tr></table></figure>
+
 <h5 id="configs"><a href="#configs" class="headerlink" title="configs"></a>configs</h5><h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><ul>
 <li>共享文件夹，卷，绑定挂载<blockquote>
 <p>如果你的项目不在 <code>Users</code>目录(<code>cd ~</code>),那么你需要共享驱动器或 Dockerfile 所在位置和当前正在使用的卷。如果出现运行时错误表示文件未找到，那么就是一个挂载卷的请求被拒绝，或服务启动失败，试着共享文件或驱动。挂载卷要求共享项目不在 <code>C:\Users (Windows)</code>,或 <code>/Users (Mac)</code> 的驱动，并且如果是运行在 <code>Dokcer Desktop for Windows</code> 的 Linux 容器上的所有应用都需要共享。</p>
@@ -484,6 +495,7 @@
 <li>创建 docker-compose.yml</li>
 </ul>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3.3"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  db:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="attr">mysql:5.7</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="attr">      - db_data:</span><span class="string">/var/lib/mysql</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      MYSQL_ROOT_PASSWORD:</span> <span class="string">somewordpress</span></span><br><span class="line"><span class="attr">      MYSQL_DATABASE:</span> <span class="string">wordpress</span></span><br><span class="line"><span class="attr">      MYSQL_USER:</span> <span class="string">wordpress</span></span><br><span class="line"><span class="attr">      MYSQL_PASSWORD:</span> <span class="string">wordpress</span></span><br><span class="line"><span class="attr">  wordpress:</span></span><br><span class="line"><span class="attr">    depends_on:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">db</span></span><br><span class="line"><span class="attr">    image:</span> <span class="attr">wordpress:latest</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"8000:80"</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      WORDPRESS_DB_HOST:</span> <span class="attr">db:3306</span></span><br><span class="line"><span class="attr">      WORDPRESS_DB_USER:</span> <span class="string">wordpress</span></span><br><span class="line"><span class="attr">      WORDPRESS_DB_PASSWORD:</span> <span class="string">wordpress</span></span><br><span class="line"><span class="attr">      WORDPRESS_DB_NAME:</span> <span class="string">wordpress</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="attr">      db_data:</span> <span class="string">&#123;&#125;</span></span><br><span class="line"><span class="comment"># db_data 卷会保存任何 WordPress 对数据库的改变。</span></span><br><span class="line"><span class="comment"># WordPress 通常开放 80 和 443 端口.</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><code>docker-compose up -d</code>.<blockquote>
 <p>如果使用 Docker Machine, 那么运行 <code>docker-machine ip MACHINE_VM</code> 获取运行地址。如果是 destop 版，<span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdA==" title="http://localhost">http://localhost<i class="fa fa-external-link"></i></span> 即可.</p>
@@ -572,11 +584,11 @@
       
 
       <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc" data-target="post-toc-wrap">
-          文章目录
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-          站点概览
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
       </ul>
 
@@ -589,17 +601,16 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" src="http://qiniu.picbed.dang8080.cn/logo.jpeg" alt="Humphrey Dang">
-  <p class="site-author-name" itemprop="name">Humphrey Dang</p>
-  <div class="site-description" itemprop="description">Humphrey Dang 的博客</div>
+  <p class="site-author-name" itemprop="name">Humphrey Dan</p>
+  <div class="site-description" itemprop="description">write something,donot leave.</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
     
@@ -611,54 +622,8 @@
             <a href="/tags/">
           
         
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span>
         </a>
       </div>
     
@@ -672,7 +637,7 @@
       
         
       
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
+        <a href="https://github.com/shuttlespace" title="GitHub &rarr; https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
     
       <span class="links-of-author-item">
@@ -683,7 +648,7 @@
       
         
       
-        <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+        <a href="mailto:dang8080@qq.com" title="E-Mail &rarr; mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
     
   </div>
@@ -691,11 +656,6 @@
 
 
       </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
-      
 
     </div>
   </aside>
@@ -707,16 +667,13 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright"><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5taWl0Lmdvdi5jbg==">陕ICP备19000066号-1 </span>
-  <span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPQ=="> </span>&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
+  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2017 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Humphrey Dang</span>
+  <span class="author" itemprop="copyrightHolder">Humphrey Dan</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.3.0</div>
 
         
 
@@ -737,10 +694,13 @@
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-<script src="/js/utils.js?v=7.3.0"></script>
-<script src="/js/schemes/pisces.js?v=7.3.0"></script>
-<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+<script src="/js/utils.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
@@ -753,7 +713,7 @@
 
 
 
-  <script src="/js/local-search.js?v=7.3.0"></script>
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -780,7 +740,7 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
   guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
+    return GUEST.includes(item);
   });
   new Valine({
     el: '#comments',

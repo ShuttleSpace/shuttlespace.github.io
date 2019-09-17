@@ -4,18 +4,18 @@
 
 
 
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#025a6c">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png.ico?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png.ico?v=7.3.0">
-  <link rel="mask-icon" href="/images/apple-touch-icon-next.png.ico?v=7.3.0" color="#025a6c">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#025a6c">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
@@ -25,13 +25,13 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '7.3.0',
-    exturl: true,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#025a6c","save":"auto"},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
@@ -41,31 +41,32 @@
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"搜索","hits_empty":"${query} 找不到","hits_stats":"${time}ms内找到${hits}个相关内容"}
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},
     path: 'search.xml',
     motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
   };
 </script>
 
-  <meta name="description" content="原文 简介本文将探索如何创建移动优先的网页设计体验。  为什么我们需要创建移动优先，响应式，适应式网页设计体验? 如何针对适应式站点组织 HTML 结构以便优化性能，优先考虑灵活性? 如何书写优先定义共享样式、针对大屏和媒体查询构建、使用相对单位的 CSS? 如何编写不引人注目的 Javascript 来有条件地加载内容片段，利用触摸事件和地理定位 我们可以做些什么来进一步增强我们的适应性体验">
+  <meta name="description" content="原文简介本文将探索如何创建移动优先的网页设计体验。 为什么我们需要创建移动优先，响应式，适应式网页设计体验? 如何针对适应式站点组织 HTML 结构以便优化性能，优先考虑灵活性? 如何书写优先定义共享样式、针对大屏和媒体查询构建、使用相对单位的 CSS? 如何编写不引人注目的 Javascript 来有条件地加载内容片段，利用触摸事件和地理定位 我们可以做些什么来进一步增强我们的适应性体验">
 <meta name="keywords" content="翻译,web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="移动优先的响应式网页设计">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/04/12/移动优先的响应式网页设计/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="原文 简介本文将探索如何创建移动优先的网页设计体验。  为什么我们需要创建移动优先，响应式，适应式网页设计体验? 如何针对适应式站点组织 HTML 结构以便优化性能，优先考虑灵活性? 如何书写优先定义共享样式、针对大屏和媒体查询构建、使用相对单位的 CSS? 如何编写不引人注目的 Javascript 来有条件地加载内容片段，利用触摸事件和地理定位 我们可以做些什么来进一步增强我们的适应性体验">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:description" content="原文简介本文将探索如何创建移动优先的网页设计体验。 为什么我们需要创建移动优先，响应式，适应式网页设计体验? 如何针对适应式站点组织 HTML 结构以便优化性能，优先考虑灵活性? 如何书写优先定义共享样式、针对大屏和媒体查询构建、使用相对单位的 CSS? 如何编写不引人注目的 Javascript 来有条件地加载内容片段，利用触摸事件和地理定位 我们可以做些什么来进一步增强我们的适应性体验">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-04-12T06:25:40.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动优先的响应式网页设计">
-<meta name="twitter:description" content="原文 简介本文将探索如何创建移动优先的网页设计体验。  为什么我们需要创建移动优先，响应式，适应式网页设计体验? 如何针对适应式站点组织 HTML 结构以便优化性能，优先考虑灵活性? 如何书写优先定义共享样式、针对大屏和媒体查询构建、使用相对单位的 CSS? 如何编写不引人注目的 Javascript 来有条件地加载内容片段，利用触摸事件和地理定位 我们可以做些什么来进一步增强我们的适应性体验">
+<meta name="twitter:description" content="原文简介本文将探索如何创建移动优先的网页设计体验。 为什么我们需要创建移动优先，响应式，适应式网页设计体验? 如何针对适应式站点组织 HTML 结构以便优化性能，优先考虑灵活性? 如何书写优先定义共享样式、针对大屏和媒体查询构建、使用相对单位的 CSS? 如何编写不引人注目的 Javascript 来有条件地加载内容片段，利用触摸事件和地理定位 我们可以做些什么来进一步增强我们的适应性体验">
   <link rel="canonical" href="http://blog.dang8080.cn/2019/04/12/移动优先的响应式网页设计/">
 
 
@@ -81,7 +82,6 @@
 </script>
 
   <title>移动优先的响应式网页设计 | 云青青兮欲雨</title>
-  <meta name="generator" content="Hexo 3.8.0">
   
 
 
@@ -117,13 +117,13 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
   <div class="container">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta custom-logo">
+  <div class="site-meta">
 
     <div>
       <a href="/" class="brand" rel="start">
@@ -132,15 +132,12 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <h1 class="site-subtitle" itemprop="description">水澹澹兮生烟</h1>
+        <p class="site-subtitle">水澹澹兮生烟</p>
       
-      <a>
-        <img class="custom-logo-image" src="[object Object]" alt="云青青兮欲雨">
-      </a>
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -159,10 +156,8 @@
         <li class="menu-item menu-item-home">
       
     
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
 
   </li>
       
@@ -172,10 +167,8 @@
         <li class="menu-item menu-item-archives">
       
     
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">41</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
   </li>
       
@@ -185,10 +178,8 @@
         <li class="menu-item menu-item-tags">
       
     
-      
-    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">22</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
 
   </li>
       
@@ -198,16 +189,14 @@
         <li class="menu-item menu-item-about">
       
     
-      
-    
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
 
   </li>
       <li class="menu-item menu-item-search">
         <a href="javascript:;" class="popup-trigger">
         
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
       </li>
     
   </ul>
@@ -220,7 +209,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -236,6 +227,10 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
     <main id="main" class="main">
@@ -255,32 +250,32 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/04/12/移动优先的响应式网页设计/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Humphrey Dang">
-      <meta itemprop="description" content="Humphrey Dang 的博客">
-      <meta itemprop="image" content="http://qiniu.picbed.dang8080.cn/logo.jpeg">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">移动优先的响应式网页设计
+        <h1 class="post-title" itemprop="name headline">移动优先的响应式网页设计
 
           
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
-              <time title="创建时间：2019-04-12 13:20:33 / 修改时间：14:25:40" itemprop="dateCreated datePublished" datetime="2019-04-12T13:20:33+08:00">2019-04-12</time>
+              <time title="Created: 2019-04-12 13:20:33 / Modified: 14:25:40" itemprop="dateCreated datePublished" datetime="2019-04-12T13:20:33+08:00">2019-04-12</time>
             </span>
           
             
@@ -289,11 +284,11 @@
           
 
           
-            <span id="/2019/04/12/移动优先的响应式网页设计/" class="post-meta-item leancloud_visitors" data-flag-title="移动优先的响应式网页设计" title="阅读次数">
+            <span id="/2019/04/12/移动优先的响应式网页设计/" class="post-meta-item leancloud_visitors" data-flag-title="移动优先的响应式网页设计" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
           
@@ -305,7 +300,7 @@
       </span>
         
       
-      <span class="post-meta-item-text">Valine：</span>
+      <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/2019/04/12/移动优先的响应式网页设计/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/04/12/移动优先的响应式网页设计/" itemprop="commentCount"></span></a>
   </span>
@@ -321,15 +316,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><span class="exturl" data-url="aHR0cHM6Ly93d3cuaHRtbDVyb2Nrcy5jb20vZW4vbW9iaWxlL3Jlc3BvbnNpdmVkZXNpZ24v" title="https://www.html5rocks.com/en/mobile/responsivedesign/">原文<i class="fa fa-external-link"></i></span></p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文将探索如何创建移动优先的网页设计体验。</p>
-<ul>
+        <p><span class="exturl" data-url="aHR0cHM6Ly93d3cuaHRtbDVyb2Nrcy5jb20vZW4vbW9iaWxlL3Jlc3BvbnNpdmVkZXNpZ24v" title="https://www.html5rocks.com/en/mobile/responsivedesign/">原文<i class="fa fa-external-link"></i></span></p><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文将探索如何创建移动优先的网页设计体验。</p><ul>
 <li>为什么我们需要创建移动优先，响应式，适应式网页设计体验?</li>
 <li>如何针对适应式站点组织 HTML 结构以便优化性能，优先考虑灵活性?</li>
 <li>如何书写优先定义共享样式、针对大屏和媒体查询构建、使用相对单位的 CSS?</li>
 <li>如何编写不引人注目的 Javascript 来有条件地加载内容片段，利用触摸事件和地理定位</li>
 <li>我们可以做些什么来进一步增强我们的适应性体验</li>
-</ul>
+</ul><a id="more"></a>
+
+
 <h2 id="适应性的必要性"><a href="#适应性的必要性" class="headerlink" title="适应性的必要性"></a>适应性的必要性</h2><p>随着网络环境越来越复杂，为越来越多的环境提供可靠的网络体验变得极为重要.幸运的是，响应式 web 设计给 web 开发者提供了一些可以匹配任意大小屏幕的工具来组织布局.</p>
 
     </div>
@@ -412,11 +407,11 @@
       
 
       <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc" data-target="post-toc-wrap">
-          文章目录
+        <li class="sidebar-nav-toc">
+          Table of Contents
         </li>
-        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-          站点概览
+        <li class="sidebar-nav-overview">
+          Overview
         </li>
       </ul>
 
@@ -429,17 +424,16 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" src="http://qiniu.picbed.dang8080.cn/logo.jpeg" alt="Humphrey Dang">
-  <p class="site-author-name" itemprop="name">Humphrey Dang</p>
-  <div class="site-description" itemprop="description">Humphrey Dang 的博客</div>
+  <p class="site-author-name" itemprop="name">Humphrey Dan</p>
+  <div class="site-description" itemprop="description">write something,donot leave.</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
     
@@ -451,54 +445,8 @@
             <a href="/tags/">
           
         
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span>
         </a>
       </div>
     
@@ -512,7 +460,7 @@
       
         
       
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NodXR0bGVzcGFjZQ==" title="GitHub &rarr; https://github.com/shuttlespace"><i class="fa fa-fw fa-github"></i>GitHub</span>
+        <a href="https://github.com/shuttlespace" title="GitHub &rarr; https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
     
       <span class="links-of-author-item">
@@ -523,7 +471,7 @@
       
         
       
-        <span class="exturl" data-url="bWFpbHRvOmRhbmc4MDgwQHFxLmNvbQ==" title="E-Mail &rarr; mailto:dang8080@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
+        <a href="mailto:dang8080@qq.com" title="E-Mail &rarr; mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
     
   </div>
@@ -531,11 +479,6 @@
 
 
       </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
-      
 
     </div>
   </aside>
@@ -547,16 +490,13 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright"><span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5taWl0Lmdvdi5jbg==">陕ICP备19000066号-1 </span>
-  <span class="exturl" data-url="aHR0cDovL3d3dy5iZWlhbi5nb3YuY24vcG9ydGFsL3JlZ2lzdGVyU3lzdGVtSW5mbz9yZWNvcmRjb2RlPQ=="> </span>&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
+  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2017 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Humphrey Dang</span>
+  <span class="author" itemprop="copyrightHolder">Humphrey Dan</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Pisces</span> v7.3.0</div>
 
         
 
@@ -577,10 +517,13 @@
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-<script src="/js/utils.js?v=7.3.0"></script>
-<script src="/js/schemes/pisces.js?v=7.3.0"></script>
-<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+<script src="/js/utils.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
@@ -593,7 +536,7 @@
 
 
 
-  <script src="/js/local-search.js?v=7.3.0"></script>
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -620,7 +563,7 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
   guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
+    return GUEST.includes(item);
   });
   new Valine({
     el: '#comments',
