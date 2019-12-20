@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="云青青兮欲雨">
 <meta property="og:description" content="提取函数-重构但是如果提取出来的函数包含了一个在当前作用域调用的协程构造器怎么办?这种情况下,suspend 修饰符就不能满足需求了使doWorld 成为 CoroutineScopr的一个扩展函数是一种解决方案,但这种方法使得API不清晰而不适用其他情况.理想的解决方案是CoroutineScope 作为一个包含目标函数的类的一个属性存在,或者这个类实现CoroutineScope接口.最后一种">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-26T07:33:46.603Z">
+<meta property="og:updated_time" content="2019-08-26T07:33:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="译-Kotlin-Coroutine(1) case)">
 <meta name="twitter:description" content="提取函数-重构但是如果提取出来的函数包含了一个在当前作用域调用的协程构造器怎么办?这种情况下,suspend 修饰符就不能满足需求了使doWorld 成为 CoroutineScopr的一个扩展函数是一种解决方案,但这种方法使得API不清晰而不适用其他情况.理想的解决方案是CoroutineScope 作为一个包含目标函数的类的一个属性存在,或者这个类实现CoroutineScope接口.最后一种">
@@ -466,6 +466,10 @@
 
             <div class="post-nav-prev post-nav-item">
               
+                <a href="/2019/10/23/dart-Zone/" rel="prev" title="Dart-Zone">
+                  Dart-Zone <i class="fa fa-chevron-right"></i>
+                </a>
+              
             </div>
           </div>
         
@@ -531,7 +535,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -544,7 +548,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
