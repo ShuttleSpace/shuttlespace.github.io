@@ -12,6 +12,8 @@ embedder 提供了 task runner 来执行任务.
 
 Dart VM 会有自己的线程池.而 Flutter engine 和 embedder 都无法访问到线程池的线程.
 
+<!-- more -->
+
 ### Task Runner Configuration
 
 Flutter engine 会向 embedder 申请4个 task runner 引用. engine 不在乎引用是不是同一个 task runner,或者多个 task runner 运行在同一个线程中.
