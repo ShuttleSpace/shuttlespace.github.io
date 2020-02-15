@@ -1,73 +1,41 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#025a6c">
-<meta name="generator" content="Hexo 3.9.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.4.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#025a6c">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#025a6c">
 
-<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.4.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#025a6c","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},
-    path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.dang8080.cn","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#025a6c","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
-  <meta name="description" content="前言JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.">
-<meta name="keywords" content="Android,Java,Kotlin,JS">
+  <meta name="description" content="前言JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库. 入门获取在仓库搜索引擎中搜索 jgit 即可获取各种添加依赖的方式.我现在基本使用的是 gradle 依赖 12implementation(&quot;org.eclipse.jgit:org.eclipse.jgit:5.3.0.201903">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JGit">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/03/16/JGit/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="前言JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-21T10:27:14.000Z">
+<meta property="og:description" content="前言JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库. 入门获取在仓库搜索引擎中搜索 jgit 即可获取各种添加依赖的方式.我现在基本使用的是 gradle 依赖 12implementation(&quot;org.eclipse.jgit:org.eclipse.jgit:5.3.0.201903">
+<meta property="article:published_time" content="2019-03-16T03:47:07.000Z">
+<meta property="article:modified_time" content="2019-03-21T10:27:14.000Z">
+<meta property="article:author" content="Humphrey Dan">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Kotlin">
+<meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JGit">
-<meta name="twitter:description" content="前言JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.">
-  <link rel="canonical" href="http://blog.dang8080.cn/2019/03/16/JGit/">
+
+<link rel="canonical" href="http://blog.dang8080.cn/2019/03/16/JGit/">
 
 
 <script id="page-configurations">
@@ -75,16 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
+    isPost: true
   };
 </script>
 
   <title>JGit | 云青青兮欲雨</title>
   
-
-
 
 
 
@@ -103,7 +67,6 @@
   .use-motion .post-body,
   .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -117,12 +80,20 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage">
   <div class="container">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
     <div>
@@ -133,72 +104,39 @@
       </a>
     </div>
         <p class="site-subtitle">水澹澹兮生烟</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
+  <div class="site-nav-right"></div>
 </div>
 
 
 <nav class="site-nav">
   
   <ul id="menu" class="menu">
-      
-      
-      
-        
         <li class="menu-item menu-item-home">
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-tags">
-      
-    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-about">
-      
-    
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
       </li>
-    
   </ul>
 
 </nav>
@@ -209,9 +147,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
            placeholder="Searching..." spellcheck="false"
-           type="text" id="search-input">
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -233,35 +171,33 @@
   </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+
+          <div class="content">
             
 
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-      <article itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block post">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/03/16/JGit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Humphrey Dan">
       <meta itemprop="description" content="write something,donot leave.">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">JGit
-
-          
+        <h1 class="post-title" itemprop="name headline">
+          JGit
         </h1>
 
         <div class="post-meta">
@@ -271,16 +207,8 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              
-                
-              
-
               <time title="Created: 2019-03-16 11:47:07" itemprop="dateCreated datePublished" datetime="2019-03-16T11:47:07+08:00">2019-03-16</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
@@ -288,8 +216,6 @@
                 <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2019-03-21 18:27:14" itemprop="dateModified" datetime="2019-03-21T18:27:14+08:00">2019-03-21</time>
               </span>
-            
-          
 
           
             <span id="/2019/03/16/JGit/" class="post-meta-item leancloud_visitors" data-flag-title="JGit" title="Views">
@@ -299,18 +225,17 @@
               <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
-          
   
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
         <i class="fa fa-comment-o"></i>
       </span>
-        
-      
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2019/03/16/JGit/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/03/16/JGit/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2019/03/16/JGit/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/03/16/JGit/" itemprop="commentCount"></span>
+    </a>
   </span>
   
   
@@ -324,7 +249,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.</p><a id="more"></a>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.</p>
 <h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h3><p>在<a href="https://mvnrepository.com/" target="_blank" rel="noopener">仓库搜索引擎</a>中搜索 jgit 即可获取各种添加依赖的方式.我现在基本使用的是 gradle 依赖</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">implementation(<span class="string">"org.eclipse.jgit:org.eclipse.jgit:5.3.0.201903130848-r"</span>)</span><br><span class="line">implementation(<span class="string">"org.eclipse.jgit:org.eclipse.jgit.http.server:5.3.0.201903130848-r"</span>)</span><br></pre></td></tr></table></figure>
 
@@ -444,72 +369,72 @@
 
 <h3 id="功能列表"><a href="#功能列表" class="headerlink" title="功能列表"></a>功能列表</h3><ul>
 <li>通用仓库操作<ul>
-<li><a href>打开存在的 git 仓库</a></li>
-<li><a href>创建新的 git 仓库</a></li>
+<li><a href="">打开存在的 git 仓库</a></li>
+<li><a href="">创建新的 git 仓库</a></li>
 </ul>
 </li>
 <li>git 命令支持<ul>
-<li><a href>初始化新的仓库</a></li>
-<li><a href>添加新文件到索引中</a></li>
-<li><a href>向存在的仓库提交文件</a></li>
-<li><a href>提交所有更改</a></li>
-<li><a href>列出提交记录,如 Log</a></li>
-<li><a href>列出仓库的所有标签</a></li>
-<li><a href>列出仓库的所有分支</a></li>
-<li><a href>列出仓库的所有提交记录</a></li>
-<li><a href>列出仓库所有未提交的更改</a></li>
-<li><a href>创建/删除分支</a></li>
-<li><a href>创建/删除标签</a></li>
-<li><a href>回退被修改的追踪文件到最近提交记录中的初始状态</a></li>
-<li><a href>返回两个分支的 diff</a></li>
-<li><a href>显示两个 revs 中同一个文件的改变 diff</a></li>
-<li><a href>显示两个提交记录中所有文件的改变 diff</a></li>
-<li><a href>显示两个提交记录中同一个文件的改变 diff,当文件被重命名后</a></li>
-<li><a href>显示状态</a></li>
-<li><a href>把分支中的内容存储到一个压缩文件中</a></li>
-<li><a href>使用自定义的打包格式将分支中的内容写入到一个压缩文件中</a></li>
-<li><a href>Blame,例如查找那个提交记录改变了某个文件的特定行</a></li>
-<li><a href>添加/列出提交记录附带的笔记</a></li>
-<li><a href>列出所有可用的笔记</a></li>
-<li><a href>清理所有未追踪的文件</a></li>
-<li><a href>创建/列出/提交/丢弃 stashes</a></li>
-<li><a href>运行垃圾回收</a></li>
-<li><a href>Blame,如查找谁最后修改了某文件的特定行</a></li>
-<li><a href>合并某一分支的修改</a></li>
-<li><a href>列出两个提交记录修改的所有文件</a></li>
+<li><a href="">初始化新的仓库</a></li>
+<li><a href="">添加新文件到索引中</a></li>
+<li><a href="">向存在的仓库提交文件</a></li>
+<li><a href="">提交所有更改</a></li>
+<li><a href="">列出提交记录,如 Log</a></li>
+<li><a href="">列出仓库的所有标签</a></li>
+<li><a href="">列出仓库的所有分支</a></li>
+<li><a href="">列出仓库的所有提交记录</a></li>
+<li><a href="">列出仓库所有未提交的更改</a></li>
+<li><a href="">创建/删除分支</a></li>
+<li><a href="">创建/删除标签</a></li>
+<li><a href="">回退被修改的追踪文件到最近提交记录中的初始状态</a></li>
+<li><a href="">返回两个分支的 diff</a></li>
+<li><a href="">显示两个 revs 中同一个文件的改变 diff</a></li>
+<li><a href="">显示两个提交记录中所有文件的改变 diff</a></li>
+<li><a href="">显示两个提交记录中同一个文件的改变 diff,当文件被重命名后</a></li>
+<li><a href="">显示状态</a></li>
+<li><a href="">把分支中的内容存储到一个压缩文件中</a></li>
+<li><a href="">使用自定义的打包格式将分支中的内容写入到一个压缩文件中</a></li>
+<li><a href="">Blame,例如查找那个提交记录改变了某个文件的特定行</a></li>
+<li><a href="">添加/列出提交记录附带的笔记</a></li>
+<li><a href="">列出所有可用的笔记</a></li>
+<li><a href="">清理所有未追踪的文件</a></li>
+<li><a href="">创建/列出/提交/丢弃 stashes</a></li>
+<li><a href="">运行垃圾回收</a></li>
+<li><a href="">Blame,如查找谁最后修改了某文件的特定行</a></li>
+<li><a href="">合并某一分支的修改</a></li>
+<li><a href="">列出两个提交记录修改的所有文件</a></li>
 </ul>
 </li>
 <li>供远程仓库使用的命令<ul>
-<li><a href>复制远程仓库到本地的新文件夹中</a></li>
-<li><a href>在一个仓库中迭代远程引用</a></li>
-<li><a href>不克隆列出远程仓库的所有 heads/tags</a></li>
-<li><a href>fetch from remote repository</a></li>
-<li><a href>fetch from remote repository 且使用 <code>prune</code> 移除过期的远程 branches/tags</a></li>
-<li><a href>使用 SSH 协议/用户名密码验证克隆远程仓库</a></li>
-<li><a href>对一个 upstream 分支执行 Rebase</a></li>
-<li><a href>使用 InMemoryRepository 在内存中克隆一个仓库，并且在内存中完成操作</a></li>
+<li><a href="">复制远程仓库到本地的新文件夹中</a></li>
+<li><a href="">在一个仓库中迭代远程引用</a></li>
+<li><a href="">不克隆列出远程仓库的所有 heads/tags</a></li>
+<li><a href="">fetch from remote repository</a></li>
+<li><a href="">fetch from remote repository 且使用 <code>prune</code> 移除过期的远程 branches/tags</a></li>
+<li><a href="">使用 SSH 协议/用户名密码验证克隆远程仓库</a></li>
+<li><a href="">对一个 upstream 分支执行 Rebase</a></li>
+<li><a href="">使用 InMemoryRepository 在内存中克隆一个仓库，并且在内存中完成操作</a></li>
 </ul>
 </li>
 <li>底层 API<ul>
-<li><a href>从一个命名 ref (refs/heads/master) 中获取 SHA-1</a></li>
-<li><a href>从一个名称或 SHA-1 获取提交记录对象</a></li>
-<li><a href>获取提交信息</a></li>
-<li><a href>从提交记录对象，名称，SHA-1 获取 tree 对象</a></li>
-<li><a href>读取 file/blob 的内容</a></li>
-<li><a href>从名称，SHA-1 获取 tag 对象</a></li>
-<li><a href>解析复杂的引用(如 HEAD^^)为 SHA-1</a></li>
-<li><a href>迭代一个分支的所有提交记录</a></li>
-<li><a href>迭代某个范围内的提交记录</a></li>
-<li><a href>从特定的提交记录中读取特定文件的内容</a></li>
-<li><a href>列出当前仓库的远程配置</a></li>
-<li><a href>从 Git 中打印出用户的信息</a></li>
-<li><a href>读取文件属性，如可执行状态，是文件还是文件夹，大小等</a></li>
-<li><a href>使用 BranchTrackingStatus 类获取当前分支相对于远程分支超前/落后的提交记录</a></li>
-<li><a href>检查其他分支的某个提交是否被合并到了给出的分支</a></li>
-<li><a href>列出作为某个特定提交记录或标签的文件夹中的所有文件</a></li>
-<li><a href>循环迭代某个提交的文件</a></li>
-<li><a href>非循环迭代某个提交的文件</a></li>
-<li><a href>查找所有可以通过 tags,branches,remotes,HEADs…等可访问的提交记录</a></li>
+<li><a href="">从一个命名 ref (refs/heads/master) 中获取 SHA-1</a></li>
+<li><a href="">从一个名称或 SHA-1 获取提交记录对象</a></li>
+<li><a href="">获取提交信息</a></li>
+<li><a href="">从提交记录对象，名称，SHA-1 获取 tree 对象</a></li>
+<li><a href="">读取 file/blob 的内容</a></li>
+<li><a href="">从名称，SHA-1 获取 tag 对象</a></li>
+<li><a href="">解析复杂的引用(如 HEAD^^)为 SHA-1</a></li>
+<li><a href="">迭代一个分支的所有提交记录</a></li>
+<li><a href="">迭代某个范围内的提交记录</a></li>
+<li><a href="">从特定的提交记录中读取特定文件的内容</a></li>
+<li><a href="">列出当前仓库的远程配置</a></li>
+<li><a href="">从 Git 中打印出用户的信息</a></li>
+<li><a href="">读取文件属性，如可执行状态，是文件还是文件夹，大小等</a></li>
+<li><a href="">使用 BranchTrackingStatus 类获取当前分支相对于远程分支超前/落后的提交记录</a></li>
+<li><a href="">检查其他分支的某个提交是否被合并到了给出的分支</a></li>
+<li><a href="">列出作为某个特定提交记录或标签的文件夹中的所有文件</a></li>
+<li><a href="">循环迭代某个提交的文件</a></li>
+<li><a href="">非循环迭代某个提交的文件</a></li>
+<li><a href="">查找所有可以通过 tags,branches,remotes,HEADs…等可访问的提交记录</a></li>
 </ul>
 </li>
 <li>缺失的代码片段<ul>
@@ -531,68 +456,70 @@
     
     
     
-        
-      
 
       <footer class="post-footer">
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/2019/03/09/teamcity自动化更新hexo博客/" rel="next" title="teamcity自动化更新hexo博客">
-                  <i class="fa fa-chevron-left"></i> teamcity自动化更新hexo博客
-                </a>
-              
-            </div>
 
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/03/17/git-笔记/" rel="prev" title="git 笔记">
-                  git 笔记 <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
-          </div>
         
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/09/teamcity%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9B%B4%E6%96%B0hexo%E5%8D%9A%E5%AE%A2/" rel="prev" title="teamcity自动化更新hexo博客">
+      <i class="fa fa-chevron-left"></i> teamcity自动化更新hexo博客
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/17/git-%E7%AC%94%E8%AE%B0/" rel="next" title="git 笔记">
+      git 笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
-  </div>
-  
-  
-  
   </article>
+  
+  
+  
 
   </div>
 
 
           </div>
           
-    
-    <div class="comments" id="comments"></div>
-  
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
   <aside class="sidebar">
     <div class="sidebar-inner">
-        
-        
-        
-        
-      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -606,7 +533,6 @@
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#入门"><span class="nav-number">2.</span> <span class="nav-text">入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取"><span class="nav-number">2.1.</span> <span class="nav-text">获取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#手动编译-JGit-CLI"><span class="nav-number">2.1.1.</span> <span class="nav-text">手动编译 JGit CLI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在-JGit-CLI-运行命令"><span class="nav-number">2.1.2.</span> <span class="nav-text">在 JGit CLI 运行命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看仓库"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">查看仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#历史图形化"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">历史图形化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心概念"><span class="nav-number">2.2.</span> <span class="nav-text">核心概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#API"><span class="nav-number">2.2.1.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#仓库"><span class="nav-number">2.2.2.</span> <span class="nav-text">仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git-对象"><span class="nav-number">2.2.3.</span> <span class="nav-text">Git 对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ref"><span class="nav-number">2.2.4.</span> <span class="nav-text">Ref</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RevWalk"><span class="nav-number">2.2.5.</span> <span class="nav-text">RevWalk</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RevCommit"><span class="nav-number">2.2.6.</span> <span class="nav-text">RevCommit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RevTag"><span class="nav-number">2.2.7.</span> <span class="nav-text">RevTag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RevTree"><span class="nav-number">2.2.8.</span> <span class="nav-text">RevTree</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">2.3.</span> <span class="nav-text">参考</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加命令-git-add"><span class="nav-number">2.3.1.</span> <span class="nav-text">添加命令(git-add)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交命令-git-commit"><span class="nav-number">2.3.2.</span> <span class="nav-text">提交命令(git-commit)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tag-命令-git-tag"><span class="nav-number">2.3.3.</span> <span class="nav-text">tag 命令(git-tag)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#log-命令-git-log"><span class="nav-number">2.3.4.</span> <span class="nav-text">log 命令(git-log)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge-命令-git-merge"><span class="nav-number">2.3.5.</span> <span class="nav-text">merge 命令(git-merge)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ant-任务"><span class="nav-number">2.3.6.</span> <span class="nav-text">Ant 任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-clone"><span class="nav-number">2.3.7.</span> <span class="nav-text">git-clone</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-init"><span class="nav-number">2.3.8.</span> <span class="nav-text">git-init</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-checkout"><span class="nav-number">2.3.9.</span> <span class="nav-text">git-checkout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-add"><span class="nav-number">2.3.10.</span> <span class="nav-text">git-add</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码片段"><span class="nav-number">2.4.</span> <span class="nav-text">代码片段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取某一提交记录的子记录"><span class="nav-number">2.4.1.</span> <span class="nav-text">获取某一提交记录的子记录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级主题"><span class="nav-number">2.5.</span> <span class="nav-text">高级主题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-RevWalk-减少内存使用"><span class="nav-number">2.5.1.</span> <span class="nav-text">使用 RevWalk 减少内存使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#限制遍历修订图-Restrict-the-walked-revision-graph"><span class="nav-number">2.5.2.</span> <span class="nav-text">限制遍历修订图(Restrict the walked revision graph)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#丢弃提交记录内容"><span class="nav-number">2.5.3.</span> <span class="nav-text">丢弃提交记录内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RevWalk-和-RevCommit-的子类"><span class="nav-number">2.5.4.</span> <span class="nav-text">RevWalk 和 RevCommit 的子类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历修订后清理"><span class="nav-number">2.5.5.</span> <span class="nav-text">遍历修订后清理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#功能列表"><span class="nav-number">2.6.</span> <span class="nav-text">功能列表</span></a></li></ol></li></ol></div>
-        
       </div>
       <!--/noindex-->
 
@@ -615,53 +541,30 @@
   <p class="site-author-name" itemprop="name">Humphrey Dan</p>
   <div class="site-description" itemprop="description">write something,donot leave.</div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/tags/">
           
-        
         <span class="site-state-item-count">26</span>
-        <span class="site-state-item-name">tags</span>
-        </a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
-    
   </nav>
+</div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/shuttlespace" title="GitHub &rarr; https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/shuttlespace" title="GitHub → https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
-    
       <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:dang8080@qq.com" title="E-Mail &rarr; mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:dang8080@qq.com" title="E-Mail → mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
-    
   </div>
 
 
@@ -676,11 +579,17 @@
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
-  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2017 – <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Humphrey Dan</span>
@@ -695,51 +604,43 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
 
 
-  <script src="/lib/anime.min.js?v=3.1.0"></script>
-<script src="/js/utils.js?v=7.4.0"></script>
-<script src="/js/schemes/pisces.js?v=7.4.0"></script>
-
-<script src="/js/next-boot.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
-
-  
-
-
-
-
-
-
-
-
-  <script src="/js/local-search.js?v=7.4.0"></script>
-
-
-
-
-
-
-
-
-
-
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 
@@ -747,27 +648,31 @@
 
 
 <script>
-NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(item => {
-    return GUEST.includes(item);
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: true,
-    appId: 'z4355CFJqLqEOkacAfCt07Tw-gzGzoHsz',
-    appKey: 'MMeHfXwH0V14BmSIRAX2mxcj',
-    placeholder: '表扬👍一下吧',
-    avatar: 'wavatar',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: true,
-    lang: 'zh-cn' || 'zh-cn',
-    path: location.pathname
-  });
-}, window.Valine);
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'z4355CFJqLqEOkacAfCt07Tw-gzGzoHsz',
+      appKey     : 'MMeHfXwH0V14BmSIRAX2mxcj',
+      placeholder: "表扬👍一下吧",
+      avatar     : 'wavatar',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
 </script>
 
 </body>

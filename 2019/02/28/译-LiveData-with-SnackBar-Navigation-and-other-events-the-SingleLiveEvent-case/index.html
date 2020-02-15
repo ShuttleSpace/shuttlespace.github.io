@@ -1,78 +1,45 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#025a6c">
-<meta name="generator" content="Hexo 3.9.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.4.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#025a6c">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#025a6c">
 
-<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.4.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#025a6c","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},
-    path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.dang8080.cn","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#025a6c","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
-  <meta name="description" content="原文view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData observables. view 订阅 LiveData 的改变且随时响应。这适用于连续不断的显示在一个屏幕的数据。但是某些数据却更应该被消费一次，比如 Snackbar 消息，navigation 事件 或 dialog 触发器。与其试着通过扩展 Architecture Com">
-<meta name="keywords" content="翻译,LiveData,Navigation">
+  <meta name="description" content="原文 view(activity&#x2F;fragment) 和 ViewModel 交流的比较好的方式是 LiveData observables. view 订阅 LiveData 的改变且随时响应。这适用于连续不断的显示在一个屏幕的数据。但是某些数据却更应该被消费一次，比如 Snackbar 消息，navigation 事件 或 dialog 触发器。与其试着通过扩展 Architecture Co">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[译]-LiveData with SnackBar,Navigation and other events(the SingleLiveEvent case)">
-<meta property="og:url" content="http://blog.dang8080.cn/2019/02/28/译-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/index.html">
+<meta property="og:url" content="http://blog.dang8080.cn/2019/02/28/%E8%AF%91-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="原文view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData observables. view 订阅 LiveData 的改变且随时响应。这适用于连续不断的显示在一个屏幕的数据。但是某些数据却更应该被消费一次，比如 Snackbar 消息，navigation 事件 或 dialog 触发器。与其试着通过扩展 Architecture Com">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:description" content="原文 view(activity&#x2F;fragment) 和 ViewModel 交流的比较好的方式是 LiveData observables. view 订阅 LiveData 的改变且随时响应。这适用于连续不断的显示在一个屏幕的数据。但是某些数据却更应该被消费一次，比如 Snackbar 消息，navigation 事件 或 dialog 触发器。与其试着通过扩展 Architecture Co">
 <meta property="og:image" content="http://qiniu.picbed.dang8080.cn/20190228202711.png">
 <meta property="og:image" content="http://qiniu.picbed.dang8080.cn/20190228202852.png">
 <meta property="og:image" content="http://qiniu.picbed.dang8080.cn/20190303082724.png">
 <meta property="og:image" content="http://qiniu.picbed.dang8080.cn/20190303074902.png">
-<meta property="og:updated_time" content="2019-03-03T00:37:05.000Z">
+<meta property="article:published_time" content="2019-02-28T12:23:11.000Z">
+<meta property="article:modified_time" content="2019-03-03T00:37:05.000Z">
+<meta property="article:author" content="Humphrey Dan">
+<meta property="article:tag" content="翻译">
+<meta property="article:tag" content="LiveData">
+<meta property="article:tag" content="Navigation">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[译]-LiveData with SnackBar,Navigation and other events(the SingleLiveEvent case)">
-<meta name="twitter:description" content="原文view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData observables. view 订阅 LiveData 的改变且随时响应。这适用于连续不断的显示在一个屏幕的数据。但是某些数据却更应该被消费一次，比如 Snackbar 消息，navigation 事件 或 dialog 触发器。与其试着通过扩展 Architecture Com">
 <meta name="twitter:image" content="http://qiniu.picbed.dang8080.cn/20190228202711.png">
-  <link rel="canonical" href="http://blog.dang8080.cn/2019/02/28/译-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/">
+
+<link rel="canonical" href="http://blog.dang8080.cn/2019/02/28/%E8%AF%91-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/">
 
 
 <script id="page-configurations">
@@ -80,16 +47,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
+    isPost: true
   };
 </script>
 
   <title>[译]-LiveData with SnackBar,Navigation and other events(the SingleLiveEvent case) | 云青青兮欲雨</title>
   
-
-
 
 
 
@@ -108,7 +71,6 @@
   .use-motion .post-body,
   .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -122,12 +84,20 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage">
   <div class="container">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
     <div>
@@ -138,72 +108,39 @@
       </a>
     </div>
         <p class="site-subtitle">水澹澹兮生烟</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
+  <div class="site-nav-right"></div>
 </div>
 
 
 <nav class="site-nav">
   
   <ul id="menu" class="menu">
-      
-      
-      
-        
         <li class="menu-item menu-item-home">
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-tags">
-      
-    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-about">
-      
-    
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
       </li>
-    
   </ul>
 
 </nav>
@@ -214,9 +151,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
            placeholder="Searching..." spellcheck="false"
-           type="text" id="search-input">
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -238,35 +175,33 @@
   </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+
+          <div class="content">
             
 
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-      <article itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/28/译-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/28/%E8%AF%91-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Humphrey Dan">
       <meta itemprop="description" content="write something,donot leave.">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">[译]-LiveData with SnackBar,Navigation and other events(the SingleLiveEvent case)
-
-          
+        <h1 class="post-title" itemprop="name headline">
+          [译]-LiveData with SnackBar,Navigation and other events(the SingleLiveEvent case)
         </h1>
 
         <div class="post-meta">
@@ -276,16 +211,8 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              
-                
-              
-
               <time title="Created: 2019-02-28 20:23:11" itemprop="dateCreated datePublished" datetime="2019-02-28T20:23:11+08:00">2019-02-28</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
@@ -293,29 +220,26 @@
                 <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2019-03-03 08:37:05" itemprop="dateModified" datetime="2019-03-03T08:37:05+08:00">2019-03-03</time>
               </span>
-            
-          
 
           
-            <span id="/2019/02/28/译-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/" class="post-meta-item leancloud_visitors" data-flag-title="[译]-LiveData with SnackBar,Navigation and other events(the SingleLiveEvent case)" title="Views">
+            <span id="/2019/02/28/%E8%AF%91-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/" class="post-meta-item leancloud_visitors" data-flag-title="[译]-LiveData with SnackBar,Navigation and other events(the SingleLiveEvent case)" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
               <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
-          
   
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
         <i class="fa fa-comment-o"></i>
       </span>
-        
-      
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2019/02/28/译-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/02/28/译-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2019/02/28/%E8%AF%91-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/02/28/%E8%AF%91-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/" itemprop="commentCount"></span>
+    </a>
   </span>
   
   
@@ -329,8 +253,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a href="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150" target="_blank" rel="noopener">原文</a></p><p>view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData observables. view 订阅 LiveData 的改变且随时响应。这适用于连续不断的显示在一个屏幕的数据。<br><img src="http://qiniu.picbed.dang8080.cn/20190228202711.png" alt="LiveData"><br>但是某些数据却更应该被消费一次，比如 Snackbar 消息，navigation 事件 或 dialog 触发器。<br><img src="http://qiniu.picbed.dang8080.cn/20190228202852.png" alt="LiveData once"><br>与其试着通过扩展 Architecture Components 扩展或库解决这个问题，不如我们可以直面这是个设计缺陷。我们推荐你把你的事件看作是状态的一部分。本文我们将列举一些常见的错误和推荐的解决方案。</p><a id="more"></a>
-
+        <p><a href="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150" target="_blank" rel="noopener">原文</a></p>
+<p>view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData observables. view 订阅 LiveData 的改变且随时响应。这适用于连续不断的显示在一个屏幕的数据。<br><img src="http://qiniu.picbed.dang8080.cn/20190228202711.png" alt="LiveData"><br>但是某些数据却更应该被消费一次，比如 Snackbar 消息，navigation 事件 或 dialog 触发器。<br><img src="http://qiniu.picbed.dang8080.cn/20190228202852.png" alt="LiveData once"><br>与其试着通过扩展 Architecture Components 扩展或库解决这个问题，不如我们可以直面这是个设计缺陷。我们推荐你把你的事件看作是状态的一部分。本文我们将列举一些常见的错误和推荐的解决方案。</p>
 <h3 id="❌-Bad-1-对事件使用-LiveData"><a href="#❌-Bad-1-对事件使用-LiveData" class="headerlink" title="❌ Bad: 1. 对事件使用 LiveData"></a>❌ Bad: 1. 对事件使用 LiveData</h3><p>在 LiveData 对象内部直接持有 Snackbar 消息或 navigation 信号。原则上普通的 LiveData 对象可以这样使用，但实际上会暴露一些问题。<br>在 master/detail 架构的 app 中，如下是 maters 的 ViewModel</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请不要对事件这样用</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListViewModel</span> : <span class="type">ViewModel &#123;</span></span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">val</span> _navigateToDetails = MutableLiveData&lt;<span class="built_in">Boolean</span>&gt;()</span><br><span class="line">  <span class="keyword">val</span> navigateToDetails : LiveData&lt;<span class="built_in">Boolean</span>&gt;</span><br><span class="line">      <span class="keyword">get</span>() = _navigateToDetails</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">userClicksOnButton</span><span class="params">()</span></span> &#123;</span><br><span class="line">    _navigateToDetails.value = <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -373,87 +297,80 @@
 
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> LiveData<span class="type">&lt;Event&lt;T&gt;</span>&gt;.<span class="title">observeEvent</span><span class="params">(owner: <span class="type">LifecycleOwner</span>, <span class="keyword">crossinline</span> onEventUnhandledContent: (<span class="type">T</span>)</span></span> -&gt; <span class="built_in">Unit</span>) &#123;</span><br><span class="line">    observe(owner, Observer &#123; it?.getContentIfNotHandled()?.let(onEventUnhandledContent) &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
     </div>
 
     
     
     
-        
-      
 
       <footer class="post-footer">
-          
-            
-          
           <div class="post-tags">
-            
-              <a href="/tags/翻译/" rel="tag"># 翻译</a>
-            
+              <a href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag"># 翻译</a>
               <a href="/tags/LiveData/" rel="tag"># LiveData</a>
-            
               <a href="/tags/Navigation/" rel="tag"># Navigation</a>
-            
           </div>
-        
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/2019/02/28/LiveData/" rel="next" title="LiveData">
-                  <i class="fa fa-chevron-left"></i> LiveData
-                </a>
-              
-            </div>
 
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/03/01/docker学习笔记/" rel="prev" title="docker,docker-compose学习笔记">
-                  docker,docker-compose学习笔记 <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
-          </div>
         
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/02/28/LiveData/" rel="prev" title="LiveData">
+      <i class="fa fa-chevron-left"></i> LiveData
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/01/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="docker,docker-compose学习笔记">
+      docker,docker-compose学习笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
-  </div>
-  
-  
-  
   </article>
+  
+  
+  
 
   </div>
 
 
           </div>
           
-    
-    <div class="comments" id="comments"></div>
-  
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
   <aside class="sidebar">
     <div class="sidebar-inner">
-        
-        
-        
-        
-      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -467,7 +384,6 @@
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#❌-Bad-1-对事件使用-LiveData"><span class="nav-number">1.</span> <span class="nav-text">❌ Bad: 1. 对事件使用 LiveData</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#❌Better-2-使用-LiveData-wrapper-事件，在观察者中重置属性"><span class="nav-number">2.</span> <span class="nav-text">❌Better: 2.使用 LiveData wrapper 事件，在观察者中重置属性.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#✅-ok：使用-SingleLiveEvent"><span class="nav-number">3.</span> <span class="nav-text">✅ ok：使用 SingleLiveEvent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#✅-推荐：使用-Event-Wrapper"><span class="nav-number">4.</span> <span class="nav-text">✅ 推荐：使用 Event Wrapper</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#结论"><span class="nav-number">4.1.</span> <span class="nav-text">结论</span></a></li></ol></li></ol></div>
-        
       </div>
       <!--/noindex-->
 
@@ -476,53 +392,30 @@
   <p class="site-author-name" itemprop="name">Humphrey Dan</p>
   <div class="site-description" itemprop="description">write something,donot leave.</div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/tags/">
           
-        
         <span class="site-state-item-count">26</span>
-        <span class="site-state-item-name">tags</span>
-        </a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
-    
   </nav>
+</div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/shuttlespace" title="GitHub &rarr; https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/shuttlespace" title="GitHub → https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
-    
       <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:dang8080@qq.com" title="E-Mail &rarr; mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:dang8080@qq.com" title="E-Mail → mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
-    
   </div>
 
 
@@ -537,11 +430,17 @@
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
-  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2017 – <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Humphrey Dan</span>
@@ -556,51 +455,43 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
 
 
-  <script src="/lib/anime.min.js?v=3.1.0"></script>
-<script src="/js/utils.js?v=7.4.0"></script>
-<script src="/js/schemes/pisces.js?v=7.4.0"></script>
-
-<script src="/js/next-boot.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
-
-  
-
-
-
-
-
-
-
-
-  <script src="/js/local-search.js?v=7.4.0"></script>
-
-
-
-
-
-
-
-
-
-
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 
@@ -608,27 +499,31 @@
 
 
 <script>
-NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(item => {
-    return GUEST.includes(item);
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: true,
-    appId: 'z4355CFJqLqEOkacAfCt07Tw-gzGzoHsz',
-    appKey: 'MMeHfXwH0V14BmSIRAX2mxcj',
-    placeholder: '表扬👍一下吧',
-    avatar: 'wavatar',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: true,
-    lang: 'zh-cn' || 'zh-cn',
-    path: location.pathname
-  });
-}, window.Valine);
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'z4355CFJqLqEOkacAfCt07Tw-gzGzoHsz',
+      appKey     : 'MMeHfXwH0V14BmSIRAX2mxcj',
+      placeholder: "表扬👍一下吧",
+      avatar     : 'wavatar',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
 </script>
 
 </body>

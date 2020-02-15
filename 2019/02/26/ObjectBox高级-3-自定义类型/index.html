@@ -1,73 +1,39 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#025a6c">
-<meta name="generator" content="Hexo 3.9.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.4.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#025a6c">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#025a6c">
 
-<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.4.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#025a6c","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},
-    path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.dang8080.cn","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#025a6c","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
-  <meta name="description" content="ObjectBox 支持以下类型（Java）:1234567891011boolean, Booleanint, Integershort, Shortlong, Longfloat, Floatdouble, Doublebyte, Bytechar, Characterbyte[]StringDate">
-<meta name="keywords" content="ObjectBox,数据库">
+  <meta name="description" content="ObjectBox 支持以下类型（Java）: 1234567891011boolean, Booleanint, Integershort, Shortlong, Longfloat, Floatdouble, Doublebyte, Bytechar, Characterbyte[]StringDate  转换器注解和属性转换使用 @Convert 注解将其他类型属性转为内置属性。此处需要提供">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ObjectBox高级-3-自定义类型">
-<meta property="og:url" content="http://blog.dang8080.cn/2019/02/26/ObjectBox高级-3-自定义类型/index.html">
+<meta property="og:url" content="http://blog.dang8080.cn/2019/02/26/ObjectBox%E9%AB%98%E7%BA%A7-3-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="ObjectBox 支持以下类型（Java）:1234567891011boolean, Booleanint, Integershort, Shortlong, Longfloat, Floatdouble, Doublebyte, Bytechar, Characterbyte[]StringDate">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-26T04:15:12.000Z">
+<meta property="og:description" content="ObjectBox 支持以下类型（Java）: 1234567891011boolean, Booleanint, Integershort, Shortlong, Longfloat, Floatdouble, Doublebyte, Bytechar, Characterbyte[]StringDate  转换器注解和属性转换使用 @Convert 注解将其他类型属性转为内置属性。此处需要提供">
+<meta property="article:published_time" content="2019-02-26T02:22:46.000Z">
+<meta property="article:modified_time" content="2019-02-26T04:15:12.000Z">
+<meta property="article:author" content="Humphrey Dan">
+<meta property="article:tag" content="ObjectBox">
+<meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ObjectBox高级-3-自定义类型">
-<meta name="twitter:description" content="ObjectBox 支持以下类型（Java）:1234567891011boolean, Booleanint, Integershort, Shortlong, Longfloat, Floatdouble, Doublebyte, Bytechar, Characterbyte[]StringDate">
-  <link rel="canonical" href="http://blog.dang8080.cn/2019/02/26/ObjectBox高级-3-自定义类型/">
+
+<link rel="canonical" href="http://blog.dang8080.cn/2019/02/26/ObjectBox%E9%AB%98%E7%BA%A7-3-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B/">
 
 
 <script id="page-configurations">
@@ -75,16 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
+    isPost: true
   };
 </script>
 
   <title>ObjectBox高级-3-自定义类型 | 云青青兮欲雨</title>
   
-
-
 
 
 
@@ -103,7 +65,6 @@
   .use-motion .post-body,
   .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -117,12 +78,20 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage">
   <div class="container">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
     <div>
@@ -133,72 +102,39 @@
       </a>
     </div>
         <p class="site-subtitle">水澹澹兮生烟</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
+  <div class="site-nav-right"></div>
 </div>
 
 
 <nav class="site-nav">
   
   <ul id="menu" class="menu">
-      
-      
-      
-        
         <li class="menu-item menu-item-home">
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-tags">
-      
-    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-about">
-      
-    
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
       </li>
-    
   </ul>
 
 </nav>
@@ -209,9 +145,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
            placeholder="Searching..." spellcheck="false"
-           type="text" id="search-input">
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -233,35 +169,33 @@
   </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+
+          <div class="content">
             
 
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-      <article itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/26/ObjectBox高级-3-自定义类型/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/26/ObjectBox%E9%AB%98%E7%BA%A7-3-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Humphrey Dan">
       <meta itemprop="description" content="write something,donot leave.">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="云青青兮欲雨">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">ObjectBox高级-3-自定义类型
-
-          
+        <h1 class="post-title" itemprop="name headline">
+          ObjectBox高级-3-自定义类型
         </h1>
 
         <div class="post-meta">
@@ -270,39 +204,30 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-
-              
-                
               
 
               <time title="Created: 2019-02-26 10:22:46 / Modified: 12:15:12" itemprop="dateCreated datePublished" datetime="2019-02-26T10:22:46+08:00">2019-02-26</time>
             </span>
-          
-            
-
-            
-          
 
           
-            <span id="/2019/02/26/ObjectBox高级-3-自定义类型/" class="post-meta-item leancloud_visitors" data-flag-title="ObjectBox高级-3-自定义类型" title="Views">
+            <span id="/2019/02/26/ObjectBox%E9%AB%98%E7%BA%A7-3-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B/" class="post-meta-item leancloud_visitors" data-flag-title="ObjectBox高级-3-自定义类型" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
               <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
-          
   
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
         <i class="fa fa-comment-o"></i>
       </span>
-        
-      
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2019/02/26/ObjectBox高级-3-自定义类型/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox高级-3-自定义类型/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2019/02/26/ObjectBox%E9%AB%98%E7%BA%A7-3-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/ObjectBox%E9%AB%98%E7%BA%A7-3-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B/" itemprop="commentCount"></span>
+    </a>
   </span>
   
   
@@ -316,8 +241,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>ObjectBox 支持以下类型（Java）:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span>, Boolean</span><br><span class="line"><span class="keyword">int</span>, Integer</span><br><span class="line"><span class="keyword">short</span>, Short</span><br><span class="line"><span class="keyword">long</span>, Long</span><br><span class="line"><span class="keyword">float</span>, Float</span><br><span class="line"><span class="keyword">double</span>, Double</span><br><span class="line"><span class="keyword">byte</span>, Byte</span><br><span class="line"><span class="keyword">char</span>, Character</span><br><span class="line"><span class="keyword">byte</span>[]</span><br><span class="line">String</span><br><span class="line">Date</span><br></pre></td></tr></table></figure><a id="more"></a>
-
+        <p>ObjectBox 支持以下类型（Java）:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span>, Boolean</span><br><span class="line"><span class="keyword">int</span>, Integer</span><br><span class="line"><span class="keyword">short</span>, Short</span><br><span class="line"><span class="keyword">long</span>, Long</span><br><span class="line"><span class="keyword">float</span>, Float</span><br><span class="line"><span class="keyword">double</span>, Double</span><br><span class="line"><span class="keyword">byte</span>, Byte</span><br><span class="line"><span class="keyword">char</span>, Character</span><br><span class="line"><span class="keyword">byte</span>[]</span><br><span class="line">String</span><br><span class="line">Date</span><br></pre></td></tr></table></figure>
 
 <h3 id="转换器注解和属性转换"><a href="#转换器注解和属性转换" class="headerlink" title="转换器注解和属性转换"></a>转换器注解和属性转换</h3><p>使用 @Convert 注解将其他类型属性转为内置属性。此处需要提供 PropertyConverter 实现。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// enum 转为 Integer</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Convert</span>(converter = RoleConverter.class, dbType = Integer.class)</span><br><span class="line">    <span class="keyword">private</span> Role role;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> Role &#123;</span><br><span class="line">        DEFAULT(<span class="number">0</span>), AUTHOR(<span class="number">1</span>), ADMIN(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">        Role(<span class="keyword">int</span> id) &#123;</span><br><span class="line">            <span class="keyword">this</span>.id = id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">RoleConverter</span> <span class="keyword">implements</span> <span class="title">PropertyConverter</span>&lt;<span class="title">Role</span>, <span class="title">Integer</span>&gt;</span>; &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Role <span class="title">convertToEntityProperty</span><span class="params">(Integer databaseValue)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (databaseValue == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (Role role : Role.values()) &#123;</span><br><span class="line">                <span class="keyword">if</span> (role.id == databaseValue) &#123;</span><br><span class="line">                    <span class="keyword">return</span> role;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> Role.DEFAULT;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Integer <span class="title">convertToDatabaseValue</span><span class="params">(Role entityProperty)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> entityProperty == <span class="keyword">null</span> ? <span class="keyword">null</span> : entityProperty.id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -329,7 +254,7 @@
 <li>绝对不能在转换器中调用数据库(Box,BoxStore),转换器方法在事务中调用，例如读取或写入对象到 box 中将会失败。</li>
 <li>为提高性能，ObjectBox 使用了对所有的转换器使用了唯一一个实例。请保证除默认无参构造方法外没有自定义其他构造方法。同时请保证线程安全，应为在 multiple entities 中可能涉及到并发.</li>
 </ul>
-<h3 id="List-Array-类型"><a href="#List-Array-类型" class="headerlink" title="List/Array 类型"></a>List/Array 类型</h3><p>可以使用转换器转换 List 类型。例如把 List<string> 转为一条 String 的 JSON 数组.<br>当前不支持 Array 转换器.查看特性实现进度<a href="https://github.com/objectbox/objectbox-java/issues/42" target="_blank" rel="noopener">Array</a></string></p>
+<h3 id="List-Array-类型"><a href="#List-Array-类型" class="headerlink" title="List/Array 类型"></a>List/Array 类型</h3><p>可以使用转换器转换 List 类型。例如把 List<String> 转为一条 String 的 JSON 数组.<br>当前不支持 Array 转换器.查看特性实现进度<a href="https://github.com/objectbox/objectbox-java/issues/42" target="_blank" rel="noopener">Array</a></p>
 <h3 id="Enums"><a href="#Enums" class="headerlink" title="Enums"></a>Enums</h3><p>最佳实践:</p>
 <ul>
 <li>不要持久化 enum 的 ordinal 或 name: 二者都不稳定，且在下次你修改 enum 定义时会改变</li>
@@ -343,79 +268,74 @@
     
     
     
-        
-      
 
       <footer class="post-footer">
-          
-            
-          
           <div class="post-tags">
-            
               <a href="/tags/ObjectBox/" rel="tag"># ObjectBox</a>
-            
-              <a href="/tags/数据库/" rel="tag"># 数据库</a>
-            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
           </div>
-        
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/2019/02/26/ObjectBox高级-2-Object-IDs/" rel="next" title="ObjectBox高级-2-Object IDs">
-                  <i class="fa fa-chevron-left"></i> ObjectBox高级-2-Object IDs
-                </a>
-              
-            </div>
 
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/02/26/ObjectBox高级-4-entity继承/" rel="prev" title="ObjectBox高级-4-entity继承">
-                  ObjectBox高级-4-entity继承 <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
-          </div>
         
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/02/26/ObjectBox%E9%AB%98%E7%BA%A7-2-Object-IDs/" rel="prev" title="ObjectBox高级-2-Object IDs">
+      <i class="fa fa-chevron-left"></i> ObjectBox高级-2-Object IDs
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/02/26/ObjectBox%E9%AB%98%E7%BA%A7-4-entity%E7%BB%A7%E6%89%BF/" rel="next" title="ObjectBox高级-4-entity继承">
+      ObjectBox高级-4-entity继承 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
-  </div>
-  
-  
-  
   </article>
+  
+  
+  
 
   </div>
 
 
           </div>
           
-    
-    <div class="comments" id="comments"></div>
-  
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
   <aside class="sidebar">
     <div class="sidebar-inner">
-        
-        
-        
-        
-      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -428,8 +348,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#转换器注解和属性转换"><span class="nav-number">1.</span> <span class="nav-text">转换器注解和属性转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#more"><span class="nav-number">2.</span> <span class="nav-text">more</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-Array-类型"><span class="nav-number">3.</span> <span class="nav-text">List/Array 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enums"><span class="nav-number">4.</span> <span class="nav-text">Enums</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询时的自定义类型"><span class="nav-number">5.</span> <span class="nav-text">查询时的自定义类型</span></a></li></ol></div>
-        
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#转换器注解和属性转换"><span class="nav-number">1.</span> <span class="nav-text">转换器注解和属性转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#more"><span class="nav-number">2.</span> <span class="nav-text">more</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-Array-类型"><span class="nav-number">3.</span> <span class="nav-text">List&#x2F;Array 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enums"><span class="nav-number">4.</span> <span class="nav-text">Enums</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询时的自定义类型"><span class="nav-number">5.</span> <span class="nav-text">查询时的自定义类型</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -438,53 +357,30 @@
   <p class="site-author-name" itemprop="name">Humphrey Dan</p>
   <div class="site-description" itemprop="description">write something,donot leave.</div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/tags/">
           
-        
         <span class="site-state-item-count">26</span>
-        <span class="site-state-item-name">tags</span>
-        </a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
-    
   </nav>
+</div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/shuttlespace" title="GitHub &rarr; https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/shuttlespace" title="GitHub → https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
-    
       <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:dang8080@qq.com" title="E-Mail &rarr; mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:dang8080@qq.com" title="E-Mail → mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
-    
   </div>
 
 
@@ -499,11 +395,17 @@
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
-  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a>&copy; 2017 – <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Humphrey Dan</span>
@@ -518,51 +420,43 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
 
 
-  <script src="/lib/anime.min.js?v=3.1.0"></script>
-<script src="/js/utils.js?v=7.4.0"></script>
-<script src="/js/schemes/pisces.js?v=7.4.0"></script>
-
-<script src="/js/next-boot.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
-
-  
-
-
-
-
-
-
-
-
-  <script src="/js/local-search.js?v=7.4.0"></script>
-
-
-
-
-
-
-
-
-
-
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 
@@ -570,27 +464,31 @@
 
 
 <script>
-NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(item => {
-    return GUEST.includes(item);
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: true,
-    appId: 'z4355CFJqLqEOkacAfCt07Tw-gzGzoHsz',
-    appKey: 'MMeHfXwH0V14BmSIRAX2mxcj',
-    placeholder: '表扬👍一下吧',
-    avatar: 'wavatar',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: true,
-    lang: 'zh-cn' || 'zh-cn',
-    path: location.pathname
-  });
-}, window.Valine);
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'z4355CFJqLqEOkacAfCt07Tw-gzGzoHsz',
+      appKey     : 'MMeHfXwH0V14BmSIRAX2mxcj',
+      placeholder: "表扬👍一下吧",
+      avatar     : 'wavatar',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
 </script>
 
 </body>
