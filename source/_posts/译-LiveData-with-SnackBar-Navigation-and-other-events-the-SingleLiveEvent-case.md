@@ -16,7 +16,7 @@ view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData ob
 但是某些数据却更应该被消费一次，比如 Snackbar 消息，navigation 事件 或 dialog 触发器。
 ![LiveData once](http://qiniu.picbed.dang8080.cn/20190228202852.png)
 与其试着通过扩展 Architecture Components 扩展或库解决这个问题，不如我们可以直面这是个设计缺陷。我们推荐你把你的事件看作是状态的一部分。本文我们将列举一些常见的错误和推荐的解决方案。
-
+<!-- more -->
 ### ❌ Bad: 1. 对事件使用 LiveData
 
 在 LiveData 对象内部直接持有 Snackbar 消息或 navigation 信号。原则上普通的 LiveData 对象可以这样使用，但实际上会暴露一些问题。

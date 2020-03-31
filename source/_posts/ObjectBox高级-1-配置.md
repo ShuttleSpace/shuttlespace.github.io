@@ -5,7 +5,8 @@ tags:
   - ObjectBox
   - 数据库
 ---
-
+objectbox
+<!-- more -->
 ### 手动添加依赖库
 
 如果 ObjectBox 插件没有自动添加依赖库和注解处理器，那么手动添加。

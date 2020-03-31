@@ -5,7 +5,7 @@ tags:
   - container
 ---
 Podman 是什么? Podman 是一个非守护线程的容器引擎,支持在 Linux 系统上开发、管理和运行 OCI 容器.容器同时支持 root 身份和非 root 身份.只需要使用 `alias docker=podman` 就可以立即从 docker 切换到 podman.
-
+<!-- more -->
 ## 安装
 - Arch Linux & Manjaro Linux
 `sudo pacman -S podman`

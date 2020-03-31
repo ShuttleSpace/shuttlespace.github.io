@@ -4,7 +4,7 @@ date: 2019-03-17 09:05:15
 tags:
   - git
 ---
-
+<!-- more -->
 - config
 
 ```bash

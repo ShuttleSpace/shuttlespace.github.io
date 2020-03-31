@@ -6,7 +6,7 @@ tags:
 ---
 
 flutter 的核心设计是将整个应用的各个部分各个层级都看作 Widget 来渲染,所以按照 Widget 的分类来学习会比较全面。
-
+<!-- more -->
 ## 基础组件
 
 ### Container

@@ -4,6 +4,7 @@ date: 2020-02-15 10:15:04
 tags: kotlin
 ---
 从 Kotlin M5.1 之后不再支持函数参数可变(var).
+<!-- more -->
 ```
 fun foo(var x: Int) {
     x = 5

@@ -5,7 +5,9 @@ tags:
   - ObjectBox
   - 数据库
 ---
+objectbox
 
+<!-- more -->
 ObjectBox 允许子类继承 entity 父类持久化的属性。同样也支持继承非 entity 类。1.4+ 也支持多继承.
 对于父类来说可以使用 @BaseEntity.
 

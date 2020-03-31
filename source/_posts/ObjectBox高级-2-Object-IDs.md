@@ -5,7 +5,9 @@ tags:
   - ObjectBox
   - 数据库
 ---
+objectbox
 
+<!-- more -->
 Object 必须具有一个类型为 `long` 的属性.当然可以使用它的包装类 `java.lang.Long`,但是不建议使用包装类.
 其他类型的 ID ( UID 等)可以自由定义，查询等操作。
 

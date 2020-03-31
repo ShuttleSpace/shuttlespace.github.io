@@ -5,7 +5,7 @@ tags:
 ---
 
 当前 Flutter 对桌面开发环境的支持正在开发中.
-
+<!-- more -->
 ### macOS
 
 macOS 是当前最成熟的桌面开发平台(仅 flutter 而言),已经进入 alpha 阶段.

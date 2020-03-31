@@ -3,8 +3,8 @@ title: Termux 原理探究
 date: 2020-03-31 10:02:22
 tags:
 ---
-详细介绍请移步: ![官网](https://termux.com/),![中文镜像](http://www.termux.cn/),![清华源](https://mirror.tuna.tsinghua.edu.cn/help/termux/)
-
+详细介绍请移步: [官网](https://termux.com/),[中文镜像](http://www.termux.cn/),[清华源](https://mirror.tuna.tsinghua.edu.cn/help/termux/)
+<!-- more -->
 ### 源码探究
 
 ```c++

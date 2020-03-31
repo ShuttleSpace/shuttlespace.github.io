@@ -7,7 +7,8 @@ tags:
   - Kotlin
   - Kotlin 协程
 ---
-
+room kotlin coroutine
+<!-- more -->
 #### Overview
 
 Room 2.1 开始支持 Kotlin 协程。DAO 方法可以使用 suspend 标记以确保这些方法不会在主线程中被执行。

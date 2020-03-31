@@ -5,7 +5,9 @@ tags:
   - ObjectBox
   - 数据库
 ---
+objectbox
 
+<!-- more -->
 ObjectBox 大多数情况下自动管理数据模型.当添加/删除 entities 或属性时，ObjectBox 自动作出响应。
 对于其他改变如 保留或改变类型，ObjectBox 需要额外信息。
 

@@ -3,7 +3,8 @@ title: GraphQL-Batching
 date: 2019-05-05 23:38:54
 tags:
 ---
-
+bactching
+<!-- more -->
 ## 批处理
 
 ### 使用 Dataloader

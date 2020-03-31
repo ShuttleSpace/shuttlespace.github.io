@@ -6,6 +6,9 @@ date: 2019-08-26 20:23:11
 tags:
   - 翻译
 ---
+Kotlin Coroutine
+<!-- more -->
+
 ### 提取函数-重构
 但是如果提取出来的函数包含了一个在当前作用域调用的协程构造器怎么办?这种情况下,`suspend` 修饰符就不能满足需求了使`doWorld` 成为 `CoroutineScopr`的一个扩展函数是一种解决方案,但这种方法使得API不清晰而不适用其他情况.理想的解决方案是`CoroutineScope` 作为一个包含目标函数的类的一个属性存在,或者这个类实现`CoroutineScope`接口.最后一种方案就是适用`CoroutineScope(coroutineContext)`,但是这种方法会因为无法控制此方法的执行范围而表现出结构不安全性.只有一些私有 APIs 可以使用这个协程构造器.
 ### 类似守护线程的 Global Coroutines

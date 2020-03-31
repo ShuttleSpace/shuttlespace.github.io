@@ -6,7 +6,8 @@ tags:
   - gradle
   - 构建
 ---
-
+gradle
+<!-- more -->
 ### Gradle 升级日志
 
 5.0 包含了 Kotlin DSL 生产级支持,依赖版本对齐(类似 Maven BOM),任务超时,Java 11 支持

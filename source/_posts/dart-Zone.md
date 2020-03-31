@@ -5,7 +5,7 @@ tags: Dart
 ---
 
 Dart 是单线程模型,相对于 JavaScript,其也有 `microTaskQueue` 和 `eventTaskQueue`.
-
+<!-- more -->
 `Zone` 代表某个环境的稳定跨异步环境调用.
 
 代码通常都执行在一个 `zone`中,如`Zone.current`.而`main`函数通常运行在默认的`Zone.root`上下文中.

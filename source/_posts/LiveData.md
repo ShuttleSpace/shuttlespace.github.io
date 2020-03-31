@@ -4,7 +4,8 @@ date: 2019-02-28 16:36:39
 tags:
   - Architecture Components
 ---
-
+LiveData
+<!-- more -->
 ### LiveData 的优势
 
 - 确保 UI 和数据状态匹配

@@ -5,7 +5,9 @@ tags:
   - ObjectBox
   - 数据库
 ---
+objectbox
 
+<!-- more -->
 ## Kotlin 支持
 
 ### kotlin Entity

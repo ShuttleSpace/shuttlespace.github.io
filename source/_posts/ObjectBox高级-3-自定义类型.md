@@ -5,7 +5,9 @@ tags:
   - ObjectBox
   - 数据库
 ---
+objectbox
 
+<!-- more -->
 ObjectBox 支持以下类型（Java）:
 
 ```java

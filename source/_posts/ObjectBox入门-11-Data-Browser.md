@@ -5,7 +5,9 @@ tags:
   - ObjectBox
   - 数据库
 ---
+objectbox
 
+<!-- more -->
 Data Browser 具有如下功能:
 
 - 查看数据库的 entities 和 schema

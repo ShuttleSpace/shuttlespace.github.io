@@ -5,7 +5,9 @@ tags:
   - ObjectBox
   - 数据库
 ---
+objectbox
 
+<!-- more -->
 ### Entity
 
 在一个类中至少需要 `@Entity` 和 `@Id` 两个注解才能定义一个 ObjectBox model.例如:

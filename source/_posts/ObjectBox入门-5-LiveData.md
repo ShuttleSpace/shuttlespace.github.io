@@ -5,7 +5,9 @@ tags:
   - ObjectBox
   - 数据库
 ---
+objectbox
 
+<!-- more -->
 ## LiveData (Arch.Comp.)
 
 从 1.2.0 开始支持 `Android Architecture Components`

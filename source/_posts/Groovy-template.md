@@ -5,6 +5,7 @@ tags:
   - 译
 ---
 Groovy MarkupTemplateEngine 主要面向生成类 XML(XML,XHTML,HTML5...)的标记语言,但是也支持其他基于内容的文本.和传统的模版引擎相比,此引擎支持基于 DSL 的 builder 语法.
+<!-- more -->
 ```groovy
 xmlDeclaration()
 cars {

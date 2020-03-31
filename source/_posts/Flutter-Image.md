@@ -5,7 +5,7 @@ tags:
 ---
 
 显示图片的组件.
-
+<!-- more -->
 提供了以下几个不同用途的构造方法:
 
 - `new Image`: 从 `ImageProvider` 中获取图片.

@@ -5,7 +5,7 @@ tags:
 ---
 
 字符串根据布局约束可能跨越多行或者只显示在一行.
-
+<!-- more -->
 `style` 参数是可选的.如果忽略,默认使用最近的父组件的 `DefaultTextStyle`.如果给定的样式 `TextStyle.inherit` 属性为 true(默认),则给定的样式将和最近的父组件的 `DefaultTextStyle` 合并.这个合并操作很有用,例如使用默认的 font family 和大小使字体 bold.
 
 使用 `Text.rich` 构造方法,`Text` 组件可以使用不同的 `TextSpan` 样式显示一段文字.

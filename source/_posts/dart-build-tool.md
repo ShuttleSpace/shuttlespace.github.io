@@ -3,6 +3,9 @@ title: dart-build tool
 date: 2019-12-20 10:37:32
 tags:
 ---
+build-tool
+<!-- more -->
+
 ### 使用 `build_runner` 作为开发服务
 1、在 `pubspec.yaml`中添加`build_runner`和`build_web_compilers`
 

@@ -5,7 +5,8 @@ tags:
   - teamcity
   - hexo
 ---
-
+hexo deploy
+<!-- more -->
 ### 前言
 
 在知乎找到了一个更好的方法: [原文](使用 hexo，如果换了电脑怎么更新博客？ - CrazyMilk 的回答 - 知乎

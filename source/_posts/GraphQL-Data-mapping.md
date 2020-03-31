@@ -3,7 +3,8 @@ title: GraphQL-Data mapping
 date: 2019-05-05 13:02:31
 tags:
 ---
-
+data mapping
+<!-- more -->
 ## Mapping data
 
 ### graphql 是如何把对象数据匹配到类型的

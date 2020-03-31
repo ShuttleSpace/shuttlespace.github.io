@@ -10,7 +10,7 @@ tags:
 
 Compose 是一个为了定义和运行多容器 Docker 应用的工具。
 [官方动手示例](https://github.com/docker/labs)
-
+<!-- more -->
 ### 特性
 
 - 一个主机多个隔离环境

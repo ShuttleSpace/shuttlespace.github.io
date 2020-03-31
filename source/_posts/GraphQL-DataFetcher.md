@@ -4,7 +4,8 @@ date: 2019-04-27 23:07:22
 tags:
   - DataFetcher
 ---
-
+data fetcher
+<!-- more -->
 ## 获取数据
 
 ### graphql 如何获取数据
