@@ -17,17 +17,17 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"blog.dang8080.cn","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#025a6c","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"blog.dang8080.cn","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#025a6c","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Entity 注解entity 数据可访问 ObjectBox 需要访问 entity 的属性(生成 Cursor 类). 属性包内可见。kotlin 中使用 JvmField 提供标准 getters   为了提升性能，请提供具有全部属性的构造方法  123456789101112@Entitypublic class User &amp;#123;    @Id private long id;">
+  <meta name="description" content="objectbox">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ObjectBox入门-3-注解">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/02/24/ObjectBox%E5%85%A5%E9%97%A8-3-%E6%B3%A8%E8%A7%A3/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="Entity 注解entity 数据可访问 ObjectBox 需要访问 entity 的属性(生成 Cursor 类). 属性包内可见。kotlin 中使用 JvmField 提供标准 getters   为了提升性能，请提供具有全部属性的构造方法  123456789101112@Entitypublic class User &amp;#123;    @Id private long id;">
+<meta property="og:description" content="objectbox">
 <meta property="article:published_time" content="2019-02-24T12:38:55.000Z">
-<meta property="article:modified_time" content="2019-02-25T16:45:39.000Z">
+<meta property="article:modified_time" content="2020-03-31T08:39:00.991Z">
 <meta property="article:author" content="Humphrey Dan">
 <meta property="article:tag" content="ObjectBox">
 <meta property="article:tag" content="数据库">
@@ -40,8 +40,9 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
   };
 </script>
 
@@ -94,22 +95,25 @@
 
   <div class="site-meta">
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">云青青兮欲雨</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">水澹澹兮生烟</p>
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">云青青兮欲雨</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">水澹澹兮生烟</p>
   </div>
 
-  <div class="site-nav-right"></div>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
@@ -141,16 +145,18 @@
         </a>
       </li>
   </ul>
-
 </nav>
-  <div class="site-search">
+
+
+
+  <div class="search-pop-overlay">
     <div class="popup search-popup">
-    <div class="search-header">
+        <div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off"
            placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
@@ -158,12 +164,15 @@
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result"></div>
-
-</div>
-<div class="search-pop-overlay"></div>
-
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
   </div>
+</div>
+
+    </div>
+  </div>
+
 </div>
     </header>
 
@@ -179,14 +188,13 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content post posts-expand">
             
 
-  <div class="posts-expand">
-      
+    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/24/ObjectBox%E5%85%A5%E9%97%A8-3-%E6%B3%A8%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -217,7 +225,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-02-26 00:45:39" itemprop="dateModified" datetime="2019-02-26T00:45:39+08:00">2019-02-26</time>
+                <time title="Modified: 2020-03-31 16:39:00" itemprop="dateModified" datetime="2020-03-31T16:39:00+08:00">2020-03-31</time>
               </span>
 
           
@@ -252,7 +260,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Entity-注解"><a href="#Entity-注解" class="headerlink" title="Entity 注解"></a>Entity 注解</h2><h3 id="entity-数据可访问"><a href="#entity-数据可访问" class="headerlink" title="entity 数据可访问"></a>entity 数据可访问</h3><ul>
+        <p>objectbox</p>
+<a id="more"></a>
+<h2 id="Entity-注解"><a href="#Entity-注解" class="headerlink" title="Entity 注解"></a>Entity 注解</h2><h3 id="entity-数据可访问"><a href="#entity-数据可访问" class="headerlink" title="entity 数据可访问"></a>entity 数据可访问</h3><ul>
 <li>ObjectBox 需要访问 entity 的属性(生成 Cursor 类).<ul>
 <li>属性包内可见。kotlin 中使用 <code>JvmField</code></li>
 <li>提供标准 <code>getters</code></li>
@@ -320,7 +330,6 @@
   
   
 
-  </div>
 
 
           </div>
@@ -329,7 +338,7 @@
 
 <script>
   window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
+    let { activeClass } = CONFIG.comments;
     if (CONFIG.comments.storage) {
       activeClass = localStorage.getItem('comments_active') || activeClass;
     }
@@ -400,7 +409,7 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/shuttlespace" title="GitHub → https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/shuttlespace" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:dang8080@qq.com" title="E-Mail → mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
@@ -422,7 +431,9 @@
     <footer class="footer">
       <div class="footer-inner">
         
-  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
   </div>
 
 <div class="copyright">
@@ -434,6 +445,8 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Humphrey Dan</span>
 </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
 
         
 

@@ -3,7 +3,8 @@
   <entry>
     <title>Termux 原理探究</title>
     <url>/2020/03/31/Termux-%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6/</url>
-    <content><![CDATA[<p>详细介绍请移步: <img src="https://termux.com/" alt="官网">),<img src="http://www.termux.cn/" alt="中文镜像">),<img src="https://mirror.tuna.tsinghua.edu.cn/help/termux/" alt="清华源"></p>
+    <content><![CDATA[<p>详细介绍请移步: <a href="https://termux.com/" target="_blank" rel="noopener">官网</a>,<a href="http://www.termux.cn/" target="_blank" rel="noopener">中文镜像</a>,<a href="https://mirror.tuna.tsinghua.edu.cn/help/termux/" target="_blank" rel="noopener">清华源</a></p>
+<a id="more"></a>
 <h3 id="源码探究"><a href="#源码探究" class="headerlink" title="源码探究"></a>源码探究</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">create_subprocess</span><span class="params">(JNIEnv* env,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">char</span> <span class="keyword">const</span>* cmd,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">char</span> <span class="keyword">const</span>* cwd,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">char</span>* <span class="keyword">const</span> argv[],</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">char</span>** envp,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">int</span>* pProcessId,</span></span></span><br><span class="line"><span class="function"><span class="params">        jint rows,</span></span></span><br><span class="line"><span class="function"><span class="params">        jint columns)</span></span></span><br></pre></td></tr></table></figure>
 <p>此方法即为 termux 的核心,通过该方法将用户输入的命令和当前工作的文件夹传入打开的终端去执行.</p>
 <p>1、打开伪终端</p>
@@ -22,6 +23,7 @@
     <title>Flutter desktop support</title>
     <url>/2020/02/18/Flutter-desktop-support/</url>
     <content><![CDATA[<p>当前 Flutter 对桌面开发环境的支持正在开发中.</p>
+<a id="more"></a>
 <h3 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h3><p>macOS 是当前最成熟的桌面开发平台(仅 flutter 而言),已经进入 alpha 阶段.</p>
 <h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>Windows shell 处于 technical preview.当前是基于 Win32 的,但计划后续探索 UWP 支持.<br>注意:最终定型版本的 API 可能和当前有明显差异.</p>
 <h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><p>当前 Linux shell 仅仅是 GLFW 的替代品,来探索 Linux 桌面实现,未来可能会被替换成其他实现.<br>将来你的应用无论是使用 GTK+,Qt,WxWidgets,Motif 或其他任意开发工具套件都可以通过 Flutter 来创建 library,但是当前还没想好如何规划.当前计划先无条件支持 GTK+,然后慢慢支持其他.</p>
@@ -34,6 +36,7 @@
     <title>Kotlin 参数不能为 var</title>
     <url>/2020/02/15/Kotlin-%E5%8F%82%E6%95%B0%E4%B8%8D%E8%83%BD%E4%B8%BA-var/</url>
     <content><![CDATA[<p>从 Kotlin M5.1 之后不再支持函数参数可变(var).</p>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fun foo(var x: Int) &#123;</span><br><span class="line">    x &#x3D; 5</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>主要是这回导致歧义:可能认为传递的是引用参数(此特性不支持,需要在 runtime 修改).<br>另一个原因是主构造函数:主构造函数使用 <code>val</code> 或 <code>var</code>声明不同性质的属性,而普通函数却不需要这样的功能.<br>同时可变参数可不是一个好习惯,所以在函数支持可变参数或<code>for-loop</code>块都不再支持.</p>
 <p><a href="https://blog.jetbrains.com/kotlin/2013/02/kotlin-m5-1/" target="_blank" rel="noopener">origin</a></p>
@@ -45,7 +48,7 @@
   <entry>
     <title>Kotlin/Native</title>
     <url>/2020/02/14/Kotlin-Native/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<a id="more"></a>]]></content>
   </entry>
   <entry>
     <title>dart-flutter engine</title>
@@ -84,7 +87,10 @@
   <entry>
     <title>dart-build tool</title>
     <url>/2019/12/20/dart-build-tool/</url>
-    <content><![CDATA[<h3 id="使用-build-runner-作为开发服务"><a href="#使用-build-runner-作为开发服务" class="headerlink" title="使用 build_runner 作为开发服务"></a>使用 <code>build_runner</code> 作为开发服务</h3><p>1、在 <code>pubspec.yaml</code>中添加<code>build_runner</code>和<code>build_web_compilers</code></p>
+    <content><![CDATA[<p>build-tool</p>
+<a id="more"></a>
+
+<h3 id="使用-build-runner-作为开发服务"><a href="#使用-build-runner-作为开发服务" class="headerlink" title="使用 build_runner 作为开发服务"></a>使用 <code>build_runner</code> 作为开发服务</h3><p>1、在 <code>pubspec.yaml</code>中添加<code>build_runner</code>和<code>build_web_compilers</code></p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">environment:</span></span><br><span class="line"><span class="attr">  sdk:</span> <span class="string">'&gt;=2.0.0 &lt;3.0.0'</span></span><br><span class="line"><span class="attr">dev_dependencies:</span></span><br><span class="line"><span class="attr">  build_runner:</span> <span class="string">^1.0.0</span></span><br><span class="line"><span class="attr">  build_web_compilers:</span> <span class="string">^0.4.0</span></span><br></pre></td></tr></table></figure>
 <p>2、下载依赖</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pub get</span><br></pre></td></tr></table></figure>
@@ -121,6 +127,7 @@
     <title>Dart-Zone</title>
     <url>/2019/10/23/dart-Zone/</url>
     <content><![CDATA[<p>Dart 是单线程模型,相对于 JavaScript,其也有 <code>microTaskQueue</code> 和 <code>eventTaskQueue</code>.</p>
+<a id="more"></a>
 <p><code>Zone</code> 代表某个环境的稳定跨异步环境调用.</p>
 <p>代码通常都执行在一个 <code>zone</code>中,如<code>Zone.current</code>.而<code>main</code>函数通常运行在默认的<code>Zone.root</code>上下文中.<br>通过 <code>runZoned</code> 创建一个新<code>zone</code> 或 <code>Zone.run</code> 将代码运行到一个由 <code>Zone.fork</code>创建的上下文中.</p>
 <p>开发者可以通过覆盖一个存在<code>zone</code>的一些方法来创建一个新<code>zone</code>.如自定义<code>zone</code>可以替换或修改<code>print</code>、timers、<br>micortasks、uncaught erros 的默认行为.</p>
@@ -146,7 +153,10 @@
   <entry>
     <title>译-Kotlin-Coroutine(1) case)</title>
     <url>/2019/08/26/%E8%AF%91-Kotlin-Coroutine(1)/</url>
-    <content><![CDATA[<h3 id="提取函数-重构"><a href="#提取函数-重构" class="headerlink" title="提取函数-重构"></a>提取函数-重构</h3><p>但是如果提取出来的函数包含了一个在当前作用域调用的协程构造器怎么办?这种情况下,<code>suspend</code> 修饰符就不能满足需求了使<code>doWorld</code> 成为 <code>CoroutineScopr</code>的一个扩展函数是一种解决方案,但这种方法使得API不清晰而不适用其他情况.理想的解决方案是<code>CoroutineScope</code> 作为一个包含目标函数的类的一个属性存在,或者这个类实现<code>CoroutineScope</code>接口.最后一种方案就是适用<code>CoroutineScope(coroutineContext)</code>,但是这种方法会因为无法控制此方法的执行范围而表现出结构不安全性.只有一些私有 APIs 可以使用这个协程构造器.</p>
+    <content><![CDATA[<p>Kotlin Coroutine</p>
+<a id="more"></a>
+
+<h3 id="提取函数-重构"><a href="#提取函数-重构" class="headerlink" title="提取函数-重构"></a>提取函数-重构</h3><p>但是如果提取出来的函数包含了一个在当前作用域调用的协程构造器怎么办?这种情况下,<code>suspend</code> 修饰符就不能满足需求了使<code>doWorld</code> 成为 <code>CoroutineScopr</code>的一个扩展函数是一种解决方案,但这种方法使得API不清晰而不适用其他情况.理想的解决方案是<code>CoroutineScope</code> 作为一个包含目标函数的类的一个属性存在,或者这个类实现<code>CoroutineScope</code>接口.最后一种方案就是适用<code>CoroutineScope(coroutineContext)</code>,但是这种方法会因为无法控制此方法的执行范围而表现出结构不安全性.只有一些私有 APIs 可以使用这个协程构造器.</p>
 <h3 id="类似守护线程的-Global-Coroutines"><a href="#类似守护线程的-Global-Coroutines" class="headerlink" title="类似守护线程的 Global Coroutines"></a>类似守护线程的 Global Coroutines</h3><p><code>GlobalScope</code>启动的活动线程不会挂住线程,他们的行为类似守护线程.</p>
 <h1 id="取消与超时"><a href="#取消与超时" class="headerlink" title="取消与超时"></a>取消与超时</h1><h3 id="取消协程的执行"><a href="#取消协程的执行" class="headerlink" title="取消协程的执行"></a>取消协程的执行</h3><p>在一个长时间运行的应用中,你可能需要精确控制后台运行的协程.例如用户可能关闭一个开启了协程的页面,那这个协程就需要被取消.<code>launch</code>函数返回一个<code>Job</code>对象可以取消此协程的执行.</p>
 <h3 id="同时取消"><a href="#同时取消" class="headerlink" title="同时取消"></a>同时取消</h3><p>协程可以同时取消.所有在 <code>kotlinx.coroutines</code>中挂起的函数都是可取消的.在取消时,检查协程的取消标记然后抛出<code>CancellationException</code>.然而,如果一个协程在<code>computation</code> 中运行,而且没有检查取消标记,那就不能被取消.</p>
@@ -253,7 +263,7 @@
   <entry>
     <title>Java 并发和多线程指南</title>
     <url>/2019/08/26/Java-%E5%B9%B6%E5%8F%91%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<a id="more"></a>]]></content>
       <tags>
         <tag>java</tag>
         <tag>多线程</tag>
@@ -264,6 +274,7 @@
     <title>Groovy template</title>
     <url>/2019/08/16/Groovy-template/</url>
     <content><![CDATA[<p>Groovy MarkupTemplateEngine 主要面向生成类 XML(XML,XHTML,HTML5…)的标记语言,但是也支持其他基于内容的文本.和传统的模版引擎相比,此引擎支持基于 DSL 的 builder 语法.</p>
+<a id="more"></a>
 <figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">xmlDeclaration()</span><br><span class="line">cars &#123;</span><br><span class="line">  carsh.each &#123;</span><br><span class="line">    car(<span class="string">make:</span>it.make,<span class="string">model:</span>it.model)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p><code>MarkupTemplateEngine</code>支持引用来自另一个文件的内容.</p>
 <ul>
@@ -280,6 +291,7 @@
     <title>Podman</title>
     <url>/2019/08/13/Podman/</url>
     <content><![CDATA[<p>Podman 是什么? Podman 是一个非守护线程的容器引擎,支持在 Linux 系统上开发、管理和运行 OCI 容器.容器同时支持 root 身份和非 root 身份.只需要使用 <code>alias docker=podman</code> 就可以立即从 docker 切换到 podman.</p>
+<a id="more"></a>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
 <li>Arch Linux &amp; Manjaro Linux<br><code>sudo pacman -S podman</code></li>
 <li>Fedora,CentOS<br><code>sudo yum -y install podman</code></li>
@@ -303,6 +315,7 @@
     <title>Flutter-Text</title>
     <url>/2019/06/06/Flutter-Text/</url>
     <content><![CDATA[<p>字符串根据布局约束可能跨越多行或者只显示在一行.</p>
+<a id="more"></a>
 <p><code>style</code> 参数是可选的.如果忽略,默认使用最近的父组件的 <code>DefaultTextStyle</code>.如果给定的样式 <code>TextStyle.inherit</code> 属性为 true(默认),则给定的样式将和最近的父组件的 <code>DefaultTextStyle</code> 合并.这个合并操作很有用,例如使用默认的 font family 和大小使字体 bold.</p>
 <p>使用 <code>Text.rich</code> 构造方法,<code>Text</code> 组件可以使用不同的 <code>TextSpan</code> 样式显示一段文字.</p>
 <h3 id="交互"><a href="#交互" class="headerlink" title="交互"></a>交互</h3><p>使用 <code>GestureDetector</code> 组件,设置 <code>GestureDetector.onTap</code> 处理器可以使 <code>Text</code> 响应 touch 事件.</p>
@@ -315,6 +328,7 @@
     <title>Flutter-Image</title>
     <url>/2019/06/05/Flutter-Image/</url>
     <content><![CDATA[<p>显示图片的组件.</p>
+<a id="more"></a>
 <p>提供了以下几个不同用途的构造方法:</p>
 <ul>
 <li><code>new Image</code>: 从 <code>ImageProvider</code> 中获取图片.</li>
@@ -354,6 +368,7 @@
     <title>Flutter-Column</title>
     <url>/2019/06/04/Flutter-Column/</url>
     <content><![CDATA[<p>以垂直数组方式显示子组件的组件.</p>
+<a id="more"></a>
 <p>想要某个子组件扩展填充垂直空间,使用 <code>Expanded</code> 组件包装即可.</p>
 <p><code>Column</code> 组件不会滑动(通常如果 <code>Column</code> 中的多个子组件超出了可用空间,则会报错).如果有一排组件,而且想要在空间不足时能滑动,考虑使用 <code>ListView</code>.</p>
 <p>横向排列考虑使用 <code>Row</code>.</p>
@@ -377,6 +392,7 @@
     <title>Flutter-Row</title>
     <url>/2019/06/04/Flutter-Row/</url>
     <content><![CDATA[<p>以横向数组的方式显示子组件的组件.</p>
+<a id="more"></a>
 <p>为了使其一个组件填充剩余可用空间,可以使用 <code>Expanded</code>对其进行包装.</p>
 <p><code>Row</code> 组件不会滑动(通常一个<code>Row</code>组件中的子组件过多已经超出了可用空间,则会导致错误).如果在不足的空间中想要一排组件能够滑动,可以考虑使用 <code>ListView</code>.</p>
 <p><code>Column</code> 竖向排列.</p>
@@ -393,6 +409,7 @@
     <title>flutter 学习笔记</title>
     <url>/2019/06/04/flutter-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>flutter 的核心设计是将整个应用的各个部分各个层级都看作 Widget 来渲染,所以按照 Widget 的分类来学习会比较全面。</p>
+<a id="more"></a>
 <h2 id="基础组件"><a href="#基础组件" class="headerlink" title="基础组件"></a>基础组件</h2><h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h3><ul>
 <li>Row</li>
 <li>Column</li>
@@ -594,7 +611,9 @@
   <entry>
     <title>GraphQL-Batching</title>
     <url>/2019/05/05/GraphQL-Batching/</url>
-    <content><![CDATA[<h2 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h2><h3 id="使用-Dataloader"><a href="#使用-Dataloader" class="headerlink" title="使用 Dataloader"></a>使用 Dataloader</h3><p>如果你正在使用 graphql,那么你可能遇到数据图查询.这可以通过本地数据图加载轻松实现.<br>使用 <code>java-dataloader</code> 将帮助你更高效的处理数据图条目的缓存和批量请求.如果 dataloader 已经发现了一个之前的数据条目,它将会缓存数据并且直接返回不再发起请求.<br>假设我们需要查询一个英雄和他们朋友的名字及他们朋友的朋友的名字.</p>
+    <content><![CDATA[<p>bactching</p>
+<a id="more"></a>
+<h2 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h2><h3 id="使用-Dataloader"><a href="#使用-Dataloader" class="headerlink" title="使用 Dataloader"></a>使用 Dataloader</h3><p>如果你正在使用 graphql,那么你可能遇到数据图查询.这可以通过本地数据图加载轻松实现.<br>使用 <code>java-dataloader</code> 将帮助你更高效的处理数据图条目的缓存和批量请求.如果 dataloader 已经发现了一个之前的数据条目,它将会缓存数据并且直接返回不再发起请求.<br>假设我们需要查询一个英雄和他们朋友的名字及他们朋友的朋友的名字.</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    hero &#123;</span><br><span class="line">        name &#123;</span><br><span class="line">            friends &#123;</span><br><span class="line">                name &#123;</span><br><span class="line">                    friends &#123;</span><br><span class="line">                        name</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这个查询的结果如下.</p>
@@ -622,7 +641,9 @@
   <entry>
     <title>GraphQL-Scalars</title>
     <url>/2019/05/05/GraphQL-Scalars/</url>
-    <content><![CDATA[<h2 id="graphql-中的常量"><a href="#graphql-中的常量" class="headerlink" title="graphql 中的常量"></a>graphql 中的常量</h2><h3 id="scalars"><a href="#scalars" class="headerlink" title="scalars"></a>scalars</h3><p>graphql 类型系统的叶子节点被称为 scalars.一旦到达了 scalar 类型则无法在沿着类型结构继续向下了.scalar 类型是指不可再分割的值.<br>graphql 规范明确要求所有的语言实现必须具有以下 scalar 类型.</p>
+    <content><![CDATA[<p>scalars</p>
+<a id="more"></a>
+<h2 id="graphql-中的常量"><a href="#graphql-中的常量" class="headerlink" title="graphql 中的常量"></a>graphql 中的常量</h2><h3 id="scalars"><a href="#scalars" class="headerlink" title="scalars"></a>scalars</h3><p>graphql 类型系统的叶子节点被称为 scalars.一旦到达了 scalar 类型则无法在沿着类型结构继续向下了.scalar 类型是指不可再分割的值.<br>graphql 规范明确要求所有的语言实现必须具有以下 scalar 类型.</p>
 <ul>
 <li>String 即 <code>GraphQLString</code>- 一个 UTF-8 字符串序列.</li>
 <li>Boolean 即 <code>GraphQLBoolean</code>- true or false.</li>
@@ -666,7 +687,9 @@
   <entry>
     <title>GraphQL-Data mapping</title>
     <url>/2019/05/05/GraphQL-Data-mapping/</url>
-    <content><![CDATA[<h2 id="Mapping-data"><a href="#Mapping-data" class="headerlink" title="Mapping data"></a>Mapping data</h2><h3 id="graphql-是如何把对象数据匹配到类型的"><a href="#graphql-是如何把对象数据匹配到类型的" class="headerlink" title="graphql 是如何把对象数据匹配到类型的"></a>graphql 是如何把对象数据匹配到类型的</h3><p>graphql 内部全部是关于声明类型 schema,然后在运行匹配到数据.<br>作为类型 schema 的设计者,你应该在处理这些元素.</p>
+    <content><![CDATA[<p>data mapping</p>
+<a id="more"></a>
+<h2 id="Mapping-data"><a href="#Mapping-data" class="headerlink" title="Mapping data"></a>Mapping data</h2><h3 id="graphql-是如何把对象数据匹配到类型的"><a href="#graphql-是如何把对象数据匹配到类型的" class="headerlink" title="graphql 是如何把对象数据匹配到类型的"></a>graphql 是如何把对象数据匹配到类型的</h3><p>graphql 内部全部是关于声明类型 schema,然后在运行匹配到数据.<br>作为类型 schema 的设计者,你应该在处理这些元素.</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type Query &#123;</span><br><span class="line">	products(match: String): [Product] # a list of products</span><br><span class="line">&#125;</span><br><span class="line">type Product &#123;</span><br><span class="line">	id: ID</span><br><span class="line">	name: String</span><br><span class="line">	description: String</span><br><span class="line">	cost: Float</span><br><span class="line">	tax: Float</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>然后可以执行查询</p>
@@ -686,7 +709,9 @@
   <entry>
     <title>GraphQL-Execution</title>
     <url>/2019/05/04/GraphQL-Execution/</url>
-    <content><![CDATA[<h2 id="Execution"><a href="#Execution" class="headerlink" title="Execution"></a>Execution</h2><h3 id="Queries"><a href="#Queries" class="headerlink" title="Queries"></a>Queries</h3><p>对 schema 执行 query,使用合适的参数构建一个新的 GraphQL 对象,然后调用<code>execute()</code>.<br>query 的结果是包含查询数据或者（并且）一系列错误的<code>ExecutionResult</code> 对象.</p>
+    <content><![CDATA[<p>execution</p>
+<a id="more"></a>
+<h2 id="Execution"><a href="#Execution" class="headerlink" title="Execution"></a>Execution</h2><h3 id="Queries"><a href="#Queries" class="headerlink" title="Queries"></a>Queries</h3><p>对 schema 执行 query,使用合适的参数构建一个新的 GraphQL 对象,然后调用<code>execute()</code>.<br>query 的结果是包含查询数据或者（并且）一系列错误的<code>ExecutionResult</code> 对象.</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">GraphQLSchema schema = GraphQLSchema.newSchema().query(queryType).build();</span><br><span class="line">GraphQL graphQl = GraphQL.newGraphQL(schema).build();</span><br><span class="line">ExecutionInput executionInput = ExecutionInput.newExecutionInput().query(<span class="string">"query &#123; hero &#123; name &#125;&#125;"</span>);</span><br><span class="line">ExectionResult executionResult = graphQl.execute(executionInput);</span><br><span class="line">Object data = executionResult.getData();</span><br><span class="line">List&lt;GraphQLError&gt; errors = executionResult.getErrors();</span><br></pre></td></tr></table></figure>
 
 <p>更多复杂的查询示例请参考<a href="https://github.com/graphql-java/graphql-java/blob/master/src/test/groovy/graphql/StarWarsQueryTest.groovy" target="_blank" rel="noopener">StarWars query tests</a>;</p>
@@ -765,7 +790,9 @@
   <entry>
     <title>GraphQL-DataFetcher</title>
     <url>/2019/04/27/GraphQL-DataFetcher/</url>
-    <content><![CDATA[<h2 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h2><h3 id="graphql-如何获取数据"><a href="#graphql-如何获取数据" class="headerlink" title="graphql 如何获取数据"></a>graphql 如何获取数据</h3><p>graphql 中的每个属性都关联了一个 graphql.schema.DataFetcher.<br>一些属性会使用专用的 data fetcher 从数据库获取该属性的相关信息.而大多数简单的使用属性名和 Plain Old Java Object(POJO)模式 从内存中获取数据.<br><code>在其他 graphql 实现中，Data fetcher 被称为 resolver</code><br>现在声明一个类型定义:</p>
+    <content><![CDATA[<p>data fetcher</p>
+<a id="more"></a>
+<h2 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h2><h3 id="graphql-如何获取数据"><a href="#graphql-如何获取数据" class="headerlink" title="graphql 如何获取数据"></a>graphql 如何获取数据</h3><p>graphql 中的每个属性都关联了一个 graphql.schema.DataFetcher.<br>一些属性会使用专用的 data fetcher 从数据库获取该属性的相关信息.而大多数简单的使用属性名和 Plain Old Java Object(POJO)模式 从内存中获取数据.<br><code>在其他 graphql 实现中，Data fetcher 被称为 resolver</code><br>现在声明一个类型定义:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type Query &#123;</span><br><span class="line">	products(match: String): [Product] # a list of products</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Product &#123;</span><br><span class="line">	id: ID</span><br><span class="line">	name: String</span><br><span class="line">	description: String</span><br><span class="line">	cost: Float</span><br><span class="line">	tax: Float</span><br><span class="line">	launchDate(dateFormat: String &#x3D; &quot;dd,MM,yyyy&quot;): String</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
@@ -782,9 +809,10 @@
 <li>如何针对适应式站点组织 HTML 结构以便优化性能，优先考虑灵活性?</li>
 <li>如何书写优先定义共享样式、针对大屏和媒体查询构建、使用相对单位的 CSS?</li>
 <li>如何编写不引人注目的 Javascript 来有条件地加载内容片段，利用触摸事件和地理定位</li>
-<li>我们可以做些什么来进一步增强我们的适应性体验</li>
+<li>我们可以做些什么来进一步增强我们的适应性体验<a id="more"></a>
+<h2 id="适应性的必要性"><a href="#适应性的必要性" class="headerlink" title="适应性的必要性"></a>适应性的必要性</h2></li>
 </ul>
-<h2 id="适应性的必要性"><a href="#适应性的必要性" class="headerlink" title="适应性的必要性"></a>适应性的必要性</h2><p>随着网络环境越来越复杂，为越来越多的环境提供可靠的网络体验变得极为重要.幸运的是，响应式 web 设计给 web 开发者提供了一些可以匹配任意大小屏幕的工具来组织布局.</p>
+<p>随着网络环境越来越复杂，为越来越多的环境提供可靠的网络体验变得极为重要.幸运的是，响应式 web 设计给 web 开发者提供了一些可以匹配任意大小屏幕的工具来组织布局.</p>
 ]]></content>
       <tags>
         <tag>翻译</tag>
@@ -794,13 +822,16 @@
   <entry>
     <title>常用命令记录</title>
     <url>/2019/03/28/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h2 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h2><h3 id="gradle-completion"><a href="#gradle-completion" class="headerlink" title="gradle-completion"></a>gradle-completion</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install gradle-completion</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$fpath</span> | grep <span class="string">"/usr/local/share/zsh/site-functions"</span></span><br><span class="line"><span class="comment"># 执行结果</span></span><br><span class="line">Add the following line to your ~/.bash_profile:</span><br><span class="line">  [[ -r <span class="string">"/usr/local/etc/profile.d/bash_completion.sh"</span> ]] &amp;&amp; . <span class="string">"/usr/local/etc/profile.d/bash_completion.sh"</span></span><br><span class="line"></span><br><span class="line">Bash completion has been installed to:</span><br><span class="line">  /usr/<span class="built_in">local</span>/etc/bash_completion.d</span><br><span class="line">==&gt; gradle-completion</span><br><span class="line">Bash completion has been installed to:</span><br><span class="line">  /usr/<span class="built_in">local</span>/etc/bash_completion.d</span><br><span class="line"></span><br><span class="line">zsh completions have been installed to:</span><br><span class="line">  /usr/<span class="built_in">local</span>/share/zsh/site-functions</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<a id="more"></a>
+<h2 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h2><h3 id="gradle-completion"><a href="#gradle-completion" class="headerlink" title="gradle-completion"></a>gradle-completion</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install gradle-completion</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$fpath</span> | grep <span class="string">"/usr/local/share/zsh/site-functions"</span></span><br><span class="line"><span class="comment"># 执行结果</span></span><br><span class="line">Add the following line to your ~/.bash_profile:</span><br><span class="line">  [[ -r <span class="string">"/usr/local/etc/profile.d/bash_completion.sh"</span> ]] &amp;&amp; . <span class="string">"/usr/local/etc/profile.d/bash_completion.sh"</span></span><br><span class="line"></span><br><span class="line">Bash completion has been installed to:</span><br><span class="line">  /usr/<span class="built_in">local</span>/etc/bash_completion.d</span><br><span class="line">==&gt; gradle-completion</span><br><span class="line">Bash completion has been installed to:</span><br><span class="line">  /usr/<span class="built_in">local</span>/etc/bash_completion.d</span><br><span class="line"></span><br><span class="line">zsh completions have been installed to:</span><br><span class="line">  /usr/<span class="built_in">local</span>/share/zsh/site-functions</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
     <title>gradle</title>
     <url>/2019/03/28/gradle/</url>
-    <content><![CDATA[<h3 id="Gradle-升级日志"><a href="#Gradle-升级日志" class="headerlink" title="Gradle 升级日志"></a>Gradle 升级日志</h3><p>5.0 包含了 Kotlin DSL 生产级支持,依赖版本对齐(类似 Maven BOM),任务超时,Java 11 支持</p>
+    <content><![CDATA[<p>gradle</p>
+<a id="more"></a>
+<h3 id="Gradle-升级日志"><a href="#Gradle-升级日志" class="headerlink" title="Gradle 升级日志"></a>Gradle 升级日志</h3><p>5.0 包含了 Kotlin DSL 生产级支持,依赖版本对齐(类似 Maven BOM),任务超时,Java 11 支持</p>
 <ul>
 <li><p>Kotlin DSL 1.0</p>
 </li>
@@ -1122,7 +1153,8 @@
   <entry>
     <title>git 笔记</title>
     <url>/2019/03/17/git-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<ul>
+    <content><![CDATA[<a id="more"></a>
+<ul>
 <li>config</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 修改配置</span></span><br><span class="line">git config --<span class="built_in">local</span> <span class="comment"># 对某个仓库有效</span></span><br><span class="line">git config --global <span class="comment"># 对当前用户所有仓库有效</span></span><br><span class="line">git config --system <span class="comment"># 对系统所有登录用户有效</span></span><br><span class="line"><span class="comment"># 查看配置</span></span><br><span class="line">git config --list --<span class="built_in">local</span></span><br><span class="line">git config --list --global</span><br><span class="line">git config --list --system</span><br><span class="line"><span class="comment"># 打开编辑器修改config</span></span><br><span class="line">git config -e <span class="comment"># 仅对当前仓库有效</span></span><br><span class="line"><span class="comment"># 变更文件名</span></span><br><span class="line">git mv readme readme.md <span class="comment"># 避免  mv x y -&gt; git add -&gt; git rm</span></span><br><span class="line">git <span class="built_in">log</span> [分支]</span><br><span class="line">        --oneline <span class="comment"># 一行显示</span></span><br><span class="line">        -n4 <span class="comment"># 指定最新的几次提交</span></span><br><span class="line">        --all <span class="comment"># 所有分支的提交</span></span><br><span class="line">        --graph <span class="comment"># 图形化显示</span></span><br><span class="line"><span class="comment"># 打开内置帮助网页.</span></span><br><span class="line">git <span class="built_in">help</span> --web [<span class="built_in">log</span>]</span><br><span class="line"><span class="comment"># gui</span></span><br><span class="line">gitk --all</span><br><span class="line">git branch -av</span><br><span class="line"><span class="comment"># 在 ./git/refs/heads/xxx 中查看信息</span></span><br><span class="line">git cat-file -t master <span class="comment"># 返回 git object model 类型: blog, tree, commit, tag</span></span><br><span class="line">            -p <span class="comment"># 显示所有内容</span></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">git branch -D [fixup]</span><br><span class="line"><span class="comment"># 变基</span></span><br><span class="line">git rebase -i</span><br><span class="line"><span class="comment"># 暂存区和最近一次提交的区别</span></span><br><span class="line">git diff --cached</span><br><span class="line"><span class="comment"># 将暂存区的内容丢弃</span></span><br><span class="line">git reset HEAD -- &lt;file&gt;</span><br><span class="line"><span class="comment"># 将暂存区的内容恢复到本地</span></span><br><span class="line">git checkout -- &lt;file&gt;</span><br><span class="line"><span class="comment"># 设置别名</span></span><br><span class="line">git config --global alias.co checkout</span><br><span class="line">git config --global alias.br branch</span><br><span class="line">git config --global alias.ci commit</span><br><span class="line">git config --global alias.st status</span><br><span class="line">git config --global alias.last <span class="string">'log -1 HEAD'</span></span><br><span class="line">git config --global alias.unstage <span class="string">'reset HEAD --'</span>; git unstage fileA === git reset HEAD -- fileA</span><br><span class="line">git config --global alias.visual <span class="string">'!gitk'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看各个分支所指的对象  --decorate</span></span><br><span class="line">git <span class="built_in">log</span> --oneline --decorate</span><br><span class="line">git <span class="built_in">log</span> --oneline --decorate --graph --all</span><br><span class="line"><span class="comment"># 跟踪远程分支</span></span><br><span class="line">git checkout --track origin/serverfix</span><br><span class="line">git checkout -b sf origin/serverfix; sf 分支追踪 origin/serverfix 分支.</span><br><span class="line"><span class="comment"># 添加修改正在追踪的上游分支; -u / --set-upstream-to</span></span><br><span class="line">git branch -u origin/serverfix</span><br><span class="line"><span class="comment"># 当设置好跟踪分支后，可通过 @&#123;upstream&#125; 或 @&#123;u&#125; 快捷方式来引用.所有如果 master 跟踪 origin/master。那么 git merge @&#123;u&#125; 可以取代 git merage origin/master.</span></span><br><span class="line"><span class="comment"># 查看所有跟踪分支</span></span><br><span class="line">git branch -vv</span><br><span class="line"><span class="comment"># 删除服务端的分支</span></span><br><span class="line">git push origin --delete serverfix</span><br><span class="line"><span class="comment">#</span></span><br><span class="line">git init --bare --shared ; <span class="comment"># shared 会自动修改该仓库目录的组权限为可写.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 为服务端配置 SSH 访问</span></span><br><span class="line">sudo adduser git</span><br><span class="line">su git</span><br><span class="line"><span class="built_in">cd</span></span><br><span class="line">mkdir .ssh &amp;&amp; chmod 700 .ssh</span><br><span class="line">touch .ssh/authorized_keys &amp;&amp; chmod 600 .ssh/authorized_keys</span><br><span class="line">cat /tmp/id_rsa.john.pub &gt;&gt; ~/.ssh/authorized_keys</span><br><span class="line">cat /tmp/id_rsa.josie.pub &gt;&gt; ~/.ssh/authorized_keys</span><br><span class="line"><span class="comment"># 限制 git 用户只能访问项目，无法登录远程主机.</span></span><br><span class="line">cat /etc/shells</span><br><span class="line"><span class="built_in">which</span> git-shell</span><br><span class="line">sudo vim /etc/shells； <span class="comment"># 将 git-shell 添加</span></span><br><span class="line">sudo chsh git /usr/bin/git-shell; <span class="comment"># 限制 git 用户只能利用 SSH 连接对 Git 仓库进行推送和拉去操作，而不能登录机器并取得普通 shell.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 以守护进程的方式设置 git 协议,不需要配置 SSH 公钥.</span></span><br><span class="line">git daemon --reuseaddr --base-path=/opt/git/ /opt/git/;</span><br><span class="line"><span class="comment"># --reuseaddr 允许服务器在无需等待旧连接超时的情况下重启</span></span><br><span class="line"><span class="comment"># --base-path 允许用户在未完全指定路径的条件下克隆项目,结尾的路径将告诉 git 守护进程从何处寻找仓库来导出.如果有防火墙运行，请开放 9418 端口.</span></span><br><span class="line"><span class="comment"># 空白错误(换行\tab\。。。)</span></span><br><span class="line">git diff --check</span><br><span class="line"><span class="comment"># 部分暂存</span></span><br><span class="line">git add --patch</span><br><span class="line"><span class="comment">#</span></span><br><span class="line">git merge --squash featureB</span><br><span class="line"><span class="comment"># --squash 接受被合并分支上的所有工作，并将其压缩至一个变更及，使仓库成为真正合并发生的状态，而不是生成一个合并提交.</span></span><br><span class="line"><span class="comment"># 打包 archive</span></span><br><span class="line">git archive master --prefix=<span class="string">'project/'</span> | gzip &gt; `git describe master`.tar.gz</span><br><span class="line">git archive master --prefix=<span class="string">'project/'</span> --format=zip &gt; `git describe master`.zips</span><br><span class="line"><span class="comment">#</span></span><br><span class="line">git diff --ours</span><br><span class="line">        <span class="comment"># --theirs</span></span><br><span class="line">        <span class="comment"># --base -b</span></span><br></pre></td></tr></table></figure>
@@ -1135,6 +1167,7 @@
     <title>JGit</title>
     <url>/2019/03/16/JGit/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JGit 是一个基于 EDL(BSD 协议的变种)授权的轻量级、实现 Git 版本控制系统功能(常规仓库访问,网络协议,版本控制核心算法)的纯 Java 库.</p>
+<a id="more"></a>
 <h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h3><p>在<a href="https://mvnrepository.com/" target="_blank" rel="noopener">仓库搜索引擎</a>中搜索 jgit 即可获取各种添加依赖的方式.我现在基本使用的是 gradle 依赖</p>
 <figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">implementation(<span class="string">"org.eclipse.jgit:org.eclipse.jgit:5.3.0.201903130848-r"</span>)</span><br><span class="line">implementation(<span class="string">"org.eclipse.jgit:org.eclipse.jgit.http.server:5.3.0.201903130848-r"</span>)</span><br></pre></td></tr></table></figure>
 
@@ -1340,7 +1373,9 @@
   <entry>
     <title>teamcity自动化更新hexo博客</title>
     <url>/2019/03/09/teamcity%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9B%B4%E6%96%B0hexo%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在知乎找到了一个更好的方法: [原文](使用 hexo，如果换了电脑怎么更新博客？ - CrazyMilk 的回答 - 知乎<br><a href="https://www.zhihu.com/question/21193762/answer/79109280" target="_blank" rel="noopener">https://www.zhihu.com/question/21193762/answer/79109280</a>)<br>在这里我整理一下:</p>
+    <content><![CDATA[<p>hexo deploy</p>
+<a id="more"></a>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在知乎找到了一个更好的方法: [原文](使用 hexo，如果换了电脑怎么更新博客？ - CrazyMilk 的回答 - 知乎<br><a href="https://www.zhihu.com/question/21193762/answer/79109280" target="_blank" rel="noopener">https://www.zhihu.com/question/21193762/answer/79109280</a>)<br>在这里我整理一下:</p>
 <ul>
 <li>创建仓库 xxx.github.io.</li>
 <li>创建两个分支: master/hexo.(可在 github 网页或本地创建)</li>
@@ -1419,7 +1454,9 @@
   <entry>
     <title>Room &amp; kotlin coroutine</title>
     <url>/2019/03/03/Room-kotlin-coroutine/</url>
-    <content><![CDATA[<h4 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h4><p>Room 2.1 开始支持 Kotlin 协程。DAO 方法可以使用 suspend 标记以确保这些方法不会在主线程中被执行。<br>Room 使用 <code>Executor</code>(来自框架组件) 作为 <code>Dispatcher</code> 运行 SQL 语句，当然在编译 <code>RoomDatabase</code> 时，你也可以提供自己的 <code>Executor</code>.</p>
+    <content><![CDATA[<p>room kotlin coroutine</p>
+<a id="more"></a>
+<h4 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h4><p>Room 2.1 开始支持 Kotlin 协程。DAO 方法可以使用 suspend 标记以确保这些方法不会在主线程中被执行。<br>Room 使用 <code>Executor</code>(来自框架组件) 作为 <code>Dispatcher</code> 运行 SQL 语句，当然在编译 <code>RoomDatabase</code> 时，你也可以提供自己的 <code>Executor</code>.</p>
 <blockquote>
 <p>当前协程支持正在开发中，更多特性正在计划中</p>
 </blockquote>
@@ -1474,6 +1511,7 @@
     <title>docker,docker-compose学习笔记</title>
     <url>/2019/03/01/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Compose 是一个为了定义和运行多容器 Docker 应用的工具。<br><a href="https://github.com/docker/labs" target="_blank" rel="noopener">官方动手示例</a></p>
+<a id="more"></a>
 <h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
 <li>一个主机多个隔离环境</li>
 <li>当容器创建时保留所有的 volume</li>
@@ -1663,6 +1701,7 @@
     <url>/2019/02/28/%E8%AF%91-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/</url>
     <content><![CDATA[<p><a href="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150" target="_blank" rel="noopener">原文</a></p>
 <p>view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData observables. view 订阅 LiveData 的改变且随时响应。这适用于连续不断的显示在一个屏幕的数据。<br><img src="http://qiniu.picbed.dang8080.cn/20190228202711.png" alt="LiveData"><br>但是某些数据却更应该被消费一次，比如 Snackbar 消息，navigation 事件 或 dialog 触发器。<br><img src="http://qiniu.picbed.dang8080.cn/20190228202852.png" alt="LiveData once"><br>与其试着通过扩展 Architecture Components 扩展或库解决这个问题，不如我们可以直面这是个设计缺陷。我们推荐你把你的事件看作是状态的一部分。本文我们将列举一些常见的错误和推荐的解决方案。</p>
+<a id="more"></a>
 <h3 id="❌-Bad-1-对事件使用-LiveData"><a href="#❌-Bad-1-对事件使用-LiveData" class="headerlink" title="❌ Bad: 1. 对事件使用 LiveData"></a>❌ Bad: 1. 对事件使用 LiveData</h3><p>在 LiveData 对象内部直接持有 Snackbar 消息或 navigation 信号。原则上普通的 LiveData 对象可以这样使用，但实际上会暴露一些问题。<br>在 master/detail 架构的 app 中，如下是 maters 的 ViewModel</p>
 <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 请不要对事件这样用</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListViewModel</span> : <span class="type">ViewModel &#123;</span></span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">val</span> _navigateToDetails = MutableLiveData&lt;<span class="built_in">Boolean</span>&gt;()</span><br><span class="line">  <span class="keyword">val</span> navigateToDetails : LiveData&lt;<span class="built_in">Boolean</span>&gt;</span><br><span class="line">      <span class="keyword">get</span>() = _navigateToDetails</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">userClicksOnButton</span><span class="params">()</span></span> &#123;</span><br><span class="line">    _navigateToDetails.value = <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1714,7 +1753,9 @@
   <entry>
     <title>LiveData</title>
     <url>/2019/02/28/LiveData/</url>
-    <content><![CDATA[<h3 id="LiveData-的优势"><a href="#LiveData-的优势" class="headerlink" title="LiveData 的优势"></a>LiveData 的优势</h3><ul>
+    <content><![CDATA[<p>LiveData</p>
+<a id="more"></a>
+<h3 id="LiveData-的优势"><a href="#LiveData-的优势" class="headerlink" title="LiveData 的优势"></a>LiveData 的优势</h3><ul>
 <li>确保 UI 和数据状态匹配<blockquote>
 <p>LiveData 遵循观察者模式。</p>
 </blockquote>
@@ -1754,7 +1795,9 @@
   <entry>
     <title>ObjectBox高级-6-元模型,IDs,UIDs</title>
     <url>/2019/02/26/ObjectBox%E9%AB%98%E7%BA%A7-6-%E5%85%83%E6%A8%A1%E5%9E%8B-IDs-UIDs/</url>
-    <content><![CDATA[<p>不像 SQLite 这样的数据库，ObjectBox 不需要你创建 database schema.这不意味着 ObjectBox 是无 schema 的。为高效起见，ObjectBox 对存储的数据维护了一个元模型(meta model)。此元模型实际上等价于 ObjectBox 的 schema.它包含了所有属性的类型、indexes 等.不同之处在于 ObjectBox 试图自动管理该元模型.某些情况下，这需要你帮忙.</p>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<p>不像 SQLite 这样的数据库，ObjectBox 不需要你创建 database schema.这不意味着 ObjectBox 是无 schema 的。为高效起见，ObjectBox 对存储的数据维护了一个元模型(meta model)。此元模型实际上等价于 ObjectBox 的 schema.它包含了所有属性的类型、indexes 等.不同之处在于 ObjectBox 试图自动管理该元模型.某些情况下，这需要你帮忙.</p>
 <blockquote>
 <p>Object 的 IDs 是 @Id 定义的，而 所有 entity 类型的实例都绑定一个 meta model ID.</p>
 </blockquote>
@@ -1768,7 +1811,9 @@
   <entry>
     <title>ObjectBox高级-5-更新数据模型</title>
     <url>/2019/02/26/ObjectBox%E9%AB%98%E7%BA%A7-5-%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/</url>
-    <content><![CDATA[<p>ObjectBox 大多数情况下自动管理数据模型.当添加/删除 entities 或属性时，ObjectBox 自动作出响应。<br>对于其他改变如 保留或改变类型，ObjectBox 需要额外信息。</p>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<p>ObjectBox 大多数情况下自动管理数据模型.当添加/删除 entities 或属性时，ObjectBox 自动作出响应。<br>对于其他改变如 保留或改变类型，ObjectBox 需要额外信息。</p>
 <h3 id="UIDs"><a href="#UIDs" class="headerlink" title="UIDs"></a>UIDs</h3><p>ObjectBox 通过 unique IDs(UIDs) 来追踪 entities 和属性的变化。所有的 UIDs 都存储在 module-name/objectbox-models/default.json 中,可以使用版本控制软件(git)进行管理。</p>
 <p>简单来说: 为了使 UID 相关的改变生效，在这些 entity 或 属性上放置 @Uid 然后编译，在获取进一步提示。</p>
 <h3 id="重命名-entities-和-属性"><a href="#重命名-entities-和-属性" class="headerlink" title="重命名 entities 和 属性"></a>重命名 entities 和 属性</h3><p>需要 UID 注解的原因是: 如果仅仅改变 entities 和属性的名字，ObjectBox 只会意识到 old entity 不见了，而创建了新的 entity.<br>所以告诉 ObjectBox 重命名 entity 和数据，而不是丢弃它们.它们是相同的一个 entity。实际上是在内部给 entity 绑定一个 UID.属性也一样.</p>
@@ -1813,7 +1858,9 @@
   <entry>
     <title>ObjectBox高级-4-entity继承</title>
     <url>/2019/02/26/ObjectBox%E9%AB%98%E7%BA%A7-4-entity%E7%BB%A7%E6%89%BF/</url>
-    <content><![CDATA[<p>ObjectBox 允许子类继承 entity 父类持久化的属性。同样也支持继承非 entity 类。1.4+ 也支持多继承.<br>对于父类来说可以使用 @BaseEntity.</p>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<p>ObjectBox 允许子类继承 entity 父类持久化的属性。同样也支持继承非 entity 类。1.4+ 也支持多继承.<br>对于父类来说可以使用 @BaseEntity.</p>
 <ul>
 <li>无注解: 类本身及其属性不需要持久化</li>
 <li>@BaseEntity: 属性在子类中持久化，类本身不持久化</li>
@@ -1842,7 +1889,9 @@
   <entry>
     <title>ObjectBox高级-3-自定义类型</title>
     <url>/2019/02/26/ObjectBox%E9%AB%98%E7%BA%A7-3-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B/</url>
-    <content><![CDATA[<p>ObjectBox 支持以下类型（Java）:</p>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<p>ObjectBox 支持以下类型（Java）:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">boolean</span>, Boolean</span><br><span class="line"><span class="keyword">int</span>, Integer</span><br><span class="line"><span class="keyword">short</span>, Short</span><br><span class="line"><span class="keyword">long</span>, Long</span><br><span class="line"><span class="keyword">float</span>, Float</span><br><span class="line"><span class="keyword">double</span>, Double</span><br><span class="line"><span class="keyword">byte</span>, Byte</span><br><span class="line"><span class="keyword">char</span>, Character</span><br><span class="line"><span class="keyword">byte</span>[]</span><br><span class="line">String</span><br><span class="line">Date</span><br></pre></td></tr></table></figure>
 
 <h3 id="转换器注解和属性转换"><a href="#转换器注解和属性转换" class="headerlink" title="转换器注解和属性转换"></a>转换器注解和属性转换</h3><p>使用 @Convert 注解将其他类型属性转为内置属性。此处需要提供 PropertyConverter 实现。</p>
@@ -1872,7 +1921,9 @@
   <entry>
     <title>ObjectBox高级-2-Object IDs</title>
     <url>/2019/02/26/ObjectBox%E9%AB%98%E7%BA%A7-2-Object-IDs/</url>
-    <content><![CDATA[<p>Object 必须具有一个类型为 <code>long</code> 的属性.当然可以使用它的包装类 <code>java.lang.Long</code>,但是不建议使用包装类.<br>其他类型的 ID ( UID 等)可以自由定义，查询等操作。</p>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<p>Object 必须具有一个类型为 <code>long</code> 的属性.当然可以使用它的包装类 <code>java.lang.Long</code>,但是不建议使用包装类.<br>其他类型的 ID ( UID 等)可以自由定义，查询等操作。</p>
 <h3 id="news-vs-persisted-entities"><a href="#news-vs-persisted-entities" class="headerlink" title="news vs. persisted entities"></a>news vs. persisted entities</h3><p>当创建一个对象时，还没有存入，它们的 ID 是 0.一旦该对象存入，ObjectBox 将为该对象指定 ID.可以通过 <code>put()</code>返回值拿到该 ID.</p>
 <p>所以在 ObjectBox 内部通常把 ID 作为一个状态指示器,如果为 0 表示新创建，不为 0 表示已经存储。关联特别依赖这个特性.</p>
 <h3 id="特殊的-Object-IDs"><a href="#特殊的-Object-IDs" class="headerlink" title="特殊的 Object IDs"></a>特殊的 Object IDs</h3><p>Object IDs 可能是任意 <code>long</code> 值，除了以下两种:</p>
@@ -1899,7 +1950,9 @@
   <entry>
     <title>ObjectBox高级-1-配置</title>
     <url>/2019/02/26/ObjectBox%E9%AB%98%E7%BA%A7-1-%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h3 id="手动添加依赖库"><a href="#手动添加依赖库" class="headerlink" title="手动添加依赖库"></a>手动添加依赖库</h3><p>如果 ObjectBox 插件没有自动添加依赖库和注解处理器，那么手动添加。</p>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<h3 id="手动添加依赖库"><a href="#手动添加依赖库" class="headerlink" title="手动添加依赖库"></a>手动添加依赖库</h3><p>如果 ObjectBox 插件没有自动添加依赖库和注解处理器，那么手动添加。</p>
 <figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="comment">// all below should be added automatically by the plugin</span></span><br><span class="line">    compile <span class="string">"io.objectbox:objectbox-android:$objectboxVersion"</span></span><br><span class="line">    annotationProcessor <span class="string">"io.objectbox:objectbox-processor:$objectboxVersion"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="comment">// all below should be added automatically by the plugin</span></span><br><span class="line">    compile <span class="string">"io.objectbox:objectbox-android:$objectboxVersion"</span></span><br><span class="line">    kapt <span class="string">"io.objectbox:objectbox-processor:$objectboxVersion"</span></span><br><span class="line">    <span class="comment">// some useful Kotlin extension functions</span></span><br><span class="line">    compile <span class="string">"io.objectbox:objectbox-kotlin:$objectboxVersion"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1928,7 +1981,9 @@
   <entry>
     <title>ObjectBox入门-12-事务</title>
     <url>/2019/02/26/ObjectBox%E5%85%A5%E9%97%A8-12-%E4%BA%8B%E5%8A%A1/</url>
-    <content><![CDATA[<p>ObjectBox 是一个满足 ACID 特性的交易型数据库.一个事务可以包含一组操作，要么执行成功，要么全部失败。<br>几乎所有的 ObjectBox 的操作都包含了事务。比如 <code>put(),read()</code>。普通情况下，不用关心这些底层的事务。但某些复杂的情况下，手动处理事务操作可以使你的 app 更加高效一致。</p>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<p>ObjectBox 是一个满足 ACID 特性的交易型数据库.一个事务可以包含一组操作，要么执行成功，要么全部失败。<br>几乎所有的 ObjectBox 的操作都包含了事务。比如 <code>put(),read()</code>。普通情况下，不用关心这些底层的事务。但某些复杂的情况下，手动处理事务操作可以使你的 app 更加高效一致。</p>
 <h3 id="手动事务"><a href="#手动事务" class="headerlink" title="手动事务"></a>手动事务</h3><p>ObjectBox 提供了如下方法实现手动事务：</p>
 <ul>
 <li>runInTx: 在事务中运行指定的 runnable</li>
@@ -1955,7 +2010,9 @@
   <entry>
     <title>ObjectBox入门-11-Data Browser</title>
     <url>/2019/02/26/ObjectBox%E5%85%A5%E9%97%A8-11-Data-Browser/</url>
-    <content><![CDATA[<p>Data Browser 具有如下功能:</p>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<p>Data Browser 具有如下功能:</p>
 <ul>
 <li>查看数据库的 entities 和 schema</li>
 <li>下载 JSON 格式的 entities</li>
@@ -1977,7 +2034,9 @@
   <entry>
     <title>ObjectBox入门-10-关联</title>
     <url>/2019/02/25/ObjectBox%E5%85%A5%E9%97%A8-10-%E5%85%B3%E8%81%94/</url>
-    <content><![CDATA[<p>Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来.</p>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<p>Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来.</p>
 <h3 id="To-One-关联"><a href="#To-One-关联" class="headerlink" title="To-One 关联"></a>To-One 关联</h3><p><img src="http://qiniu.picbed.dang8080.cn/20190225232506.png" alt="To-One示意图"><br>使用 ToOne 会智能的对目标对象创建关联。同时获取目标对象缓存。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Customer.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Order.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line">    <span class="keyword">public</span> ToOne&lt;Customer&gt; customer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 为了绑定 customer 对象，对 ToOne 实例调用 setTarget() 然后就存入 order 对象</span></span><br><span class="line">Customer customer = <span class="keyword">new</span> Customer();</span><br><span class="line">Order order = <span class="keyword">new</span> Order();</span><br><span class="line">order.customer.setTarget(customer);</span><br><span class="line"><span class="keyword">long</span> orderId = boxStore.boxFor(Order.class).put(order);</span><br></pre></td></tr></table></figure>
 
@@ -2052,7 +2111,9 @@
   <entry>
     <title>ObjectBox入门-9-订阅观察</title>
     <url>/2019/02/25/ObjectBox%E5%85%A5%E9%97%A8-9-%E8%AE%A2%E9%98%85%E8%A7%82%E5%AF%9F/</url>
-    <content><![CDATA[<h2 id="Data-Observers-Reactive-Extensions"><a href="#Data-Observers-Reactive-Extensions" class="headerlink" title="Data Observers, Reactive Extensions"></a>Data Observers, Reactive Extensions</h2><p>订阅观察模式，Rx 支持</p>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<h2 id="Data-Observers-Reactive-Extensions"><a href="#Data-Observers-Reactive-Extensions" class="headerlink" title="Data Observers, Reactive Extensions"></a>Data Observers, Reactive Extensions</h2><p>订阅观察模式，Rx 支持</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Query&lt;Task&gt; query = taskBox.query().equal(Task_.complete,<span class="keyword">false</span>).build();</span><br><span class="line">query.subscribe(subscriptions)</span><br><span class="line">    .on(AndroidScheduler.mainThread())</span><br><span class="line">    .observer(data -&gt; updateUi(data));</span><br></pre></td></tr></table></figure>
 
 <h3 id="Data-Observers"><a href="#Data-Observers" class="headerlink" title="Data Observers"></a>Data Observers</h3><p>当数据改变时，ObjectBox 会通知所有的订阅者.他们可以订阅确定的数据类型(通过 BoxStore)或查询结果集。实现 <code>io.objectbox.reactive.DataObserver</code> 即可创建观察者</p>
@@ -2108,7 +2169,9 @@
   <entry>
     <title>ObjectBox入门-8-查询</title>
     <url>/2019/02/24/ObjectBox%E5%85%A5%E9%97%A8-8-%E6%9F%A5%E8%AF%A2/</url>
-    <content><![CDATA[<h2 id="Queries"><a href="#Queries" class="headerlink" title="Queries"></a>Queries</h2><ul>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<h2 id="Queries"><a href="#Queries" class="headerlink" title="Queries"></a>Queries</h2><ul>
 <li>使用 QueryBuilder 定义查询标准，Query 类运行查询并返回匹配结果</li>
 </ul>
 <h3 id="QueryBuilder"><a href="#QueryBuilder" class="headerlink" title="QueryBuilder"></a>QueryBuilder</h3><ul>
@@ -2216,7 +2279,9 @@
   <entry>
     <title>ObjectBox入门-7-kotlin支持</title>
     <url>/2019/02/24/ObjectBox%E5%85%A5%E9%97%A8-7-kotlin%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<h2 id="Kotlin-支持"><a href="#Kotlin-支持" class="headerlink" title="Kotlin 支持"></a>Kotlin 支持</h2><h3 id="kotlin-Entity"><a href="#kotlin-Entity" class="headerlink" title="kotlin Entity"></a>kotlin Entity</h3><ul>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<h2 id="Kotlin-支持"><a href="#Kotlin-支持" class="headerlink" title="Kotlin 支持"></a>Kotlin 支持</h2><h3 id="kotlin-Entity"><a href="#kotlin-Entity" class="headerlink" title="kotlin Entity"></a>kotlin Entity</h3><ul>
 <li>在 kotlin 中，ID 属性应该这样定义 <code>@Id var id: Long = 0</code>.ID 必须是 var.</li>
 </ul>
 <h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><ul>
@@ -2240,7 +2305,9 @@
   <entry>
     <title>ObjectBox入门-6-Java桌面应用.md</title>
     <url>/2019/02/24/ObjectBox%E5%85%A5%E9%97%A8-6-Java%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="Java-桌面应用"><a href="#Java-桌面应用" class="headerlink" title="Java 桌面应用"></a>Java 桌面应用</h2><h3 id="嵌入式数据库"><a href="#嵌入式数据库" class="headerlink" title="嵌入式数据库"></a>嵌入式数据库</h3><p>ObjectBox 不仅仅适用于 Android 项目，同时也适用于运行在 Windows Linux macOS 上的纯 Java(JVM) 桌面应用.</p>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<h2 id="Java-桌面应用"><a href="#Java-桌面应用" class="headerlink" title="Java 桌面应用"></a>Java 桌面应用</h2><h3 id="嵌入式数据库"><a href="#嵌入式数据库" class="headerlink" title="嵌入式数据库"></a>嵌入式数据库</h3><p>ObjectBox 不仅仅适用于 Android 项目，同时也适用于运行在 Windows Linux macOS 上的纯 Java(JVM) 桌面应用.</p>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>请使用 Gradle 作为构建工具，因为 ObjectBox 使用了 Gradle 插件.</p>
 <figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    ext.objectboxVersion = <span class="string">'2.3.3'</span></span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">        maven&#123; url <span class="string">"https://plugins.gradle.org/m2/"</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">"net.ltgt.gradle:gradle-apt-plugin:0.20"</span></span><br><span class="line">        classpath <span class="string">"io.objectbox:objectbox-gradle-plugin:$objectboxVersion"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">repositories &#123;</span><br><span class="line">    jcenter()</span><br><span class="line">&#125;</span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'java'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'net.ltgt.apt-idea'</span> <span class="comment">// 注解处理器插件</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'io.objectbox'</span></span><br></pre></td></tr></table></figure>
 
@@ -2262,7 +2329,9 @@
   <entry>
     <title>ObjectBox入门-5-LiveData</title>
     <url>/2019/02/24/ObjectBox%E5%85%A5%E9%97%A8-5-LiveData/</url>
-    <content><![CDATA[<h2 id="LiveData-Arch-Comp"><a href="#LiveData-Arch-Comp" class="headerlink" title="LiveData (Arch.Comp.)"></a>LiveData (Arch.Comp.)</h2><p>从 1.2.0 开始支持 <code>Android Architecture Components</code><br>ObjectBox 提供 <code>ObjectBoxLiveData</code> 可以在 ViewModel 中使用</p>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<h2 id="LiveData-Arch-Comp"><a href="#LiveData-Arch-Comp" class="headerlink" title="LiveData (Arch.Comp.)"></a>LiveData (Arch.Comp.)</h2><p>从 1.2.0 开始支持 <code>Android Architecture Components</code><br>ObjectBox 提供 <code>ObjectBoxLiveData</code> 可以在 ViewModel 中使用</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NoteViewModel</span> <span class="keyword">extends</span> <span class="title">ViewModel</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ObjectBoxLiveData&lt;Note&gt; noteLiveData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ObjectBoxLiveData&lt;Note&gt; <span class="title">getNoteLiveData</span><span class="params">(Box&lt;Note&gt; notesBox)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (noteLiveData == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 查询所有的 notes, text 按 a-z 的顺序排列</span></span><br><span class="line">            noteLiveData = <span class="keyword">new</span> ObjectBoxLiveData(notesBox.query().order(Note_.text).build());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> noteLiveData;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -2281,7 +2350,9 @@
   <entry>
     <title>ObjectBox入门-4-本地单元测试</title>
     <url>/2019/02/24/ObjectBox%E5%85%A5%E9%97%A8-4-%E6%9C%AC%E5%9C%B0%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<h2 id="安卓本地单元测试"><a href="#安卓本地单元测试" class="headerlink" title="安卓本地单元测试"></a>安卓本地单元测试</h2><h3 id="设置测试环境"><a href="#设置测试环境" class="headerlink" title="设置测试环境"></a>设置测试环境</h3><p>| 此配置仅针对 ObjectBox 1.4 及之前版本.新版本已经自动添加了 native ObjectBox 依赖库。</p>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<h2 id="安卓本地单元测试"><a href="#安卓本地单元测试" class="headerlink" title="安卓本地单元测试"></a>安卓本地单元测试</h2><h3 id="设置测试环境"><a href="#设置测试环境" class="headerlink" title="设置测试环境"></a>设置测试环境</h3><p>| 此配置仅针对 ObjectBox 1.4 及之前版本.新版本已经自动添加了 native ObjectBox 依赖库。</p>
 <figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">// /app/build.gradle</span></span><br><span class="line">depdendencies &#123;</span><br><span class="line">    <span class="comment">// 必备 JUnit 4</span></span><br><span class="line">    testImplementation <span class="string">'junit:unit:4.12'</span></span><br><span class="line">    <span class="comment">// 手动添加平台独立的 native Objectbox 依赖库.(可选)</span></span><br><span class="line">    testImplementation <span class="string">"io.objectbox:objectbox-linux:$objectboxVersion"</span></span><br><span class="line">    testImplementation <span class="string">"io.objectbox:objectbox-macos:$objectboxVersion"</span></span><br><span class="line">    testImplementation <span class="string">"io.objectbox:objectbox-windows:$objectboxVersion"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>| 本地单元测试仅支持 64 位系统.<br>| windows 可能需要安装 <code>Microsoft Visual C++ 2015 Redistributable(x64)</code></p>
@@ -2304,7 +2375,9 @@
   <entry>
     <title>ObjectBox入门-3-注解</title>
     <url>/2019/02/24/ObjectBox%E5%85%A5%E9%97%A8-3-%E6%B3%A8%E8%A7%A3/</url>
-    <content><![CDATA[<h2 id="Entity-注解"><a href="#Entity-注解" class="headerlink" title="Entity 注解"></a>Entity 注解</h2><h3 id="entity-数据可访问"><a href="#entity-数据可访问" class="headerlink" title="entity 数据可访问"></a>entity 数据可访问</h3><ul>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<h2 id="Entity-注解"><a href="#Entity-注解" class="headerlink" title="Entity 注解"></a>Entity 注解</h2><h3 id="entity-数据可访问"><a href="#entity-数据可访问" class="headerlink" title="entity 数据可访问"></a>entity 数据可访问</h3><ul>
 <li>ObjectBox 需要访问 entity 的属性(生成 Cursor 类).<ul>
 <li>属性包内可见。kotlin 中使用 <code>JvmField</code></li>
 <li>提供标准 <code>getters</code></li>
@@ -2347,7 +2420,9 @@
   <entry>
     <title>ObjectBox入门-2-基本操作</title>
     <url>/2019/02/24/ObjectBox%E5%85%A5%E9%97%A8-2-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h3 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h3><p>在一个类中至少需要 <code>@Entity</code> 和 <code>@Id</code> 两个注解才能定义一个 ObjectBox model.例如:</p>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<h3 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h3><p>在一个类中至少需要 <code>@Entity</code> 和 <code>@Id</code> 两个注解才能定义一个 ObjectBox model.例如:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// User.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>然后 make 就可生成 model.</p>
@@ -2392,7 +2467,9 @@
   <entry>
     <title>ObjectBox入门-1-简介</title>
     <url>/2019/02/24/ObjectBox%E5%85%A5%E9%97%A8-1-%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><p>ObjectBox 定位是: 针对移动端和 IoT 超快的 <code>(superfast edge database)</code> 面向对象的数据库 .为小型设备提供了边缘计算能力，使得数据可以快速高效地在本地存储、处理、安全管理.ObjectBox 小于 <code>1MB</code>,最适合移动 APP、小型 IoT 设备及路由。并且 ObjectBox 也是第一个在边缘设备上兼容 ACID 的高性能的 NoSQL 数据库.所有的产品都是基于工程师思维开发的，所以可以使用最少的代码去实现想要的功能。</p>
+    <content><![CDATA[<p>objectbox</p>
+<a id="more"></a>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><p>ObjectBox 定位是: 针对移动端和 IoT 超快的 <code>(superfast edge database)</code> 面向对象的数据库 .为小型设备提供了边缘计算能力，使得数据可以快速高效地在本地存储、处理、安全管理.ObjectBox 小于 <code>1MB</code>,最适合移动 APP、小型 IoT 设备及路由。并且 ObjectBox 也是第一个在边缘设备上兼容 ACID 的高性能的 NoSQL 数据库.所有的产品都是基于工程师思维开发的，所以可以使用最少的代码去实现想要的功能。</p>
 <h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
 <li>比同类竟品快 10 倍以上。<a href="https://github.com/objectbox/objectbox-performance" target="_blank" rel="noopener">BenchMark</a></li>
 <li>跨平台。支持 Linux、Windows、Mac/iOS、Android、Raspberry Pi、ARM 等嵌入式设备和容器。</li>

@@ -17,20 +17,20 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"blog.dang8080.cn","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#025a6c","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"blog.dang8080.cn","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#025a6c","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来. To-One 关联使用 ToOne 会智能的对目标对象创建关联。同时获取目标对象缓存。 12345678910111213141516&#x2F;&#x2F; Customer.java@Entitypublic class Customer &amp;#123;    @Id public lo">
+  <meta name="description" content="objectbox">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ObjectBox入门-10-关联">
 <meta property="og:url" content="http://blog.dang8080.cn/2019/02/25/ObjectBox%E5%85%A5%E9%97%A8-10-%E5%85%B3%E8%81%94/index.html">
 <meta property="og:site_name" content="云青青兮欲雨">
-<meta property="og:description" content="Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来. To-One 关联使用 ToOne 会智能的对目标对象创建关联。同时获取目标对象缓存。 12345678910111213141516&#x2F;&#x2F; Customer.java@Entitypublic class Customer &amp;#123;    @Id public lo">
+<meta property="og:description" content="objectbox">
 <meta property="og:image" content="http://qiniu.picbed.dang8080.cn/20190225232506.png">
 <meta property="og:image" content="http://qiniu.picbed.dang8080.cn/20190226000315.png">
 <meta property="og:image" content="http://qiniu.picbed.dang8080.cn/20190226000708.png">
 <meta property="article:published_time" content="2019-02-25T14:49:13.000Z">
-<meta property="article:modified_time" content="2019-02-25T16:44:32.000Z">
+<meta property="article:modified_time" content="2020-03-31T08:39:28.060Z">
 <meta property="article:author" content="Humphrey Dan">
 <meta property="article:tag" content="ObjectBox">
 <meta property="article:tag" content="数据库">
@@ -44,8 +44,9 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
   };
 </script>
 
@@ -98,22 +99,25 @@
 
   <div class="site-meta">
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">云青青兮欲雨</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">水澹澹兮生烟</p>
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">云青青兮欲雨</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">水澹澹兮生烟</p>
   </div>
 
-  <div class="site-nav-right"></div>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
@@ -145,16 +149,18 @@
         </a>
       </li>
   </ul>
-
 </nav>
-  <div class="site-search">
+
+
+
+  <div class="search-pop-overlay">
     <div class="popup search-popup">
-    <div class="search-header">
+        <div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off"
            placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
@@ -162,12 +168,15 @@
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result"></div>
-
-</div>
-<div class="search-pop-overlay"></div>
-
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
   </div>
+</div>
+
+    </div>
+  </div>
+
 </div>
     </header>
 
@@ -183,14 +192,13 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content post posts-expand">
             
 
-  <div class="posts-expand">
-      
+    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/25/ObjectBox%E5%85%A5%E9%97%A8-10-%E5%85%B3%E8%81%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -221,7 +229,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-02-26 00:44:32" itemprop="dateModified" datetime="2019-02-26T00:44:32+08:00">2019-02-26</time>
+                <time title="Modified: 2020-03-31 16:39:28" itemprop="dateModified" datetime="2020-03-31T16:39:28+08:00">2020-03-31</time>
               </span>
 
           
@@ -256,7 +264,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来.</p>
+        <p>objectbox</p>
+<a id="more"></a>
+<p>Object 之间的关联具有方向性.关联是延迟初始化的：实际的引用对象只有在调用时才会从数据库中加载。一旦加载过，就会缓存起来.</p>
 <h3 id="To-One-关联"><a href="#To-One-关联" class="headerlink" title="To-One 关联"></a>To-One 关联</h3><p><img src="http://qiniu.picbed.dang8080.cn/20190225232506.png" alt="To-One示意图"><br>使用 ToOne 会智能的对目标对象创建关联。同时获取目标对象缓存。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Customer.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Order.java</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span> <span class="keyword">public</span> <span class="keyword">long</span> id;</span><br><span class="line">    <span class="keyword">public</span> ToOne&lt;Customer&gt; customer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 为了绑定 customer 对象，对 ToOne 实例调用 setTarget() 然后就存入 order 对象</span></span><br><span class="line">Customer customer = <span class="keyword">new</span> Customer();</span><br><span class="line">Order order = <span class="keyword">new</span> Order();</span><br><span class="line">order.customer.setTarget(customer);</span><br><span class="line"><span class="keyword">long</span> orderId = boxStore.boxFor(Order.class).put(order);</span><br></pre></td></tr></table></figure>
 
@@ -356,7 +366,6 @@
   
   
 
-  </div>
 
 
           </div>
@@ -365,7 +374,7 @@
 
 <script>
   window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
+    let { activeClass } = CONFIG.comments;
     if (CONFIG.comments.storage) {
       activeClass = localStorage.getItem('comments_active') || activeClass;
     }
@@ -436,7 +445,7 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/shuttlespace" title="GitHub → https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/shuttlespace" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:dang8080@qq.com" title="E-Mail → mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
@@ -458,7 +467,9 @@
     <footer class="footer">
       <div class="footer-inner">
         
-  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
   </div>
 
 <div class="copyright">
@@ -470,6 +481,8 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Humphrey Dan</span>
 </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
 
         
 

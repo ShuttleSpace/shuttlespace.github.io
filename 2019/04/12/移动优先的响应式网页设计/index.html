@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"blog.dang8080.cn","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#025a6c","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"blog.dang8080.cn","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#025a6c","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},"motion":{"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="原文 简介本文将探索如何创建移动优先的网页设计体验。  为什么我们需要创建移动优先，响应式，适应式网页设计体验? 如何针对适应式站点组织 HTML 结构以便优化性能，优先考虑灵活性? 如何书写优先定义共享样式、针对大屏和媒体查询构建、使用相对单位的 CSS? 如何编写不引人注目的 Javascript 来有条件地加载内容片段，利用触摸事件和地理定位 我们可以做些什么来进一步增强我们的适应性体验">
@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="云青青兮欲雨">
 <meta property="og:description" content="原文 简介本文将探索如何创建移动优先的网页设计体验。  为什么我们需要创建移动优先，响应式，适应式网页设计体验? 如何针对适应式站点组织 HTML 结构以便优化性能，优先考虑灵活性? 如何书写优先定义共享样式、针对大屏和媒体查询构建、使用相对单位的 CSS? 如何编写不引人注目的 Javascript 来有条件地加载内容片段，利用触摸事件和地理定位 我们可以做些什么来进一步增强我们的适应性体验">
 <meta property="article:published_time" content="2019-04-12T05:20:33.000Z">
-<meta property="article:modified_time" content="2019-04-12T06:25:40.000Z">
+<meta property="article:modified_time" content="2020-03-31T08:29:47.177Z">
 <meta property="article:author" content="Humphrey Dan">
 <meta property="article:tag" content="翻译">
 <meta property="article:tag" content="web">
@@ -40,8 +40,9 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
   };
 </script>
 
@@ -94,22 +95,25 @@
 
   <div class="site-meta">
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">云青青兮欲雨</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">水澹澹兮生烟</p>
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">云青青兮欲雨</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">水澹澹兮生烟</p>
   </div>
 
-  <div class="site-nav-right"></div>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
@@ -141,16 +145,18 @@
         </a>
       </li>
   </ul>
-
 </nav>
-  <div class="site-search">
+
+
+
+  <div class="search-pop-overlay">
     <div class="popup search-popup">
-    <div class="search-header">
+        <div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off"
            placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
@@ -158,12 +164,15 @@
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result"></div>
-
-</div>
-<div class="search-pop-overlay"></div>
-
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
   </div>
+</div>
+
+    </div>
+  </div>
+
 </div>
     </header>
 
@@ -179,14 +188,13 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content post posts-expand">
             
 
-  <div class="posts-expand">
-      
+    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/04/12/%E7%A7%BB%E5%8A%A8%E4%BC%98%E5%85%88%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -209,10 +217,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2019-04-12 13:20:33 / Modified: 14:25:40" itemprop="dateCreated datePublished" datetime="2019-04-12T13:20:33+08:00">2019-04-12</time>
+              <time title="Created: 2019-04-12 13:20:33" itemprop="dateCreated datePublished" datetime="2019-04-12T13:20:33+08:00">2019-04-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-31 16:29:47" itemprop="dateModified" datetime="2020-03-31T16:29:47+08:00">2020-03-31</time>
+              </span>
 
           
             <span id="/2019/04/12/%E7%A7%BB%E5%8A%A8%E4%BC%98%E5%85%88%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1/" class="post-meta-item leancloud_visitors" data-flag-title="移动优先的响应式网页设计" title="Views">
@@ -253,9 +267,10 @@
 <li>如何针对适应式站点组织 HTML 结构以便优化性能，优先考虑灵活性?</li>
 <li>如何书写优先定义共享样式、针对大屏和媒体查询构建、使用相对单位的 CSS?</li>
 <li>如何编写不引人注目的 Javascript 来有条件地加载内容片段，利用触摸事件和地理定位</li>
-<li>我们可以做些什么来进一步增强我们的适应性体验</li>
+<li>我们可以做些什么来进一步增强我们的适应性体验<a id="more"></a>
+<h2 id="适应性的必要性"><a href="#适应性的必要性" class="headerlink" title="适应性的必要性"></a>适应性的必要性</h2></li>
 </ul>
-<h2 id="适应性的必要性"><a href="#适应性的必要性" class="headerlink" title="适应性的必要性"></a>适应性的必要性</h2><p>随着网络环境越来越复杂，为越来越多的环境提供可靠的网络体验变得极为重要.幸运的是，响应式 web 设计给 web 开发者提供了一些可以匹配任意大小屏幕的工具来组织布局.</p>
+<p>随着网络环境越来越复杂，为越来越多的环境提供可靠的网络体验变得极为重要.幸运的是，响应式 web 设计给 web 开发者提供了一些可以匹配任意大小屏幕的工具来组织布局.</p>
 
     </div>
 
@@ -290,7 +305,6 @@
   
   
 
-  </div>
 
 
           </div>
@@ -299,7 +313,7 @@
 
 <script>
   window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
+    let { activeClass } = CONFIG.comments;
     if (CONFIG.comments.storage) {
       activeClass = localStorage.getItem('comments_active') || activeClass;
     }
@@ -370,7 +384,7 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/shuttlespace" title="GitHub → https://github.com/shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/shuttlespace" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;shuttlespace" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:dang8080@qq.com" title="E-Mail → mailto:dang8080@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
@@ -392,7 +406,9 @@
     <footer class="footer">
       <div class="footer-inner">
         
-  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">陕ICP备19000066号-1 </a>
   </div>
 
 <div class="copyright">
@@ -404,6 +420,8 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Humphrey Dan</span>
 </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
 
         
 
