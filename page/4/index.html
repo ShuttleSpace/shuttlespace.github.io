@@ -194,6 +194,100 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/28/%E8%AF%91-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Humphrey Dan">
+      <meta itemprop="description" content="write something,donot leave.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云青青兮欲雨">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/28/%E8%AF%91-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/" class="post-title-link" itemprop="url">[译]-LiveData with SnackBar,Navigation and other events(the SingleLiveEvent case)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-02-28 20:23:11" itemprop="dateCreated datePublished" datetime="2019-02-28T20:23:11+08:00">2019-02-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-31 16:29:58" itemprop="dateModified" datetime="2020-03-31T16:29:58+08:00">2020-03-31</time>
+              </span>
+
+          
+            <span id="/2019/02/28/%E8%AF%91-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/" class="post-meta-item leancloud_visitors" data-flag-title="[译]-LiveData with SnackBar,Navigation and other events(the SingleLiveEvent case)" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/02/28/%E8%AF%91-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/02/28/%E8%AF%91-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150" target="_blank" rel="noopener">原文</a></p>
+<p>view(activity/fragment) 和 ViewModel 交流的比较好的方式是 LiveData observables. view 订阅 LiveData 的改变且随时响应。这适用于连续不断的显示在一个屏幕的数据。<br><img src="http://qiniu.picbed.dang8080.cn/20190228202711.png" alt="LiveData"><br>但是某些数据却更应该被消费一次，比如 Snackbar 消息，navigation 事件 或 dialog 触发器。<br><img src="http://qiniu.picbed.dang8080.cn/20190228202852.png" alt="LiveData once"><br>与其试着通过扩展 Architecture Components 扩展或库解决这个问题，不如我们可以直面这是个设计缺陷。我们推荐你把你的事件看作是状态的一部分。本文我们将列举一些常见的错误和推荐的解决方案。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/02/28/%E8%AF%91-LiveData-with-SnackBar-Navigation-and-other-events-the-SingleLiveEvent-case/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/28/LiveData/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1027,99 +1121,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://blog.dang8080.cn/2019/02/25/ObjectBox%E5%85%A5%E9%97%A8-10-%E5%85%B3%E8%81%94/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Humphrey Dan">
-      <meta itemprop="description" content="write something,donot leave.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="云青青兮欲雨">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/02/25/ObjectBox%E5%85%A5%E9%97%A8-10-%E5%85%B3%E8%81%94/" class="post-title-link" itemprop="url">ObjectBox入门-10-关联</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-02-25 22:49:13" itemprop="dateCreated datePublished" datetime="2019-02-25T22:49:13+08:00">2019-02-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-31 16:39:28" itemprop="dateModified" datetime="2020-03-31T16:39:28+08:00">2020-03-31</time>
-              </span>
-
-          
-            <span id="/2019/02/25/ObjectBox%E5%85%A5%E9%97%A8-10-%E5%85%B3%E8%81%94/" class="post-meta-item leancloud_visitors" data-flag-title="ObjectBox入门-10-关联" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/02/25/ObjectBox%E5%85%A5%E9%97%A8-10-%E5%85%B3%E8%81%94/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/02/25/ObjectBox%E5%85%A5%E9%97%A8-10-%E5%85%B3%E8%81%94/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>objectbox</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/02/25/ObjectBox%E5%85%A5%E9%97%A8-10-%E5%85%B3%E8%81%94/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1189,7 +1190,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

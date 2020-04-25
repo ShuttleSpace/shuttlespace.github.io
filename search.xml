@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>libgit2 android交叉编译</title>
+    <url>/2020/04/25/libgit2-android%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</url>
+    <content><![CDATA[<p>libgit2 是一个跨平台、可在自己应用中链接的 git 实现库.</p>
+<a id="more"></a>
+<p><code>libgit2</code>是一个便携、纯C实现 git 核心功能的依赖库.当前已经实现了多种语言绑定,如 <code>Rugged(Ruby)</code>、<code>LibGit2Sharp(.NET)</code>、<code>pygit2(Python)</code>、<code>NodeGit(Node)</code>等.</p>
+<p>git GUI 客户端如 <code>GitKraken</code> 和 <code>gmaster</code>,git 托管平台如 <code>GitHub</code>,<code>GitLab</code>和<code>Azure DevOps</code>都是基于此实现的.每一次<code>merge pull request</code> 都是通过 libgit2 来实现的.</p>
+<p>最近 libgit2 刚刚放出 1.0 版本,那么先来个 android 交叉编译吧.</p>
+<h4 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h4><pre><code>macos 
+NDKr21</code></pre><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>1、下载源码</p>
+<pre><code>`git clone git@github.com:libgit2/libgit2.git`</code></pre><p>2、配置 openSSL(可跳过)</p>
+<pre><code>因为 libgit2 支持 openSSL,所以先编译 openSSL.
+下载源码,configure/make 即可</code></pre><p>3、配置工具链</p>
+<ul>
+<li><p>在 NDKr21 中,已经将各个架构、各个API的工具预编译好了,不用再如 README 所说(通过 make-standalone-toolchain.sh 脚本来准备了).</p>
+</li>
+<li><p>在项目根目录(随意) 添加 CMakeLists.android.txt(名称随意).</p>
+</li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span>(CMAKE_SYSTEM_NAME Linux)</span><br><span class="line"><span class="keyword">SET</span>(CMAKE_SYSTEM_VERSION Android)</span><br><span class="line"><span class="keyword">SET</span>(NDK_HOME /Users/aka/Library/Android/sdk/ndk/<span class="number">21.0</span>.<span class="number">6113669</span>/)</span><br><span class="line"><span class="keyword">SET</span>(OPENSSL_DYHOME /Users/aka/Downloads/source/openssl)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span>(CMAKE_C_COMPILER <span class="variable">$&#123;NDK_HOME&#125;</span>toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android21-clang)</span><br><span class="line"><span class="keyword">SET</span>(CMAKE_CXX_COMPILER <span class="variable">$&#123;NDK_HOME&#125;</span>toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android21-clang++)</span><br><span class="line"><span class="keyword">SET</span>(CMAKE_FIND_ROOT_PATH <span class="variable">$&#123;NDK_HOME&#125;</span>toolchains/llvm/prebuilt/darwin-x86_64/sysroot)</span><br><span class="line"><span class="keyword">SET</span>(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)</span><br><span class="line"><span class="keyword">SET</span>(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)</span><br><span class="line"><span class="keyword">SET</span>(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)</span><br><span class="line"><span class="keyword">SET</span>(OPENSSL_ROOT_DIR <span class="variable">$&#123;OPENSSL_DYHOME&#125;</span>)</span><br><span class="line"><span class="keyword">SET</span>(OPENSSL_INCLUDE_DIR <span class="variable">$&#123;OPENSSL_DYHOME&#125;</span>/<span class="keyword">include</span>)</span><br><span class="line"><span class="keyword">SET</span>(OPENSSL_CRYPTO_LIBRARY <span class="variable">$&#123;OPENSSL_DYHOME&#125;</span>/libcrypto.so)</span><br><span class="line"><span class="keyword">SET</span>(OPENSSL_SSL_LIBRARY <span class="variable">$&#123;OPENSSL_DYHOME&#125;</span>/libssl.so)</span><br><span class="line"><span class="keyword">add_definitions</span>(<span class="string">"--sysroot=$&#123;CMAKE_FIND_ROOT_PATH&#125;"</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>mkdir build &amp;&amp; cd build</code></li>
+<li><code>cmake -DCMAKE_TOOLCHAIN_FILE=../CMakeLists.android.txt</code></li>
+<li><code>cmake --build .</code></li>
+</ul>
+<p>4、大功告成!</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Termux 原理探究</title>
     <url>/2020/03/31/Termux-%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6/</url>
     <content><![CDATA[<p>详细介绍请移步: <a href="https://termux.com/" target="_blank" rel="noopener">官网</a>,<a href="http://www.termux.cn/" target="_blank" rel="noopener">中文镜像</a>,<a href="https://mirror.tuna.tsinghua.edu.cn/help/termux/" target="_blank" rel="noopener">清华源</a></p>
